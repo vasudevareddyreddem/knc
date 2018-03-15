@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-	
-
 <head>
 		<!-- Meta -->
 		<meta charset="utf-8">
@@ -589,13 +586,20 @@
 					</div><!-- END COL -->						
 					<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight">
 						<div class="contact">
-							<form id="contact-form" method="post" enctype="multipart/form-data">
+							<form action="appointment.php" method="post" enctype="multipart/form-data">
 								<div class="row">
+								<input type="hidden" name="type" id="type" value="contact">
 									<div class="form-group col-md-12">
 										<input type="text" name="name" class="form-control" id="first-name" placeholder="Name" required="required">
 									</div>
 									<div class="form-group col-md-12">
+										<input type="text" name="mobile" class="form-control" id="first-name" placeholder="Mobile" required="required">
+									</div>
+									<div class="form-group col-md-12">
 										<input type="email" name="email" class="form-control" id="email" placeholder="Email" required="required">
+									</div>
+									<div class="form-group col-md-12">
+										<input type="text" name="subject" class="form-control" id="subject" placeholder="Subject" required="required">
 									</div>
 									<div class="form-group col-md-12">
 										<textarea rows="6" name="message" class="form-control" id="description" placeholder="Your Message" required="required"></textarea>
@@ -623,18 +627,28 @@
 		</div>
 		<div class="modal-body text-left">
 		<div class="col-md-6" style="border-right:1px solid #ddd;">
-			<form action="/action_page.php">
+			<form action="appointment.php" method="post">
 			<div class="form-group">
-			  <label for="email">Email:</label>
-			  <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+			  <label for="email">Name:</label>
+			  <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required>
 			</div>
+			<input type="hidden" name="type" id="type" value="appointment">
+			
 			<div class="form-group">
 			  <label for="">Mobile Number</label>
-			  <input type="text" class="form-control" id="" placeholder="Enter Mobile number" name="">
+			  <input type="text" class="form-control" id="mobile" placeholder="Enter Mobile number" name="mobile"required>
+			</div>
+			<div class="form-group">
+			  <label for="email">Email:</label>
+			  <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+			</div>
+			<div class="form-group">
+			  <label for="email">Subject:</label>
+			  <input type="text" class="form-control" id="subject" placeholder="Enter Subject" name="subject" required>
 			</div>
 			<div class="form-group">
 			  <label for="">Message</label>
-			  <textarea type="text" class="form-control" id="" placeholder="Enter Mobile number" ></textarea>
+			  <textarea type="text" class="form-control" id="message" name="message" placeholder="Enter Mobile number" required></textarea>
 			</div>
 			<div class="" role="group" aria-label="group button">
 				<div class="btn-group" role="group">
@@ -642,7 +656,7 @@
 				</div>
 			
 				<div class="btn-group" role="group">
-					<button type="button" id="saveImage" class="btn btn-success " data-action="save" role="button">Submit</button>
+					<button type="submit" id="saveImage" class="btn btn-success " data-action="save" role="button">Submit</button>
 				</div>
 			</div>
 				
