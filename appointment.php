@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -23,6 +24,11 @@ $subject = $_POST['subject'].'-'.$_POST['type'];
 $message = 'Hi iam '.$_POST['name'].' And '.$_POST['mobile'].' <br> '.$_POST['message'];
 $headers = 'From:'.$_POST['email'];
 mail($to_email,$subject,$message,$headers);
+if($_POST['type']=='contact'){
+$_SESSION["success"]='Your query Successfully sent';
+}else{
+$_SESSION["success"]='Your appointment was sent. Our team will contact as soon';	
+}
 echo "New record created successfully";
 	header("Location: http://" . $_SERVER['SERVER_NAME']); 
 } else {

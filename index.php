@@ -774,3 +774,15 @@
 
 
 </html>
+  <?php 
+  session_start();
+  if($_SESSION["success"]): ?>
+				<div class="alert_msg1 animated slideInUp bg-succ">
+				<?php echo $_SESSION["success"];?> &nbsp; <i class="glyphicon glyphicon-ok text-success ico_bac" aria-hidden="true"></i>
+				</div>
+			<?php endif; ?>
+			<?php if($_SESSION["error"]): ?>
+				<div class="alert_msg1 animated slideInUp bg-warn">
+				<?php echo $_SESSION["error"];?> &nbsp; <i class="glyphicon glyphicon-ok text-success ico_bac" aria-hidden="true"></i>
+				</div>
+			<?php endif; ?>
