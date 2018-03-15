@@ -1,0 +1,51 @@
+li.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+.servi li{
+	padding:5px ;
+}
+.servi {
+	
+}
+.servi li a{
+	text-transform:capitalize;
+}
+.card {
+   -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    transition: 0.3s;
+	margin: 5px;
+	padding:5px  ;
+	border-radius:5px;
+	
+}
+.wid-24{
+	width:24%;
+}
+.md-hide{
+	display:none;
+}
+.bg-modal{
+	background:#fff;
+	
+}
+.text-white{
+	color:#fff;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+@media only screen and (max-width: 767px) {
+	.sm-hide{
+	display:none;
+}
+.md-hide{
+	display:block;
+}
+.wid-24{
+	width:100%;
+}
+}
