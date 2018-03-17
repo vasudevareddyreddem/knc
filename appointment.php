@@ -1,9 +1,9 @@
 <?php
 session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "knc";
+$servername = "43.255.154.8";
+$username = "kncdemo";
+$password = "kncdemo@1";
+$dbname = "kncdemo";
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
@@ -30,7 +30,7 @@ $_SESSION["success"]='Your query Successfully sent';
 $_SESSION["success"]='Your appointment was sent. Our team will contact as soon';	
 }
 echo "New record created successfully";
-	header("Location: http://" . $_SERVER['SERVER_NAME']); 
+	header("Location: http://demo1.prachatech.com/"); exit;
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 		<!-- Meta -->
@@ -514,9 +515,10 @@
 							<div class="signup_form">
 								<h3>Subscribe to get the latest news, update and offer information. Don't worry, we won't send spam!</h3>
 								<!-- Replace the form action in the line below with your MailChimp embed action! -->
-								<form action="http://site90.us11.list-manage.com/subscribe/post?u=599a2153f4b86cb2f92d4af3a&amp;id=26d7c26287" method="post" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-									<input type="email" name="EMAIL" class="form-control" id="mce-email" placeholder="Enter Email">
-									<span><button type="submit" name="subscribe" class="btn btn-detault btn-light-bg">Subscribe</button></span>
+								<form action="newsletter.php" method="post"  class="validate" >
+									<input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" required>
+									<span>
+									<button type="submit" name="subscribe" class="btn btn-detault btn-light-bg">Subscribe</button></span>
 									<div id="mce-responses">
 										<div class="response" id="mce-error-response" style="display:none"></div>
 										<div class="response" id="mce-success-response" style="display:none"></div>
@@ -774,15 +776,17 @@
 
 
 </html>
-  <?php 
-  session_start();
-  if($_SESSION["success"]): ?>
+   <?php session_start();
+	if(isset($_SESSION["success"]) && $_SESSION["success"]): ?>
 				<div class="alert_msg1 animated slideInUp bg-succ">
 				<?php echo $_SESSION["success"];?> &nbsp; <i class="glyphicon glyphicon-ok text-success ico_bac" aria-hidden="true"></i>
 				</div>
 			<?php endif; ?>
-			<?php if($_SESSION["error"]): ?>
+			<?php if( isset($_SESSION["error"] )&& $_SESSION["error"]): ?>
 				<div class="alert_msg1 animated slideInUp bg-warn">
 				<?php echo $_SESSION["error"];?> &nbsp; <i class="glyphicon glyphicon-ok text-success ico_bac" aria-hidden="true"></i>
 				</div>
 			<?php endif; ?>
+			
+			<?php session_destroy (); ?>
+ 
