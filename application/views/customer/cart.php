@@ -13,32 +13,32 @@
     <div class="row">
         <!--<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 bhoechie-tab-container widt_cus_998">-->
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 bhoechie-tab-container " >
-		
-            <div  class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bhoechie-tab-menu sm_hide" >
+		 <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bhoechie-tab-menu sm_hide" >
                 <div class="list-group">
-                    <div href="#" class="list-group-item active text-center">
+                    <div href="#" class="list-group-item active text-center col-md-3">
 
                         <h4 class="glyphicon glyphicon-shopping-cart"></h4>
                         <br/>Check Cart
                     </div>
-                    <div href="#"  class="list-group-item text-center">
-                        <h4 class="glyphicon glyphicon-folder-open site_col"></h4>
+                    <div href="#"  class="list-group-item text-center col-md-3">
+                        <h4 class="glyphicon glyphicon-folder-open "></h4>
                         <br/>Billing Address
                     </div>
-                    <div href="#" class="list-group-item text-center">
-                        <h4 class="glyphicon glyphicon-credit-card site_col"></h4>
+                    <div href="#" class="list-group-item text-center col-md-3">
+                        <h4 class="glyphicon glyphicon-credit-card "></h4>
                         <br/>Payment mode
                     </div>
-                    <div href="#" class="list-group-item text-center">
-                        <h4 class="glyphicon glyphicon-ok site_col"></h4>
+                    <div href="#" class="list-group-item text-center col-md-3">
+                        <h4 class="glyphicon glyphicon-ok "></h4>
                         <br/>Thanks for Shopping
                     </div>
 
                 </div>
             </div>
-            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 bhoechie-tab min_he_500_web"  >
+           
+            <div class="col-lg-12 col-md-12 col-sm-112 col-xs-12 bhoechie-tab min_he_500_web"  >
                 <!-- flight section -->
-                <div class="bhoechie-tab-content active">
+                <div class="bhoechie-tab-content active mar-t10">
                     <center>
                         <div class="res_car_pan">
                             <!--SHIPPING METHOD-->

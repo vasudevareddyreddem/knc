@@ -1427,10 +1427,10 @@ pre code {
 }
 }
 .container-fluid {
-	padding-right: 15px;
-	padding-left: 15px;
-	margin-right: auto;
-	margin-left: auto
+	padding-right: 30px;
+	padding-left: 30px;
+	margin-right: 20px;
+	margin-left: 20px
 }
 .row {
 	margin-right: -15px;
@@ -4558,8 +4558,8 @@ button.list-group-item {
 .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
 	z-index: 2;
 	color: #fff;
-	background-color: #d32134;
-	border-color: #d32134
+	background-color: #4bba4f;
+	/* border-color: #d32134 */
 }
 .list-group-item.active .list-group-item-heading, .list-group-item.active .list-group-item-heading>.small, .list-group-item.active .list-group-item-heading>small, .list-group-item.active:focus .list-group-item-heading, .list-group-item.active:focus .list-group-item-heading>.small, .list-group-item.active:focus .list-group-item-heading>small, .list-group-item.active:hover .list-group-item-heading, .list-group-item.active:hover .list-group-item-heading>.small, .list-group-item.active:hover .list-group-item-heading>small {
 	color: inherit

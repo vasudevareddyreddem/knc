@@ -64,11 +64,131 @@ tr th:last-child {
 </style>
 
 <body >
-<div class="container mar_res_t150">
+<div class="container-fluid mar_res_t150">
 		<div class="row">
 		
 		
 	 <!-- track start-->
+	 <div class="row">
+	
+			<div class="panel ">
+			<div class="panel-body"  style="padding:20px 0px;">
+				<div class="col-md-4">
+					<div class="col-md-4 ">
+					<div class="img-responsive">
+						<a href="<?php echo base_url('category/productview/'.base64_encode($item_details['item_id'])); ?>"><img style="height:auto;width:95px;" src="<?php echo base_url('uploads/products/'.$item_details['item_image']);?>" /></a>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<p><a style="text-transform: uppercase;" href="<?php echo base_url('category/productview/'.base64_encode($item_details['item_id'])); ?>">  <td><?php echo isset($item_details['item_name'])?$item_details['item_name']:'';  ?></td></a></p>
+						<?php if(isset($item_details['color']) && $item_details['color']!=''){ ?>
+						<div>Color: <?php echo isset($item_details['color'])?$item_details['color']:'';  ?></div>
+						<?php } ?>
+						<div><?php echo $item_details['return_policy']; ?></div>
+					
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="stepwizard">
+						<div class="stepwizard-row">
+							<div class="stepwizard-step">
+							
+								<?php if($item_details['status_confirmation']==1){ ?>
+								<button type="button" class="btn btn-success btn-circle">1</button>
+								<?php }else{ ?>
+								<button type="button" class="btn btn-defaultt btn-circle" disabled="disabled">1</button>
+								<?php } ?>
+								<p>Order Confirmation</p>
+							</div>
+							<div class="stepwizard-step">
+								<?php if($item_details['status_packing']==2){ ?>
+								<button type="button" class="btn btn-success btn-circle">2</button>
+								<?php }else{ ?>
+								<button type="button" class="btn btn-defaultt btn-circle"disabled="disabled">2</button>
+								<?php } ?>
+								<p>Packing Order</p>
+							</div>
+							<div class="stepwizard-step">
+								<?php if($item_details['status_road']==3){ ?>
+								<button type="button" class="btn btn-success btn-circle">3</button>
+								<?php }else{ ?>
+								<button type="button" class="btn btn-defaultt btn-circle" disabled="disabled">3</button>
+								<?php } ?>
+								<p>Order on Road</p>
+							</div> 
+							<div class="stepwizard-step">
+									<?php if($item_details['status_deliverd']==4){ ?>
+								<button type="button" class="btn btn-success btn-circle">4</button>
+								<?php }else{ ?>
+								<button type="button" class="btn btn-defaultt btn-circle" disabled="disabled">4</button>
+								<?php } ?>
+								<p>Delivered</p>
+							</div> 
+							</div> 
+					</div>
+				
+
+				</div>
+				<div class="col-md-3">
+					<div class="col-md-3">
+							<span class="font_span">₹<?php echo number_format(isset($item_details['total_price'])?$item_details['total_price']:'', 2);  ?></span>
+					</div>
+					<div class="col-md-9">
+							<span class="btn btn-sm btn-success pull-right ">
+							<?php if($item_details['status_confirmation']==5){ 
+								echo "cancelled";
+									
+									 }else { ?>
+									 <?php if($item_details['status_confirmation']==5){ 
+									
+									echo "cancelled"; 
+									}else{ 
+									
+											if($item_details['status_confirmation']==1 && $item_details['status_packing']==''){
+												echo "Order Confirmed ";  
+											  }else if($item_details['status_confirmation']==1 && $item_details['status_packing']==2 && $item_details['status_road']==''){
+												  echo "Packing Order";
+											  }else if($item_details['status_confirmation']==1 && $item_details['status_packing']==2 && $item_details['status_road']==3 && $item_details['status_deliverd']=='' || $item_details['status_deliverd']==0){
+												  echo "Order on Road";
+											  }else if($item_details['status_confirmation']==1 && $item_details['status_packing']==2 && $item_details['status_road']==3 && $item_details['status_deliverd']==4 && $item_details['status_refund']==''){
+												  echo "Delivered";
+											  }else if($item_details['status_refund']!=''){
+												 echo $item_details['status_refund']; 
+											  }
+									  
+									}
+									  ?>
+									<?php } ?>
+							</span>
+					</div>
+				</div>
+					<div class="clearfix">&nbsp;</div>
+						<br>
+					<div class=""><span>
+					<img src="<?php echo base_url(); ?>assets/home/images/track.png" /></span> &nbsp; 
+					
+					<?php if(isset($item_details['status_deliverd']) && $item_details['status_deliverd']!=4){ ?>
+					<i class="font_span">
+					
+					Delivery expected by <?php echo isset($item_details['expected_delivery_time'])?$item_details['expected_delivery_time']:'';  ?>
+					<?php } ?>
+					</i>
+					
+					
+					</div>
+					<hr	>
+				<div class="col-md-3 col-md-offset-9">
+						<span class="font_span"><b>Total</b></span>&nbsp;&nbsp;
+						<span class="font_span">₹<?php echo number_format($item_details['total_price']+$item_details['delivery_amount'], 2); ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
+						<?php if(isset($item_details['discount']) && $item_details['discount']!=''){ ?>
+						<span class="font_span site_col">Savings</span>&nbsp;&nbsp;
+						<span class="font_span">₹<?php echo isset($item_details['discount'])?$item_details['discount']:'';  ?></span>
+						<?php } ?>
+				</div>
+
+			</div>
+		</div>
+		</div>
 <div class="row" >
   <?php if($this->session->flashdata('success')): ?>
 		<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> <?php echo $this->session->flashdata('success');?>&nbsp; <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div></div>
@@ -80,11 +200,11 @@ tr th:last-child {
 
 			<?php endif; ?>
 	
-			<div class="panel panel-primary">
+			<div class="panel ">
 			<div class="panel-body" style="padding-top:10px">
 			
-<div class="col-md-4" style="border-right:1px solid #45b1b5">
-<table class="table " >
+<div class="col-md-4" style="border-right:1px solid #ddd">
+<table class="table table-striped " >
 	<div><h5>ORDER DETAILS</h5></div>
 	<?php //echo '<pre>';print_r($item_details);exit; ?>
     <tbody>
@@ -167,8 +287,8 @@ tr th:last-child {
     </tbody>
   </table>
 </div>
-<div class="col-md-4" style="border-right:1px solid #45b1b5">
-<table class="table " >
+<div class="col-md-4" style="border-right:1px solid #ddd">
+<table class="table table-striped" >
 	<div><h5>Delivery location Address Details</h5></div>
 		   <tbody>
 			<tr><th>Name </th><td><?php echo isset($item_details['name'])?$item_details['name']:'';  ?></td></tr>
@@ -207,13 +327,9 @@ tr th:last-child {
 		<p >Return policy : <?php echo $item_details['return_policy']; ?>  </p>
 		<p >We will contact you within 12 hrs to clarify your request. Please note that your request will be accepted only if it falls within the sellers return policy of shofus.com. </p>
 		<?php } ?>
-		</div>
-		</div>
-		</div>
-		</div>
-		<div class="row rev_form" style="display:none">
+		<div class=" rev_form" style="display:none">
 	
-			<div class="panel panel-primary">
+			<div class="panel ">
 			<div class="panel-body">
 				<form  id="addreview" name="addreview" action="<?php echo base_url('category/productreview'); ?>" method="POST">
 					<input type="hidden" name="product_id" id="product_id" value="<?php echo $item_details['item_id']; ?>">
@@ -221,7 +337,7 @@ tr th:last-child {
 					<input type="hidden" name="customer_id" id="customer_id" value="<?php echo $customerdetail['customer_id']; ?>">
 					<input type="hidden" name="seller_id" id="seller_id" value="<?php echo $item_details['seller_id']; ?>">
 					<div class="row">
-							<div class=" col-md-6 col-md-offset-3" style="padding:20px">		
+							<div class=" col-md-12" style="padding:20px">		
 							
 
 								<div class="form-group">
@@ -242,7 +358,7 @@ tr th:last-child {
 									<textarea id="review" name="review" class="form-control" rows="5" placeholder="Your Review"></textarea>
 								</div>
 							  
-								<button type="submit" class="btn btn-primary pull-right">Submit</button>
+								<button type="submit" class="btn btn-success pull-right">Submit</button>
 							</div>
 					</div>
 						
@@ -251,126 +367,12 @@ tr th:last-child {
 
 				</div>
 		</div>
-		<div class="row">
-	
-			<div class="panel panel-primary">
-			<div class="panel-body"  style="padding:20px 0px;">
-				<div class="col-md-4">
-					<div class="col-md-4 ">
-					<div class="img-responsive">
-						<a href="<?php echo base_url('category/productview/'.base64_encode($item_details['item_id'])); ?>"><img style="height:auto;width:95px;" src="<?php echo base_url('uploads/products/'.$item_details['item_image']);?>" /></a>
-						</div>
-					</div>
-					<div class="col-md-8">
-						<p><a style="text-transform: uppercase;" href="<?php echo base_url('category/productview/'.base64_encode($item_details['item_id'])); ?>">  <td><?php echo isset($item_details['item_name'])?$item_details['item_name']:'';  ?></td></a></p>
-						<?php if(isset($item_details['color']) && $item_details['color']!=''){ ?>
-						<div>Color: <?php echo isset($item_details['color'])?$item_details['color']:'';  ?></div>
-						<?php } ?>
-						<div><?php echo $item_details['return_policy']; ?></div>
-					
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="stepwizard">
-						<div class="stepwizard-row">
-							<div class="stepwizard-step">
-							
-								<?php if($item_details['status_confirmation']==1){ ?>
-								<button type="button" class="btn btn-primary btn-circle">1</button>
-								<?php }else{ ?>
-								<button type="button" class="btn btn-defaultt btn-circle" disabled="disabled">1</button>
-								<?php } ?>
-								<p>Order Confirmation</p>
-							</div>
-							<div class="stepwizard-step">
-								<?php if($item_details['status_packing']==2){ ?>
-								<button type="button" class="btn btn-primary btn-circle">2</button>
-								<?php }else{ ?>
-								<button type="button" class="btn btn-defaultt btn-circle"disabled="disabled">2</button>
-								<?php } ?>
-								<p>Packing Order</p>
-							</div>
-							<div class="stepwizard-step">
-								<?php if($item_details['status_road']==3){ ?>
-								<button type="button" class="btn btn-primary btn-circle">3</button>
-								<?php }else{ ?>
-								<button type="button" class="btn btn-defaultt btn-circle" disabled="disabled">3</button>
-								<?php } ?>
-								<p>Order on Road</p>
-							</div> 
-							<div class="stepwizard-step">
-									<?php if($item_details['status_deliverd']==4){ ?>
-								<button type="button" class="btn btn-primary btn-circle">4</button>
-								<?php }else{ ?>
-								<button type="button" class="btn btn-defaultt btn-circle" disabled="disabled">4</button>
-								<?php } ?>
-								<p>Delivered</p>
-							</div> 
-							</div> 
-					</div>
-				
-
-				</div>
-				<div class="col-md-3">
-					<div class="col-md-3">
-							<span class="font_span">₹<?php echo number_format(isset($item_details['total_price'])?$item_details['total_price']:'', 2);  ?></span>
-					</div>
-					<div class="col-md-9">
-							<span class="btn btn-sm btn-danger pull-right ">
-							<?php if($item_details['status_confirmation']==5){ 
-								echo "cancelled";
-									
-									 }else { ?>
-									 <?php if($item_details['status_confirmation']==5){ 
-									
-									echo "cancelled"; 
-									}else{ 
-									
-											if($item_details['status_confirmation']==1 && $item_details['status_packing']==''){
-												echo "Order Confirmed ";  
-											  }else if($item_details['status_confirmation']==1 && $item_details['status_packing']==2 && $item_details['status_road']==''){
-												  echo "Packing Order";
-											  }else if($item_details['status_confirmation']==1 && $item_details['status_packing']==2 && $item_details['status_road']==3 && $item_details['status_deliverd']=='' || $item_details['status_deliverd']==0){
-												  echo "Order on Road";
-											  }else if($item_details['status_confirmation']==1 && $item_details['status_packing']==2 && $item_details['status_road']==3 && $item_details['status_deliverd']==4 && $item_details['status_refund']==''){
-												  echo "Delivered";
-											  }else if($item_details['status_refund']!=''){
-												 echo $item_details['status_refund']; 
-											  }
-									  
-									}
-									  ?>
-									<?php } ?>
-							</span>
-					</div>
-				</div>
-					<div class="clearfix">&nbsp;</div>
-						<br>
-					<div class=""><span>
-					<img src="<?php echo base_url(); ?>assets/home/images/track.png" /></span> &nbsp; 
-					
-					<?php if(isset($item_details['status_deliverd']) && $item_details['status_deliverd']!=4){ ?>
-					<i class="font_span">
-					
-					Delivery expected by <?php echo isset($item_details['expected_delivery_time'])?$item_details['expected_delivery_time']:'';  ?>
-					<?php } ?>
-					</i>
-					
-					
-					</div>
-					<hr	>
-				<div class="col-md-3 col-md-offset-9">
-						<span class="font_span"><b>Total</b></span>&nbsp;&nbsp;
-						<span class="font_span">₹<?php echo number_format($item_details['total_price']+$item_details['delivery_amount'], 2); ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
-						<?php if(isset($item_details['discount']) && $item_details['discount']!=''){ ?>
-						<span class="font_span site_col">Savings</span>&nbsp;&nbsp;
-						<span class="font_span">₹<?php echo isset($item_details['discount'])?$item_details['discount']:'';  ?></span>
-						<?php } ?>
-				</div>
-
-			</div>
 		</div>
 		</div>
+		</div>
+		</div>
+		
+		
 		
 
 	 <!-- track end-->
@@ -382,7 +384,7 @@ tr th:last-child {
   <!-- Modal -->
   <div class="modal   fade" id="myModal" role="dialog" ">
     <div class="modal-dialog">
-				<div class="panel panel-primary">
+				<div class="panel panel-success">
                     <div class="panel-heading">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="panel-title">Request Cancellation </h4>

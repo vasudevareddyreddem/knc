@@ -100,7 +100,7 @@ tr th:last-child {
 							<div class="stepwizard-step">
 							
 								<?php if($item_details['status_confirmation']==1){ ?>
-								<button type="button" class="btn btn-primary btn-circle">1</button>
+								<button type="button" class="btn btn-success btn-circle">1</button>
 								<?php }else{ ?>
 								<button type="button" class="btn btn-defaultt btn-circle" disabled="disabled">1</button>
 								<?php } ?>
@@ -108,7 +108,7 @@ tr th:last-child {
 							</div>
 							<div class="stepwizard-step">
 								<?php if($item_details['status_packing']==2){ ?>
-								<button type="button" class="btn btn-primary btn-circle">2</button>
+								<button type="button" class="btn btn-success btn-circle">2</button>
 								<?php }else{ ?>
 								<button type="button" class="btn btn-defaultt btn-circle"disabled="disabled">2</button>
 								<?php } ?>
@@ -116,7 +116,7 @@ tr th:last-child {
 							</div>
 							<div class="stepwizard-step">
 								<?php if($item_details['status_road']==3){ ?>
-								<button type="button" class="btn btn-primary btn-circle">3</button>
+								<button type="button" class="btn btn-success btn-circle">3</button>
 								<?php }else{ ?>
 								<button type="button" class="btn btn-defaultt btn-circle" disabled="disabled">3</button>
 								<?php } ?>
@@ -124,7 +124,7 @@ tr th:last-child {
 							</div> 
 							<div class="stepwizard-step">
 									<?php if($item_details['status_deliverd']==4){ ?>
-								<button type="button" class="btn btn-primary btn-circle">4</button>
+								<button type="button" class="btn btn-success btn-circle">4</button>
 								<?php }else{ ?>
 								<button type="button" class="btn btn-defaultt btn-circle" disabled="disabled">4</button>
 								<?php } ?>

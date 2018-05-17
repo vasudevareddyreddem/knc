@@ -2,29 +2,29 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 bhoechie-tab-container bhoechie-tab-container mar_res_t150">
-            <div  class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bhoechie-tab-menu sm_hide">
+            <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bhoechie-tab-menu sm_hide">
                 <div class="list-group">
-                    <div href="<?php echo base_url('customer/cart'); ?>" class="list-group-item text-center step_com">
+                    <div href="<?php echo base_url('customer/cart'); ?>" class="list-group-item text-center step_com col-md-3">
 
                         <h4 class="glyphicon glyphicon-shopping-cart"></h4>
                         <br/>Check Cart
                       </div>
-                    <div href="<?php echo base_url('customer/billing'); ?>" class="list-group-item  text-center step_com">
+                    <div href="<?php echo base_url('customer/billing'); ?>" class="list-group-item  text-center step_com col-md-3">
                         <h4 class="glyphicon glyphicon-folder-open"></h4>
                         <br/>Billing Address
                     </div>
-                     <div href="#" class="list-group-item active  text-center">
+                     <div href="#" class="list-group-item active  text-center col-md-3">
                         <h4 class="glyphicon glyphicon-credit-card"></h4>
                         <br/>Payment mode
                     </div>
-                    <div href="#" class="list-group-item text-center">
+                    <div href="#" class="list-group-item text-center col-md-3">
                         <h4 class="glyphicon glyphicon-ok"></h4>
                         <br/>Thanks for Shopping
                     </div>
 
                 </div>
             </div>
-            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 bhoechie-tab">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bhoechie-tab">
 			
 			
 			

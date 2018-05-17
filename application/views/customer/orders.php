@@ -2,12 +2,9 @@
 <div class="wrapper"> 
   <!--header part start here -->
   <div class="jain_container mar_res_t150">
-					<div class="col-sm-9">
-                        <!-- end row -->
-                    </div>
-			
-		<body >
-		<div class="container-fluid">
+				
+	
+		<div class="container-fluid" style="background:#fff">
 		<?php if($this->session->flashdata('successmsg')): ?>
 						<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> <?php echo $this->session->flashdata('successmsg');?>&nbsp; <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div></div>
 
@@ -21,8 +18,10 @@
 			
 			
 			
-			<div class="row" >
-                            <div class="col-sm-9">
+			<div class="row ">
+                          
+                           
+                            <div class="col-md-9 best-pro">
                                 <div class="table-responsive">    
                                     <table class="table table-striped">
                                         <thead>
@@ -93,6 +92,85 @@
                                 
                               
                             </div><!-- end col -->
+							<div class="col-md-3">
+                        <div class="widget">
+                            <h6 class="subtitle">Account Navigation</h6>
+                            
+                            <ul class="list list-unstyled">
+                                <li>
+                                    <a href="my-account.html">My Account</a>
+                                </li>
+                                <li>
+                                    <a href="cart.html">My Cart <span class="text-primary">(3)</span></a>
+                                </li>
+                                <li class="active">
+                                    <a href="order-list.html">My Order</a>
+                                </li>
+                                <li>
+                                    <a href="wishlist.html">Wishlist <span class="text-primary">(5)</span></a>
+                                </li>
+                                <li>
+                                    <a href="user-information.html">Settings</a>
+                                </li>
+                            </ul>
+                        </div><!-- end widget -->
+                        
+                        <div class="widget">
+                            <h6 class="subtitle">New Collection</h6>
+                            <figure>
+                                <a href="javascript:void(0);">
+                                    <img src="http://www.funroundup.com/wp-content/uploads/2015/12/HD-Wallpapers-Sonakshi-Sinha-in-Green-Color-Dress-With-Bun-Hairstyles.jpg" alt="collection">
+                                </a>
+                            </figure>
+                        </div><!-- end widget -->
+                        
+                        <div class="widget">
+                            <h6 class="subtitle">Featured</h6>
+                            
+                            <ul class="items">
+                                <li> 
+                                    <a href="shop-single-product-v1.html" class="product-image">
+                                        <img src="http://www.funroundup.com/wp-content/uploads/2015/12/HD-Wallpapers-Sonakshi-Sinha-in-Green-Color-Dress-With-Bun-Hairstyles.jpg" alt="Sample Product ">
+                                    </a>
+                                    <div class="product-details">
+                                        <p class="product-name"> 
+                                            <a href="shop-single-product-v1.html">Product name</a> 
+                                        </p>
+                                        <span class="price text-primary">$19.99</span>
+                                        <div class="rate text-warning">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </li><!-- end item -->
+                                <li> 
+                                    <a href="shop-single-product-v1.html" class="product-image">
+                                        <img src="http://www.funroundup.com/wp-content/uploads/2015/12/HD-Wallpapers-Sonakshi-Sinha-in-Green-Color-Dress-With-Bun-Hairstyles.jpg" alt="Sample Product ">
+                                    </a>
+                                    <div class="product-details">
+                                        <p class="product-name"> 
+                                            <a href="shop-single-product-v1.html">Product name</a> 
+                                        </p>
+                                        <span class="price text-primary">$19.99</span>
+                                        <div class="rate text-warning">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                    </div>
+                                </li><!-- end item -->
+                            </ul>
+
+                            <hr class="spacer-10 no-border">
+                            <a href="shop-sidebar-left.html" class="btn btn-default btn-block semi-circle btn-md">All Products</a>
+                        </div><!-- end widget -->
+                    </div>
+							
                         </div>
 			
 			
