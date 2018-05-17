@@ -186,7 +186,8 @@
                     <ul class="nav navbar-nav">
                         
                         <!-- Pages -->
-						<?php foreach($cat_list as $lists){ ?>
+						<?php $cnt=1;foreach($cat_list as $lists){ ?>
+						 <?php if($cnt<=5){ ?>
                         <li class="dropdown yamm-fw"><a href="<?php echo base_url('category/subcategorys/'.base64_encode($lists['category_id'])); ?>"  class="dropdown-toggle"><?php echo $lists['category_name']; ?><i class="fa fa-angle-down ml-5"></i></a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -209,8 +210,9 @@
                                 </li><!-- end li -->
                            </ul><!-- end ul dropdown-menu -->
                         </li><!-- end li dropdown -->
+						 <?php } ?>
 					
-                        <?php } ?>
+                        <?php $cnt++;} ?> <span>More</a>
                             </ul><!-- end dropdown-menu -->
                         </li><!-- end dropdown -->
                     </ul><!-- end navbar-nav -->
