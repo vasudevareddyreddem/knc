@@ -34,7 +34,7 @@
                             <li><a data-toggle="modal" data-target="#loginmodal">Login</a></li>
                             <li><a href="register.html">Create Account</a></li>
                             <li class="divider"></li>
-                            <li><a href="wishlist.html">Wishlist (5)</a></li>
+                            <li><a href="<?php echo base_url('customer/wishlist'); ?>">Wishlist (5)</a></li>
                             <li><a href="<?php echo base_url('customer/cart');?>">My Cart</a></li>
                             <li><a href="checkout.html">Checkout</a></li>
                         </ul>
@@ -153,13 +153,13 @@
                     </div><!-- end col -->
                     <div class="col-sm-2 vertical-align header-items hidden-xs">
                         <div class="header-item mr-5">
-                            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Wishlist">
+                            <a href="<?php echo base_url('customer/wishlist'); ?>" data-toggle="tooltip" title="Wishlist">
                                 <i class="fa fa-heart-o"></i>
                                 <sub>32</sub>
                             </a>
                         </div>
                         <div class="header-item">
-                            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Compare">
+                            <a href="javascript:void(0);" data-toggle="tooltip"  title="Compare">
                                 <i class="fa fa-refresh"></i>
                                 <sub>2</sub>
                             </a>
