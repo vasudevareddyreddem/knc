@@ -1,3 +1,9 @@
+<head>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/home/css/range.css">
+
+
+<script src="<?php echo base_url(); ?>assets/home/js/range.js"></script>
+</head>
 <style>
    .top-navbar1{
    display:none;
@@ -217,6 +223,16 @@
    width: 77px;
    }
    }
+   .panel.panel-primary .panel-heading {
+    background-color: #fff;
+    border-color: #ddd;
+}
+.panel-title>.small, .panel-title>.small>a, .panel-title>a, .panel-title>small, .panel-title>small>a {
+    color: #333;
+}
+.panel .panel-heading a:hover, .panel .panel-heading a:focus, .panel .panel-heading a:active {
+    color: #333;
+}
    </style>
    <div class="container-fluid fluid_mod">
    <?php if(isset($subitemwise_item_list)&& count($subitemwise_item_list)>0){ ?>
@@ -234,46 +250,20 @@
 	
    <span id="filtersubitemwisedata"></span>
    <span id="subitemwisedata">
- <div class="col-sm-3">
-            <div class="title"><span>Filters</span></div>
+ <div class="col-sm-3 bg-success">
+            <div class="title"><h2 class="text-white">Filters</h2></div>
 			<input type="hidden" id="subitemid" name="subitemid" value="<?php echo $subitemid; ?>">
 			<input type="hidden" id="subcatid" name="subcatid" value="<?php echo $subcatid; ?>">
-              <div class="row">
-				  <div class="col-md-6">
-				  <h4>Min:<span class="site_col"><?php echo $minimum_price['item_cost']; ?></span></h4>
-				  <input type="hidden" id="min" name="min" value="<?php echo $minimum_price['item_cost']; ?>">
-				  </div>
-				  <div class="col-md-6">
-				 <h4>Max:<span class="site_col"><?php echo $maximum_price['item_cost']; ?></span></h4>
-				  <input type="hidden" id="max" name="max" value="<?php echo $maximum_price['item_cost']; ?>">
-				  </div>
-			</div>
-		  <div class="row">
-		  <div class="col-md-6">
-		   <select class="form-control" name="mimimum_price" id="mimimum_price" onchange="subitemwisefilters(this.value, '<?php echo 'mimimum_price'; ?>','<?php echo ''; ?>');">
-				 <?php for( $i=floor($minimum_price['item_cost']); $i<=floor($maximum_price['item_cost']); $i+=1000 ){  ?>
-				<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-				<?php } ?>
-				
-			  </select>
-		  </div>
-		  <div class="col-md-6">
-		   <select class="form-control" id="maximum_price" name="maximum_price" onchange="subitemwisefilters(this.value, '<?php echo 'maximum_price'; ?>','<?php echo ''; ?>');">
-				 <?php if($minimum_price['item_cost'] !=$maximum_price['item_cost']){ ?>
-					 <?php for( $i=floor($minimum_price['item_cost']+1000); $i<=floor($maximum_price['item_cost']); $i+=1000 ){  ?>
-					<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-					<?php } ?>
-				 <?php }if($minimum_price['item_cost']<=1000){ ?>
-					<option value="<?php echo $maximum_price['item_cost']; ?>"><?php echo $maximum_price['item_cost']; ?></option>
-
-					 
-					<?php  }else{ ?>
-						<option value="<?php echo $maximum_price['item_cost']; ?>"><?php echo $maximum_price['item_cost']; ?></option>
-				 <?php } ?>
-
-			  </select>
-		  </div>
-		  </div><br>
+<div style="background:#fff;padding:20px ; border-radius:5px">
+<div class="price-range-block">
+	<div id="slider-range" class="price-filter-range" name="rangeInput"></div>
+	<div style="margin:30px auto">
+	  <input type="number" min=0 max="9900" oninput="validity.valid||(value='0');" id="min_price" class="price-range-field" />
+	  <input type="number" min=0 max="10000" oninput="validity.valid||(value='10000');" id="max_price" class="price-range-field" />
+	</div>
+</div>
+</div>
+		<br>
                <input type="hidden" name="categoryid" id="categoryid" value="<?php echo $this->uri->segment(3);?>">
                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                   <?php if(isset($offer_list) && count($offer_list)>0){?>

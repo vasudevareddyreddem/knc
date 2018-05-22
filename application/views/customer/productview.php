@@ -73,6 +73,20 @@
 .p_cos > p{
 	margin:4px 10px;
 }
+.checkmsg{
+	 content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right:8px solid black;
+    left:-8px;
+
+    top:100;
+}
 </style>
 
 <div class="pad_bod"  >
@@ -109,7 +123,7 @@
 		</div>
         <!-- End Image List -->
 
-        <div class="col-md-5 col-md-offset-3 sm_mar_t20 card" id="con_scrol">
+        <div class="col-md-8 col-md-offset-3 sm_mar_t20 card" id="con_scrol">
           <?php if($this->session->flashdata('success')): ?>
 			<div class="alt_cus"> <div class="alert_msg1 animated slideInUp btn_suc "> <?php echo $this->session->flashdata('success');?>&nbsp; <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div></div>
 			<?php endif; ?>
@@ -405,7 +419,7 @@
             </tbody>
 			<div class="clearfix"></div>
           </table>
-		    <tr>
+		   <!-- <tr>
                 <td></td>
                 <td>
 				<?php 
@@ -420,53 +434,49 @@
 					<?php } ?>			  
 				 
                 </td>
-              </tr>
-			 		  
-        </div>
-				<?php if($products_list['item_quantity']>0 && $products_list['item_status']!=0 ){ ?>
+              </tr>-->
+			 	<!--location check-->	
+<?php if($products_list['item_quantity']>0 && $products_list['item_status']!=0 ){ ?>
 
-        <div class="col-md-3 card" style="border:1px solid #ddd;padding:20px;">
-			<span><img id="" src="<?php echo base_url(); ?>assets/home/images/track_lig.png" /></span> &nbsp;
-			<span style="font-weight:500;font-size:18px" id="">Check your delivery Status</span>
-			<div class="clearfix">&nbsp;</div>
+        <div class="">
+			
 			<span id="deliverymsg" style="hight:50px;">&nbsp;</span>
-			<div style="border:1px solid #ddd;padding:10px;position:relative">
+			<div style="padding:10px;position:relative" class="col-md-4">
 		
-			<div class="pull-left ">
-				<b>Pincode:</b> &nbsp; &nbsp;<input class="pin_in" style="border-top:none;border-right:none;border-left:none;border-bottom:1px solid #ddd" maxlength="6" onkeyup="removecouponmsg();" id="checkpincode" name="checkpincode" type="text" value="">
+				<div class=" pull-left">
+				<b>Pincode:</b> &nbsp; &nbsp;<input class="pin_in" style="border-top:none;border-right:none;border-left:none;border-bottom:1px solid #ddd;font-size:14px;color:#f1f1f1" maxlength="6" onkeyup="removecouponmsg();" id="checkpincode" name="checkpincode" type="text" value="" placeholder="Enter Delivery Pincode">
 				</div>
 				<div class="pull-right " style="position:relative"><a class="site_col pin_code_text" style="cursor:pointer" onclick="getareapincode();">check</a></div>
 				<div class="clearfix">&nbsp;</div>
-			</div>
-			<div class="clearfix">&nbsp;</div>
-				<div>
-					<div class="radio">
-										<label class="col-md-12" >
-											<input type="radio" id="radio1"  name="payment"  value="2"><span >Normal</span>
-										</label>
-								
-										<label class="col-md-12" >
-											<input type="radio" id="radio2" name="payment"  value="3"><span >Fast</span>
-										</label>
-										<!--<label class="col-md-4">
-											<input type="radio" id="radio3" name="payment"  value="4"><span>Paytm</span>
-										</label>-->
-									 </div>
+				<div style="position:absolute;right:-200px;padding:10px;background:#000;top:0;color:#fff;border-radius:5px"><span class="checkmsg"></span> Check Delivery Pincode
 				</div>
+			</div>
+			
 			<div class="clearfix">&nbsp;</div>
+			
+			
 			<div>
 				<ul>
-					<li>Usually delivered within 1-6 Hours*</li>
-					<li>Cash on delivery(COD) and swipe on delivery(SOD) available</li>
-					<li>Return and replacement policies are as per seller*</li>
-					<li>Online cancellations</li>
+					<li>Usually delivered in 3-4 days</li>
+				
 				</ul>
 			</div>
 			
 			<div class="clearfix">&nbsp;</div>
 			<div class="sm_hide" >
-				<a class="btn btn-warning col-md-6 btn-sm pro_ad_btn cus_pull-ri_800" onclick="singleitemaddtocart('<?php echo $products_list['item_id']; ?>','<?php echo $products_list['category_id']; ?>','single')" type="submit" ><i class="fa fa-shopping-cart"></i>  ADD TO CART</a> 
-				<button class="btn btn-sm  btn-primary col-md-6 pull-right pro_ad_btn"  type="submit"><i class="fa fa-bolt" aria-hidden="true"></i>  BUY NOW</button>
+				<?php 
+				$customerdetails=$this->session->userdata('userdetails');  ?>
+				
+				  <a href="" id="compare" class="btn btn-success btn-sm " type="button" ><i class="fa fa-align-left"></i> Add to Compare</a>
+                  <input type="hidden" name="compare_id" id="compare_id"  value="<?php echo $products_list['item_id']; ?>"> 
+				<?php 	if (in_array($products_list['item_id'], $whishlist_item_ids_list) &&  in_array($customerdetails['customer_id'], $customer_ids_list)  ) { ?>
+					<a href="javascript:void(0);" style="color:#45b1b9;" onclick="addwhishlidt(<?php echo $products_list['item_id']; ?>);" id="addwhish" class="btn btn-warning m-b-1 btn-sm" type="button"><i class="fa fa-heart"></i>Add to Wishlist</a>  
+					<?php }else{ ?>	
+					<a href="javascript:void(0);" onclick="addwhishlidt(<?php echo $products_list['item_id']; ?>);" id="addwhish" class="btn btn-warning  btn-sm" type="button"><i class="fa fa-heart"></i>Add to Wishlist</a>  
+					<?php } ?>	
+					<a class="btn btn-warning  btn-sm pro_ad_btn " onclick="singleitemaddtocart('<?php echo $products_list['item_id']; ?>','<?php echo $products_list['category_id']; ?>','single')" type="submit" ><i class="fa fa-shopping-cart"></i>  ADD TO CART</a>
+				
+				<button class="btn btn-sm  btn-primary  pro_ad_btn"  type="submit"><i class="fa fa-bolt" aria-hidden="true"></i>  BUY NOW</button>
 				<div class="clearfix">&nbsp;</div>
 			</div>
 			<div class=" ">
@@ -478,7 +488,9 @@
 			
 			
         </div>
-		<?php } ?>
+		<?php } ?>				
+        </div>
+				
 		 </form>
         </div>
 		

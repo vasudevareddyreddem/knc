@@ -14,18 +14,18 @@
                 <ul class="topBarNav pull-right">
                     <li class="linkdown">
                   
-                     <a  class="tel" target="_blank" href="http://seller.shofus.com/seller/login"><span class=""></span> &nbsp; Sell on KNC </a>
+                     <a style="color:#fff" class="tel " target="_blank" href="http://seller.shofus.com/seller/login"><span class=""></span> &nbsp; Sell on KNC </a>
                   </li>
                   &nbsp;
                   <li>
-                     <a class="tel" href="<?php echo base_url('customer/trackorders');?>"><span class=""><img src="<?php echo base_url(); ?>assets/home/images/track.png" /></span> &nbsp; Track your order </a>
+                     <a style="color:#fff" class="tel" href="<?php echo base_url('customer/trackorders');?>"><span class=""><img src="<?php echo base_url(); ?>assets/home/images/track.png" /></span> &nbsp; Track your order </a>
                   </li>
                  
                    
                     <li class="linkdown">
                         <a href="javascript:void(0);">
                             <i class="fa fa-user mr-5"></i>
-                            <span class="hidden-xs">
+                            <span class="hidden-xs text-white" >
                                 My Account 
                                 <i class="fa fa-angle-down ml-5"></i>
                             </span>
@@ -35,15 +35,15 @@
                             <li><a href="register.html">Create Account</a></li>
                             <li class="divider"></li>
                             <li><a href="wishlist.html">Wishlist (5)</a></li>
-                            <li><a href="cart.html">My Cart</a></li>
+                            <li><a href="<?php echo base_url('customer/cart');?>">My Cart</a></li>
                             <li><a href="checkout.html">Checkout</a></li>
                         </ul>
                     </li>
                     <li class="linkdown">
                         <a href="javascript:void(0);">
                             <i class="fa fa-shopping-basket mr-5"></i>
-                            <span class="hidden-xs">
-                                Cart<sup class="text-primary">(3)</sup>
+                            <span class="hidden-xs text-white" >
+                                Cart<sup class="text-white">(3)</sup>
                                 <i class="fa fa-angle-down ml-5"></i>
                             </span>    
                         </a>
@@ -98,7 +98,7 @@
                             </li>
                             <li>
                                 <div class="cart-footer">
-                                    <a href="cart.html" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>View Cart</a>
+                                    <a href="<?php echo base_url('customer/cart');?>" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>View Cart</a>
                                     <a href="checkout.html" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a>
                                 </div>
                             </li>
@@ -212,10 +212,19 @@
                         </li><!-- end li dropdown -->
 						 <?php } ?>
 					
-                        <?php $cnt++;} ?> <span>More</a>
+                        <?php $cnt++;} ?>  <li class="dropdown left"><a href="#" data-toggle="dropdown" class="dropdown-toggle">More<i class="fa fa-angle-down ml-5"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Headers</a></li>
+                                <li><a href="#">Footers</a></li>
+                                <li><a href="#">Sliders</a></li>
+                                <li><a href="#">Typography</a></li>
+                                <li><a href="#">Grid</a></li>
+                                
+                           
+                            </ul><!-- end ul dropdown-menu -->
+                        </li>
                             </ul><!-- end dropdown-menu -->
-                        </li><!-- end dropdown -->
-                    </ul><!-- end navbar-nav -->
+                       
 					</div>
 					</div>
 					</div>

@@ -6,6 +6,9 @@
 	background:#45b84a;
 	color:#fff;
 }
+.text-dark{
+	color:#333
+}
 .mar-t10{
 	margin-top:30px
 }
@@ -226,7 +229,7 @@ input{
 			color:#fff;
 			text-align:center;
 			padding:5px 30px;
-			border-radius:5px;
+			border-radius:50%;
 	}
 	.pric_se{
 			width:100%;
@@ -235,7 +238,7 @@ input{
 			color:#fff;
 			text-align:center;
 			padding:5px 30px;
-			border-radius:5px;
+			border-radius:50%;
 	}
 	.pric_th{
 			width:100%;
@@ -244,7 +247,7 @@ input{
 			color:#fff;
 			text-align:center;
 			padding:5px 30px;
-			border-radius:5px;
+			border-radius:50%;
 	}
 	.pric_fo{
 			width:100%;
@@ -253,7 +256,7 @@ input{
 			color:#fff;
 			text-align:center;
 			padding:5px 30px;
-			border-radius:5px;
+			border-radius:50%;
 	}
 .md_hide{
 	display:none;
@@ -590,7 +593,7 @@ color:#f44336;
 .pin_in{
 	
 	font-size:17px;
-	width:80px;
+	
 	    
 }	
 .see_more{
@@ -7819,7 +7822,7 @@ ul .bzoom_small_thumbs li,
 	margin-top:20px;
 }
 .z_ind{
-	z-index:1024!important;
+	z-index:10!important;
 }
  /* steps css for finnal start */
 
@@ -7926,7 +7929,7 @@ span.round-tab:hover {
 }
 .site_col{
 	color:#d32134;
-	font-size:15px;
+	/* font-size:15px; */
 }
 .site_co{
 	color:#d32134;

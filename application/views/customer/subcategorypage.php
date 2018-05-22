@@ -92,7 +92,7 @@ $customerdetails=$this->session->userdata('userdetails');
 				  <div class=" box-product-outer" >
 					<div class="box-product">
 					   <img src="<?php echo base_url('assets/subcategoryimages/'.$list['subcategory_image']);?>" > 
-					<h5 class="text-center"><?php echo $list['subcategory_name']; ?></h5>
+					<p class="text-center"><?php echo $list['subcategory_name']; ?></p>
 					</div>
 					
 				  </div>
@@ -413,7 +413,7 @@ $customerdetails=$this->session->userdata('userdetails');
 				  <div class=" box-product-outer" >
 					<div class="box-product">
 					   <img src="<?php echo base_url('assets/subitemimages/'.$list['image']); ?>" > 
-					<h5 class="text-center"><?php echo $list['subitem_name']; ?></h5>
+					<p class="text-center"><?php echo $list['subitem_name']; ?></p>
 					</div>
 					
 				  </div>
