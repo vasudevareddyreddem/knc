@@ -146,7 +146,7 @@
                                     </select>
                                 </div><!-- end col -->
                                 <div class="col-sm-3">
-                                    <input type="submit"  class="btn btn-default btn-block btn-lg" value="Search">
+                                    <input type="submit"  class="btn btn-success btn-block btn-lg" value="Search">
                                 </div><!-- end col -->
                             </div><!-- end row -->
                         </form>
