@@ -709,7 +709,7 @@
 							</div>
 						</div>
 					</div>
-					<?php if($products_list['internal_memory']!='' || $products_list['expand_memory']!=''){ ?>
+					<?php if($products_list['internal_memeory']!='' || $products_list['internal_memeory']!=''){ ?>
 					<div class="panel panel-default">
 						<div  data-toggle="collapse" data-parent="" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="panel-heading" role="tab" id="headingTwo" style="cursor:pointer;">
 							 <h4 class="panel-title">
@@ -723,10 +723,10 @@
 							<div class="panel-body">
 							<table class="table table-bordered mar_t10">
 								<tbody>
-								<?php if(isset($products_list['internal_memory']) && $products_list['internal_memory']!=''){ ?>
+								<?php if(isset($products_list['internal_memeory']) && $products_list['internal_memeory']!=''){ ?>
 												  <tr>
 													<td>Internal Memory</td>
-													<td><?php echo $products_list['internal_memory']; ?></td>
+													<td><?php echo $products_list['internal_memeory']; ?></td>
 												  </tr>
 												  <?php } ?>
 												  <?php if(isset($products_list['expand_memory']) && $products_list['expand_memory']!=''){ ?>
@@ -1482,6 +1482,8 @@ jQuery.ajax({
 					window.location='<?php echo base_url("customer/"); ?>'; 
 				}else{
 				jQuery('#sucessmsg').show();
+				$("#wish_supcount").empty();
+				$("#wish_supcount").append(data.count);
 				//alert(data.msg);
 				if(data.msg==2){
 				$('#sucessmsg').show('');
@@ -1600,6 +1602,8 @@ jQuery.ajax({
 					window.location='<?php echo base_url("customer/"); ?>'; 
 				}else{
 					$('#sucessmsg').show();
+					$("#wish_supcount").empty();
+				$("#wish_supcount").append(data.count);
 					//alert(data.msg);
 					if(data.msg==2){
 					$('#addwhish').css("color", "");

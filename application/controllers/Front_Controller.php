@@ -33,12 +33,14 @@ class Front_Controller extends MY_Controller {
 					$customerdetails=$this->session->userdata('userdetails');
 						$data['cartitemcount'] = $this->home_model->cart_item_count($customerdetails['customer_id']);
 						$data['details'] = $this->home_model->customer_details($customerdetails['customer_id']);
+						$data['whishlist'] = $this->home_model->get_whishlist_products($customerdetails['customer_id']);
 						$data['count']=count($data['cartitemcount']);
 					}else{
-					$data['cartitemcount'] =0;
+					$data['cartitemcount'] =array();
 					$data['details'] = '';					
 					}
-					
+					//echo '<pre>';print_r($data);exit;
+
 					//echo '<pre>';print_r($data);exit; 
 					$this->template->set_template('website'); 
 					$this->template->write_view('header', 'shared/header',$data);

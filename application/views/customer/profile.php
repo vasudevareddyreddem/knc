@@ -28,11 +28,11 @@
 		</div>
 		<div>	
 			<a href="<?php echo base_url('customer/cart'); ?>" ><li class="list-group-item list_si" >
-			<i class="fa fa-chevron-right  pull-right col_fa"></i>My cart <span class="badge">2</span></li></a>
+			<i class="fa fa-chevron-right  pull-right col_fa"></i>My cart <?php if(isset($cartitemcount) && count($cartitemcount)>0){ ?><span class="badge"> <?php echo count($cartitemcount);  ?></span> <?php } ?></li></a>
 		</div>
 		<div>	
 			<a href="<?php echo base_url('customer/orders'); ?>" ><li class="list-group-item list_si" >
-			<i class="fa fa-chevron-right  pull-right col_fa"></i>My Orders <span class="badge">10</span></li></a>
+			<i class="fa fa-chevron-right  pull-right col_fa"></i>My Orders <?php if(isset($orders_lists) && count($orders_lists)>0){ ?><span class="badge"> <?php echo count($orders_lists);  ?></span> <?php } ?></li></a>
 		</div>
 		<div>	
 			<a href="<?php echo base_url('customer/trackorders'); ?>" ><li class="list-group-item list_si" >
@@ -40,7 +40,7 @@
 		</div>
 		<div>	
 			<a href="<?php echo base_url('customer/wishlist'); ?>" ><li class="list-group-item list_si" >
-			<i class="fa fa-chevron-right  pull-right col_fa"></i> My Wishlist <span class="badge">5</span></li></a>
+			<i class="fa fa-chevron-right  pull-right col_fa"></i> My Wishlist <?php if(isset($whishlist) && count($whishlist)>0){ ?><span class="badge"> <?php echo count($whishlist);  ?></span> <?php } ?></li></a>
 		</div>
 		<div>	
 			<a href="<?php echo base_url('customer/changepassword'); ?>" ><li class="list-group-item list_si" >

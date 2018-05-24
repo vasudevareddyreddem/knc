@@ -4274,6 +4274,18 @@ public function subitemwise_search(){
 			$this->load->view('customer/pricewiseresult',$data);
 	 }
 	 /*pricewise products list*/
+	 
+	  /* all category search*/
+	  public function subcategory_search(){
+		  $post=$this->input->post();
+		  if($post['category_name_list'] !=''){
+		  redirect($post['category_name_list']);
+		  }else{
+			  redirect();
+		  }
+		  //echo '<pre>';print_r($post);exit;
+		 
+	  }
 	
 }
 ?>

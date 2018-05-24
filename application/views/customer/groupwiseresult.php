@@ -1086,6 +1086,8 @@ jQuery.ajax({
 				jQuery('#sucessmsg').show();
 				//alert(data.msg);
 				if(data.msg==2){
+					$("#wish_supcount").empty();
+				$("#wish_supcount").append(data.count);
 				$('#sucessmsg').show('');
 				$("#addwishlistids"+id+val).removeClass("text-primary");
 				$('#addwhish'+id+val).prop('title', 'Add to Wishlist');

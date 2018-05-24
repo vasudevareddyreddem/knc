@@ -88,7 +88,9 @@ class Customer extends Front_Controller
 	 {
 		$customerdetails=$this->session->userdata('userdetails');
 		$data['profile_details']= $this->customer_model->get_profile_details($customerdetails['customer_id']);
-
+		$data['whishlist'] = $this->home_model->get_whishlist_products($customerdetails['customer_id']);
+		$data['cartitemcount'] = $this->home_model->cart_item_count($customerdetails['customer_id']);
+		$data['orders_lists']= $this->customer_model->order_list($customerdetails['customer_id']);
 		$this->template->write_view('content', 'customer/profile', $data);
 		$this->template->render();
 	}else{
@@ -1500,14 +1502,18 @@ class Customer extends Front_Controller
 			if(in_array($post['item_id'],$itemsids)){
 				$removewhislish=$this->customer_model->remove_whishlist($customerdetails['customer_id'],$post['item_id']);
 				if(count($removewhislish)>0){
-				$data['msg']=2;	
+					$count_whishlist = $this->customer_model->get_whishlist_list($customerdetails['customer_id']);
+				$data['msg']=2;
+				$data['count']=count($count_whishlist);					
 				echo json_encode($data);
 				}
 			
 			}else{
 				$addwhishlist = $this->customer_model->add_whishlist($detailsa);
 				if(count($addwhishlist)>0){
+					$count_whishlist = $this->customer_model->get_whishlist_list($customerdetails['customer_id']);
 				$data['msg']=1;	
+				$data['count']=count($count_whishlist);	
 				echo json_encode($data);
 				}
 			}
@@ -1515,7 +1521,10 @@ class Customer extends Front_Controller
 		}else{
 			$addwhishlist = $this->customer_model->add_whishlist($detailsa);
 				if(count($addwhishlist)>0){
+					$count_whishlist = $this->customer_model->get_whishlist_list($customerdetails['customer_id']);
+
 				$data['msg']=1;	
+				$data['count']=count($count_whishlist);	
 				echo json_encode($data);
 				}
 			

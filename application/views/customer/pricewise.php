@@ -936,6 +936,8 @@ jQuery.ajax({
 				//alert(data.msg);
 				if(data.msg==2){
 				$('#sucessmsg').show('');
+				$("#wish_supcount").empty();
+				$("#wish_supcount").append(data.count);
 				$("#addwishlistids"+id+val).removeClass("text-primary");
 				$('#addwhish'+id+val).prop('title', 'Add to Wishlist');
 						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Removed to wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  

@@ -221,6 +221,8 @@ jQuery.ajax({
 					window.location='<?php echo base_url("customer/"); ?>'; 
 				}else{
 						jQuery('#sucessmsg').show();
+							$("#wish_supcount").empty();
+							$("#wish_supcount").append(data.count);
 						//alert(data.msg);
 						if(data.msg==2){
 							$("#addwishlistids"+id+val).removeClass("text-primary");

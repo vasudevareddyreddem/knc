@@ -21,9 +21,15 @@ class Home_model extends CI_Model
     }    
 	public function cart_item_count($cust_id)
 	{
-	$this->db->select('*')->from('cart');
-	$this->db->where('cust_id', $cust_id);
+	$this->db->select('cart.item_id,cart.qty,cart.item_price,products.item_name,products.item_image')->from('cart');
+	$this->db->join('products', 'products.item_id = cart.item_id', 'left');
+	$this->db->where('cart.cust_id', $cust_id);
 	return $this->db->get()->result_array();
+	}
+	public function get_whishlist_products($cust_id){
+		$this->db->select('item_wishlist.id,item_wishlist.item_id')->from('item_wishlist');
+		$this->db->where('item_wishlist.cust_id', $cust_id);
+        return $this->db->get()->result_array();
 	}
 	public function customer_details($cust_id)
 	{

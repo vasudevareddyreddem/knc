@@ -23,86 +23,79 @@
                  
                    
                     <li class="linkdown">
-                        <a href="javascript:void(0);">
+					<?php if($this->session->userdata('userdetails')){ ?>
+                        <a href="<?php echo base_url('customer/account');?>">
                             <i class="fa fa-user mr-5"></i>
                             <span class="hidden-xs text-white" >
-                                My Account 
-                                <i class="fa fa-angle-down ml-5"></i>
+								<?php echo 'welcome '.$details['cust_firstname'].' '.$details['cust_lastname']; ?>
+								<i class="fa fa-angle-down ml-5"></i>
                             </span>
                         </a>
+						<?php }else{ ?>
+						<a href="javascript:void(0);">
+                            <i class="fa fa-user mr-5"></i>
+                            <span class="hidden-xs text-white" >
+							My Account
+                             <i class="fa fa-angle-down ml-5"></i>
+                            </span>
+                        </a>
+						<?php } ?>
                         <ul class="w-150">
+						 <?php if(!$this->session->userdata('userdetails')){ ?>
                             <li><a data-toggle="modal" data-target="#loginmodal">Login</a></li>
                             <li><a href="register.html">Create Account</a></li>
-                            <li class="divider"></li>
-                            <li><a href="<?php echo base_url('customer/wishlist'); ?>">Wishlist (5)</a></li>
-                            <li><a href="<?php echo base_url('customer/cart');?>">My Cart</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
+						 <?php } ?>
+							<li class="divider"></li>
+                            <li><a href="<?php echo base_url('customer/wishlist'); ?>">Wishlist <?php if(isset($whishlist) && count($whishlist)>0){ ?>( <?php echo count($whishlist);  ?>) <?php } ?></a></li>
+                            <li><a href="<?php echo base_url('customer/cart');?>">My Cart <?php if(isset($cartitemcount) && count($cartitemcount)>0){ ?>( <?php echo count($cartitemcount);  ?>) <?php } ?></a></li>
+                            <li><a href="<?php echo base_url('customer/billing');?>">Checkout</a></li>
+							<?php if($this->session->userdata('userdetails')){ ?>
+                           <li><a href="<?php echo base_url('customer/logout'); ?>">Logout</a></li>
+							<?php } ?>
                         </ul>
                     </li>
                     <li class="linkdown">
                         <a href="javascript:void(0);">
                             <i class="fa fa-shopping-basket mr-5"></i>
                             <span class="hidden-xs text-white" >
-                                Cart<sup class="text-white">(3)</sup>
+                                Cart<sup class="text-white"><span id="supcount"> <?php if(isset($cartitemcount) && count($cartitemcount)>0){ ?>( <?php echo count($cartitemcount);  ?>) <?php } ?> </span></sup>
                                 <i class="fa fa-angle-down ml-5"></i>
                             </span>    
                         </a>
+							<?php if(isset($cartitemcount) && count($cartitemcount)>0){ ?>
                         <ul class="cart w-250">
                             <li>
                                 <div class="cart-items">
                                     <ol class="items">
-                                        <li> 
-                                            <a href="shop-single-product-v1.html" class="product-image">
-                                                <img src="https://Static05.Jockeyindia.com/uploads/dealimages/7594/listimages/ub14_ink_blue_mel_1.jpg" alt="Sample Product ">
-                                            </a>
-                                            <div class="product-details">
-                                                <div class="close-icon"> 
-                                                    <a href="javascript:void(0);"><i class="fa fa-close"></i></a>
-                                                </div>
-                                                <p class="product-name"> 
-                                                    <a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
-                                                </p>
-                                                <strong>1</strong> x <span class="price text-primary">$59.99</span>
-                                            </div><!-- end product-details -->
-                                        </li><!-- end item -->
-                                        <li> 
-                                            <a href="shop-single-product-v1.html" class="product-image">
-                                                <img src="https://Static05.Jockeyindia.com/uploads/dealimages/7594/listimages/ub14_ink_blue_mel_1.jpg" alt="Sample Product ">
-                                            </a>
-                                            <div class="product-details">
-                                                <div class="close-icon"> 
-                                                    <a href="javascript:void(0);"><i class="fa fa-close"></i></a>
-                                                </div>
-                                                <p class="product-name"> 
-                                                    <a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
-                                                </p>
-                                                <strong>1</strong> x <span class="price text-primary">$39.99</span>
-                                            </div><!-- end product-details -->
-                                        </li><!-- end item -->
-                                        <li> 
-                                            <a href="shop-single-product-v1.html" class="product-image">
-                                                <img src="https://Static05.Jockeyindia.com/uploads/dealimages/7594/listimages/ub14_ink_blue_mel_1.jpg" alt="Sample Product ">
-                                            </a>
-                                            <div class="product-details">
-                                                <div class="close-icon"> 
-                                                    <a href="javascript:void(0);"><i class="fa fa-close"></i></a>
-                                                </div>
-                                                <p class="product-name"> 
-                                                    <a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
-                                                </p>
-                                                <strong>1</strong> x <span class="price text-primary">$29.99</span>
-                                            </div><!-- end product-details -->
-                                        </li><!-- end item -->
-                                    </ol>
+								
+										<?php foreach($cartitemcount as $lis){ ?>
+											<li> 
+												<a href="<?php echo base_url('category/productview/'.base64_encode($lis['item_id'])); ?>" class="product-image">
+													<img src="<?php echo base_url('uploads/products/'.$lis['item_image']); ?>" alt="<?php echo htmlentities($lis['item_name']); ?>">
+												</a>
+												<div class="product-details">
+													<div class="close-icon"> 
+														<a href="javascript:void(0);"><i class="fa fa-close"></i></a>
+													</div>
+													<p class="product-name"> 
+														<a href="<?php echo base_url('category/productview/'.base64_encode($lis['item_id'])); ?>"><?php echo htmlentities($lis['item_name']); ?></a> 
+													</p>
+													<strong><?php echo htmlentities($lis['qty']); ?></strong> x <span class="price text-primary">$ <?php echo htmlentities($lis['item_price']); ?></span>
+												</div><!-- end product-details -->
+											</li><!-- end item -->
+										<?php } ?>
+									
+                                     </ol>
                                 </div>
                             </li>
                             <li>
                                 <div class="cart-footer">
                                     <a href="<?php echo base_url('customer/cart');?>" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>View Cart</a>
-                                    <a href="checkout.html" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a>
+                                    <a href="<?php echo base_url('customer/billing');?>" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a>
                                 </div>
                             </li>
                         </ul>
+						<?php } ?>
                     </li>
                 </ul>
             </div><!-- end container -->
@@ -120,34 +113,34 @@
                     <div class="col-sm-7 vertical-align text-center">
                         <form>
                             <div class="row grid-space-1">
-                                <div class="col-sm-6">
+                                <div class="col-sm-8">
                                      <div class="form-horizontal ">
-                        <div class=" smallsearch">
-                           <div class="cart_search">
-                              <form id="searchform" action="<?php echo base_url('home/seraching'); ?>" method="post">
-                                 <input type="text" name="serachvalues" id="tags"  onfocus="searchfunction(this.value);" onkeyup="searchfunction(this.value);" class="flipkart-navbar-input form-control input-lg"  placeholder="Search for Products, Brands and more" autocomplete="off" spellcheck="false">
-                                
-                              </form>
-                           </div>
-                        </div>
-                     </div>
+										<div class=" smallsearch">
+										   <div class="cart_search">
+											  <form id="searchform" action="<?php echo base_url('home/seraching'); ?>" method="post">
+												 <input type="text" name="serachvalues" id="tags"  onfocus="searchfunction(this.value);" onkeyup="searchfunction(this.value);" class="flipkart-navbar-input form-control input-lg"  placeholder="Search for Products, Brands and more" autocomplete="off" spellcheck="false">
+												
+											  </form>
+										   </div>
+										</div>
+								</div>
                                 </div><!-- end col -->
-                                <div class="col-sm-3">
-                                    <select class="form-control input-lg" name="category_name_list">
+								<form action="<?php echo base_url('category/subcategory_search/'); ?>" method="post" id="sub_category_search_action">
+                                <div class="col-sm-4">
+                                    <select onchange="submit_sub_cate(this.value);" class="form-control input-lg" name="category_name_list">
                                         <option value="all">All Categories</option>
 											<?php foreach($cat_list as $lists){ ?>
 												<optgroup label="<?php echo $lists['category_name']; ?>">
 													<?php foreach($lists['subcat'] as $li){ ?>
-														<option value="<?php echo base_url('category/subcategory/'.base64_encode($lists['category_id']).'/'.base64_encode($li['subcategory_id'])); ?>"><?php echo $li['subcategory_name']; ?></option>
+														<option value="<?php echo 'category/subcategory/'.base64_encode($lists['category_id']).'/'.base64_encode($li['subcategory_id']); ?>"><?php echo $li['subcategory_name']; ?></option>
 													<?php } ?>
 												</optgroup>
 											<?php } ?>
                                        
                                     </select>
+									
                                 </div><!-- end col -->
-                                <div class="col-sm-3">
-                                    <input type="submit"  class="btn btn-success btn-block btn-lg" value="Search">
-                                </div><!-- end col -->
+								</form>
                             </div><!-- end row -->
                         </form>
                     </div><!-- end col -->
@@ -155,13 +148,7 @@
                         <div class="header-item mr-5">
                             <a href="<?php echo base_url('customer/wishlist'); ?>" data-toggle="tooltip" title="Wishlist">
                                 <i class="fa fa-heart-o"></i>
-                                <sub>32</sub>
-                            </a>
-                        </div>
-                        <div class="header-item">
-                            <a href="javascript:void(0);" data-toggle="tooltip"  title="Compare">
-                                <i class="fa fa-refresh"></i>
-                                <sub>2</sub>
+                               <?php if(isset($whishlist) && count($whishlist)>0){ ?> <sub> <span id="wish_supcount">  <?php echo count($whishlist); ?></span></sub><?php  }else { ?> <sub> <span id="wish_supcount">  </span></sub> <?php } ?>
                             </a>
                         </div>
                     </div><!-- end col -->
@@ -212,17 +199,20 @@
                         </li><!-- end li dropdown -->
 						 <?php } ?>
 					
-                        <?php $cnt++;} ?>  <li class="dropdown left"><a href="#" data-toggle="dropdown" class="dropdown-toggle">More<i class="fa fa-angle-down ml-5"></i></a>
+                        <?php $cnt++;} ?> 
+						<?php if(isset($cat_list) && count($cat_list)>5){ ?>
+						<li class="dropdown left"><a href="#" data-toggle="dropdown" class="dropdown-toggle">More<i class="fa fa-angle-down ml-5"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Headers</a></li>
-                                <li><a href="#">Footers</a></li>
-                                <li><a href="#">Sliders</a></li>
-                                <li><a href="#">Typography</a></li>
-                                <li><a href="#">Grid</a></li>
+                              <?php $cnt=1;foreach($cat_list as $lists){ ?>
+								 <?php if($cnt >5){ ?>
+								<li><a href="<?php echo base_url('category/subcategorys/'.base64_encode($lists['category_id'])); ?>"><?php echo $lists['category_name']; ?></a></li>
+								 <?php } ?>
+							  <?php $cnt++;} ?>
                                 
                            
                             </ul><!-- end ul dropdown-menu -->
                         </li>
+						<?php } ?>
                             </ul><!-- end dropdown-menu -->
                        
 					</div>
@@ -416,6 +406,9 @@
 <script src="<?php echo base_url(); ?>assets/home/js/modalEffects.js"></script> 
 <script src="<?php echo base_url(); ?>assets/home/js/chosen.js"></script> 
 <script>
+function submit_sub_cate(){
+	 $("#sub_category_search_action").submit();
+}
 $('.scrolltotop').on('click', function() {
           $('html, body').animate({ scrollTop: 0 }, 800);
           return false;
@@ -429,29 +422,8 @@ $('.scrolltotop').on('click', function() {
               $('.scrolltotop').fadeOut();
           }
       });
-</script>
-<script type="text/javascript">
-function addtabactive(id)
-{
-	//$("#tabs"+id).empty();
-	
-	$("#tabs"+id).show();
-	$("#tabs"+id).addClass("active");
-	$("#tabs"+id).removeClass("tab_hide");
-	var cnt;
-    var nt =<?php echo count($catehorywiselist); ?>;
-	//var cnt='';
-	for(cnt = 1; cnt <= nt; cnt++){
-		if(cnt!=id){
-			$("#tabs"+cnt).hide();
-			$("#tabs"+cnt).removeClass("active");
-			$("#tabs"+cnt).addClass("tab_hide");
-		}             
-	}
-			
 
-}
-   $("#supcounts").hide();
+$("#supcounts").hide();
    $("#fademaskpurpose").addClass("mask_hide");
    function locationopenpopup (){
    $('#removepopuplocation').show();
@@ -547,23 +519,19 @@ function addtabactive(id)
           })
        });
      
-</script> 
-<!-- Login popup end here -->
-<script>
+
    function registershow(){
    	
    $("#modal-8").show();	
    } 
-</script>
-<script type="text/javascript" language="javascript">
+
    $(document).ready(function(){
        $(".user_log").click(function(){
            $("#user_sow").fadeToggle();
        });
    });
    
-</script>
-<script>
+
    $(document).ready(function(){
        $("#hide_btn").click(function(){
            $("#hide_loc").hide();
@@ -572,19 +540,16 @@ function addtabactive(id)
            $("#show_loc").show();
        });
    });
-</script>
-<script>
+
    $("#hover_li").hover(function(){
        $('#left_box').fadeToggle();
    });
-</script>
-<script>
+
    $("#hover_li1").hover(function(){
        $('#left_box1').fadeToggle();
    });
-</script>
-<script type="text/javascript" language="javascript">
-   $(window).scroll(function() {
+   
+$(window).scroll(function() {
    if ($(this).scrollTop() > 30) {
    $('.hm_nav').addClass('affix');
   
@@ -594,8 +559,7 @@ function addtabactive(id)
    
    }
    });
-</script>
-<script>
+
    function openNav() {
       document.getElementById("mySidenav").style.width = "70%";
       // document.getElementById("flipkart-navbar").style.width = "50%";
@@ -606,8 +570,7 @@ function addtabactive(id)
       document.getElementById("mySidenav").style.width = "0";
       document.body.style.backgroundColor = "rgba(0,0,0,0)";
    }
-</script>
-<script type="text/javascript">
+
 	$(".alert_msg1").fadeOut(5000);
 $(document).ready(function() {
     $('#customerregister').bootstrapValidator({
@@ -719,8 +682,7 @@ $(document).ready(function() {
         }
     });
 });
-</script>
-<script>
+
 $(".mat-input").focus(function(){
   $(this).parent().addClass("is-active is-completed");
 });
@@ -731,4 +693,5 @@ $(".mat-input").focusout(function(){
   $(this).parent().removeClass("is-active");
 })
 </script>
+
 

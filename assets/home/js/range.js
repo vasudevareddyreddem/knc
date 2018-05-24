@@ -49,7 +49,7 @@ $(document).ready(function(){
 		range: true,
 		orientation: "horizontal",
 		min: 0,
-		max: 10000,
+		max: '<?php echo $maximum_price['item_cost']; ?',
 		values: [0, 10000],
 		step: 100,
 

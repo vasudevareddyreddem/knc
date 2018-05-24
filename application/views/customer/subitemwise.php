@@ -1163,7 +1163,8 @@ jQuery.ajax({
 			 if(data.msg==0){
 					window.location='<?php echo base_url("customer/"); ?>'; 
 				}else{
-				
+				$("#wish_supcount").empty();
+				$("#wish_supcount").append(data.count);
 				jQuery('#sucessmsg').show();
 				//alert(data.msg);
 				if(data.msg==2){

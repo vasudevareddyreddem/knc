@@ -404,6 +404,8 @@ jQuery.ajax({
 				}else{
 				
 				jQuery('#sucessmsg').show();
+				$("#wish_supcount").empty();
+				$("#wish_supcount").append(data.count);
 				//alert(data.msg);
 				if(data.msg==2){
 				$('#sucessmsg').show('');
