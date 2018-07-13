@@ -90,7 +90,7 @@
                         <ul class="list alt-list">
                             <li><a href="<?php echo base_url(); ?>"><i class="fa fa-angle-right"></i>About Us</a></li>
                             <li><a href="<?php echo base_url(); ?>"><i class="fa fa-angle-right"></i>Careers</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i>Sell on KNC</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Sell on Order Organic</a></li>
                             <li><a href="<?php echo base_url('customer/contactus'); ?>"><i class="fa fa-angle-right"></i>Contact Us</a></li>
                         </ul>
                     </div><!-- end col -->
@@ -110,7 +110,7 @@
                 
                 <div class="row text-center">
                     <div class="col-sm-12">
-                        <p class="text-sm">&COPY; 2018.   by <a href="javascript:void(0);">KNC eCommerce.</a></p>
+                        <p class="text-sm">&COPY; 2018.   by <a href="javascript:void(0);">Order Organic eCommerce.</a></p>
                     </div><!-- end col -->
                 </div><!-- end row -->
             </div><!-- end container -->

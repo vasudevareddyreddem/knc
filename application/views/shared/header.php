@@ -14,7 +14,7 @@
                 <ul class="topBarNav pull-right">
                     <li class="linkdown">
                   
-                     <a style="color:#fff" class="tel " target="_blank" href="http://seller.shofus.com/seller/login"><span class=""></span> &nbsp; Sell on KNC </a>
+                     <a style="color:#fff" class="tel " target="_blank" href="http://seller.shofus.com/seller/login"><span class=""></span> &nbsp; Sell on Order Organic </a>
                   </li>
                   &nbsp;
                   <li>
@@ -224,7 +224,10 @@
       <div class="modal-content">
         <div class="modal-header text-center">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Login / Register</h4>
+		  <a class="text-center"   href="<?php echo base_url(); ?>" >
+			<img style="width:300px; height:auto; margin: 0 auto;" class="img-responsive" src="<?php echo base_url(); ?>assets/home/images/logo.png" />
+		</a>
+          
         </div>
         <div class="modal-body">
            <div class="row res_log" >

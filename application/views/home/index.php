@@ -1,3 +1,13 @@
+<style>
+.rotate-img:hover{
+	-ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1); 
+	-webkit-transition: -webkit-transform 0.5s ease;
+-moz-transition: -moz-transform 0.5s ease;
+transition: transform 0.5s ease;
+}
+</style>
 <?php if($this->session->userdata('location_area')=='')  {?>
 	
 	<script>
@@ -15,7 +25,8 @@ $("#fademaskpurpose").removeClass("mask_hide");
 			<?php endif; ?>
 
 	<body class="bac_img">
-<div class="banner_home con_st_bo" >
+	<?php if(isset($homepage_banner) && count($homepage_banner)>0){ ?>
+	<div class="banner_home con_st_bo" >
      
       <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
         <!-- Indicators -->
@@ -42,15 +53,12 @@ $("#fademaskpurpose").removeClass("mask_hide");
 
         
     </div>
-  
-      
-    
-        
-        <!-- Controls --> 
+  <!-- Controls --> 
         <a class="left carousel-control" href="#myCarousel" data-slide="prev"> <i class="glyphicon glyphicon-chevron-left"></i> </a> <a class="right carousel-control" href="#myCarousel" data-slide="next"> <i class="glyphicon glyphicon-chevron-right"></i> </a> </div>
       <!-- /.carousel --> 
       
     </div>
+	<?php } ?>
 
   <!--header part end here --> 
   <!--body part start here -->
@@ -67,78 +75,45 @@ $("#fademaskpurpose").removeClass("mask_hide");
   <div class="" id="location_seacrhs">
 	
 	
+	<section class="">
+      <div class="best-pro slider-items-products container_main">
+       <div class="new_title">
+          <h2>Sub Category</h2>
+        </div>
+		   <div id="best-seller" class="product-flexslider hidden-buttons " >
+				  <!--<div class="slider-items slider-width-col4 products-grid help_cls text-center" >-->
+				  <div class="slider-items slider-width-col4 products-grid  text-center" >
+				  <?php foreach ($sidecaregory_list as $categories){
+					  ?>
+				<a href="<?php echo base_url('category/subcategorys/'.base64_encode($categories['category_id'])); ?>">
+				<div class="item cat_ma" >
+				  <div class="text-center " >
+					<div style="background:#fff;height:100px;width:100px;border-radius:50%;overflow:hidden;border:1px solid #ddd;margin:0 auto;" class="rotate-img">
+					   <img style="padding-top:20px; " class="" src="<?php echo base_url('assets/categoryimages/'.$categories['category_image']); ?>"> 
+					
+					</div>
+					<h6 class="text-center"><?php echo $categories['category_name'] ; ?></h6>
+					
+				  </div>
+				</div>
+				
+				</a>
+				<?php } ?>
+				
+			
+				  </div>
+		   </div>
+	
+      
+      </div>
+    </section>
+	
 	
   
     <!--Top Category slider Start-->
 	<?php if(isset($topoffers) && count($topoffers)>0){ ?>
     <section>
-	<div class="container_main">
-	<div class="row">
-	<div class="col-md-3">
-		<div class="navbar-vertical">
-                            <ul class="nav nav-stacked">
-                                <li class="header">
-                                    <h6 class="text-uppercase">Categories <i class="fa fa-navicon pull-right"></i></h6>
-                                </li>
-                                <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                      Mens <i class="fa fa-angle-right pull-right"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:void(0);">Shirts</a></li>
-                                        <li><a href="javascript:void(0);">Coats &amp; Jackets</a></li>
-                                        <li><a href="javascript:void(0);">Underwear</a></li>
-                                        <li><a href="javascript:void(0);">Sunglasses</a></li>
-                                        <li><a href="javascript:void(0);">Socks</a></li>
-                                        <li><a href="javascript:void(0);">Belts</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                      Womens <i class="fa fa-angle-right pull-right"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:void(0);">Dresses</a></li>
-                                        <li><a href="javascript:void(0);">T-shirts</a></li>
-                                        <li><a href="javascript:void(0);">Skirts</a></li>
-                                        <li><a href="javascript:void(0);">Jeans</a></li>
-                                        <li><a href="javascript:void(0);">Pullover</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="javascript:void(0);">Kids</a></li>
-                                <li><a href="javascript:void(0);">Fashion</a></li>
-                                <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
-                                        SportWear <i class="fa fa-angle-right pull-right"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:void(0);">Shoes</a></li>
-                                        <li><a href="javascript:void(0);">Bags</a></li>
-                                        <li><a href="javascript:void(0);">Pants</a></li>
-                                        <li><a href="javascript:void(0);">Swimwear</a></li>
-                                        <li><a href="javascript:void(0);">Bicycles</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="javascript:void(0);">Bags</a></li>
-                                <li><a href="javascript:void(0);">Shoes</a></li>
-                                <li><a href="javascript:void(0);">HouseHolds</a></li>
-                                <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
-                                        Technology <i class="fa fa-angle-right pull-right"></i>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="javascript:void(0);">Television</a></li>
-                                        <li><a href="javascript:void(0);">Camera</a></li>
-                                        <li><a href="javascript:void(0);">Speakers</a></li>
-                                        <li><a href="javascript:void(0);">Mobile</a></li>
-                                        <li><a href="javascript:void(0);">PC</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-	</div>
-	<div class="col-md-9">
-      <div class="best-pro slider-items-products ">
+      <div class="best-pro slider-items-products container_main">
         <div class="new_title">
           <h2>Top Offers</h2>
         </div>
@@ -170,9 +145,6 @@ $("#fademaskpurpose").removeClass("mask_hide");
           </div>
         </div>
 		<div class="clearfix"></div>
-      </div>
-      </div>
-      </div>
       </div>
     </section>
 	
@@ -246,18 +218,12 @@ $("#fademaskpurpose").removeClass("mask_hide");
 	
    <?php } ?>
     <section>
-      <div class="container_main">
-      <div class="row">
-      <div class="col-md-3">
-		<img class="img-responsive" src="<?php echo base_url(); ?>assets/home/images/sidebanner1.png" alt="sidebar banner">
-      </div>
-      <div class="col-md-9">
-      <div class="best-pro slider-items-products ">
+      <div class="best-pro slider-items-products container_main">
         <div class="new_title">
           <h2>Trending products</h2>
         </div>
         <div id="best-seller" class="product-flexslider hidden-buttons">
-          <div class="slider-items slider-width-col4 products-grid new-design-help">
+          <div class="slider-items slider-width-col4 products-grid">
         <?php foreach($trending_products as $list){ ?>
 		  <a href="<?php echo base_url('customer/seemore/'.base64_encode($list['category_id']).'/'.base64_encode('tren')); ?>">
 			<div class="item">
@@ -292,25 +258,16 @@ $("#fademaskpurpose").removeClass("mask_hide");
         </div>
 		<div class="clearfix"></div>
       </div>
-      </div>
-      </div>
-      </div>
     </section>
 	
 	
     <section>
-	<div class="container_main">
-	<div class="row">
-	 <div class="col-md-3">
-		<img class="img-responsive" src="<?php echo base_url(); ?>assets/home/images/sidebanner2.png" alt="sidebar banner">
-      </div>
-	<div class="col-md-9">
-      <div class="best-pro slider-items-products ">
+      <div class="best-pro slider-items-products container_main">
         <div class="new_title">
           <h2>Offers for You</h2>
         </div>
         <div id="best-seller" class="product-flexslider hidden-buttons">
-          <div class="slider-items slider-width-col4 products-grid new-design-help">
+          <div class="slider-items slider-width-col4 products-grid">
            <?php foreach($offer_for_you as $list){ ?>
 		  <a href="<?php echo base_url('customer/seemore/'.base64_encode($list['category_id']).'/'.base64_encode('offer')); ?>">
 			<div class="item">
@@ -345,9 +302,6 @@ $("#fademaskpurpose").removeClass("mask_hide");
           </div>
         </div>
 		<div class="clearfix"></div>
-      </div>
-      </div>
-      </div>
       </div>
     </section>
 	
@@ -509,18 +463,12 @@ $("#fademaskpurpose").removeClass("mask_hide");
 <?php } ?>
 <?php if(isset($recentlyviewd) && count($recentlyviewd)>0){ ?>
 <section>
-<div class="container_main">
-	<div class="row">
-	 <div class="col-md-3">
-		<img class="img-responsive" src="<?php echo base_url(); ?>assets/home/images/sidebanner1.png" alt="sidebar banner">
-      </div>
-	<div class="col-md-9">
-	<div class="best-pro slider-items-products ">
+	<div class="best-pro slider-items-products container_main">
 		<div class="new_title">
 			<h2>Recently viewed</h2>
 		</div>
 		<div id="best-seller" class="product-flexslider hidden-buttons">
-			<div class="slider-items slider-width-col4 products-grid new-design-help">
+			<div class="slider-items slider-width-col4 products-grid">
 				<a href="#">
 					<?php //echo '<pre>';print_r($trending_products);exit; 
 				$t=5;foreach ($recentlyviewd as $productslist){
@@ -609,9 +557,6 @@ $("#fademaskpurpose").removeClass("mask_hide");
 		</div>
 		<div class="clearfix"></div>
 		
-	</div>
-	</div>
-	</div>
 	</div>
 </section>
 <section>

@@ -194,8 +194,8 @@ label {
             </div>
             </div>
         </div>
-		<a class="log_res_logo"  href="<?php echo base_url(); ?>" >
-			<img src="<?php echo base_url(); ?>assets/home/images/logo.png" />
+		<a class="log_res_logo"  style="width:300px; height:auto;margin:0 auto; "  href="<?php echo base_url(); ?>" >
+			<img class="img-responsive" src="<?php echo base_url(); ?>assets/home/images/logo.png" />
 		</a>
     </div>
 
