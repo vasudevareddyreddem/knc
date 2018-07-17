@@ -1,4 +1,8 @@
-
+<style>
+.razorpay-payment-button{
+	display:none;
+}
+</style>
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 bhoechie-tab-container bhoechie-tab-container mar_res_t150">
@@ -42,62 +46,91 @@
                                       
 										<img style="width:20%" src="<?php echo base_url(); ?>assets/home/images/payment_img.png" />
                                     </div>
-									
-									<form action="<?php echo base_url('customer/orderpaymenttype'); ?>" method="post" onSubmit="return checkvalidation(this.form);">
+									<div id="online_amt_1" style="">
+									<form action="<?php echo base_url('customer/orderpaymenttype'); ?>" method="post" onSubmit="return checkvalidation_payment(this.form);">
 									<div class="row" style="margin-top:50px;">
 									<span id="paymenterrormsg" style="color:red"></span>
 									 <div class="radio">
-										<label class="col-md-6" style="font-size:18px">
-											<input type="radio" id="radio1"  name="payment"  value="2"><span >Cash On Delivery</span>
+										<label class="col-md-4" style="font-size:18px">
+											<input type="radio" id="radio1"  name="payment" onclick="payment_type(this.value);" value="2"><span >Cash On Delivery</span>
 										</label>
 								
-										<label class="col-md-6" style="font-size:18px">
-											<input type="radio" id="radio2" name="payment"  value="3"><span >Swipe on Delivery</span>
+										<label class="col-md-4" style="font-size:18px">
+											<input type="radio" id="radio2" name="payment" onclick="payment_type(this.value);"  value="3"><span >Swipe on Delivery</span>
 										</label>
-										<!--<label class="col-md-4">
-											<input type="radio" id="radio3" name="payment"  value="4"><span>Paytm</span>
-										</label>-->
+										<label class="col-md-4" style="font-size:18px">
+											<input type="radio" id="radio3" name="payment" onclick="payment_type(this.value);" value="1"><span>Online Payment</span>
+										</label>
 									 </div>
 									 
 										
 										  
 										</div>
-									</div>
+									
                                     <div class="clearfix"></div>
 									
+											
 									
 							<div  style="padding:50px 15px;margin-top:25px;border-top:1px solid #ddd;">
 							  <a  href="<?php echo base_url('customer/billing'); ?>" class="btn btn-primary pull-left btn-sm"> Back</a>
 							<button class="pull-right btn btn-primary  btn-sm" name="submit_form" type="submit">Proceed to Payment</span><span aria-hidden="true">&rarr;</span></button>
-         
-							</form>
-                                
-							<!--<form method="post" name="payuForm" action="https://test.payu.in/_payment">
-							<input name="key" type="hidden" value="<?php echo $this->config->item('MERCHANTKEY'); ?>" />
-							<input name="txnid" type="hidden"  value="<?php echo $txnid; ?>" />
-							<input type="hidden" name="hash" value="<?php echo $hash; ?>"/>
-							<input type="hidden" name="xyz" value="<?php echo $hash ?>"/>
-							<input name="amount" type="hidden" value="<?php echo $carttotal_amount['pricetotalvalue']+$carttotal_amount['delivertamount']; ?>" />
-							<input name="productinfo" type="hidden" value="<?php echo $productinfo; ?>">
-							<input name="udf1" type="hidden" value="">
-							<input name="udf2" type="hidden" value="">
-							<input name="udf3" type="hidden" value="">
-							<input name="udf4" type="hidden" value="">
-							<input name="udf5" type="hidden" value="">
-							<input name="firstname" id="firstname" type="hidden" value="<?php echo $billimgdetails['name']; ?>"/>
-							<input name="email" id="email"  type="hidden"  value='<?php echo $emailid; ?>'>
-							<input name="phone"   type="hidden"  value="<?php echo $billimgdetails['mobile']; ?>">
-							<input name="surl" type="hidden" value="<?php echo base_url('customer/success'); ?>" size="64" />
-							<input name="furl" type="hidden" value="<?php echo base_url('customer/paymentfailure'); ?>" size="64" />
-							<input name="curl" type="hidden" value="<?php echo base_url('payu/cancel'); ?>" />
-							<div  style="padding:50px 15px;margin-top:50px;border-top:1px solid #ddd;">
-							  <a  href="<?php echo base_url('customer/billing'); ?>" class="btn btn-primary pull-left"> Back</a>
-							<button class="pull-right btn btn-primary btn-small" name="submit_form" type="submit">Proceed to Payment</span><span aria-hidden="true">&rarr;</span></button>
-         
+							<?php //echo '<pre>';print_r($details);exit; ?>
 							</div>
-							</form>-->
+							</form>
+							</div>
+							<div id="online_amt" style="display:none;">
+							<form action="<?php echo base_url('customer/success'); ?>" method="post" onSubmit="return checkvalidation(this.form);">
+									<div class="row" style="margin-top:50px;">
+									<span id="paymenterrormsg" style="color:red"></span>
+									 <div class="radio">
+										<label class="col-md-4" style="font-size:18px">
+											<input type="radio" id="radio11"  name="payment" onclick="payment_type(this.value);" value="2"><span >Cash On Delivery</span>
+										</label>
+								
+										<label class="col-md-4" style="font-size:18px">
+											<input type="radio" id="radio22" name="payment" onclick="payment_type(this.value);"  value="3"><span >Swipe on Delivery</span>
+										</label>
+										<label class="col-md-4" style="font-size:18px">
+											<input type="radio" id="radio33" name="payment" onclick="payment_type(this.value);" value="1"><span>Online Payment</span>
+										</label>
+									 </div>
+									 
+										
+										  
+										</div>
+									
+                                    <div class="clearfix"></div>
+									 
+									<script
+												src="https://checkout.razorpay.com/v1/checkout.js"
+												data-key="<?php echo $details['key']?>"
+												data-amount="<?php echo $details['amount']?>"
+												data-currency="INR"
+												data-name="<?php echo $details['name']?>"
+												data-image="<?php echo $details['image']?>"
+												data-description="<?php echo $details['description']?>"
+												data-prefill.name="<?php echo $details['prefill']['name']?>"
+												data-prefill.email="<?php echo $details['prefill']['email']?>"
+												data-prefill.contact="<?php echo $details['prefill']['contact']?>"
+												data-notes.shopping_order_id="3456"
+												data-order_id="<?php echo $details['order_id']?>"
+												<?php if ($details['display_currency'] !== 'INR') { ?> data-display_amount="<?php echo $details['amount']?>" <?php } ?>
+												<?php if ($details['display_currency'] !== 'INR') { ?> data-display_currency="<?php echo $details['display_currency']?>" <?php } ?>
+											  >
+											  </script>
+											
+									
+							<div  style="padding:50px 15px;margin-top:25px;border-top:1px solid #ddd;">
+							  <a  href="<?php echo base_url('customer/billing'); ?>" class="btn btn-primary pull-left btn-sm"> Back</a>
+							<button class="pull-right btn btn-primary  btn-sm" name="submit_form" type="submit">Proceed to Payment</span><span aria-hidden="true">&rarr;</span></button>
+							<?php //echo '<pre>';print_r($details);exit; ?>
+							</form>
+							<?php //echo '<pre>';print_r($details);exit; ?>
+						
 							
 							<div class="clearfix"></div>
+							</div>
+							
 							</div>
 							
 								
@@ -181,6 +214,27 @@
 <div class="clearfix"></div><br>
 
 <script>
+function payment_type(ids){
+	$('#paymenterrormsg').html('');
+	if(ids==1){
+		$('#online_amt').show();
+		$('#online_amt_1').hide();
+		document.getElementById("radio33").checked = true;
+	}else{
+		$('#online_amt').hide();
+		$('#online_amt_1').show();
+		if(ids==1){
+			document.getElementById("radio1").checked = true;
+			document.getElementById("radio3").checked = false;
+		}else if(ids==3){
+			document.getElementById("radio2").checked = true;
+			document.getElementById("radio3").checked = false;
+		}else{
+			document.getElementById("radio3").checked = false;
+		}
+		
+	}
+}
 function checkvalidation(form){
 	
 if ($("#radio1").prop("checked")) {
@@ -193,151 +247,25 @@ if ($("#radio1").prop("checked")) {
 	$('#paymenterrormsg').html('');
    return true;
 }else{
-	$('#paymenterrormsg').html('Please select a payment mode method')
+	$('#paymenterrormsg').html('Please select a payment mode method');
 	return false;
 }
-
-
+}
+function checkvalidation_payment(form){
 	
+if ($("#radio11").prop("checked")) {
+	$('#paymenterrormsg').html('');
+   return true;
+}else if ($("#radio22").prop("checked")) {
+	$('#paymenterrormsg').html('');
+   return true;
+}else if ($("#radio33").prop("checked")) {
+	$('#paymenterrormsg').html('');
+   return true;
+}else{
+	$('#paymenterrormsg').html('Please select a payment mode method');
+	return false;
 }
-
-    $(document).ready(function() {
-        $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
-            e.preventDefault();
-            $(this).siblings('a.active').removeClass("active");
-            $(this).addClass("active");
-            var index = $(this).index();
-            $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-            $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
-        });
-    });
-</script>
-<script>
-    //plugin bootstrap minus and plus
-    //http://jsfiddle.net/laelitenetwork/puJ6G/
-    $('.btn-number').click(function(e) {
-        e.preventDefault();
-
-        fieldName = $(this).attr('data-field');
-        type = $(this).attr('data-type');
-        var input = $("input[name='" + fieldName + "']");
-        var currentVal = parseInt(input.val());
-        if (!isNaN(currentVal)) {
-            if (type == 'minus') {
-
-                if (currentVal > input.attr('min')) {
-                    input.val(currentVal - 1).change();
-                }
-                if (parseInt(input.val()) == input.attr('min')) {
-                    $(this).attr('disabled', true);
-                }
-
-            } else if (type == 'plus') {
-
-                if (currentVal < input.attr('max')) {
-                    input.val(currentVal + 1).change();
-                }
-                if (parseInt(input.val()) == input.attr('max')) {
-                    $(this).attr('disabled', true);
-                }
-
-            }
-        } else {
-            input.val(0);
-        }
-    });
-    $('.input-number').focusin(function() {
-        $(this).data('oldValue', $(this).val());
-    });
-    $('.input-number').change(function() {
-
-        minValue = parseInt($(this).attr('min'));
-        maxValue = parseInt($(this).attr('max'));
-        valueCurrent = parseInt($(this).val());
-
-        name = $(this).attr('name');
-        if (valueCurrent >= minValue) {
-            $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
-        } else {
-            alert('Sorry, the minimum value was reached');
-            $(this).val($(this).data('oldValue'));
-        }
-        if (valueCurrent <= maxValue) {
-            $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
-        } else {
-            alert('Sorry, the maximum value was reached');
-            $(this).val($(this).data('oldValue'));
-        }
-
-
-    });
-    $(".input-number").keydown(function(e) {
-        // Allow: backspace, delete, tab, escape, enter and .
-        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
-            // Allow: Ctrl+A
-            (e.keyCode == 65 && e.ctrlKey === true) ||
-            // Allow: home, end, left, right
-            (e.keyCode >= 35 && e.keyCode <= 39)) {
-            // let it happen, don't do anything
-            return;
-        }
-        // Ensure that it is a number and stop the keypress
-        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-            e.preventDefault();
-        }
-    });
-</script>
-<script>
-    function pincodechange(val) {
-        $("#hide_loc").hide();
-        $("#show_loc").show();
-    }
-</script>
-<script>
-
-function checkOffset() {
-  var a=$(document).scrollTop()+window.innerHeight;
-  var b=$('#footer-start').offset().top;
-  if (a<b) {
-    $('#social-float').css('bottom', '150px');
-  } else {
-    $('#social-float').css('bottom', (50+'px');
-  }
 }
-$(document).ready(checkOffset);
-$(document).scroll(checkOffset);
-
-</script>
-<script>
-$(document).ready(function(){
-    $("#hide_add_btn").click(function(){
-        $("#hide_add").hide();
-    });
-});
-</script>
-<script>
-$(".mat-input").focus(function(){
-  $(this).parent().addClass("is-active is-completed");
-});
-
-$(".mat-input").focusout(function(){
-  if($(this).val() === "")
-    $(this).parent().removeClass("is-completed");
-  $(this).parent().removeClass("is-active");
-})
-</script>
-<script>
-
-function checkOffset() {
-  var a=$(document).scrollTop()+window.innerHeight;
-  var b=$('#footer-start').offset().top;
-  if (a<b) {
-    $('#social-float').css('bottom', '140px');
-  } else {
-    $('#social-float').css('bottom', (140+(a-b))+'px');
-  }
-}
-$(document).ready(checkOffset);
-$(document).scroll(checkOffset);
 
 </script>
