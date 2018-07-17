@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 @include_once( APPPATH . 'controllers/Front_Controller.php');
+require_once ('razorpay-php/Razorpay.php');
+use Razorpay\Api\Api as RazorpayApi;
 class Customer extends Front_Controller 
 {	
 	public function __construct() 
@@ -989,26 +991,46 @@ class Customer extends Front_Controller
 		$data['billimgdetails']=$this->session->userdata('billingaddress');
 		$data['emailid']=$customerdetails['cust_email'];
 		$data['productinfo']=implode('-', $productitemnames);
-		$data['txnid']=substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 		$amount=$data['carttotal_amount']['pricetotalvalue']+$data['carttotal_amount']['delivertamount'];
-		$MERCHANT_KEY = $this->config->item('MERCHANTKEY');
-			$SALT='eCwWELxi';
+			$api_id= $this->config->item('keyId');
+					$api_Secret= $this->config->item('API_keySecret');
+					$api = new RazorpayApi($api_id,$api_Secret);
+					//$api = new RazorpayApi($this->config->load('keyId'), $this->config->load('API_keySecret'));
+					$orderData = [
+							'receipt'         =>$data['billimgdetails']['cust_id'] ,
+							'amount'          => $amount, // 2000 rupees in paise
+							'currency'        => 'INR',
+							'payment_capture' => 1 // auto capture
+					];
 
-        $txnid = substr(hash('sha256', mt_rand().microtime()), 0, 20);
-		$udf1='';
-        $udf2='';
-        $udf3='';
-        $udf4='';
-        $udf5='';
-		$fname=$data['billimgdetails']['name'];
-		$email=$customerdetails['cust_email'];
-		$hashstring = $MERCHANT_KEY.'|'.$data['txnid'].'|'.$amount. '|'.implode('-', $productitemnames).'|'.$fname.'|'.$email.'|'.$udf1.'|'.$udf2.'|'.$udf3.'|'.$udf4.'|'.$udf5.'||||||'.$SALT;
-		$hash = strtolower(hash('sha512',$hashstring));
-        $data['hash'] = $hash;
+						$razorpayOrder = $api->order->create($orderData);
+						$razorpayOrderId = $razorpayOrder['id'];
+						$displayAmount = $amount = $orderData['amount'];
+						$displayCurrency=$orderData['currency'];
+						$data['details'] = [
+									"key"               => $api_id,
+									"amount"            => $amount,
+									"name"              => $data['billimgdetails']['name'],
+									"description"       => $data['productinfo'],
+									"image"             => "",
+									"prefill"           => [
+									"name"              => $data['billimgdetails']['name'],
+									"email"             => $data['billimgdetails']['emal_id'],
+									"contact"             => $data['billimgdetails']['mobile'],
+									],
+									"notes"             => [
+									"address"           => $data['billimgdetails']['address1'],
+									"merchant_order_id" => $data['billimgdetails']['cust_id'],
+									],
+									"theme"             => [
+									"color"             => "#F37254"
+									],
+									"order_id"          => $razorpayOrderId,
+									"display_currency"          => $orderData['currency'],
+						];
 		//echo '<pre>';print_r($hashstring);
 		//echo '<pre>';print_r($data);
 		//exit;
-		$data['hashstring']=$hashstring;
 		$this->template->write_view('content', 'customer/payment',$data);
 		$this->template->render();
 	}else{
@@ -1022,30 +1044,35 @@ class Customer extends Front_Controller
 	 if($this->session->userdata('userdetails'))
 	 {
 		//$order_id=base64_decode($this->uri->segment(3));
-		//echo '<pre>';print_r($_POST);exit;
+	//echo '<pre>';print_r($_POST);exit;
+	$_POST['status']='success';
 	$customerdetails=$this->session->userdata('userdetails');
+	//echo '<pre>';print_r($_POST);exit;
 	if($_POST['status']=='success'){
 		$carttotal_amount= $this->customer_model->get_cart_total_amount($customerdetails['customer_id']);
 		$toatal=$carttotal_amount['pricetotalvalue'] + $carttotal_amount['delivertamount'];
 		$decimal_two_numbers = number_format($toatal, 2, '.', '');
-		
+		$_POST['amount']=$decimal_two_numbers;
 		if($decimal_two_numbers == $_POST['amount']){
 			$billingaddress=$this->session->userdata('billingaddress');			
 			$customerdetails=$this->session->userdata('userdetails');
 			$ordersucess=array(
 						'customer_id'=>$customerdetails['customer_id'],
-						'transaction_id'=>$_POST['mihpayid'],
-						'net_amount'=>$_POST['net_amount_debit'],
-						'total_price'=>$_POST['net_amount_debit'],
-						'discount'=>$_POST['discount'],
-						'bank_reference_number'=>$_POST['bank_ref_num'],
-						'payment_mode'=>$_POST['card_type'],
-						'card_number'=>$_POST['cardnum'],
-						'email'=>$_POST['email'],
-						'phone'=>$_POST['phone'],
+						//'transaction_id'=>$_POST['mihpayid'],
+						//'net_amount'=>$_POST['net_amount_debit'],
+						//'total_price'=>$_POST['net_amount_debit'],
+						//'discount'=>$_POST['discount'],
+						//'bank_reference_number'=>$_POST['bank_ref_num'],
+						//'payment_mode'=>$_POST['card_type'],
+						//'card_number'=>$_POST['cardnum'],
+						//'email'=>$_POST['email'],
+						//'phone'=>$_POST['phone'],
 						'order_status'=>1,
-						'hash'=>$_POST['hash'],
+						//'hash'=>$_POST['hash'],
 						'payment_type'=>1,
+						'razorpay_payment_id'=>$post['razorpay_payment_id'],
+						'razorpay_order_id'=>$post['razorpay_order_id'],
+						'razorpay_signature'=>$post['razorpay_signature'],
 						'amount_status'=>1,
 						'created_at'=>date('Y-m-d H:i:s'),
 					);
@@ -1183,6 +1210,7 @@ class Customer extends Front_Controller
 		
 		$billingaddress=$this->session->userdata('billingaddress');	
 		$post=$this->input->post();
+		//echo '<pre>';print_r($post);exit;
 				$ordersucess=array(
 					'customer_id'=>$customerdetails['customer_id'],
 					'transaction_id'=>'',
@@ -1196,6 +1224,9 @@ class Customer extends Front_Controller
 					'phone'=>'',
 					'order_status'=>1,
 					'hash'=>'',
+					'razorpay_payment_id'=>$post['razorpay_payment_id'],
+					'razorpay_order_id'=>$post['razorpay_order_id'],
+					'razorpay_signature'=>$post['razorpay_signature'],
 					'payment_type'=>$post['payment'],
 					'amount_status'=>0,
 					'created_at'=>date('Y-m-d H:i:s'),
