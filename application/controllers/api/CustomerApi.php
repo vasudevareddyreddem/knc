@@ -3540,6 +3540,7 @@ public function homeapi_get()
 		$trendingffer=$this->Customerapi_model->get_trendingoffer_categorywise();
 		$offerforyou=$this->Customerapi_model->get_offerforyou_categorywise();
 		$recentlyviewedlist=$this->Customerapi_model->recently_viewed_producrs();
+		$categorywise_plist=$this->Customerapi_model->get_category_wise_products_list();
 		if(isset($recentlyviewedlist) && count($recentlyviewedlist)>0){
 		foreach ($recentlyviewedlist as $productslist){
 					
@@ -3567,6 +3568,13 @@ public function homeapi_get()
 		}else{
 			$recentlyviewed[]=array();
 		}
+		if(count($categorywise_plist)>0){
+			foreach ($categorywise_plist as $list){
+				$cat_wise_plist[]=$list;
+			}
+		}else{
+			$cat_wise_plist[]=array();
+		}
 		$message = array
 		(
 			'status'=>1,
@@ -3581,7 +3589,9 @@ public function homeapi_get()
 			'seasonsales'=>$seasonffer,
 			'banners4'=>$position_four,
 			'recentlyviewed'=>$recentlyviewed,
-			'categoryimagepath'=>base_url('assets/categoryimages/'),
+			'categorywiseproductlist'=>$cat_wise_plist,
+			'categoryimage'=>base_url('assets/categoryimages/'),
+			'imagepath'=>base_url('uploads/products/'),
 			'banners1path'=>base_url('assets/appbanners/'),
 			'bannerspath'=>base_url('assets/homebanners/'),
 			'message'=>'Product list are found.'
@@ -4006,6 +4016,29 @@ public function homeapi_get()
 				
 		
 	}
+	public function samplehomepage_get(){
+		
+		$bannerslist= $this->Customerapi_model->get_home_banners_list();
+		$categories=$this->Customerapi_model->test_get_categorywise_list();
+		
+		
+		$message = array
+		(
+			'status'=>1,
+			'banners1'=>$bannerslist,
+			'categorylist'=>$categories,
+			
+			'categoryimage'=>base_url('assets/categoryimages/'),
+			'imagepath'=>base_url('uploads/products/'),
+			'banners1path'=>base_url('assets/appbanners/'),
+			'bannerspath'=>base_url('assets/homebanners/'),
+			'message'=>'Product list are found.'
+		);
+		$this->response($message, REST_Controller::HTTP_OK);
+				
+		
+	}
+	
 	public function homepagefunctionality_hideshow_get(){
 			$bannerslist= $this->Customerapi_model->get_home_banners_list();
 			$categories=$this->Customerapi_model->get_categorywise_list();

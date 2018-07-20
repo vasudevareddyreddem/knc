@@ -3017,7 +3017,32 @@ class Customerapi_model extends MY_Model
 	
 	
 	
-	
+	/*testing  purpose**/
+	public function test_get_categorywise_list(){
+		$this->db->select('products.category_id,category.category_name,category.category_image')->from('products');
+		$this->db->join('category', 'category.category_id = products.category_id', 'left');
+		$this->db->group_by('products.category_id');
+		$this->db->where('products.category_id !=','');
+		$this->db->where('products.item_status',1);
+		$return=$this->db->get()->result_array();
+		foreach($return as $list){
+			$p_list=$this->get_category_products_list($list['category_id']);
+			$data[$list['category_id']]=$list;
+			$data[$list['category_id']]['project_list']=$p_list;
+		}
+		foreach($data as $Li){
+			$da[]=$Li;		}
+		if(!empty($da)){
+			return $da;
+		}
+		//echo '<pre>';print_r($data);exit;
+	}
+	public  function get_category_products_list($catid){
+		$this->db->select('products.item_id,products.item_name,products.item_cost,products.special_price,products.offer_expairdate,products.item_quantity,products.item_status,products.category_id,products.offer_amount,products.offer_percentage,products.item_image')->from('products');
+        $this->db->where('products.category_id',$catid);
+		return $this->db->get()->result_array();
+	}
+	/*testing  purpose**/
 		
 	
 
