@@ -14,7 +14,7 @@
                 <ul class="topBarNav pull-right">
                     <li class="linkdown">
                   
-                     <a style="color:#fff" class="tel " target="_blank" href="http://order-organic.com/seller/login"><span class=""></span> &nbsp; Sell on Order Organic </a>
+                     <a style="color:#fff" class="tel " target="_blank" href="<?php echo base_url('seller/login'); ?>"><span class=""></span> &nbsp; Sell on Order Organic </a>
                   </li>
                   &nbsp;
                   <li>
