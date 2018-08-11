@@ -14,7 +14,7 @@
                 <ul class="topBarNav pull-right">
                     <li class="linkdown">
                   
-                     <a style="color:#fff" class="tel " target="_blank" href="http://seller.shofus.com/seller/login"><span class=""></span> &nbsp; Sell on Order Organic </a>
+                     <a style="color:#fff" class="tel " target="_blank" href="http://order-organic.com/seller/login"><span class=""></span> &nbsp; Sell on Order Organic </a>
                   </li>
                   &nbsp;
                   <li>
@@ -173,6 +173,7 @@
                     <ul class="nav navbar-nav">
                         
                         <!-- Pages -->
+						<?php if(isset($cat_list) && count($cat_list)>0){ ?>
 						<?php $cnt=1;foreach($cat_list as $lists){ ?>
 						 <?php if($cnt<=5){ ?>
                         <li class="dropdown yamm-fw"><a href="<?php echo base_url('category/subcategorys/'.base64_encode($lists['category_id'])); ?>"  class="dropdown-toggle"><?php echo $lists['category_name']; ?><i class="fa fa-angle-down ml-5"></i></a>
@@ -200,6 +201,7 @@
 						 <?php } ?>
 					
                         <?php $cnt++;} ?> 
+						<?php } ?>
 						<?php if(isset($cat_list) && count($cat_list)>5){ ?>
 						<li class="dropdown left"><a href="#" data-toggle="dropdown" class="dropdown-toggle">More<i class="fa fa-angle-down ml-5"></i></a>
                             <ul class="dropdown-menu">

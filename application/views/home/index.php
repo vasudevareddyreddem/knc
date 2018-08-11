@@ -74,11 +74,11 @@ $("#fademaskpurpose").removeClass("mask_hide");
   <div class="_bdy" style="" id="location_seacrh_result"></div>
   <div class="" id="location_seacrhs">
 	
-	
+	<?php if(isset($sidecaregory_list) && count($sidecaregory_list)>0){ ?>
 	<section class="">
       <div class="best-pro slider-items-products container_main">
        <div class="new_title">
-          <h2>Sub Category</h2>
+          <h2>Categorys</h2>
         </div>
 		   <div id="best-seller" class="product-flexslider hidden-buttons " >
 				  <!--<div class="slider-items slider-width-col4 products-grid help_cls text-center" >-->
@@ -108,7 +108,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
       </div>
     </section>
 	
-	
+	<?php } ?>
   
     <!--Top Category slider Start-->
 	<?php if(isset($topoffers) && count($topoffers)>0){ ?>
@@ -217,6 +217,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
     </section>
 	
    <?php } ?>
+   <?php if(isset($trending_products) && count($trending_products)>0){ ?>
     <section>
       <div class="best-pro slider-items-products container_main">
         <div class="new_title">
@@ -259,8 +260,9 @@ $("#fademaskpurpose").removeClass("mask_hide");
 		<div class="clearfix"></div>
       </div>
     </section>
+	<?php } ?>
 	
-	
+	<?php if(isset($offer_for_you) && count($offer_for_you)>0){ ?>
     <section>
       <div class="best-pro slider-items-products container_main">
         <div class="new_title">
@@ -304,6 +306,8 @@ $("#fademaskpurpose").removeClass("mask_hide");
 		<div class="clearfix"></div>
       </div>
     </section>
+	
+	<?php } ?>
 	
 	<?php if(isset($position_three) && count($position_three)>0){ ?>
 	<section>
