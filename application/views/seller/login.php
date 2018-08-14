@@ -1,25 +1,27 @@
-<style>
-.navbar-nav {
-   
-    padding-top: 10px;
-}
-
-</style>
-
-
-          
-          <div class="container">
-		  
-            <div class="col-md-8 col-md-offset-2" style="background-color:#fff;padding:20px;margin-top:100px;border-radius:10px;">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order Organic</title>
+<link rel="icon" href="<?php echo base_url();?>assets/seller_login/images/fav.ico" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css?family=Mogra|Roboto" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/seller/css/font-awesome.min.css" />
+<!--style start here -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/seller/css/bootstrap.min.css" />
+<script src="<?php echo base_url();?>assets/seller/js/jquery.js"></script>
+<script src="<?php echo base_url();?>assets/seller/js/jquery-3.1.1.min.js"></script>
+<body style="background-color:#ddd;">
+ <div class="container">
+		 <div class="col-md-8 col-md-offset-2" style="background-color:#fff;padding:20px;margin-top:100px;border-radius:10px;">
             <div class="row">
 				<div class="col-md-4 col-md-offset-5">
-					<img  class="img-responsive widt_img_lo" src="<?php echo base_url();?>assets/seller_login/images/logo.png" />
+					<img  class="img-responsive widt_img_lo" src="<?php echo base_url();?>assets/home/images/logo.png" />
 				</div>
 
 			</div>
-			<hr>
+			<hr style="border-top:1px solid #ddd">
             <div class="row">
-            <div class="col-xs-6 bor_lef">
+            <div class="col-xs-6 " style="border-right:1px solid #ddd">
             <div class="innter-form" id="temp_pas_hi" >
               <form method="post"  name="login_form" id="login_submit">
               <div id="login-response"></div>

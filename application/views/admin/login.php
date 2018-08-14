@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>::CART IN HOURS::</title>
+    <title>::Order Organic::</title>
     <link rel="icon" href="<?php echo base_url(); ?>assets/home/images/fav.ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/home/css/font-awesome.min.css">
@@ -83,9 +83,10 @@
             </div>
             </div>
         </div>
-		<a  href="<?php echo base_url('admin/login'); ?>" class="" style="position: absolute;top:-100px;right:43%">
-			<img src="<?php echo base_url(); ?>assets/images/inv_logo.png" />
-		</a>
+				<a class="col-md-4 " style="position: absolute;top:-100px;right:43%">
+					<img  class="img-responsive widt_img_lo" src="<?php echo base_url();?>assets/home/images/logo.png" />
+				</a>
+
     </div>
 
 </body>

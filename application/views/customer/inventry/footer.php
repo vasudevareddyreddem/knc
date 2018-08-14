@@ -1,5 +1,5 @@
 <footer class="footer ">
-    <strong>Copyright@cartinhours.com</strong> All rights
+    <strong>Copyright@order-organic.com</strong> All rights
     reserved.
 </footer>
 <!-- core functionality purpose-->

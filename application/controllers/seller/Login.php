@@ -53,44 +53,17 @@ class Login extends CI_Controller {
 		redirect('seller/dashboard');
 	}else{
 		$data['cihcatdata']  = $this->login_model->getcihcatedata();
-		$this->load->view('seller/header');
+		//$this->load->view('seller/header');
 		$this->load->view('seller/login',$data);
 		
 	}
 	
   }
-  public function aboutus() {
-	 
-		$this->load->view('seller/header');
-		$this->load->view('seller/aboutus');
-		
-	
-  }
-  public function contactus() {
-	 
-		$this->load->view('seller/header');
-		$this->load->view('seller/contactus');
-		$this->load->view('seller/footer');
-	
-  }
-
-
- public function register() {
-
- $data['email'] = $this->input->post('seller_email');
  
-  $data['phone'] = $this->input->post('seller_phone');
-  
-  $data['locationdata']=$this->login_model->getlocation();
  
-  	$this->load->view('seller/header');
-  	$this->load->view('seller/register',$data);
-	$this->load->view('seller/footer');
-    }
 
 
-// Terms and Conditions
-    public function termsandconditions() {
+public function termsandconditions() {
 	$this->load->view('seller/header');
 	$this->load->view('seller/termsandconditions');
 	$this->load->view('seller/footer');
@@ -479,7 +452,7 @@ $result = $you_make - $actual_price;
 					$ch = curl_init();
 					curl_setopt($ch, CURLOPT_URL,"http://bhashsms.com/api/sendmsg.php");
 					curl_setopt($ch, CURLOPT_POST, 1);
-					curl_setopt($ch, CURLOPT_POSTFIELDS,'user='.$username.'&pass='.$pass.'&sender=cartin&phone='.$post['mobile_number'].'&text=Your cartinhours OTP Code is '.$msg.'&priority=ndnd&stype=normal');
+					curl_setopt($ch, CURLOPT_POSTFIELDS,'user='.$username.'&pass='.$pass.'&sender=cartin&phone='.$post['mobile_number'].'&text=Your Order organic OTP Code is '.$msg.'&priority=ndnd&stype=normal');
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 					//echo '<pre>';print_r($ch);exit;
 					$server_output = curl_exec ($ch);

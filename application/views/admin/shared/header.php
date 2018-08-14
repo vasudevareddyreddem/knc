@@ -4,7 +4,7 @@
     </div>
     
     <!--logo start--> 
-    <a href="<?php echo base_url('admin/dashboard'); ?>" class="logo">CART IN HOUR<span class="lite"> Admin</span></a> 
+    <a href="<?php echo base_url('admin/dashboard'); ?>" class="logo">Order Organic<span class="lite"> Admin</span></a> 
     <!--logo end-->
     
     <div class="nav search-row" id="top_menu"> 

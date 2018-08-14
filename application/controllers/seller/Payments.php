@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-@include_once( APPPATH . 'controllers/seller_admin/Admin_Controller.php');
+@include_once( APPPATH . 'controllers/seller/Admin_Controller.php');
 
 
 class Payments extends Admin_Controller {
@@ -9,8 +9,8 @@ class Payments extends Admin_Controller {
 	public function __construct() {
 		parent::__construct();
 		
-		$this->load->model('seller_admin/dashboard_model');
-		$this->load->model('seller_admin/payments_model');
+		$this->load->model('seller/dashboard_model');
+		$this->load->model('seller/payments_model');
 		$this->load->library('pagination');
 	}
 
@@ -20,7 +20,7 @@ class Payments extends Admin_Controller {
 		$count = $this->payments_model->getpaymentdetails();
 		$total_count = count($count);
 		 $config = [
-	   'base_url'   => base_url('seller_admin/payments/index'),
+	   'base_url'   => base_url('seller/payments/index'),
 	   'per_page'   => 20,
 	   'total_rows'  => $total_count,
 	   'full_tag_open'  => "<ul class='pagination'>",
@@ -40,11 +40,14 @@ class Payments extends Admin_Controller {
 	  ];
 
        $this->pagination->initialize($config);
+
+       
 				
        $data['paymentsdata'] = $this->payments_model->limit($config['per_page'], $this->uri->segment(4) )->getpaymentdetails();
 		
-		$this->template->write_view('content', 'seller_admin/payments/index', $data);
+		$this->template->write_view('content', 'seller/payments/index', $data);
 		$this->template->render();
+	
 
 
 	}
@@ -61,7 +64,7 @@ public function seller_search()
               $this->load->library('pagination');
 
               $config = [
-               'base_url'       =>  base_url('seller_admin/payments/seller_search'),
+               'base_url'       =>  base_url('seller/payments/seller_search'),
                'per_page'       =>  5,
                'total_rows'     =>  $result2,
                'full_tag_open'  =>  "<ul class='pagination'>",
@@ -84,7 +87,7 @@ public function seller_search()
             //$this->load->view('welcome_message');
             $result=$this->payments_model->limit($config['per_page'], $this->uri->segment(4) )->seller_search($match);
             $data['paymentsdata'] =  $result;
-            $this->template->write_view('content', 'seller_admin/payments/index',$data);
+            $this->template->write_view('content', 'seller/payments/index',$data);
 
             $this->template->render();
 

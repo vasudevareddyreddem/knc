@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="img/favicon.png">
-<title>:Infinity Admin:</title>
+<title>:Order Organic Admin:</title>
 
 <!-- Bootstrap CSS -->
 <link href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" rel="stylesheet">

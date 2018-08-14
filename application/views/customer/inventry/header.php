@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Inventory</title>
+  <title>Order Organic Inventory</title>
 <link rel="icon" href="<?php echo base_url(); ?>assets/home/images/fav.ico" >
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/inventry/bootstrap/css/bootstrap.min.css">
@@ -21,8 +21,8 @@
 <div class="wrapper">
 <header class="main-header" style="position:fixed;top:0px;width:100%">
 <a href="<?php echo base_url('inventory/dashboard'); ?>" class="logo">
-	 <span class="logo-mini"><img style="width:75%" src="<?php echo base_url(); ?>assets/vendor/inventry/dist/img/mini-logo.png" class="img-responsive" ></span>
-      <span class="logo-lg"><img style="width:75%" src="<?php echo base_url(); ?>assets/vendor/inventry/dist/img/logo.png" class="img-responsive" ></span>
+	 <span class="logo-mini"><img style="width:75%" src="<?php echo base_url(); ?>assets/home/images/logo.png" class="img-responsive" ></span>
+      <span class="logo-lg"><img style="width:75%" src="<?php echo base_url(); ?>assets/home/images/logo.png" class="img-responsive" ></span>
     </a>
 <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
