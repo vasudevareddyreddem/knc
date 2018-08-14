@@ -54,43 +54,7 @@
         <button type="button" class="navbar-toggle collapsed" id="togg_menu" > <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         <!--<a class="navbar-brand" href="#">Brand</a>--> 
       </div>
-     <!-- customise toogle start-->
-      <div class=" " style="display:none">
-           <ul class=" ">
-          <li class="active"><a href="<?php echo base_url('seller/login');?>#home_scr">HOME <span class="sr-only">(current)</span></a></li>
-         <!-- <li><a href="#benifits_sc">BENIFITS</a></li>-->
-      <li><a href="#how_its_w">HOW IT WORKS</a></li>
-         
-          <li><a href="#pricing_scr">PRICING</a></li>
-         
-          <!--<li><a href="#ourservices_scr">OUR SERVICES</a></li>-->
-            <li><a href="#about_sc">ABOUT US</a></li>
-       <li><a href="#faq_sc">FAQ's</a></li>
-        <li><a href="#contact_sc">CONTACT US</a></li>
-         <li class="point_h"><a id="sign_log" data-toggle="modal" data-target="#myModa2">SIGN UP / LOGIN</a></li>
-         
      
-        </ul>
-      </div>
-       <!-- customise toogle end-->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="<?php echo base_url('seller/login');?>#home_scr">HOME <span class="sr-only">(current)</span></a></li>
-         <!-- <li><a href="#benifits_sc">BENIFITS</a></li>-->
-      <li><a href="#how_its_w">HOW IT WORKS</a></li>
-         
-          <li><a href="#pricing_scr">PRICING</a></li>
-         
-          <!--<li><a href="#ourservices_scr">OUR SERVICES</a></li>-->
-            <li><a href="#about_sc">ABOUT US</a></li>
-       <li><a href="#faq_sc">FAQ's</a></li>
-        <li><a href="#contact_sc">CONTACT US</a></li>
-         <li class="point_h"><a id="sign_log" data-toggle="modal" data-target="#myModa2">SIGN UP / LOGIN</a></li>
-         
-     
-        </ul>
- 
-      </div>
       <!-- /.navbar-collapse --> 
     </div>
     <!-- /.container-fluid

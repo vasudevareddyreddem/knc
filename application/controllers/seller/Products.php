@@ -285,43 +285,43 @@ public function item_status(){
 			}else{
 				$profilepic1='';
 			}
-			if($_FILES['picture2']['name']!=''){
+			if(isset($_FILES['picture2']['name']) && $_FILES['picture2']['name']!=''){
 				$profilepic2=microtime().basename($_FILES["picture2"]["name"]);
 				move_uploaded_file($_FILES['picture2']['tmp_name'], "uploads/products/" . $profilepic2);
 			}else{
 				$profilepic2='';
 			}
-			if($_FILES['picture3']['name']!=''){
+			if(isset($_FILES['picture3']['name']) && $_FILES['picture3']['name']!=''){
 				$profilepic3=microtime().basename($_FILES["picture3"]["name"]);
 				move_uploaded_file($_FILES['picture3']['tmp_name'], "uploads/products/" . $profilepic3);
 			}else{
 				$profilepic3='';
 			}
-			if($_FILES['picture4']['name']!=''){
+			if(isset($_FILES['picture4']['name']) && $_FILES['picture4']['name']!=''){
 				$profilepic4=microtime().basename($_FILES["picture4"]["name"]);
 				move_uploaded_file($_FILES['picture4']['tmp_name'], "uploads/products/" . $profilepic4);
 			}else{
 				$profilepic4='';
 			}
-			if($_FILES['picture5']['name']!=''){
+			if(isset($_FILES['picture5']['name']) && $_FILES['picture5']['name']!=''){
 				$profilepic5=microtime().basename($_FILES["picture5"]["name"]);
 				move_uploaded_file($_FILES['picture5']['tmp_name'], "uploads/products/" . $profilepic5);
 			}else{
 				$profilepic5='';
 			}
-			if($_FILES['picture6']['name']!=''){
+			if(isset($_FILES['picture6']['name']) && $_FILES['picture6']['name']!=''){
 				$profilepic6=microtime().basename($_FILES["picture6"]["name"]);
 				move_uploaded_file($_FILES['picture6']['tmp_name'], "uploads/products/" . $profilepic6);
 			}else{
 				$profilepic6='';
 			}
-			if($_FILES['picture7']['name']!=''){
+			if(isset($_FILES['picture7']['name']) && $_FILES['picture7']['name']!=''){
 				$profilepic7=microtime().basename($_FILES["picture7"]["name"]);
 				move_uploaded_file($_FILES['picture7']['tmp_name'], "uploads/products/" . $profilepic7);
 			}else{
 				$profilepic7='';
 			}
-			if($_FILES['picture8']['name']!=''){
+			if(isset($_FILES['picture8']['name']) && $_FILES['picture8']['name']!=''){
 				$profilepic8=microtime().basename($_FILES["picture8"]["name"]);
 				move_uploaded_file($_FILES['picture8']['tmp_name'], "uploads/products/" . $profilepic8);
 			}else{
@@ -382,7 +382,7 @@ public function item_status(){
 			'ram' => isset($post['ram'])?str_replace(' ', '', strtoupper($post['ram'])):'',
 			'model_name' => isset($post['model_name'])?$post['model_name']:'',
 			'model_id' => isset($post['model_id'])?$post['model_id']:'',
-			'internal_memory' => isset($post['internal_memory'])?str_replace(' ', '', strtoupper($post['internal_memory'])):'',
+			//'internal_memeory' => isset($post['internal_memeory'])?str_replace(' ', '', strtoupper($post['internal_memeory'])):'',
 			'expand_memory' => isset($post['expand_memory'])?$post['expand_memory']:'',
 			'primary_camera' => isset($post['primary_camera'])?$post['primary_camera']:'',
 			'primary_camera_feature' => isset($post['primary_camera_feature'])?$post['primary_camera_feature']:'',
@@ -1016,7 +1016,7 @@ public function update()
 			'ram' => isset($post['ram'])?str_replace(' ', '', strtoupper($post['ram'])):'',
 			'model_name' => isset($post['model_name'])?$post['model_name']:'',
 			'model_id' => isset($post['model_id'])?$post['model_id']:'',
-			'internal_memory' => isset($post['internal_memory'])?str_replace(' ', '', strtoupper($post['internal_memory'])):'',
+			//'internal_memeory' => isset($post['internal_memeory'])?str_replace(' ', '', strtoupper($post['internal_memeory'])):'',
 			'expand_memory' => isset($post['expand_memory'])?$post['expand_memory']:'',
 			'primary_camera' => isset($post['primary_camera'])?$post['primary_camera']:'',
 			'primary_camera_feature' => isset($post['primary_camera_feature'])?$post['primary_camera_feature']:'',
@@ -1437,14 +1437,9 @@ public function search()
     }
 public function track_requests()
 {
-	
-
 $data['approvalrequestdata'] = $this->products_model->getproductapproval();
 $this->template->write_view('content', 'seller/products/approval_request', $data);
-		$this->template->render();
-
-
-
+$this->template->render();
 }
 
 public function returns()
@@ -1823,7 +1818,7 @@ public function returns()
 											}
 											if(count($data['errors'])<=0){
 													foreach($totalfields as $data){
-														$path='/home/cartinhour/public_html/uploads/products/';
+														$path='/home/vechical_details/public_html/uploads/products/';
 														//echo '<pre>';print_r($data);
 															$image_link = $data[18];
 															$split_image = pathinfo($image_link);
@@ -2238,7 +2233,7 @@ public function returns()
 			'model_id' => $post['value'],
 			'updated_at' => date('Y-m-d H:i:s'),    
 			);
-		}else if($post['valuename']=='internal_memory'){
+		}else if($post['valuename']=='internal_memeory'){
 			if($productdetails['subcategory_id']==40){
 				if($productdetails['colour']!='' && $post['value']!='' && $post['value']!=''){
 				$name=$productdetails['name'].' '.ucfirst(strtolower($productdetails['colour'])).' ('.$post['value'].' ROM)'.' ('.$productdetails['ram'].' RAM )';
@@ -2253,7 +2248,7 @@ public function returns()
 			$name=$post['value'];
 			}
 			$editdata = array(
-			'internal_memory' => $post['value'],
+			'internal_memeory' => $post['value'],
 			'item_name' => $name,
 			'updated_at' => date('Y-m-d H:i:s'),    
 			);

@@ -236,8 +236,16 @@ function payment_type(ids){
 	}
 }
 function checkvalidation(form){
-	
-if ($("#radio1").prop("checked")) {
+if ($("#radio11").prop("checked")) {
+	$('#paymenterrormsg').html('');
+   return true;
+}if ($("#radio22").prop("checked")) {
+	$('#paymenterrormsg').html('');
+   return true;
+}if ($("#radio33").prop("checked")) {
+	$('#paymenterrormsg').html('');
+   return true;
+}if ($("#radio1").prop("checked")) {
 	$('#paymenterrormsg').html('');
    return true;
 }else if ($("#radio2").prop("checked")) {
@@ -252,11 +260,20 @@ if ($("#radio1").prop("checked")) {
 }
 }
 function checkvalidation_payment(form){
-	
-if ($("#radio11").prop("checked")) {
+
+if ($("#radio1").prop("checked")) {
+	$('#paymenterrormsg').html('');
+   return true;
+}if ($("#radio11").prop("checked")) {
+	$('#paymenterrormsg').html('');
+   return true;
+}else if ($("#radio2").prop("checked")) {
 	$('#paymenterrormsg').html('');
    return true;
 }else if ($("#radio22").prop("checked")) {
+	$('#paymenterrormsg').html('');
+   return true;
+}else if ($("#radio3").prop("checked")) {
 	$('#paymenterrormsg').html('');
    return true;
 }else if ($("#radio33").prop("checked")) {
@@ -266,6 +283,8 @@ if ($("#radio11").prop("checked")) {
 	$('#paymenterrormsg').html('Please select a payment mode method');
 	return false;
 }
+
+
 }
 
 </script>

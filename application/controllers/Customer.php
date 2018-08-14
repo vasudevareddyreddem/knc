@@ -1373,6 +1373,7 @@ class Customer extends Front_Controller
 			
 			$messagelis['msg']='Oder_Item_id: '.$orderlist['order_item_id'].'. Customer Details are  Name:'.$orderlist['name'].', Mobile number : '.$orderlist['customer_phone'].'.  Product details: product name: '.$orderlist['item_name'].', product code: '.$orderlist['product_code'].', color: '.$orderlist['colour'].', Internal Storage: '.$orderlist['internal_memeory'].', Ram : '.$orderlist['ram'];
 			$msg2='Customer orederdetails: Oder-Item-Id: '.$orderlist['order_item_id'].' product name: '.$orderlist['item_name'].' product code: '.$orderlist['product_code'].' color: '.$orderlist['colour'];
+			$cusr_msg='orederdetails: Oder-Item-Id: '.$orderlist['order_item_id'].' product name: '.$orderlist['item_name'].' product code: '.$orderlist['product_code'].' color: '.$orderlist['colour'];
 			$username=$this->config->item('smsusername');
 			$pass=$this->config->item('smspassword');
 			
@@ -1388,13 +1389,25 @@ class Customer extends Front_Controller
 			curl_close ($ch2);
 			//echo '<pre>';print_r($orderlist);exit;
 			/* seller purpose*/
+			/* customer purpose*/
+				$cust_mobile=$orderlist['customer_phone'];
+				$ch2 = curl_init();
+				curl_setopt($ch2, CURLOPT_URL,"http://bhashsms.com/api/sendmsg.php");
+				curl_setopt($ch2, CURLOPT_POST, 1);
+				curl_setopt($ch2, CURLOPT_POSTFIELDS,'user='.$username.'&pass='.$pass.'&sender=cartin&phone='.$cust_mobile.'&text='.$cusr_msg.'&priority=ndnd&stype=normal');
+				curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+				//echo '<pre>';print_r($ch);exit;
+				$server_output = curl_exec ($ch2);
+				curl_close ($ch2);
+				//echo '<pre>';print_r($orderlist);exit;
+				/* customer purpose*/
 			}
 			/*semd  email purpose*/
 						$this->load->library('email');
 						$this->email->set_mailtype("html");
-						$this->email->from('cartinhours.com');
+						$this->email->from('order-organic.com');
 						$this->email->to($data['order_items'][0]['customer_email']);
-						$this->email->subject('Cartinhours - Order Confirmation');
+						$this->email->subject('Orderorganic - Order Confirmation');
 						$html = $this->load->view('email/orderconfirmation.php', $data, true); 
 						//echo $html;exit;
 						$this->email->message($html);
@@ -1405,9 +1418,9 @@ class Customer extends Front_Controller
 			$this->load->library('email');
 			$this->email->set_newline("\r\n");
 			$this->email->set_mailtype("html");
-			$this->email->from('cartinhours.com');
+			$this->email->from('order-organic.com');
 			$this->email->to($orderlist['seller_email']);
-			$this->email->subject('Cartinhours - Order Confirmation');
+			$this->email->subject('Orderorganic - Order Confirmation');
 			$html = $this->load->view('email/sellerorederconfirmation.php', $messagelis, true); 
 			//echo $html;exit;
 			$this->email->message($html);
@@ -1631,9 +1644,9 @@ class Customer extends Front_Controller
 			$this->load->library('email');
 			$this->email->set_newline("\r\n");
 			$this->email->set_mailtype("html");
-			$this->email->from('cartinhours.com');
+			$this->email->from('order-organic.com');
 			$this->email->to($post['email']);
-			$this->email->subject('Cartinhours - Welcome to cartinhours');
+			$this->email->subject('Orderorganic - Welcome to Order Organic');
 			$html = $this->load->view('email/welcome', $getdetails, true); 
 			//echo $html;exit;
 			$this->email->message($html);
@@ -2039,7 +2052,7 @@ class Customer extends Front_Controller
 			$pass=$this->config->item('smspassword');
 			
 			/* seller purpose*/
-			$msg2=$six_digit_random_number.' is your Cartinhours verification code one-time use. Please DO NOT share this OTP with anyone to ensure account security.';
+			$msg2=$six_digit_random_number.' is your Orderorganic verification code one-time use. Please DO NOT share this OTP with anyone to ensure account security.';
 			$ch2 = curl_init();
 			curl_setopt($ch2, CURLOPT_URL,"http://bhashsms.com/api/sendmsg.php");
 			curl_setopt($ch2, CURLOPT_POST, 1);
@@ -2056,9 +2069,9 @@ class Customer extends Front_Controller
 						$this->load->library('email');
 						$this->email->set_newline("\r\n");
 						$this->email->set_mailtype("html");
-						$this->email->from('cartinhours.com');
+						$this->email->from('order-organic.com');
 						$this->email->to($email);
-						$this->email->subject('Cartinhours - Forgot Password');
+						$this->email->subject('Orderorganic - Forgot Password');
 						$html = $this->load->view('email/forgetpassword', $data, true); 
 						$this->email->message($html);
 						$this->email->send();
@@ -2133,7 +2146,7 @@ class Customer extends Front_Controller
 						if(count($users)>0)
 						{
 						$this->load->library('email');
-						$this->email->from('admin@cartinhours.com', 'CartInHours');
+						$this->email->from('admin@order-organic.com', 'CartInHours');
 						$this->email->to(base64_decode($post['email']));
 						$this->email->subject('CartInHours - Forgot Password');
 						$html = "Pasword Successfully changed";
@@ -2459,9 +2472,9 @@ class Customer extends Front_Controller
 							$this->load->library('email');
 							$this->email->set_newline("\r\n");
 							$this->email->set_mailtype("html");
-							$this->email->from('cartinhours.com');
+							$this->email->from('order-organic.com');
 							$this->email->to($cutdetails['seller_email']);
-							$this->email->subject('Cartinhours - Order Return');
+							$this->email->subject('Orderorganic - Order Return');
 							$html = $this->load->view('email/orderreturn.php', $messagelis, true); 
 							//echo $html;exit;
 							$this->email->message($html);
@@ -2530,9 +2543,9 @@ class Customer extends Front_Controller
 							$this->load->library('email');
 							$this->email->set_newline("\r\n");
 							$this->email->set_mailtype("html");
-							$this->email->from('cartinhours.com');
+							$this->email->from('order-organic.com');
 							$this->email->to($details['seller_email']);
-							$this->email->subject('Cartinhours - Order Return');
+							$this->email->subject('Orderorganic - Order Return');
 							$html = $this->load->view('email/orderreturn.php', $messagelis, true); 
 							//echo $html;exit;
 							$this->email->message($html);
@@ -2763,9 +2776,9 @@ public function aboutus(){
 					$this->load->library('email');
 					$this->email->set_newline("\r\n");
 					$this->email->set_mailtype("html");
-					$this->email->from('cartinhours.com');
+					$this->email->from('order-organic.com');
 					$this->email->to($custdetails['cust_email']);
-					$this->email->subject('Cartinhours - Order Cancellation');
+					$this->email->subject('Orderorganic - Order Cancellation');
 					$html = $this->load->view('email/customerordercancel.php', $messagelis, true); 
 					//echo $html;exit;
 					$this->email->message($html);

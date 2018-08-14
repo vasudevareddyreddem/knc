@@ -268,14 +268,14 @@ class Cron extends Front_Controller
 					$pdf->WriteHTML($html); // write the HTML into the PDF
 					$pdf->Output($pdfFilePath, 'F'); // save to file because we can
 					$this->Cron_model->update_invocie_name_save($list['invoice_id'],$list['order_item_id'],$file_name);
-					$htmlmessage = "Invoice has been generated from the https:cartinhours.com";
+					$htmlmessage = "Invoice has been generated from the https:order-organic.com";
 					$this->load->library('email');
 					$this->email->set_newline("\r\n");
 					$this->email->set_mailtype("html");
-					$this->email->from('cartinhours.com');
+					$this->email->from('order-organic.com');
 					$this->email->to($list['seller_email']);
 					$this->email->attach($pdfFilePath);
-					$this->email->subject('Cartinhours - Invoice '.$file_name);
+					$this->email->subject('Order organic - Invoice '.$file_name);
 					//echo $html;exit;
 					$this->email->message($htmlmessage);
 						if($this->email->send()){
@@ -298,15 +298,15 @@ class Cron extends Front_Controller
 			if($list['customer_email_send']==0){
 				
 				//echo $list['customer_email_send'];exit;
-				$htmlmessage = "Invoice has been generated from the https:cartinhours.com";
+				$htmlmessage = "Invoice has been generated from the https:order-organic.com";
 					$this->load->library('email');
 					$this->email->set_newline("\r\n");
 					$this->email->set_mailtype("html");
-					$this->email->from('cartinhours.com');
+					$this->email->from('order-organic.com');
 					$this->email->to($list['cust_email']);
 					$pdfFilePath = base_url('/assets/downloads/'.$list['invoicename']);
 					$this->email->attach($pdfFilePath);
-					$this->email->subject('Cartinhours - Invoice '.$list['invoicename']);
+					$this->email->subject('Order organic - Invoice '.$list['invoicename']);
 					//echo $html;exit;
 					$this->email->message($htmlmessage);
 						if($this->email->send()){
@@ -342,7 +342,7 @@ class Cron extends Front_Controller
 					$this->load->library('email');
 					$this->email->set_newline("\r\n");
 					$this->email->set_mailtype("html");
-					$this->email->from('cartinhours.com');
+					$this->email->from('Order organic.com');
 					$this->email->to('vasudevareddy549@gmail.com');
 					$this->email->subject('testing');
 					//echo $html;exit;

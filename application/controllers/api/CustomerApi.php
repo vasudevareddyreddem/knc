@@ -1064,9 +1064,9 @@ class CustomerApi extends REST_Controller {
 						
 							$msg=$six_digit_random_number.'is your Cartinhours verification code one-time use. Please DO NOT share this OTP with anyone to ensure account security ';
 							$this->load->library('email');
-							$this->email->from('admin@cartinhours.com', 'CartInHours');
+							$this->email->from('admin@order-organic.com', 'CartInHours');
 							$this->email->to($email);
-							$this->email->subject('CartInHours - Forgot Password');
+							$this->email->subject('Order-organic - Forgot Password');
 							$html =$msg;
 							//echo $html;exit;
 							$this->email->message($html);
@@ -2463,9 +2463,9 @@ class CustomerApi extends REST_Controller {
 							$this->load->library('email');
 							$this->email->set_newline("\r\n");
 							$this->email->set_mailtype("html");
-							$this->email->from('cartinhours.com');
+							$this->email->from('Order-organic.com');
 							$this->email->to($custdetails['seller_email']);
-							$this->email->subject('Cartinhours - Order Return');
+							$this->email->subject('Order organic - Order Return');
 							$html = $this->load->view('email/orderreturn.php', $messagelis, true); 
 							//echo $html;exit;
 							$this->email->message($html);
@@ -2751,7 +2751,7 @@ class CustomerApi extends REST_Controller {
 									$six_digit_random_number = mt_rand(100000, 999999);
 									$username=$this->config->item('smsusername');
 									$pass=$this->config->item('smspassword');
-										$msg=' Your cartinhour verification code is '.$six_digit_random_number;
+										$msg=' Your Order organic verification code is '.$six_digit_random_number;
 										$ch = curl_init();
 										curl_setopt($ch, CURLOPT_URL,"http://bhashsms.com/api/sendmsg.php");
 										curl_setopt($ch, CURLOPT_POST, 1);
@@ -3005,9 +3005,9 @@ class CustomerApi extends REST_Controller {
 					$this->load->library('email');
 					$this->email->set_newline("\r\n");
 					$this->email->set_mailtype("html");
-					$this->email->from('cartinhours.com');
+					$this->email->from('Order-organic.com');
 					$this->email->to($items['seller_email']);
-					$this->email->subject('Cartinhours - Order Confirmation');
+					$this->email->subject('Order organic - Order Confirmation');
 					$html = $this->load->view('email/sellerorederconfirmation.php', $messagelis, true); 
 					//echo $html;exit;
 					$this->email->message($html);
@@ -3052,9 +3052,9 @@ class CustomerApi extends REST_Controller {
 						$this->load->library('email');
 						$this->email->set_newline("\r\n");
 						$this->email->set_mailtype("html");
-						$this->email->from('cartinhours.com');
+						$this->email->from('order-organic.com');
 						$this->email->to($customerdetails['cust_email']);
-						$this->email->subject('Cartinhours - Order Confirmation');
+						$this->email->subject('Order organic - Order Confirmation');
 						$html = $this->load->view('email/orderconfirmation.php', $data, true); 
 						//echo $html;exit;
 						$this->email->message($html);
@@ -3135,9 +3135,9 @@ class CustomerApi extends REST_Controller {
 					$this->load->library('email');
 					$this->email->set_newline("\r\n");
 					$this->email->set_mailtype("html");
-					$this->email->from('cartinhours.com');
+					$this->email->from('order-organic.com');
 					$this->email->to($custdetails['cust_email']);
-					$this->email->subject('Cartinhours - Order Cancellation');
+					$this->email->subject('Order organic - Order Cancellation');
 					$html = $this->load->view('email/customerordercancel.php', $messagelis, true); 
 					//echo $html;exit;
 					$this->email->message($html);

@@ -2237,32 +2237,52 @@ public function get_all_subitem_list($catid,$subcatid)
 	
 	/*categorypage data*/
 		public function step_one_data($position){
-		$this->db->select('*')->from('category_banners');
-		$this->db->where('category_banners.position',$position);
-		$this->db->where('category_banners.status',1);
-		$this->db->where('category_banners.admin_status',1);
-		return $this->db->get()->result_array();
+			$date = new DateTime("now");
+			$curr_date = $date->format('Y-m-d h:i:s A');
+			$this->db->select('*')->from('category_banners');
+			$this->db->where('category_banners.position',$position);
+			$this->db->where('category_banners.status',1);
+			$this->db->where('category_banners.expirydate >=', $curr_date);
+			$this->db->order_by('category_banners.baneer_id','desc');
+			//$this->db->limit(3);
+			$this->db->where('category_banners.admin_status',1);
+			return $this->db->get()->result_array();
 		}
 		public function step_four_data($position){
-		$this->db->select('*')->from('category_banners');
-		$this->db->where('category_banners.position',$position);
-		$this->db->where('category_banners.status',1);
-		$this->db->where('category_banners.admin_status',1);
-		return $this->db->get()->result_array();
+			$date = new DateTime("now");
+			$curr_date = $date->format('Y-m-d h:i:s A');
+			$this->db->select('*')->from('category_banners');
+			$this->db->where('category_banners.position',$position);
+			$this->db->where('category_banners.status',1);
+			$this->db->where('category_banners.expirydate >=', $curr_date);
+			$this->db->order_by('category_banners.baneer_id','desc');
+			//$this->db->limit(2);
+			$this->db->where('category_banners.admin_status',1);
+			return $this->db->get()->result_array();
 		}
 		public function step_seven_data($position){
-		$this->db->select('*')->from('category_banners');
-		$this->db->where('category_banners.position',$position);
-		$this->db->where('category_banners.status',1);
-		$this->db->where('category_banners.admin_status',1);
-		return $this->db->get()->result_array();
+			$date = new DateTime("now");
+			$curr_date = $date->format('Y-m-d h:i:s A');
+			$this->db->select('*')->from('category_banners');
+			$this->db->where('category_banners.position',$position);
+			$this->db->where('category_banners.status',1);
+			$this->db->where('category_banners.expirydate >=', $curr_date);
+			$this->db->order_by('category_banners.baneer_id','desc');
+			//$this->db->limit(3);
+			$this->db->where('category_banners.admin_status',1);
+			return $this->db->get()->result_array();
 		}
 		public function step_eleven_data($position){
-		$this->db->select('*')->from('category_banners');
-		$this->db->where('category_banners.position',$position);
-		$this->db->where('category_banners.status',1);
-		$this->db->where('category_banners.admin_status',1);
-		return $this->db->get()->result_array();
+			$date = new DateTime("now");
+			$curr_date = $date->format('Y-m-d h:i:s A');
+			$this->db->select('*')->from('category_banners');
+			$this->db->where('category_banners.position',$position);
+			$this->db->where('category_banners.status',1);
+			$this->db->where('category_banners.expirydate >=', $curr_date);
+			$this->db->order_by('category_banners.baneer_id','desc');
+			//$this->db->limit(4);
+			$this->db->where('category_banners.admin_status',1);
+			return $this->db->get()->result_array();
 		}
 		public function step_two_data($catid){
 				$this->db->select('subcategories.subcategory_id,subcategories.subcategory_name,subcategories.category_id,subcategories.subcategory_image')->from('products');
