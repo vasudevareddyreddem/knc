@@ -112,22 +112,16 @@ $(document).ready(function() {
     $('#importsubitem').bootstrapValidator({
        
         fields: {
-            category_list: {
+            
+			subitemid: {
 					validators: {
 					notEmpty: {
-						message: 'Pease select Category'
-					}
-				}
-			}, 
-			subcategory_lists: {
-					validators: {
-					notEmpty: {
-						message: 'Pease select subCategory'
+						message: 'Pease select sub Item'
 					}
 				}
 			}, 
 			
-			importsubitemfile: {
+			importitemfile: {
 					validators: {
 						notEmpty: {
 						message: 'Pease select subCategory'

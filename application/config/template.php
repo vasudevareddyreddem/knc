@@ -56,7 +56,7 @@ $template['active_template'] = 'default';
 |--------------------------------------------------------------------------
 */
 
-$template['default']['template'] = 'admin/layouts/_admin.php';
+$template['default']['template'] = 'customer/inventry/header.php';
 $template['default']['regions'] = array(
 	'sidebar',
    'header',

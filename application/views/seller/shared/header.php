@@ -13,12 +13,12 @@
     margin-right: 70px;
 }
 </style>
-<head>
+
 <link href="<?php echo base_url(); ?>assets/seller/dist/css/app.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url(); ?>assets/seller/dist/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css"/>
-</head>
 
-  <body class="hold-transition sidebar-mini " >
+
+  <body class="hold-transition sidebar-mini" >
         <!-- Site wrapper -->
         
             <header class="main-header hm_nav" style="position: fixed;top:0px;width:100%; ">
@@ -108,7 +108,7 @@
                     </div>
                 </nav>
             </header>
-    </body>
+   
 
   <!--end Just fill form to Select plan Modal -->
   <?php if($notification[0]['unreadcouont']>0){ ?>

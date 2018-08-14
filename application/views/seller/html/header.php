@@ -1,4 +1,4 @@
-
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Order organic seller</title>
@@ -87,7 +87,7 @@
 		 
 <!--javascript end here -->
 </head>
-<body>
+
 <!-- container section start -->
 <div class="wrapper">
 
@@ -99,5 +99,5 @@
 </div>
 <!-- container section start --> 
 
-</body>
-</html>
+
+	</html>
