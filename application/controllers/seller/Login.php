@@ -55,7 +55,7 @@ class Login extends CI_Controller {
 		$data['cihcatdata']  = $this->login_model->getcihcatedata();
 		$this->load->view('seller/header');
 		$this->load->view('seller/login',$data);
-		$this->load->view('seller/footer');
+		
 	}
 	
   }
@@ -63,7 +63,7 @@ class Login extends CI_Controller {
 	 
 		$this->load->view('seller/header');
 		$this->load->view('seller/aboutus');
-		$this->load->view('seller/footer');
+		
 	
   }
   public function contactus() {

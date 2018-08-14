@@ -6,13 +6,18 @@
 
 </style>
 
-<html>
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
-     <div class="form-body">
           
-          <div class="tab-content">
-            <div id="sectionA" class="tab-pane fade in active">
+          <div class="container">
+		  
+            <div class="col-md-8 col-md-offset-2" style="background-color:#fff;padding:20px;margin-top:100px;border-radius:10px;">
+            <div class="row">
+				<div class="col-md-4 col-md-offset-5">
+					<img  class="img-responsive widt_img_lo" src="<?php echo base_url();?>assets/seller_login/images/logo.png" />
+				</div>
+
+			</div>
+			<hr>
             <div class="row">
             <div class="col-xs-6 bor_lef">
             <div class="innter-form" id="temp_pas_hi" >
@@ -101,154 +106,10 @@
   
   <!--body end here --> 
 
-<script>
 
-function myFunction() {
-    var x = document.getElementById('myDIV');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-function myFunction1() {
-    var x = document.getElementById('myDIV1');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-function myFunction2() {
-    var x = document.getElementById('myDIV2');
-    if (x.style.display === 'none') {
-        x.style.display = 'block';
-    } else {
-        x.style.display = 'none';
-    }
-}
-</script>
   
   
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-  
-  
-  <script type="text/javascript">
-$(document).ready(function()
-{
-$("#cih_id").change(function()
-{
-var id=$(this).val();
-//alert(id);
-var dataString = 'cih_id='+ id;
-$.ajax
-({
-type: "POST",
- url: "<?php echo base_url();?>seller/pricing_calculator/getajaxcih",
-data: dataString,
-cache: false,
-success: function(data)
-{
-  //alert(data);
-$("#cihfee").html(data);
-} 
-});
-
-});
-});
-</script>
-
-
-
-
-<script type="text/javascript">
-$(document).ready(function()
-{
-$("#cih1_id").change(function()
-{
-var id=$(this).val();
-//alert(id);
-var dataString = 'cih1_id='+ id;
-$.ajax
-({
-type: "POST",
- url: "<?php echo base_url();?>seller/pricing_calculator/getajaxcih1",
-data: dataString,
-cache: false,
-success: function(data)
-{
-  //alert(data);
-$("#cihfee1").html(data);
-} 
-});
-
-});
-});
-</script>
-
-
-
-
-<script type="text/javascript" language="javascript">
-      $(document).ready(function(){
-    $('#calfee_submit').click(function(e){
-    e.preventDefault();
  
-
-   var cih1_id =  $("#cih1_id").val();
-     var product_price = $("#product_price").val();
-     var re = /^[+]?([0-9]+)$/;
-    var text = $("#product_price").val();
-  var isValid = (text.match(re) == null);
-  //alert(isValid);
-   var cih_fee1 = $("#cih_fee1").val();
-
-  
-  if (cih1_id == "")
-    {
-    $("#CatErr").html("Please Select Category").css("color", "#006a99").fadeIn().fadeOut(5000);
-    return false;
-    }
-    else{
-      $("#CatErr").html("");
-    }
-  if (product_price == "")
-    {
-    $("#prdErr").html("Please Enter your Product Selling Price").css("color", "#006a99").fadeIn().fadeOut(5000);
-    return false;
-    }
-    else{
-      $("#prdErr").html("");
-    }
-  if (isValid)
-    {
-    $("#TermsErr").html("Please Enter Price only +ve Numbers").css("color", "#006a99").fadeIn().fadeOut(5000);
-    return false;
-    }
-    else{
-      $("#TermsErr").html("");
-    }
-    
- 
-    $.ajax({
-    type: "POST",
-    url: '<?php echo base_url() ?>seller/pricing_calculator/getreferalfee',
-    data: {product_price:product_price,cih_fee1:cih_fee1},
-    success:function(data)
-    {
-	$("#refclose").html(data);
-	$('#demo3').show();
-    $('#demoki').show();
-  
-    }
-    });
-    });
-    
-    });
-  
-
-</script>
-
 
 
 
