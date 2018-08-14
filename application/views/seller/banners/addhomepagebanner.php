@@ -14,11 +14,11 @@
 		</div>
 		<div class="header-title">
 			  
-			<h1> Home Banners</h1>
-			<small>Add Home Page banner</small>
+			<h1>Home Page Middle Banner</h1>
+			<small>Add Home Page Middle Banner</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard');?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">Add Home Page banner</li>
+				<li class="active">Add Home Page Middle Banner</li>
 			</ol>
 		</div>
 	</section>
@@ -36,7 +36,7 @@
 					</button><?php echo $this->session->flashdata('error');?></div>	
 					<?php endif; ?>
 					
-      	<a href="<?php echo base_url('seller/showups/homepagebannerlist');?> " class="pull-right btn btn-sm btn-primary">list</a>
+      	<a href="<?php echo base_url('seller/showups/homepagebannerlist');?> " class="pull-right btn btn-sm btn-primary">List</a>
 <form id="addbanners" name="addbanners" method="post" action="<?php echo base_url('seller/showups/savehomepagebanners/'); ?>" enctype="multipart/form-data">
 	<div class="row">
 		<div class="col-md-12 form-group">
@@ -48,9 +48,9 @@
 			</div>
 			<div class="col-md-6 form-group">
 				<div class="form-group nopaddingRight san-lg">
-					 <label for="exampleInputEmail1"> Category page Position</label>
+					 <label for="exampleInputEmail1"> Category Page Position</label>
 					<select class="form-control" id="position" name="position" >
-					<option value="">Select item </option>
+					<option value="">Select </option>
 					<option value="2">Second position </option>
 					<option value="3">Third position </option>
 					<option value="4">Fourth position </option>
@@ -61,9 +61,9 @@
 		<div class="col-md-12 form-group">
 			<div class="col-md-6 form-group">
 				<div class="form-group nopaddingRight san-lg">
-					 <label for="exampleInputEmail1">link</label>
+					 <label for="exampleInputEmail1">Link</label>
 					<select class="form-control" id="link" onchange="getselectedproducts(this.value);" name="link" >
-					<option value="">Select item </option>
+					<option value="">Select</option>
 					<option value="1">Category </option>
 					<option value="2">Subcategory </option>
 					<option value="3">Subitem</option>
@@ -74,9 +74,9 @@
 			</div>
 			<div class="col-md-6 form-group" id="selectlist" style="">
 				<div class="form-group nopaddingRight san-lg">
-					 <label for="exampleInputEmail1">options</label>
+					 <label for="exampleInputEmail1">Options</label>
 					<select class="form-control" id="selecteddata" name="selecteddata" >
-					<option value="">Select item </option>
+					<option value="">Select </option>
 					</select>
 				</div>
 			</div>
@@ -124,11 +124,11 @@ $(document).ready(function() {
 			image: {
 				validators: {
 					 notEmpty: {
-						message: 'image is required'
+						message: 'Image is required'
 					},  
 					regexp: {
 					regexp: /\.(jpe?g|png|gif)$/i,
-					message: 'Uploaded file is not a valid image. Only JPG, PNG and GIF files are allowed'
+					message: 'Uploaded file is not a valid Image. Only JPG, PNG and GIF files are allowed'
 					}
 				}
 			},
@@ -142,14 +142,14 @@ $(document).ready(function() {
 			selecteddata: {
 				validators: {
 					 notEmpty: {
-						message: 'options is required'
+						message: 'Options is required'
 					}
 				}
 			},
 			expirydate: {
 				validators: {
 					 notEmpty: {
-						message: 'expiry date is required'
+						message: 'Expiry Date is required'
 					}
 				}
 			},

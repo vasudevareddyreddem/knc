@@ -17,18 +17,18 @@
 					</span>
 				</div>
 			</form>  
-			<h1>Image urls</h1>
-			<small>Image urls</small>
+			<h1>Image Urls</h1>
+			<small>Image Urls</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard'); ?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">Image urls</li>
+				<li class="active">Image Urls</li>
 			</ol>
 		</div>
 	</section>
   <section class="content ">
   <section id="main-content">
     <section class="wrapper">
-      	<a href="<?php echo base_url('seller/products/imageslist');?> " class="pull-right btn btn-sm btn-primary">list</a>
+      	<a href="<?php echo base_url('seller/products/imageslist');?> " class="pull-right btn btn-sm btn-primary">List</a>
 
 	<div class="row">
 		<div class="col-md-6 form-group">

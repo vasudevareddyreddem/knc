@@ -71,8 +71,8 @@
 				
 				<th>Item Name</th>
                 <th>Item Price</th>
-                <th>Offer percentage</th>
-                <th>offer Amount</th>
+                <th>Offer Percentage</th>
+                <th>Offer Amount</th>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Status</th>               

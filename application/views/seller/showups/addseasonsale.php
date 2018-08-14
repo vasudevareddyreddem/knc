@@ -42,10 +42,10 @@ tfoot input {
 				</div>
 			</form>  
 			<h1>Add Offers</h1>
-			<small>Season sale</small>
+			<small>Season Sale</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard');?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">Season sale</li>
+				<li class="active">Season Sale</li>
 			</ol>
 		</div>
 	</section>
@@ -107,7 +107,7 @@ tfoot input {
                 <th>Item Cost</th>
                 <th>Offer Amount</th>
                 <th>Offer Type</th>
-                <th>Offer expiry Date and Time</th>                
+                <th>Offer Expiry Date and Time</th>                
             </tr>
         </thead>
       

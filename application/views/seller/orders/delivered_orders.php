@@ -4,7 +4,27 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/vendor/datatable/base/jquery-ui.css">
 <script src="<?php echo base_url();?>assets/vendor/datatable/jquery-ui.js"></script>
 <div class="content-wrapper mar_t_con" >
-
+<section class="content-header">
+		<div class="header-icon">
+			<i class="pe-7s-note2"></i>
+		</div>
+		<div class="header-title">
+			<form action="#" method="get" class="sidebar-form search-box pull-right hidden-md hidden-lg hidden-sm">
+				<div class="input-group">
+					<input type="text" name="q" class="form-control" placeholder="Search...">
+					<span class="input-group-btn">
+						<button type="submit" name="search" id="search-btn" class="btn"><i class="fa fa-search"></i></button>
+					</span>
+				</div>
+			</form>  
+			<h1>Orders</h1>
+			<small>Delivered Orders</small>
+			<ol class="breadcrumb hidden-xs">
+				<li><a href="<?php echo base_url('seller/dashboard');?>"><i class="pe-7s-home"></i> Home</a></li>
+				<li class="active">Delivered Orders</li>
+			</ol>
+		</div>
+	</section>
   <section class="content ">
   <section id="main-content">
     <section class="wrapper">
@@ -26,8 +46,8 @@
 					<th>Order Id</th>
 					<th>Product Name</th>
 					<th>Qty</th>
-					<th>Item price</th>
-					<th>Total price</th>
+					<th>Item Price</th>
+					<th>Total Price</th>
 					<th>Customer Billing Details</th>
 					<th>Status</th>
 					

@@ -15,10 +15,10 @@
 		<div class="header-title">
 			  
 			<h1>Show Ups</h1>
-			<small>Add Home Page banner</small>
+			<small>Add Home Page Banners</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard');?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">Add Home Page banner</li>
+				<li class="active">Add Home Page Banners</li>
 			</ol>
 		</div>
 	</section>

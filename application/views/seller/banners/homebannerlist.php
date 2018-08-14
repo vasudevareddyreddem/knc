@@ -11,11 +11,11 @@
 		</div>
 		<div class="header-title">
 			  
-			<h1>Show Ups</h1>
-			<small>Home Page banner</small>
+			<h1>Home Page Middle Banner</h1>
+			<small>Home Page Middle Banners</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard');?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">Home Page banner</li>
+				<li class="active">Home Page Middle Banners</li>
 			</ol>
 		</div>
 	</section>
@@ -35,7 +35,7 @@
 
 				<div class="box">
             <div class="box-header">
-              <h3 class="box-title">category page Banners List</h3>
+              <h3 class="box-title">Home Page Middle Banner List</h3>
               <a href="<?php echo base_url('seller/showups/homepagebanners/');?> " class="pull-right btn btn-sm btn-primary">ADD</a>
             </div>
             <!-- /.box-header -->
@@ -45,12 +45,12 @@
                 <tr>
                   <th>Name</th>
                   <th>Image</th>
-                  <th>Category page Position</th>
+                  <th>Category Page Position</th>
                   <th>Link Page</th>
                   <th>Created Date</th>
                   <th>Expiry Date</th>
                   <th>Status</th>
-                  <th>Home page Status</th>
+                  <th>Home Page Status</th>
                   <th>Action</th>
                   
                 </tr>

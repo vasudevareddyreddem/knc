@@ -28,7 +28,7 @@
                         <img src="<?php echo base_url(); ?>assets/seller/dist/img/mini-logo.png" alt="CIH">
                     </span>
                     <span class="logo-lg">                        
-                        <img src="<?php echo base_url(); ?>assets/seller/dist/img/logo.png" alt="Cart In Hour">
+                        <img src="<?php echo base_url(); ?>assets/seller/dist/img/logo.png" alt="Order organic">
                     </span>
                 </a>
                 <!-- Header Navbar -->
@@ -45,21 +45,17 @@
 								
 								<li class="active"><a href="<?php echo base_url('seller/dashboard');?>">Home</a></li>
 								
-								<!--<li><a href="<?php echo base_url();?>seller/aboutus">About Us</a></li>-->
-							   <li><a href="<?php echo base_url();?>seller/faqs">FAQ's</a></li>
-                 <?php if($bank_link['bank_complete']==0) { ?>
-                 <li>
-                 <a href="javascript:void(0)" class="pull-right"   id="view2" data-toggle="modal"  data-target="#bankpopup" >Add Listing
-                  </a>
-                  <?php }else{  ?>
-                 </li>
-							    <li><a href="<?php echo base_url();?>seller/products/create" class="pull-right">Add Listing</a>  </li>
-                  <?php }?>
-								<!--<li><a href="#">Help</a></li>-->
+								<?php if($bank_link['bank_complete']==0) { ?>
+								<li>
+								<a href="javascript:void(0)" class="pull-right"   id="view2" data-toggle="modal"  data-target="#bankpopup" >Add Listing
+								</a>
+								<?php }else{  ?>
+								</li>
+								<li><a href="<?php echo base_url();?>seller/products/create" class="pull-right">Add Listing</a>  </li>
+								<?php }?>
 								<li><a href="<?php echo base_url();?>seller/contactus">Contact Us</a></li>
 								</ul>
 								
-                            <!-- Admin Notifications -->
                             <li class="dropdown notifications-menu">
                                 <a href="#" onclick="getnotifycount();" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="pe-7s-bell"></i><span id="notify"><?php if($notification[0]['unreadcouont']>0){ echo $notification[0]['unreadcouont']; } ?></span>

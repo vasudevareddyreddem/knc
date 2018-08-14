@@ -46,7 +46,6 @@
       <div class="service_first wow fadeInRight animated" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
         <img  class="img-responsive thumbnail" src="<?php echo base_url();?>assets/seller_login/images/cat_m.png" />
       <h1 class="heading">Catalog Management</h1>
-      <!--<img src="images/canon.png" alt=""/>-->
       
         <p>We have expert team to make proper product digital catalog which provide good customer experience increase </p><br>
         

@@ -20,11 +20,11 @@
 					</span>
 				</div>
 			</form>  
-			<h1>Offers</h1>
-			<small>My Offers</small>
+			<h1>Promotions</h1>
+			<small>My Promotions</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard');?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">My Offers</li>
+				<li class="active">My Promotions</li>
 			</ol>
 		</div>
 	</section>
@@ -84,12 +84,12 @@
 				</th>
 				<div style="padding:15px 0px" id="submit_prog<?php echo $subcategory->subcategory_id;?><?php echo $cnt; ?>"><a class="btn btn-primary" data-toggle="modal" data-target="#offerspopup<?php echo $subcategory->subcategory_id;?>"   type="button">Submit</a></div>
 				<th>Item Name</th>
-                <th>Special price</th>
+                <th>Special Price</th>
                 <th>Item Code</th>
                 <th>Offer Amount</th>
-                <th>Item Cost</th>
-                <th>Combo offer item Name</th>
-                <th>Offer expiry Date and Time</th>                
+                <th>Discount amount</th>
+                <th>Combo Offer Item Name</th>
+                <th>Offer Expiry Date and Time</th>                
             </tr>
         </thead>
       

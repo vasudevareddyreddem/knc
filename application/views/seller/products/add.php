@@ -170,7 +170,7 @@
 			<input type="hidden" id="nametypeahead" name="nametypeahead" value="">
 				<label for="exampleInputEmail1">Sub Category </label>
 				<select class="form-control" onchange="subcatwisegroceryproducts(this.value);getspecialinputs(this.value);getinputfiledshideshow(this.value);removeextrafields(this.value);" id="subcategorylist" name="subcategorylist" >
-				<option value="">Select Subcategory </option>
+				<option value="">Select Sub Category </option>
 
 				</select>
 				<span style="color:red" id="errormg1"></span>
@@ -192,14 +192,14 @@
 			<div class="form-group col-md-6 nopaddingRight san-lg" id="subitems" >
 				<label for="exampleInputEmail1">Sub Item </label>
 				<select class="form-control" onchange="get_items_list(this.value);" id="subitemid" name="subitemid" >
-				<option value="">Select Subitems </option>
+				<option value="">Select Sub Item </option>
 			</select>
 			<span style="color:red" id="errormg2"></span>
 			</div>
 			<div class="form-group col-md-6 nopaddingRight san-lg">
-				<label for="exampleInputEmail1">Items </label>
+				<label for="exampleInputEmail1">Item </label>
 				<select class="form-control" id="subitemwiseitemid" name="subitemwiseitemid" >
-				<option value="">Select item </option>
+				<option value="">Select Item </option>
 			</select>
 			</div>
 			
@@ -211,14 +211,14 @@
 	<div class="row">
 			<div class=" col-md-6 ">
 				<div class="form-group nopaddingRight san-lg">
-					   <label for="exampleInputEmail1">product Name</label>
+					   <label for="exampleInputEmail1">Product Name</label>
 					   
 						<input  style="font-size:16px" type="text" class="form-control tt-query tags"  autocomplete="off" spellcheck="false" onkeyup="getoldproducts(this.value);"  onchange="getoldproduct_details(this.value);" name="product_name" id="product_name" >
 				</div>
 			</div>
 			<div class=" col-md-6 ">
 				<div class="form-group nopaddingRight san-lg">
-					 <label for="exampleInputEmail1">price</label>
+					 <label for="exampleInputEmail1">Price</label>
 					<input type="text" class="form-control" id="product_price" name="product_price" >
 			</div>
 		</div>
@@ -226,7 +226,7 @@
 	<div class="row">
 			<div class=" col-md-6 ">
 				<div class="form-group nopaddingRight san-lg">
-					<label for="exampleInputEmail1">Special price</label>
+					<label for="exampleInputEmail1">Special Price</label>
 					<input onkeyup="enablesubbmit();" autocomplete="off" type="text" class="form-control" id="special_price" name="special_price" value="<?php echo isset($item_details['special_price'])?$item_details['special_price']:''; ?>" >
 				</div>
 				<span style="color:red;" id="errormsgvalidation"></span>
@@ -428,8 +428,8 @@
             return false;
             } 
 			if(Number(specialprice) > Number(price)){
-				  $('#errormsgvalidation').html('special price must be less than price');
-				  $('#errormsgvalidation1').html('special price must be less than price');
+				  $('#errormsgvalidation').html('Special Price must be less than Price');
+				  $('#errormsgvalidation1').html('Special Price must be less than Price');
 				  return false;
 			   }
 			   $('#errormsgvalidation').html('');
@@ -1013,21 +1013,21 @@ function education_fields() {
             category_id: {
 					validators: {
 					notEmpty: {
-					message: 'Please select a category'
+					message: 'Please select a Category'
 					}
 				}
 			},
 			subcategorylist: {
 					validators: {
 					notEmpty: {
-					message: 'Please select a subcategory'
+					message: 'Please select a sub Category'
 					}
 				}
 			},
 		subitemid: {
 					validators: {
 					notEmpty: {
-					message: 'Please select a Subitem'
+					message: 'Please select a Sub Item'
 					}
 				}
 			},
@@ -1036,7 +1036,7 @@ function education_fields() {
 			product_name: {
 					validators: {
 					notEmpty: {
-						message: 'Product name is required'
+						message: 'Product Name is required'
 					}
                   
 				}

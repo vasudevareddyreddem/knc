@@ -102,7 +102,7 @@ tfoot input {
                 <th>Item Cost</th>
                 <th>Offer Amount</th>
                 <th>Offer Type</th>
-                <th>Offer expiry Date and Time</th>                
+                <th>Offer Expiry Date and Time</th>                
             </tr>
         </thead>
       

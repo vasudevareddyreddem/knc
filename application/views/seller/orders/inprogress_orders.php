@@ -18,10 +18,10 @@
 				</div>
 			</form>  
 			<h1>Orders</h1>
-			<small>In-progress Orders</small>
+			<small>In-Progress Orders</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard');?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">In-progress Orders</li>
+				<li class="active">In-Progress Orders</li>
 			</ol>
 		</div>
 	</section>
@@ -33,7 +33,7 @@
         <div class="col-md-12">
           <section class="panel">
             <header class="panel-heading">
-              <h3>In-progress Orders</h3>
+              <h3>In-Progress Orders</h3>
             </header>
             <div class="panel-body"> 
             <!--  <a href="<?php //echo base_url(); ?>seller/seller_users/create"  class="add_item"><button class="btn btn-primary" type="submit">Add seller Users</button></a>-->

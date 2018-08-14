@@ -11,11 +11,11 @@
 		</div>
 		<div class="header-title">
 			  
-			<h1>Show Ups</h1>
-			<small>category Page banner</small>
+			<h1>Sub Category Page Banners</h1>
+			<small>Sub Category Page Banners</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard');?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">category Page banner</li>
+				<li class="active">Sub Category Page Banners</li>
 			</ol>
 		</div>
 	</section>
@@ -35,7 +35,7 @@
 
 				<div class="box">
             <div class="box-header">
-              <h3 class="box-title">category page Banners List</h3>
+              <h3 class="box-title">Sub Category Page Banners List</h3>
               <a href="<?php echo base_url('seller/showups/catehorybanner/');?> " class="pull-right btn btn-sm btn-primary">ADD</a>
             </div>
             <!-- /.box-header -->
@@ -45,7 +45,7 @@
                 <tr>
                   <th>Name</th>
                   <th>Image</th>
-                  <th>Category page Position</th>
+                  <th>Category Page Position</th>
                   <th>Link Page</th>
                   <th>Created Date</th>
                   <th>Expiry Date</th>

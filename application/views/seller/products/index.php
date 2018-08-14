@@ -20,11 +20,11 @@
 					</span>
 				</div>
 			</form>  
-			<h1>Offers</h1>
-			<small>My Offers</small>
+			<h1>My Listings</h1>
+			<small>My Listings</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard');?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">My Offers</li>
+				<li class="active">My Listings</li>
 			</ol>
 		</div>
 	</section>
@@ -77,8 +77,8 @@
             <tr>
                <th>Item Name</th>
                 <th>Product Code</th>
-                <th>Item price</th>
-                <th>Special price</th>
+                <th>Item Price</th>
+                <th>Special Price</th>
                 <th>Quantity</th>
 				<th>Brand</th>
 					<?php if($subcategory->subcategory_id==226 || $subcategory->subcategory_id==227 || $subcategory->subcategory_id==228 || $subcategory->subcategory_id==229 || $subcategory->subcategory_id==230 || $subcategory->subcategory_id==231){ ?>
@@ -305,7 +305,7 @@
 					  	<th>Connector 2</th>
 					  	<th>Model Name</th>
 					  	<th>Model ID</th>
-					  	<th>type</th> 
+					  	<th>Type</th> 
 						<?php }else if($subcategory->subcategory_id==239){ ?>
 						<th>Portable</th>
 					  	<th>Maximum Brightness</th>
@@ -322,7 +322,7 @@
 					  	<th>Weight</th>
 					  <?php }else if($subcategory->subcategory_id==244){ ?>
 							<th>Color</th>
-							<th>useage</th>
+							<th>Usage</th>
 							<th>Type</th>
 							<th>Noise Reduction</th>
 							<th>Connectivity</th>
@@ -385,11 +385,11 @@
 					  	<th>Weight</th>
 					  	<th>Model Name</th>
 					  	<th>Model ID</th>
-					  	<th>useage</th>
+					  	<th>Usage</th>
 					  <?php } ?>
 					
 						<th>Offer Amount</th>
-						<th>Combo offer item Name</th>
+						<th>Combo Offer Item Name</th>
 						<th>Offer expiry Date and Time</th>
 						<th>Status</th>
 						<th>Return Policy</th>
@@ -423,7 +423,7 @@
 								<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','ram',this.value)" name="ram" value="<?php echo $item_data->ram;?>"/></td>
 								<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','model_name',this.value)" name="model_name" value="<?php echo $item_data->model_name;?>"/></td>
 								<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','model_id',this.value)" name="model_id" value="<?php echo $item_data->model_id;?>"/></td>
-								<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','internal_memory',this.value)" name="internal_memory" value="<?php echo $item_data->internal_memory;?>"/></td>
+								<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','internal_memory',this.value)" name="internal_memory" value="<?php echo $item_data->internal_memeory;?>"/></td>
 								<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','expand_memory',this.value)" name="expand_memory" value="<?php echo $item_data->expand_memory;?>"/></td>
 								<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','primary_camera',this.value)" name="primary_camera" value="<?php echo $item_data->primary_camera;?>"/></td>
 								<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','primary_camera_feature',this.value)" name="primary_camera_feature" value="<?php echo $item_data->primary_camera_feature;?>"/></td>
@@ -751,7 +751,7 @@
 						<td>
 						<select id="status" onchange="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','status',this.value)" >
 						<?php if($item_data->item_status == 1) {?>
-						<option value="1"selected>Available</option>
+						<option value="1" selected >Available</option>
 						<option value="0">Unavailable</option>
 						<?php }else if($item_data->item_status == 0){  ?>
 						<option value="1">Available</option>

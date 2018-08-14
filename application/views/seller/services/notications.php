@@ -614,10 +614,10 @@
 				</div>
 			</form>  
 			<h1>Support</h1>
-			<small>Seller support</small>
+			<small>Seller Support</small>
 			<ol class="breadcrumb hidden-xs">
-				<li><a href="<?php echo base_url('seller/dashboard'); ?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">Dashboard</li>
+				<li><a href="<?php echo base_url('seller/dashboard'); ?>"><i class="pe-7s-home"></i> Dashboard</a></li>
+				<li class="active">Seller Support</li>
 			</ol>
 		</div>
 	</section>

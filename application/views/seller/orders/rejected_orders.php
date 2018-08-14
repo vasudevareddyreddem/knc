@@ -11,7 +11,7 @@
 		<div class="header-title">
 		
 			<h1>Orders</h1>
-			<small>Rejected Orders</small>
+			<small>Cancelled Orders</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard');?>"><i class="pe-7s-home"></i> Home</a></li>
 				<li class="active">Dashboard</li>
@@ -26,7 +26,7 @@
         <div class="col-md-12">
           <section class="panel">
             <header class="panel-heading">
-              <h3>Rejected Orders</h3>
+              <h3>Cancelled Orders</h3>
             </header>
             <div class="panel-body"> 
             <!--  <a href="<?php //echo base_url(); ?>seller/seller_users/create"  class="add_item"><button class="btn btn-primary" type="submit">Add seller Users</button></a>-->
@@ -40,7 +40,7 @@
 				<th>Product Name</th>
 				<th>Item Price</th>
 				<th>Qty</th>
-				<th>Total price</th>
+				<th>Total Price</th>
 				<th>Customer Billing Details</th>
 				<th>Status</th>
               

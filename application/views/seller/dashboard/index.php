@@ -94,11 +94,11 @@
                                 <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Order id</th>
+                                            <th>Order Id</th>
                                             <th>Customer Name</th>
                                             <th>Product Name</th>
                                             <th>Product Price</th>
-                                            <th>Deliveryboy Id</th>
+                                            <th>Delivery Boy Id</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -93,12 +93,12 @@
                     </li>
 					<li class="treeview">
                         <a href="<?php echo base_url('seller/showups/catehorybanner/');?>">
-                            <i class="fa fa-envelope-open-o"></i><span>SubCategory Banners</span>
+                            <i class="fa fa-envelope-open-o"></i><span>Sub Category Page Banners</span>
                         </a>                        
                     </li>
 					<li class="treeview">
                         <a href="<?php echo base_url('seller/showups/homepagebanners/');?>">
-                            <i class="fa fa-envelope-open-o"></i><span>Home page Banners</span>
+                            <i class="fa fa-envelope-open-o"></i><span>Home Page Middle Banners</span>
                         </a>                        
                     </li>
 					<li class="treeview">
@@ -108,7 +108,7 @@
                     </li>
 					<li class="treeview">
                         <a href="<?php echo base_url('seller/products/imageurllist');?>">
-                            <i class="fa fa-envelope-open-o"></i><span>Imageurl</span>
+                            <i class="fa fa-envelope-open-o"></i><span>Image Url</span>
                         </a>                        
                     </li>
                     <!-- <?php if($bank_link['0']['bank_complete']==1) {?> -->

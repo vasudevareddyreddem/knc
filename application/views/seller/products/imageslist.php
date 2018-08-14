@@ -17,11 +17,11 @@
 					</span>
 				</div>
 			</form>  
-			<h1>Image urls</h1>
-			<small>Image urls</small>
+			<h1>Image Urls</h1>
+			<small>Image Urls</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard'); ?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">Image urls</li>
+				<li class="active">Image Urls</li>
 			</ol>
 		</div>
 	</section>
@@ -33,7 +33,7 @@
         <div class="col-md-12">
           <section class="panel">
             <header class="panel-heading">
-              <h3>Image urls</h3>
+              <h3>Image Urls</h3>
             </header>
             <div class="panel-body"> 
             <!--  <a href="<?php //echo base_url(); ?>seller/seller_users/create"  class="add_item"><button class="btn btn-primary" type="submit">Add seller Users</button></a>-->
@@ -47,7 +47,7 @@
                     <tr>
                 <th>Image Id</th>
                 <th>Name</th>                
-                <th>url</th>                
+                <th>Url</th>                
                 <th>Image</th>                
                  </tr>
                   </thead>

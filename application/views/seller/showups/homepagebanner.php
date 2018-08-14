@@ -12,10 +12,10 @@
 		<div class="header-title">
 			  
 			<h1>Show Ups</h1>
-			<small>Home Banners</small>
+			<small>Home Page Banners</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard');?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">Home Banners</li>
+				<li class="active">Home Page Banners</li>
 			</ol>
 		</div>
 	</section>
@@ -51,10 +51,10 @@
                   <th>Seller Id</th>
                   <th>Seller Name</th>
                   <th>Banner</th>
-                  <th>Start date</th>
-                  <th>End date</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
                   <th>Status</th>
-                  <th>ActionS</th>
+                  <th>Action</th>
                   
                 </tr>
                 </thead>

@@ -12,10 +12,10 @@
 		<div class="header-title">
 			  
 			<h1>Show Ups</h1>
-			<small>Season sale</small>
+			<small>Season Sale</small>
 			<ol class="breadcrumb hidden-xs">
 				<li><a href="<?php echo base_url('seller/dashboard');?>"><i class="pe-7s-home"></i> Home</a></li>
-				<li class="active">Season sale</li>
+				<li class="active">Season Sale</li>
 			</ol>
 		</div>
 	</section>
@@ -71,8 +71,8 @@
 				
 				<th>Item Name</th>
                 <th>Item Price</th>
-                <th>Offer percentage</th>
-                <th>offer Amount</th>
+                <th>Offer Percentage</th>
+                <th>Offer Amount</th>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Status</th>               
