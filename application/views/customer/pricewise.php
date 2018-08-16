@@ -56,7 +56,7 @@
                      <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
                         <div class="panel-body">
                            <?php foreach ($offer_list as $list){ ?>
-                           <div class="checkbox"><label><input type="checkbox" onclick="categoryoricewisefilters(this.value, '<?php echo 'offer'; ?>','<?php echo ''; ?>');" id="checkbox1" name="products[offers][]" value="<?php echo $list['offers']; ?>"><span>&nbsp;<?php echo number_format($list['offers'], 2, '.', ''); ?></span></label></div>
+                           <div class="checkbox"><label><input type="checkbox" onclick="categoryoricewisefilters(this.value, '<?php echo 'offer'; ?>','<?php echo ''; ?>');" id="checkbox1" name="products[offers][]" value="<?php echo $list['offers']; ?>"><span>&nbsp;<?php echo number_format($list['offers'], 2); ?></span></label></div>
                            <?php } ?>
                         </div>
                      </div>
@@ -797,7 +797,7 @@
               <h6><a href="<?php echo base_url('category/productview/'.base64_encode($productslist['item_id'])); ?>"><?php echo $productslist['item_name']; ?></a></h6>
                <div class="price">
                
-				<div class="text-center" style="color:#187a7d;">₹ <?php echo number_format($item_price, 2 ); ?> 
+				<div class="text-center" style="color:#187a7d;">₹ <?php echo number_format(isset($item_price)?$item_price:'', 2, '.', ''); ?> 
 			<?php if($percentage!=''){ ?> &nbsp;
 			<span class="price-old">₹ <?php echo number_format($orginal_price, 2); ?></span>
 				<span class="label-tags"><p class=" text-success"> <?php echo number_format($percentage, 2, '.', ''); ?>% off</p></span>

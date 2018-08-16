@@ -229,9 +229,13 @@ class Category extends Front_Controller
 			}
 			
 		}
-		foreach (array_unique($ids) as $Li){
-			$uniids[]=array('offers'=>$Li);
-			
+		if(isset($ids) && count($ids)>0){
+			foreach (array_unique($ids) as $Li){
+				$uniids[]=array('offers'=>$Li);
+				
+			}
+		}else{
+			$uniids=array();
 		}
 		$data['offer_list']=$uniids;
 	//echo '<pre>';print_r($productlist);exit;
@@ -952,13 +956,16 @@ public function suitemwiseproductslist(){
 			}
 			
 		}
-		foreach (array_unique($ids) as $Li){
-			$uniids[]=array('offers'=>$Li);
-			
-		}
+		//echo '<pre>';print_r($ids);exit;
+			if(isset($ids) && count($ids)>0){
+				foreach (array_unique($ids) as $Li){
+				$uniids[]=array('offers'=>$Li);
+				
+				}
+			}else{
+				$uniids=array();
+			}
 			$data['offer_list']=$uniids;
-	
-	
 				if(isset($reviewrating) && count($reviewrating)>0){
 					$data['avg_count']=$reviewrating;
 				}else{
@@ -1899,10 +1906,14 @@ public function subitemwise_search(){
 			}
 			
 		}
-		foreach (array_unique($ids) as $Li){
+		if(isset($ids) && count($ids)>0){
+			foreach (array_unique($ids) as $Li){
 			$uniids[]=array('offers'=>$Li);
-			
+			}
+		}else{
+			$uniids=array();
 		}
+		
 		$data['offer_list']=$uniids;
 		//echo '<pre>';print_r($data);exit;
 		 $cartitemids= $this->category_model->get_all_cart_lists_ids();
@@ -2040,9 +2051,13 @@ public function subitemwise_search(){
 						}
 						
 					}
-					foreach (array_unique($ids) as $Li){
-						$uniids[]=array('offers'=>$Li);
-						
+					if(isset($ids) && count($ids)>0){
+						foreach (array_unique($ids) as $Li){
+							$uniids[]=array('offers'=>$Li);
+							
+						}
+					}else{
+						$uniids=array();
 					}
 				$data['offer_list']=$uniids;
 				$cartitemids= $this->category_model->get_all_cart_lists_ids();

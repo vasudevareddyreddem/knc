@@ -1120,7 +1120,7 @@ class Category_model extends MY_Model
 		$this->db->group_by('products.offers');
 		}
 		return $this->db->get()->result_array();*/
-		$sql = "SELECT offer_percentage, offers, offer_expairdate  FROM `products` WHERE `category_id` = '".$catid."' AND `item_status` = 1 AND  offers!='' OR offer_percentage!=''";
+		$sql = "SELECT offer_percentage, offers, offer_expairdate  FROM `products` WHERE `category_id` = '".$catid."' AND `item_status` = 1 AND  (offers!='' OR offer_percentage!='')";
 		return $this->db->query($sql)->result_array();
 	}
 	
@@ -2511,7 +2511,7 @@ public function get_all_subitem_list($catid,$subcatid)
 	public function get_item_all_offer_list($itemid){
 		$date = new DateTime("now");
  		$curr_date = $date->format('Y-m-d h:i:s A');
-		$sql = "SELECT offer_percentage, offers, offer_expairdate  FROM `products` WHERE `itemwise_id` = '".$itemid."' AND `item_status` = 1  AND  offers!='' OR offer_percentage!=''";
+		$sql = "SELECT offer_percentage, offers, offer_expairdate  FROM `products` WHERE `itemwise_id` = '".$itemid."' AND `item_status` = 1  AND (offers!='' OR offer_percentage!='')";
 		return $this->db->query($sql)->result_array();
 	}
 	public function get_all_itemwiseproducts_list($itemid){
