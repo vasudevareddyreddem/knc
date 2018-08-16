@@ -387,7 +387,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //$route['seller_admin/products/(:any)/(:any)'] = "seller_admin/products";
 
-$route['seller_admin/products/(:any)/(:any)/search'] = "seller_admin/products/search";
+//$route['seller_admin/products/(:any)/(:any)/search'] = "seller_admin/products/search";
 
 $route['default_controller'] = 'home';
 

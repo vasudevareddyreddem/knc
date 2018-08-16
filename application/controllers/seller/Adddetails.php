@@ -22,7 +22,7 @@ class Adddetails extends Seller_adddetails{
 	 	{
 		$data['sellerdata']=$this->adddetails_model->get_seller_data($this->session->userdata('seller_id'));		 
 	// echo '<pre>';print_r($data);exit;
-	  $this->load->view('seller/layouts/header');
+	  $this->load->view('seller/html/header');
 	  $this->load->view('seller/adddetails/index',$data);
 	}else{
 		redirect('seller/login');
@@ -97,7 +97,7 @@ class Adddetails extends Seller_adddetails{
 	if($this->session->userdata('seller_id'))
 	 	{
 		$data['getcat'] = $this->products_model->getcatdata();
-		$this->load->view('seller/layouts/header');
+		$this->load->view('seller/html/header');
 		$this->load->view('seller/adddetails/sellercategory', $data);
 		}else{
 		redirect('seller/login');
@@ -182,7 +182,7 @@ class Adddetails extends Seller_adddetails{
 	{  
 		if($this->session->userdata('seller_id'))
 	 	{
-		$this->load->view('seller/layouts/header');
+		$this->load->view('seller/html/header');
 		$data['selectareas']=$this->adddetails_model->get_seleted_areas();		 
 		$data['select_areas']=$this->adddetails_model->get_seletedareas();
 		$data['sellerdata']=$this->adddetails_model->get_seller_storedetails_data($this->session->userdata('seller_id'));		 
@@ -195,7 +195,7 @@ class Adddetails extends Seller_adddetails{
 	{  
 		if($this->session->userdata('seller_id'))
 	 	{
-		$this->load->view('seller/layouts/header');
+		$this->load->view('seller/html/header');
 		$data['sellerdata']=$this->adddetails_model->get_seller_data($this->session->userdata('seller_id'));		 
 		$this->load->view('seller/adddetails/personaldetails',$data);
 	}else{
@@ -325,7 +325,7 @@ class Adddetails extends Seller_adddetails{
 		if($this->session->userdata('seller_id'))
 	 	{
 			//echo '<pre>';print_r($seller_id);exit;
-			$this->load->view('seller/layouts/header');
+			$this->load->view('seller/html/header');
 			$this->load->view('seller/adddetails/setpassword',$data);
 		}else{
 		redirect('seller/login');
@@ -342,7 +342,7 @@ class Adddetails extends Seller_adddetails{
 
 		if ($this->form_validation->run() == FALSE) {
 		$data['change_errors'] = validation_errors();
-		$$this->load->view('seller/layouts/header');
+		$$this->load->view('seller/html/header');
 		$this->load->view('seller/adddetails/setpassword');
 		
 		}else{

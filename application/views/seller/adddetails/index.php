@@ -114,7 +114,7 @@ $('.window').hide();
         <div class="navbar-header logo_style" >
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
       <a class="navbar-brand" href="<?php echo base_url('seller/login'); ?>">
-      <img  src="<?php echo base_url(); ?>assets/seller/images/logo.png" class="img-responsive" style="width: 30%;"/></a>
+      <img  src="<?php echo base_url(); ?>assets/home/images/logo.png" class="img-responsive" style="width: 30%;"/></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
@@ -225,7 +225,7 @@ $('.window').hide();
 <footer class="foot_add_d">
     <div class="container">
       <div class="row">
-                <strong>Copyright &copy; 2016-2017 Cartinhour.</strong> All rights reserved.
+                <strong>Copyright &copy; 2017-2018 Order organic.</strong> All rights reserved.
       </div>
     </div>
   </footer>
