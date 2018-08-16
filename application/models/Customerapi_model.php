@@ -443,8 +443,13 @@ class Customerapi_model extends MY_Model
         return $this->db->get()->row_array();
 	}
 	public function all_product_details($itemid){
-		$this->db->select('products.*,seller_store_details.store_name')->from('products');
+		$this->db->select('products.item_id,products.seller_id,products.category_id,products.subcategory_id,products.subitemid,products.itemwise_id,products.item_name,products.item_status,products.item_cost,products.special_price,products.item_quantity,products.highlights,products.description,products.warranty_summary,products.warranty_type,products.service_type,products.return_policy,products.brand,products.product_code,products.Processor,products.screen_size,products.internal_memeory,products.camera,products.sim_type,products.os,products.colour,products.ram,products.model_name,products.model_id,products.no_of_copartments,products.expand_memory,products.primary_camera,products.primary_camera_feature,products.secondary_camera,products.secondary_camera_feature,products.video_recording,products.hd_recording,products.flash,products.other_camera_features,products.battery_capacity,products.talk_time,products.standby_time,products.operating_frequency,products.preinstalled_browser,products.2g,products.3g,products.4g,products.wifi,products.gps,products.edge,products.edge_features,products.bluetooth,products.nfc,products.usb_connectivity,products.music_player,products.video_player,products.audio_jack,products.gpu,products.sim_size,products.sim_supported,products.call_memory,products.sms_memory,products.phone_book_memory,products.sensors,products.java,products.insales_package,products.dislay_resolution,products.display_type,products.ingredients,products.key_feature,products.unit,products.packingtype,products.disclaimer,products.colors,products.wash_care,products.style_code,products.look,products.size,products.material,products.occasion,products.pattern,products.sleeve,products.fit,products.gender,products.collar_type,products.set_contents,products.type,products.neck_type,products.package_contents,products.style,products.age,products.ideal_for,products.blouse_length,products.saree_length,products.pockets,products.length,products.waterproof,products.laptop_compartment,products.closure,products.wheels,products.no_of_pockets,products.inner_material,products.product_dimension,products.f_stop,products.picture_angle,products.minimum_focusing_distance,products.aperture_withmaxfocal_length,products.aperture_with_minfocal_length,products.maximum_focal_length,products.maximum_reproduction_ratio,products.lens_construction,products.lens_hood,products.lens_case,products.lens_cap,products.filter_attachment_size,products.dimension,products.weight,products.resolution,products.sensor_type,products.lcd_screen_size,products.battery_type,products.lens_mount,products.exposure_mode,products.meter_coupling,products.lens_auto_focus,products.focus_length,products.focus_point,products.focus_lock,products.manual_focus,products.af_area_mode,products.detection_range,products.number_of_dots_effective_pixels,products.brightness_setting,products.viewfinder,products.viewfindermagnifiaction,products.aspect_ratio,products.image_size,products.image_resolution,products.video_resolution,products.flash_mode,products.flash_range,products.built_in_flash,products.external_flash,products.audio_recording_device,products.audio_recording_format,products.video_compression,products.face_detection,products.video_format,products.image_format,products.microphone,products.pictbridge,products.card_type,products.supplied_battery,products.ac_adapter,products.iso_rating,products.iso_sensitivity,products.dust_reduction,products.metering_method,products.metering_system,products.supported_languages,products.sync_terminal,products.view_finder,products.white_balancing,products.hdmi,products.self_timer,products.scene_modes,products.environment,products.series,products.part_number,products.hdd_capacity,products.processorbrand,products.variant,chipset,products.clock_speed,products.cache,products.screen_type,products.graphic_processor,products.memory_slots,products.rpm,products.optical_drive,products.wan,products.ethernet,products.vgaport,products.usb_port,products.hdmi_port,products.multi_card_slot,products.web_camera,products.keyboard,products.speakers,products.mic_in,products.power_supply,products.battery_backup,products.battery_cell,products.adapter,products.office,products.fingerprint_point,products.noise_reduction,products.connectivity,products.headphone_jack,products.compatible_for,products.total_power_output,products.sound_system,products.speaker_driver,products.power,products.wired_wireless,products.bluetooth_range,products.model_series,products.installation,products.warranty_card,products.functions,products.printer_type,products.interface,products.printer_output,products.max_print_resolution,products.print_speed,products.scanner_type,products.document_size,products.scanning_resolution,products.copies_from,products.copy_size,products.iso_29183,products.noise_level,products.paper_hold_input,products.paper_hold_output,products.paper_size,products.print_margin,products.standby,products.operating_temperature_range,products.frequency,products.sole_material,products.fastening,products.toe_shape,products.ean_upc,products.useage,products.factor,products.connector1,products.connector2,products.portable,products.maximumbrightness,products.projectionratio,products.contrastratio,products.outputperspeaker,products.powersupply,products.powerconsumption,products.minopertingtemperature,products.maxopertingtemperature,products.remotecontrol,products.voltagerange,products.turbospeed,products.graphics,products.capacity,products.datarate,products.technology,products.externaldrivebays,products.internaldrivebays,products.micport,products.inputvoltage,products.outputvoltage,products.inputfrequency,products.offer_percentage,products.offer_amount,products.offer_expairdate,products.yes,products.name,seller_store_details.store_name')->from('products');
 		$this->db->join('seller_store_details', 'seller_store_details.seller_id = products.seller_id', 'left');
+		$this->db->where('item_id', $itemid);
+        return $this->db->get()->row_array();
+	}
+	public function product_img_details($itemid){
+		$this->db->select('item_image,item_image1,item_image2,item_image3,item_image4,item_image5,item_image6,item_image7')->from('products');
 		$this->db->where('item_id', $itemid);
         return $this->db->get()->row_array();
 	}
@@ -506,7 +511,7 @@ class Customerapi_model extends MY_Model
 		return $insert_id = $this->db->insert_id();
 	}
 	public function get_cart_products($cust_id){
-		$this->db->select('cart.*,products.item_name,products.item_image,products.product_code,products.colour,products.ram,products.internal_memeory,products.item_cost,products.offer_amount,products.offer_percentage,offer_amount,products.offer_combo_item_id,products.offer_type,products.offer_expairdate,products.offer_time,products.item_quantity,sellers.seller_mobile,sellers.seller_email')->from('cart');
+		$this->db->select('cart.*,products.item_name,products.item_image,products.product_code,products.colour,products.ram,products.internal_memeory,products.item_cost,products.offer_amount,products.offer_percentage,offer_amount,products.offer_combo_item_id,products.offer_type,products.offer_expairdate,products.item_quantity,sellers.seller_mobile,sellers.seller_email')->from('cart');
 		$this->db->join('products', 'products.item_id = cart.item_id', 'left');
 		$this->db->join('sellers', 'sellers.seller_id = products.seller_id', 'left');
 		$this->db->where('cart.cust_id', $cust_id);
@@ -2325,7 +2330,7 @@ class Customerapi_model extends MY_Model
 	 
 	 public function get_same_products($subcat,$name,$item_id)
 	{
-		$this->db->select('products.item_id,products.category_id,products.subcategory_id,products.colour,products.internal_memory,products.item_image')->from('products');
+		$this->db->select('products.item_id,products.category_id,products.subcategory_id,products.colour,products.internal_memeory,products.item_image')->from('products');
 		$this->db->where('subcategory_id',$subcat);
 		$this->db->where('item_name', $name);
 		$this->db->where('item_id !=', $item_id);
@@ -2441,6 +2446,11 @@ class Customerapi_model extends MY_Model
 	}
 	public function get_details_customer($cid){
 		$this->db->select('*')->from('customers');
+		$this->db->where('customer_id',$cid);
+		return $this->db->get()->row_array();
+	}
+	public function get_customer_basic_details($cid){
+		$this->db->select('customer_id,cust_firstname,cust_lastname,cust_email,cust_mobile,cust_propic,address1,address2,pincode,landmark,city,state')->from('customers');
 		$this->db->where('customer_id',$cid);
 		return $this->db->get()->row_array();
 	}
@@ -3042,9 +3052,110 @@ class Customerapi_model extends MY_Model
         $this->db->where('products.category_id',$catid);
 		return $this->db->get()->result_array();
 	}
+	public function get_menu_category_wise(){
+		$this->db->select('products.category_id,category.category_name,category.category_image')->from('products');
+		$this->db->join('category', 'category.category_id = products.category_id', 'left');
+		$this->db->group_by('products.category_id');
+		$this->db->where('products.category_id !=','');
+		$this->db->where('products.item_status',1);
+		$return=$this->db->get()->result_array();
+		foreach($return as $list){
+			$p_list=$this->get_category_wise_subcateory_products_list($list['category_id']);
+			$data[$list['category_id']]=$list;
+			$data[$list['category_id']]['subcategory_list']=$p_list;
+		}
+		foreach($data as $Li){
+			$da[]=$Li;		}
+		if(!empty($da)){
+			return $da;
+		}
+		//echo '<pre>';print_r($data);exit;
+	}
+	public  function get_category_wise_subcateory_products_list($catid){
+		$this->db->select('subcategories.subcategory_id,subcategories.subcategory_name,subcategories.subcategory_image')->from('products');
+		$this->db->join('subcategories', 'subcategories.subcategory_id = products.subcategory_id', 'left');
+
+        $this->db->where('products.category_id',$catid);
+        $this->db->group_by('products.subcategory_id');
+		$this->db->where('products.item_status',1);
+		return $this->db->get()->result_array();
+	}
 	/*testing  purpose**/
 		
+	/*get customer lastest shopping address*/
+	public  function get_customer_lastest_shopping_address($cus_id){
+		$this->db->select('address_id,title,name,emal_id,mobile,address1,address2,landmark,city,state,pincode')->from('customer_address');
+		$this->db->where('customer_address.cust_id',$cus_id);
+		$this->db->order_by('customer_address.address_id','desc');
+		return $this->db->get()->row_array();
+	}
 	
-
+	/* android app filters purpose*/
+	public function get_all_brand_list_subcategory_wise($subcat)
+	{
+	
+		$this->db->select('products.brand as val')->from('products');
+		$this->db->where('subcategory_id',$subcat);
+		$this->db->where('item_status',1);
+		$this->db->where('brand!=','');
+		$this->db->group_by('brand');
+		return $this->db->get()->result_array();
+		
+	}
+	public  function get_all_color_list_subcategory_wise($subcat){
+		$this->db->select('products.colour as val')->from('products');
+		$this->db->where('products.subcategory_id',$subcat);
+		$this->db->where('products.item_status',1);
+		$this->db->where('products.colour!=','');
+		$this->db->group_by('products.colour');
+		return $this->db->get()->result_array();
+	}
+	public function get_all_size_list_subcategory_wise($subcat){
+		$this->db->select('products.size as val')->from('products');
+		$this->db->where('products.category_id',$subcat);
+		$this->db->where('products.item_status',1);
+		$this->db->where('products.size!=','');
+		$this->db->group_by('products.size');
+		return $this->db->get()->result_array();
+	}
+	public function get_all_price_list_subcategory_wise($subcat)
+	{
+		$this->db->select('products.item_cost,products.special_price,products.offer_expairdate')->from('products');
+		$this->db->where('subcategory_id',$subcat);
+		$this->db->where('item_status',1);
+		$this->db->where('item_cost!=','');
+		$this->db->group_by('item_cost');
+		return $this->db->get()->result_array();
+	}
+	public function get_all_offer_list_subcategory_wise($subcat)
+	{
+		$sql = "SELECT offer_percentage, offers, offer_expairdate  FROM `products` WHERE `subcategory_id` = '".$subcat."' AND `item_status` = 1";
+		return $this->db->query($sql)->result_array();
+	}
+	public function get_filters_wise_result_list($sub_cat_id,$brand,$color,$offers,$min_amt,$max_amt){
+		
+		$amtwhere='item_cost BETWEEN '.'"'.$min_amt.'"'.' AND '.$max_amt;
+		$date = new DateTime("now");
+ 		$curr_date = $date->format('Y-m-d h:i:s A');
+		$this->db->select('products.item_id,products.category_id,products.subcategory_id,products.subitemid,products.itemwise_id,products.item_name,products.item_status,products.item_cost,products.special_price,products.item_quantity,products.offer_percentage,products.offer_amount,products.offer_expairdate,products.offer_type,products.discount,products.offers,products.item_image')->from('products');
+		$this->db->where($amtwhere);
+		if($brand!=''){
+			$this->db->where_in('brand','"'.$brand.'"',false);
+		
+		}
+		if($color!=''){
+			$this->db->where_in('colour','"'.$color.'"',false);
+		
+		}if($offers!=''){
+			$this->db->where_in('if(`offer_expairdate`>="DATE(Y-m-d h:i:s A)",`offer_percentage`,`offers` )', '"'.$offers.'"', false);
+		}
+		
+		$this->db->where('item_status',1);
+		$this->db->where('subcategory_id',$sub_cat_id);
+		
+		return $this->db->get()->result_array();
+		
+	}
+	
 
 }

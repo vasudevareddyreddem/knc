@@ -659,7 +659,7 @@ public function delete_banner($id,$sid)
 	}
 	public function categorywise_product_quantity($categoryid,$seller_id)
 	{
-		$this->db->select('products.item_name,products.item_quantity,products.skuid,products.item_status,category.category_name')->from('products');
+		$this->db->select('products.item_name,products.item_quantity,products.product_code,products.item_status,category.category_name')->from('products');
 		$this->db->join('category', 'category.category_id = products.category_id', 'left');
 		//$this->db->group_by('subcategories.subcategory_id');
 		$this->db->where('products.seller_id', $seller_id);

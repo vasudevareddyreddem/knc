@@ -204,8 +204,13 @@ class Category extends Front_Controller
 			}
 			
 		}
-		$minamt = min($amounts);
-		$maxamt= max($amounts);
+		if(isset($amounts) && count($amounts)>0){
+						$minamt = min($amounts);
+						$maxamt= max($amounts);
+					}else{
+						$minamt = '';
+						$maxamt= '';
+					}
 		//echo '<pre>';print_r( $amounts);exit;
 		$data['minimum_price'] = array('item_cost'=>$minamt);
 		$data['maximum_price'] = array('item_cost'=>$maxamt);
@@ -588,9 +593,13 @@ public function suitemwiseproductslist(){
 				$amounts[]=$list['special_price'];
 			}
 			
-		}
-		$minamt = min($amounts);
-		$maxamt= max($amounts);
+		}if(isset($amounts) && count($amounts)>0){
+						$minamt = min($amounts);
+						$maxamt= max($amounts);
+					}else{
+						$minamt = '';
+						$maxamt= '';
+					}
 		$data['minimum_price'] = array('item_cost'=>$minamt);
 		$data['maximum_price'] = array('item_cost'=>$maxamt);
 		//echo max($data['price_list']);
@@ -742,9 +751,13 @@ public function suitemwiseproductslist(){
 				$amounts[]=$list['special_price'];
 			}
 			
-		}
-		$minamt = min($amounts);
-		$maxamt= max($amounts);
+		}if(isset($amounts) && count($amounts)>0){
+						$minamt = min($amounts);
+						$maxamt= max($amounts);
+					}else{
+						$minamt = '';
+						$maxamt= '';
+					}
 		$data['minimum_price'] = array('item_cost'=>$minamt);
 		$data['maximum_price'] = array('item_cost'=>$maxamt);
 		//echo max($data['price_list']);
@@ -912,10 +925,13 @@ public function suitemwiseproductslist(){
 			}
 			
 		}
-		
-		//echo '<pre>';print_r($amounts);exit;
-		$minamt = min($amounts);
-		$maxamt= max($amounts);
+		if(isset($amounts) && count($amounts)>0){
+						$minamt = min($amounts);
+						$maxamt= max($amounts);
+					}else{
+						$minamt = '';
+						$maxamt= '';
+					}
 		//echo '<pre>';print_r( $amounts);exit;
 		$data['minimum_price'] = array('item_cost'=>$minamt);
 		$data['maximum_price'] = array('item_cost'=>$maxamt);
@@ -1580,8 +1596,13 @@ public function subitemwise_search(){
 					}
 
 				}
-				$minamt = min($amounts);
-				$maxamt= max($amounts);
+				if(isset($amounts) && count($amounts)>0){
+						$minamt = min($amounts);
+						$maxamt= max($amounts);
+					}else{
+						$minamt = '';
+						$maxamt= '';
+					}
 				//echo '<pre>';print_r( $amounts);exit;
 				$data['minimum_price'] = array('item_cost'=>$minamt);
 				$data['maximum_price'] = array('item_cost'=>$maxamt);
@@ -1853,8 +1874,13 @@ public function subitemwise_search(){
 			}
 			
 		}
-		$minamt = min($amounts);
-		$maxamt= max($amounts);
+		if(isset($amounts) && count($amounts)>0){
+						$minamt = min($amounts);
+						$maxamt= max($amounts);
+					}else{
+						$minamt = '';
+						$maxamt= '';
+					}
 		//echo '<pre>';print_r( $amounts);exit;
 		$data['minimum_price'] = array('item_cost'=>$minamt);
 		$data['maximum_price'] = array('item_cost'=>$maxamt);
@@ -1988,8 +2014,14 @@ public function subitemwise_search(){
 						$amounts[]=$list['special_price'];
 					}
 				 }
-					$minamt = min($amounts);
-					$maxamt= max($amounts);
+					if(isset($amounts) && count($amounts)>0){
+						$minamt = min($amounts);
+						$maxamt= max($amounts);
+					}else{
+						$minamt = '';
+						$maxamt= '';
+					}
+					
 					//echo '<pre>';print_r($data['price_list']);exit;
 					$data['minimum_price'] = array('item_cost'=>$minamt);
 					$data['maximum_price'] = array('item_cost'=>$maxamt);
@@ -2625,8 +2657,13 @@ public function subitemwise_search(){
 						$amounts[]=$list['special_price'];
 					}
 				 }
-					$minamt = min($amounts);
-					$maxamt= max($amounts);
+					if(isset($amounts) && count($amounts)>0){
+						$minamt = min($amounts);
+						$maxamt= max($amounts);
+					}else{
+						$minamt = '';
+						$maxamt= '';
+					}
 					//echo '<pre>';print_r( $amounts);exit;
 					$data['minimum_price'] = array('item_cost'=>$minamt);
 					$data['maximum_price'] = array('item_cost'=>$maxamt);
@@ -2770,8 +2807,13 @@ public function subitemwise_search(){
 						$amounts[]=$list['item_cost'];
 					}
 				 }
-					$minamt = min($amounts);
-					$maxamt= max($amounts);
+					if(isset($amounts) && count($amounts)>0){
+						$minamt = min($amounts);
+						$maxamt= max($amounts);
+					}else{
+						$minamt = '';
+						$maxamt= '';
+					}
 					//echo '<pre>';print_r( $amounts);exit;
 					$data['minimum_price'] = array('item_cost'=>$minamt);
 					$data['maximum_price'] = array('item_cost'=>$maxamt);
@@ -3415,8 +3457,13 @@ public function subitemwise_search(){
 						$amounts[]=$list['item_cost'];
 					}
 				 }
-					$minamt = min($amounts);
-					$maxamt= max($amounts);
+					if(isset($amounts) && count($amounts)>0){
+						$minamt = min($amounts);
+						$maxamt= max($amounts);
+					}else{
+						$minamt = '';
+						$maxamt= '';
+					}
 					//echo '<pre>';print_r( $amounts);exit;
 					$data['minimum_price'] = array('item_cost'=>$minamt);
 					$data['maximum_price'] = array('item_cost'=>$maxamt);
@@ -3550,7 +3597,7 @@ public function subitemwise_search(){
 				$data['style_code']= $this->category_model->get_group_all_pricewise_list($catid,'style_code',$brand,$minprice);
 				$data['inner_material']= $this->category_model->get_group_all_pricewise_list($catid,'inner_material',$brand,$minprice);
 				$data['waterproof']= $this->category_model->get_group_all_pricewise_list($catid,'waterproof',$brand,$minprice);
-				 //echo '<pre>';print_r($data['price_list']);
+				// echo '<pre>';print_r($data['price_list']);
 				 foreach ($data['price_list'] as $list) {
 					$date = new DateTime("now");
 					$curr_date = $date->format('Y-m-d h:i:s A');
@@ -3560,8 +3607,14 @@ public function subitemwise_search(){
 						$amounts[]=$list['item_cost'];
 					}
 				 }
+					if(isset($amounts) && count($amounts)>0){
 						$minamt = min($amounts);
-					$maxamt= max($amounts);
+						$maxamt= max($amounts);
+					}else{
+						$minamt = '';
+						$maxamt= '';
+					}
+					
 					//echo '<pre>';print_r( $amounts);exit;
 					//$data['minimum_price'] = array('item_cost'=>$minamt);
 					$data['minimum_price'] = array('item_cost'=>$minprice);
@@ -4216,8 +4269,13 @@ public function subitemwise_search(){
 						$amounts[]=$list['special_price'];
 					}
 				 }
-					$minamt = min($amounts);
-					$maxamt= max($amounts);
+					if(isset($amounts) && count($amounts)>0){
+						$minamt = min($amounts);
+						$maxamt= max($amounts);
+					}else{
+						$minamt = '';
+						$maxamt= '';
+					}
 					//echo '<pre>';print_r( $amounts);exit;
 					$data['minimum_price'] = array('item_cost'=>$data['previousdata'][0]['minimum_price']);
 					$data['maximum_price'] = array('item_cost'=>$data['previousdata'][0]['maximum_price']);

@@ -31,17 +31,15 @@ class CustomerApi extends REST_Controller {
 		$username=$this->input->get('username');
 		$password=$this->input->get('password');	
 		if($username==''){
-		$message = array('status'=>0,'message'=>'Username id is required!');
-		$this->response($message, REST_Controller::HTTP_NOT_FOUND);
-		
-		}elseif($password==''){
-		$message = array('status'=>0,'message'=>'Password is required!');
-		$this->response($message, REST_Controller::HTTP_NOT_FOUND);
-		
+			$message = array('status'=>0,'message'=>'Username id is required!');
+			$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+		}
+		if($password==''){
+			$message = array('status'=>0,'message'=>'Password is required!');
+			$this->response($message, REST_Controller::HTTP_NOT_FOUND);
 		}
 		$cheking =$this->Customerapi_model->mobile_checking($username);
 		if(count($cheking)>0){
-			
 			$checkemail =filter_var($username, FILTER_VALIDATE_EMAIL);
 				if($checkemail==''){
 					$message = array('status'=>0,'message'=>'Mobile number already exist!');
@@ -54,12 +52,19 @@ class CustomerApi extends REST_Controller {
 		}else{
 			$email =filter_var($username, FILTER_VALIDATE_EMAIL);
 				if($email==''){
-					$mobile=$username;
-					$email='';
+					 if (!is_numeric($email)) {
+						$message = array('status'=>0,'message'=>'Please enter a correct value.');
+						$this->response($message, REST_Controller::HTTP_NOT_FOUND); 
+					 }else{
+						$mobile=$username;
+						$email='';
+					 }
 				}else{
+					
 					$mobile='';
 					$email=$username;
 				}
+				
 			$details=array(
 				'cust_email'=>$email,
 				'cust_mobile'=>$mobile,
@@ -70,7 +75,7 @@ class CustomerApi extends REST_Controller {
 				);
 				$customerdetails = $this->Customerapi_model->save_customer($details);
 				if(count($customerdetails)>0){
-					$custdetails=$this->Customerapi_model->get_details_customer($customerdetails);
+					$custdetails=$this->Customerapi_model->get_customer_basic_details($customerdetails);
 						$message = array('status'=>1,'cust_id'=>$customerdetails,'details'=>$custdetails, 'message'=>'Registration successfully completed!');
 						$this->response($message, REST_Controller::HTTP_OK);
 					}else{
@@ -776,6 +781,7 @@ class CustomerApi extends REST_Controller {
 		//$product_details['imagepath']='https://cartinhours.com/uploads/products/';
 		//echo '<pre>';print_r($product_details);exit;
 		//echo $this->db->last_query();exit;
+		$images_list= $this->Customerapi_model->product_img_details($item_id);
 		$sameproducts_list= $this->Customerapi_model->get_same_products($product_details['subcategory_id'],$product_details['item_name'],$product_details['item_id']);
 		$sameproducts_size= $this->Customerapi_model->get_same_products_size($product_details['subcategory_id'],$product_details['item_name'],$product_details['item_id']);
 		$sameproducts_colour= $this->Customerapi_model->get_same_products_color($product_details['subcategory_id'],$product_details['item_name'],$product_details['item_id']);
@@ -788,7 +794,30 @@ class CustomerApi extends REST_Controller {
 		$uk_size_list=$this->Customerapi_model->get_product_uksize_details($item_id);
 		
 		
-			$message = array('status'=>1,'path'=>base_url('uploads/products/'),'message'=>'product details','details'=>$product_details,'colorlist'=>$color_list,'sizelist'=>$size_list,'uksizelist'=>$uk_size_list,'specifications'=>$specification_list,'sameproducts_list'=>$sameproducts_list,'gbsizelist'=>$sameproducts_size,'colourlist'=>$sameproducts_colour,'ramlist'=>$sameproducts_ram,'descriptions'=>$des,'imagepath'=>base_url('uploads/products/'));
+			$message = array(
+			'status'=>1,
+			'message'=>'product details are found',
+			'details'=>$product_details,
+			'images'=>array(
+				array('img1'=>$images_list['item_image']),
+				array('img1'=>$images_list['item_image1']),
+				array('img1'=>$images_list['item_image2']),
+				array('img1'=>$images_list['item_image3']),
+				array('img1'=>$images_list['item_image4']),
+				array('img1'=>$images_list['item_image5']),
+				array('img1'=>$images_list['item_image6']),
+				array('img1'=>$images_list['item_image7'])
+			),
+			'colorlist'=>$color_list,
+			'sizelist'=>$size_list,
+			'uksizelist'=>$uk_size_list,
+			//'specifications'=>$specification_list,
+			'same_product_list'=>$sameproducts_list,
+			'same_product_gbsizelist'=>$sameproducts_size,
+			'same_product_colourlist'=>$sameproducts_colour,
+			'same_product_ramlist'=>$sameproducts_ram,
+			'descriptions'=>$des,
+			'imagepath'=>base_url('uploads/products/'));
 			$this->response($message,REST_Controller::HTTP_OK);
 		}else{
 			$message = array('status'=>0,'message'=>'product Id is not valid one');
@@ -1064,9 +1093,9 @@ class CustomerApi extends REST_Controller {
 						
 							$msg=$six_digit_random_number.'is your Cartinhours verification code one-time use. Please DO NOT share this OTP with anyone to ensure account security ';
 							$this->load->library('email');
-							$this->email->from('admin@order-organic.com', 'CartInHours');
+							$this->email->from('admin@cartinhours.com', 'CartInHours');
 							$this->email->to($email);
-							$this->email->subject('Order-organic - Forgot Password');
+							$this->email->subject('CartInHours - Forgot Password');
 							$html =$msg;
 							//echo $html;exit;
 							$this->email->message($html);
@@ -1126,15 +1155,15 @@ class CustomerApi extends REST_Controller {
 	}
 	public function savecustomerprofile_post(){
 		
-			$customer_id=$this->input->get('customer_id');
-			$fname=$this->input->get('fname');	
-			$lname=$this->input->get('lname');	
-			$email=$this->input->get('email');	
-			$mobile=$this->input->get('mobile');	
-			$address1=$this->input->get('address1');	
-			$address2=$this->input->get('address2');	
-			$area=$this->input->get('location');	
-			$image=$this->input->get('profilepic');	
+			$customer_id=$this->post('customer_id');
+			$fname=$this->post('fname');	
+			$lname=$this->post('lname');	
+			$email=$this->post('email');	
+			$mobile=$this->post('mobile');	
+			$address1=$this->post('address1');	
+			$address2=$this->post('address2');	
+			$area=$this->post('location');	
+			$image=$this->post('profilepic');	
 			if($customer_id==''){
 			$message = array('status'=>0,'message'=>'customer id is required!');
 			$this->response($message, REST_Controller::HTTP_NOT_FOUND);
@@ -1165,6 +1194,17 @@ class CustomerApi extends REST_Controller {
 					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
 				}
 			}
+			
+			if(isset($_FILES['profilepic']['name']) && $_FILES['profilepic']['name']!=''){
+				$pic=$_FILES['profilepic']['name'];
+				$picname = str_replace(" ", "", $pic);
+				$imagename=microtime().basename($picname);
+				$imgname = str_replace(" ", "", $imagename);
+				move_uploaded_file($_FILES['profilepic']['tmp_name'], 'uploads/profile/'.$imgname);
+				
+			}else{
+				$imgname='';
+			}
 			$saveprofile=array(
 					'cust_firstname'=>$fname,
 					'cust_lastname'=>$lname,
@@ -1173,13 +1213,13 @@ class CustomerApi extends REST_Controller {
 					'address1'=>$address1,
 					'address2'=>isset($address2)?$address2:'',
 					'area'=>isset($area)?$area:'',
-					'cust_propic'=>isset($image)?$image:'',
+					'cust_propic'=>isset($imgname)?$imgname:'',
 					'create_at'=>date('Y-m-d H:i:s'),
 					);
 
 					$saveprofile = $this->Customerapi_model->save_customer_profile($customer_id,$saveprofile);
 					if(count($saveprofile)>0){
-						$message = array('status'=>1,'imagepath'=>base_url('uploads/profile/'),'customer_id'=>$customer_id,'message'=>'profile successfully Updated');
+						$message = array('status'=>1,'customer_id'=>$customer_id,'message'=>'profile successfully Updated');
 						$this->response($message, REST_Controller::HTTP_OK);	
 					}else{
 						$message = array('status'=>0,'message'=>'Technical problem will occurred .Please try again');
@@ -1232,7 +1272,7 @@ class CustomerApi extends REST_Controller {
 			$message = array('status'=>0,'message'=>'Customer id is required!');
 			$this->response($message, REST_Controller::HTTP_NOT_FOUND);
 			}
-		$cust_details=$this->Customerapi_model->customer_details($customer_id);
+		$cust_details=$this->Customerapi_model->get_customer_basic_details($customer_id);
 		//echo '<pre>';print_r($wishlist);exit;
 		if(count($cust_details)>0){
 		
@@ -2463,9 +2503,9 @@ class CustomerApi extends REST_Controller {
 							$this->load->library('email');
 							$this->email->set_newline("\r\n");
 							$this->email->set_mailtype("html");
-							$this->email->from('Order-organic.com');
+							$this->email->from('cartinhours.com');
 							$this->email->to($custdetails['seller_email']);
-							$this->email->subject('Order organic - Order Return');
+							$this->email->subject('Cartinhours - Order Return');
 							$html = $this->load->view('email/orderreturn.php', $messagelis, true); 
 							//echo $html;exit;
 							$this->email->message($html);
@@ -2751,7 +2791,7 @@ class CustomerApi extends REST_Controller {
 									$six_digit_random_number = mt_rand(100000, 999999);
 									$username=$this->config->item('smsusername');
 									$pass=$this->config->item('smspassword');
-										$msg=' Your Order organic verification code is '.$six_digit_random_number;
+										$msg=' Your cartinhour verification code is '.$six_digit_random_number;
 										$ch = curl_init();
 										curl_setopt($ch, CURLOPT_URL,"http://bhashsms.com/api/sendmsg.php");
 										curl_setopt($ch, CURLOPT_POST, 1);
@@ -3005,9 +3045,9 @@ class CustomerApi extends REST_Controller {
 					$this->load->library('email');
 					$this->email->set_newline("\r\n");
 					$this->email->set_mailtype("html");
-					$this->email->from('Order-organic.com');
+					$this->email->from('cartinhours.com');
 					$this->email->to($items['seller_email']);
-					$this->email->subject('Order organic - Order Confirmation');
+					$this->email->subject('Cartinhours - Order Confirmation');
 					$html = $this->load->view('email/sellerorederconfirmation.php', $messagelis, true); 
 					//echo $html;exit;
 					$this->email->message($html);
@@ -3052,9 +3092,9 @@ class CustomerApi extends REST_Controller {
 						$this->load->library('email');
 						$this->email->set_newline("\r\n");
 						$this->email->set_mailtype("html");
-						$this->email->from('order-organic.com');
+						$this->email->from('cartinhours.com');
 						$this->email->to($customerdetails['cust_email']);
-						$this->email->subject('Order organic - Order Confirmation');
+						$this->email->subject('Cartinhours - Order Confirmation');
 						$html = $this->load->view('email/orderconfirmation.php', $data, true); 
 						//echo $html;exit;
 						$this->email->message($html);
@@ -3135,9 +3175,9 @@ class CustomerApi extends REST_Controller {
 					$this->load->library('email');
 					$this->email->set_newline("\r\n");
 					$this->email->set_mailtype("html");
-					$this->email->from('order-organic.com');
+					$this->email->from('cartinhours.com');
 					$this->email->to($custdetails['cust_email']);
-					$this->email->subject('Order organic - Order Cancellation');
+					$this->email->subject('Cartinhours - Order Cancellation');
 					$html = $this->load->view('email/customerordercancel.php', $messagelis, true); 
 					//echo $html;exit;
 					$this->email->message($html);
@@ -3541,6 +3581,7 @@ public function homeapi_get()
 		$offerforyou=$this->Customerapi_model->get_offerforyou_categorywise();
 		$recentlyviewedlist=$this->Customerapi_model->recently_viewed_producrs();
 		$categorywise_plist=$this->Customerapi_model->get_category_wise_products_list();
+		
 		if(isset($recentlyviewedlist) && count($recentlyviewedlist)>0){
 		foreach ($recentlyviewedlist as $productslist){
 					
@@ -3575,20 +3616,51 @@ public function homeapi_get()
 		}else{
 			$cat_wise_plist[]=array();
 		}
+		if(count($topoffer)>0){
+			$top=$topoffer;
+		}else{
+			$top=array();
+		}
+		if(count($topoffer)>0){
+			$top=$topoffer;
+		}else{
+			$top=array();
+		}if(count($offerforyou)>0){
+			$off=$offerforyou;
+		}else{
+			$off=array(0);
+		}
+		if(count($dealsffer)>0){
+			$deal=$dealsffer;
+		}else{
+			$deal=array();
+		}if(count($seasonffer)>0){
+			$sean=$seasonffer;
+		}else{
+			$sean=array();
+		}if(count($recentlyviewed)>0){
+			$recnt=$recentlyviewed;
+		}else{
+			$recnt=array();
+		}if(count($trendingffer)>0){
+			$trend=$trendingffer;
+		}else{
+			$trend=array();
+		}
 		$message = array
 		(
 			'status'=>1,
 			'banners1'=>$bannerslist,
 			'categorylist'=>$categories,
-			'topoffer'=>$topoffer,
+			'topoffer'=>$top,
 			'banners2'=>$position_two,
-			'trendingproducts'=>$trendingffer,
-			'offersforyou'=>$offerforyou,
+			'trendingproducts'=>$trend,
+			'offersforyou'=>$off,
 			'banners3'=>$position_three,
-			'dealsoftheday'=>$dealsffer,
-			'seasonsales'=>$seasonffer,
+			'dealsoftheday'=>$deal,
+			'seasonsales'=>$sean,
 			'banners4'=>$position_four,
-			'recentlyviewed'=>$recentlyviewed,
+			'recentlyviewed'=>$recnt,
 			'categorywiseproductlist'=>$cat_wise_plist,
 			'categoryimage'=>base_url('assets/categoryimages/'),
 			'imagepath'=>base_url('uploads/products/'),
@@ -3760,7 +3832,7 @@ public function homeapi_get()
 							$step_sixlist[]=$list;
 						}
 				}else{
-					$step_sixlist[]=array();
+					$step_sixlist=array();
 				}
 		$step_seven= $this->Customerapi_model->step_seven_data(3);
 		$step_eight= $this->Customerapi_model->step_eight_data($catid);
@@ -3804,7 +3876,7 @@ public function homeapi_get()
 						$step_ninelist[]=$list;
 					}
 			}else{
-				$step_ninelist[]=array();
+				$step_ninelist=array();
 			}
 			
 			if($catid==21 || $catid==31 || $catid==19 || $catid==24 || $catid==35 ||  $catid==28 ||  $catid==20){
@@ -3851,7 +3923,7 @@ public function homeapi_get()
 						$step_tenlist[]=$list;
 					}
 			}else{
-				$step_tenlist[]=array();
+				$step_tenlist=array();
 			}
 		$step_eleven= $this->Customerapi_model->step_eleven_data(4);
 		$step_twelve= $this->Customerapi_model->step_twelve_data($catid, $customer_id);
@@ -3880,7 +3952,7 @@ public function homeapi_get()
 							$step_twelvelist[]=$list;
 						}
 				}else{
-					$step_twelvelist[]=array();
+					$step_twelvelist=array();
 				}
 				
 			$step_thirteen= $this->Customerapi_model->step_thirteen_data($catid);
@@ -3909,7 +3981,7 @@ public function homeapi_get()
 							$step_thirteenlist[]=$list;
 						}
 				}else{
-					$step_thirteenlist[]=array();
+					$step_thirteenlist=array();
 				}
 			$step_fourteen= $this->Customerapi_model->step_fourteen_data(5);
 			//echo '<pre>';print_r($step_fourteen);exit;
@@ -3922,13 +3994,13 @@ public function homeapi_get()
 			'banners2'=>$position_four,
 			'shopbyprice'=>$step_five,
 			'shopbyx'=>$step_sixlist,
-			'shopbyxlabel'=>$step_sixlabel,
+			'shopbyxlabel'=>isset($step_sixlabel)?$step_sixlabel:'',
 			'banners3'=>$step_seven,
 			'subitems'=>$step_eight,
 			'shopbyy'=>$step_ninelist,
-			'shopbyylabel'=>$step_ninelabel,
+			'shopbyylabel'=>isset($step_ninelabel)?$step_ninelabel:'',
 			'shopbyz'=>$step_tenlist,
-			'shopbyzlable'=>$step_tenlabel,
+			'shopbyzlable'=>isset($step_tenlabel)?$step_tenlabel:'',
 			'banners4'=>$step_eleven,
 			'mostviewed'=>$step_twelve,
 			'recommended'=>$step_thirteenlist,
@@ -4037,6 +4109,23 @@ public function homeapi_get()
 		$this->response($message, REST_Controller::HTTP_OK);
 				
 		
+	}
+	
+	
+	public function homepage_menu_get(){
+		$categories=$this->Customerapi_model->get_menu_category_wise();
+		//echo '<pre>';print_r($categories);exit;
+		
+		if(count($categories)>0){
+				$message = array('status'=>1,'categorylist'=>$categories,'cat_img_path'=>base_url('assets/categoryimages/'),
+					'subcat_img_path'=>base_url('assets/subcategoryimages/'),
+					'message'=>'Product list are found.'
+					);
+			$this->response($message, REST_Controller::HTTP_OK);
+		}else{
+			$message = array('status'=>0,'message'=>'Product list are not found.');
+			$this->response($message, REST_Controller::HTTP_OK);
+		}
 	}
 	
 	public function homepagefunctionality_hideshow_get(){
@@ -4277,5 +4366,145 @@ public function homeapi_get()
 		//echo '<pre>';print_r($position_two);exit;
 	}
 	/*IOS APP HOME PAGE API*/
+	
+	public  function latest_shopping_address_post(){
+		
+			$customer_id=$this->post('customer_id');
+				if($customer_id==''){
+					$message = array('status'=>0,'message'=>'Customer id is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					
+				}
+		$lastest_address=$this->Customerapi_model->get_customer_lastest_shopping_address($customer_id);
+		if(count($lastest_address)>0){
+			$message = array('status'=>1,'customer_id'=>$customer_id, 'address'=>$lastest_address, 'message'=>'customer shopping address are found.');
+			$this->response($message, REST_Controller::HTTP_OK);
+		}else{
+			$message = array('status'=>0,'customer_id'=>$customer_id,'message'=>'customer shopping address are not found.');
+			$this->response($message, REST_Controller::HTTP_OK);
+		}
+		
+	}
+	public  function product_filters_post(){
+		$sub_cat_id=$this->post('subcategory_id');
+		if($sub_cat_id==''){
+			$message = array('status'=>0,'message'=>'Sub category id is required!');
+			$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+		}
+		$price_list= $this->Customerapi_model->get_all_price_list_subcategory_wise($sub_cat_id);
+		$brand_list= $this->Customerapi_model->get_all_brand_list_subcategory_wise($sub_cat_id);
+		$color_list= $this->Customerapi_model->get_all_color_list_subcategory_wise($sub_cat_id);
+		$sizes_list= $this->Customerapi_model->get_all_size_list_subcategory_wise($sub_cat_id);
+		foreach ($price_list as $list) {
+			$date = new DateTime("now");
+			$curr_date = $date->format('Y-m-d h:i:s A');
+			if($list['offer_expairdate']>=$curr_date){
+				$amounts[]=$list['item_cost'];
+			}else{
+				$amounts[]=$list['item_cost'];
+			}
+			
+		}
+		$offer_list= $this->Customerapi_model->get_all_offer_list_subcategory_wise($sub_cat_id);
+
+		foreach ($offer_list as $list) {
+			$date = new DateTime("now");
+			$curr_date = $date->format('Y-m-d h:i:s A');
+			if($list['offer_expairdate']>=$curr_date){
+				if($list['offer_percentage']!=''){
+					$ids[]=$list['offer_percentage'];
+				}
+			}else{
+				if($list['offers']!=''){
+					$ids[]=$list['offers'];
+				}
+			}
+			
+		}
+		foreach (array_unique($ids) as $Li){
+			$uniids[]=array('val'=>$Li);
+			
+		}
+		$offer=$uniids;
+		//echo '<pre>';print_r($offer);exit;
+		$minamt = min($amounts);
+		$maxamt= max($amounts);
+		$offers=array("filter"=>"Offers",'list'=>$offer);
+		$color=array("filter"=>"color",'list'=>$color_list);
+		//$sizes=array("filter"=>"sizes",'list'=>$sizes_list);
+		$brand=array("filter"=>"brand",'list'=>$brand_list);
+		$filters=array($brand,$color,$offers);
+		//echo '<pre>';print_r($brand_list);exit;
+			$message = array('status'=>1,'leftside_filters'=>$filters,'min_amt'=>$minamt,'max_amt'=>$maxamt,'stock'=>array('Instock'=>1,'Out of stock'=>0),'message'=>'Filters are found.');
+			$this->response($message, REST_Controller::HTTP_OK);
+	}
+	public  function product_filters_result_post(){
+		$sub_cat_id=$this->post('subcategory_id');
+		if($sub_cat_id==''){
+			$message = array('status'=>0,'message'=>'Sub category id is required!');
+			$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+		}
+		$brand=$this->post('brand');
+		
+		$color=$this->post('color');
+		$offers=$this->post('offers');
+		$min_amt=$this->post('min_amt');
+		$max_amt=$this->post('max_amt');
+		$stock=$this->post('stock');
+		if($brand!=''){
+			$pieces = explode(",", $brand);
+			$brand_lis = implode('","', $pieces);
+		}else{
+			$brand_lis='';
+		}
+		if($color!=''){
+			$colorpieces = explode(",", $color);
+			$color_list = implode('","', $colorpieces);
+		}else{
+			$color_list='';
+		}
+		if($offers!=''){
+			$offerspieces = explode(",", $offers);
+			$offers_list = implode('","', $offerspieces);
+		}else{
+			$offers_list='';
+		}
+		$result=$this->Customerapi_model->get_filters_wise_result_list($sub_cat_id,$brand_lis,$color_list,$offers_list,$min_amt,$max_amt);
+		//echo $this->db->last_query();
+		//echo '<pre>';print_r($result);exit;
+		if(count($result)>0){
+			foreach ($result as $productslist){
+					
+					$currentdate=date('Y-m-d h:i:s A');
+						if($productslist['offer_expairdate']>=$currentdate){
+						$item_price= ($productslist['item_cost']-$productslist['offer_amount']);
+						$percentage= $productslist['offer_percentage'];
+						$orginal_price=$productslist['item_cost'];
+						}else{
+							//echo "expired";
+							$item_price= $productslist['special_price'];
+							$prices= ($productslist['item_cost']-$productslist['special_price']);
+							$percentage= (($prices) /$productslist['item_cost'])*100;
+							$orginal_price=$productslist['item_cost'];
+						}
+					$plist[$productslist['item_id']]=$productslist;
+					$plist[$productslist['item_id']]['withcrossmarkprice']=$orginal_price;
+					$plist[$productslist['item_id']]['withoutcrossmarkprice']=$item_price;
+					$plist[$productslist['item_id']]['percentage']=number_format($percentage, 2);
+					
+				}
+				foreach ($plist as $list){
+					$recentlyviewed[]=$list;
+				}
+	
+			$message = array('status'=>1,'result'=>$recentlyviewed,'message'=>'Filters are found.');
+			$this->response($message, REST_Controller::HTTP_OK);
+		}else{
+			$message = array('status'=>0,'subcategorie_id'=>$sub_cat_id,'message'=>'Items are not found.');
+			$this->response($message, REST_Controller::HTTP_OK);
+		}
+	
+	}
+		
 
 }

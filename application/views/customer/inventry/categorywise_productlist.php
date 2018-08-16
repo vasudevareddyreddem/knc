@@ -16,7 +16,7 @@
 					<th>Product Name</th>
 					<th>Category Name</th>
 					<th>Qty</th>
-					<th>SKU ID</th>
+					<th>Product Code</th>
 					<th>Status</th>
 					
 				 </tr>
@@ -28,7 +28,7 @@
                   <td><?php echo $list['item_name'] ?></td>
                   <td><?php echo $list['category_name'] ?></td>
                   <td><?php echo $list['item_quantity'] ?></td>
-                  <td><?php echo $list['skuid'] ?></td>
+                  <td><?php echo $list['product_code'] ?></td>
                   <td><?php if($list['item_status']==1){ echo "Active";}else{ echo "Deactive";} ?></td>                  
                 </tr>
                  <?php }?>

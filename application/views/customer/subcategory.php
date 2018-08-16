@@ -51,16 +51,46 @@
    <span id="withoursearchsubcategory">
 	<div class="col-md-3 bg-success">
 			<div class="title"><h3 class="text-white">Filters</h3></div>
-					<div style="background:#fff;padding:20px ; border-radius:5px">
-					<div class="price-range-block">
-						<div id="slider-range" class="price-filter-range" name="rangeInput"></div>
-						<div style="margin:30px auto">
-						  <input type="number" min="<?php echo $minimum_price['item_cost']; ?>" max="<?php echo $maximum_price['item_cost']-100; ?>" oninput="validity.valid||(value=<?php echo $maximum_price["item_cost"]; ?>);" id="min_price" name="min_price" class="price-range-field" />
-						  <input type="number" min="<?php echo $minimum_price['item_cost']+100; ?>" max="<?php echo $maximum_price['item_cost']; ?>" oninput="validity.valid||(value=<?php echo $maximum_price['item_cost']; ?>);" id="max_price" name="max_price" class="price-range-field" />
-						</div>
+					 <div class="row">
+						  <div class="col-md-6">
+						  <h4>Min:<span class="text-white"><?php echo $minimum_price['item_cost']; ?></span></h4>
+						  <input type="hidden" id="min" name="min" value="<?php echo $minimum_price['item_cost']; ?>">
+						  </div>
+						  <div class="col-md-6">
+						 <h4>Max:<span class="text-white"><?php echo $maximum_price['item_cost']; ?></span></h4>
+						  <input type="hidden" id="max" name="max" value="<?php echo $maximum_price['item_cost']; ?>">
+						  </div>
 					</div>
-				</div><br>
-		  <input type="hidden" name="categoryid" id="categoryid" value="<?php echo $caterory_id;?>">
+					<div class="row">
+		  <div class="col-md-6">
+		   <select class="form-control" name="mimimum_price" id="mimimum_price" onchange="subcatehorywise(this.value, '<?php echo 'mimimum_price'; ?>','<?php echo ''; ?>');">
+				 <?php for( $i=floor($minimum_price['item_cost']); $i<=floor($maximum_price['item_cost']); $i+=1000 ){  ?>
+				<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+				<?php } ?>
+				
+			  </select>
+		  </div>
+		  <div class="col-md-6">
+		   <select class="form-control" id="maximum_price" name="maximum_price" onchange="subcatehorywise(this.value, '<?php echo 'maximum_price'; ?>','<?php echo ''; ?>');">
+				 
+				 <?php if($minimum_price['item_cost']==$maximum_price['item_cost']){ ?>
+						<option value="<?php echo $maximum_price['item_cost']; ?>"><?php echo $maximum_price['item_cost']; ?></option>
+				 <?php }else{ ?>
+						 <?php $cnt=1;for( $i=floor($minimum_price['item_cost']+1000); $i<=floor($maximum_price['item_cost']); $i+=1000 ){  ?>
+						<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+						<?php if($cnt==1){  if($i!=$maximum_price['item_cost']){ ?>
+							<option value="<?php echo $maximum_price['item_cost']; ?>" selected><?php echo $maximum_price['item_cost']; ?></option>
+						 <?php } } ?>
+						<?php $cnt++;} ?>
+							<?php if($minimum_price['item_cost']<=1000){ ?>
+							<option value="<?php echo $maximum_price['item_cost']; ?>"><?php echo $maximum_price['item_cost']; ?></option>
+						<?php } ?>
+						
+				<?php } ?>
+			  </select>
+		  </div>
+		  </div><br>
+		 <input type="hidden" name="categoryid" id="categoryid" value="<?php echo $caterory_id;?>">
 			<input type="hidden" name="subcategoryid" id="subcategoryid" value="<?php echo $subcaterory_id;?>">
 			
 		  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
