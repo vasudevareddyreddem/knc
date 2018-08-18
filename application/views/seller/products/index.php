@@ -408,8 +408,8 @@
 					<tr>
 						<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','name',this.value)" name="name" value="<?php echo $item_data->name;?>"/></td>
 						<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','product_code',this.value)" name="product_code" value="<?php echo $item_data->product_code;?>"/></td>
-						<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','product_cost',this.value)" name="product_cost" id="product_cost<?php echo $subcategory->subcategory_id;?>" value="<?php echo $item_data->item_cost;?>"/></td>
-						<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','product_special',this.value)" name="product_special" id="product_special<?php echo $subcategory->subcategory_id;?>" value="<?php echo $item_data->special_price;?>"/></td>
+						<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','product_cost',this.value)" name="product_cost" id="product_cost<?php echo $item_data->item_id;?>" value="<?php echo $item_data->item_cost;?>"/></td>
+						<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','product_special',this.value)" name="product_special" id="product_special<?php echo $item_data->item_id;?>" value="<?php echo $item_data->special_price;?>"/></td>
 						<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','qty',this.value)" name="qty" value="<?php echo $item_data->item_quantity;?>"/></td>
 						<td><input type="text" onkeyup="saveeditchanges('<?php echo $subcategory->subcategory_id;?>','<?php echo $item_data->item_id;?>','brand',this.value)" name="brand" value="<?php echo $item_data->brand;?>"/></td>
 							<?php if($item_data->subcategory_id==226 || $item_data->subcategory_id==227 || $item_data->subcategory_id==228 || $item_data->subcategory_id==229 || $item_data->subcategory_id==230 || $item_data->subcategory_id==231){ ?>
@@ -1139,15 +1139,32 @@ function checkDelete(id)
 return confirm('Are you sure want to delete "'+id +'" product?');
 }
   function saveeditchanges(subcatid,item_id,name,val){
-	  var cost='';
-	  var specialcost='';
-	  var cost=$('#product_cost'+subcatid).val();
-	  var specialcost=$('#product_special'+subcatid).val();
+	  //var cost='';
+	 // var specialcost='';
+	  var cost=$('#product_cost'+item_id).val();
+	  var specialcost=$('#product_special'+item_id).val();
+	  function IsAmount(cost) {
+        var regex = /^[0-9.]+$/;
+        return regex.test(cost);
+		}
+		function IsAmountspec(specialcost) {
+        var regex = /^[0-9.]+$/;
+        return regex.test(specialcost);
+		}
+		if (!IsAmount(cost)) {
+		alert("Please Enter coreect formate amount");
+		return false;
+		}
+		if (!IsAmountspec(specialcost)) {
+		alert("Please Enter coreect formate amount");
+		return false;
+		}
 	  if(specialcost==''|| specialcost==0){
 		alert('special price is required');return false;  
 	  }if(cost=='' || cost==0){
 		  alert('item price is required');return false;  
 	  }
+	  //alert(cost);
 	  if(Number(cost) > Number(specialcost)){
 		  jQuery.ajax({
 			url: "<?php echo base_url('/seller/products/ajaxeditchanges');?>",
@@ -1162,8 +1179,8 @@ return confirm('Are you sure want to delete "'+id +'" product?');
 					success:function(data){
 					var parsedData = JSON.parse(data);
 					if(Number(cost) > Number(specialcost)){
-					$('#product_cost'+subcatid).val(parsedData.cost);
-					$('#product_special'+subcatid).val(parsedData.special_cost);
+					$('#p_r_id'+item_id).val(parsedData.cost);
+					$('#p_r_id'+item_id).val(parsedData.special_cost);
 					}
 					}
         });

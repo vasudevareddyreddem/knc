@@ -21,7 +21,7 @@
 			<div class="row ">
                           
                            
-                            <div class="col-md-9 best-pro">
+                            <div class="col-md-12 best-pro">
                                 <div class="table-responsive">    
                                     <table class="table table-striped">
                                         <thead>
@@ -92,64 +92,7 @@
                                 
                               
                             </div><!-- end col -->
-							<div class="col-md-3">
-                        
-                        
-                        <div class="widget">
-                            <h6 class="subtitle">New Collection</h6>
-                            <figure>
-                                <a href="javascript:void(0);">
-                                    <img src="http://www.funroundup.com/wp-content/uploads/2015/12/HD-Wallpapers-Sonakshi-Sinha-in-Green-Color-Dress-With-Bun-Hairstyles.jpg" alt="collection">
-                                </a>
-                            </figure>
-                        </div><!-- end widget -->
-                        
-                        <div class="widget">
-                            <h6 class="subtitle">Featured</h6>
-                            
-                            <ul class="items">
-                                <li> 
-                                    <a href="shop-single-product-v1.html" class="product-image">
-                                        <img src="http://www.funroundup.com/wp-content/uploads/2015/12/HD-Wallpapers-Sonakshi-Sinha-in-Green-Color-Dress-With-Bun-Hairstyles.jpg" alt="Sample Product ">
-                                    </a>
-                                    <div class="product-details">
-                                        <p class="product-name"> 
-                                            <a href="shop-single-product-v1.html">Product name</a> 
-                                        </p>
-                                        <span class="price text-primary">$19.99</span>
-                                        <div class="rate text-warning">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </li><!-- end item -->
-                                <li> 
-                                    <a href="shop-single-product-v1.html" class="product-image">
-                                        <img src="http://www.funroundup.com/wp-content/uploads/2015/12/HD-Wallpapers-Sonakshi-Sinha-in-Green-Color-Dress-With-Bun-Hairstyles.jpg" alt="Sample Product ">
-                                    </a>
-                                    <div class="product-details">
-                                        <p class="product-name"> 
-                                            <a href="shop-single-product-v1.html">Product name</a> 
-                                        </p>
-                                        <span class="price text-primary">$19.99</span>
-                                        <div class="rate text-warning">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </li><!-- end item -->
-                            </ul>
-
-                            <hr class="spacer-10 no-border">
-                            <a href="shop-sidebar-left.html" class="btn btn-default btn-block semi-circle btn-md">All Products</a>
-                        </div><!-- end widget -->
-                    </div>
+							
 							
                         </div>
 			

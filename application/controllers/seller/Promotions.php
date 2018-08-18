@@ -225,7 +225,7 @@ public function addtopoffers()
 		}
 	
 		if($status==1){
-			$this->session->set_flashdata('success',"Offer successfully Added!");
+			$this->session->set_flashdata('success',"Offer successfully added!");
 		}else if($status==2){
 			
 		 $this->session->set_flashdata('error',"while adding it should come like 3 of 100 , 4 of 100...once limit completes, limit for top offers for this week has completed. add for next week.limit of top offers for this week has completed");	

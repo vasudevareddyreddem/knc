@@ -108,7 +108,7 @@
    
    <div class="container">
   
-      <h1 class="head_title">Home Banners List Is Empty Click add Button To Add Home Banners.Thank You!</h1>
+      <h1 class="head_title">Home Page Banners List Is Empty. Click Add Button To Add Home Page Banners.Thank You!</h1>
    
    </div>
    

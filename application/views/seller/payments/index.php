@@ -46,7 +46,7 @@
                  <th>S.No</th>
                <!--  <th>Seller Id</th>-->
                 <th>Order Id</th>
-                <th>CIH Comission</th>
+                <th>CIH Commission</th>
                 <!-- <th>Net Profit</th> -->
                 <th>Amount</th>
                 <th>Status</th>

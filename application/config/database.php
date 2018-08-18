@@ -301,19 +301,19 @@ $db['default'] = array(
 
 
 
-	'hostname' => '43.255.154.8',
+	'hostname' => 'localhost',
 
 
 
-	'username' => 'organic_dbuser1',
+	'username' => 'root',
 
 
 
-	'password' => 'organic@123!@#',
+	'password' => '',
 
 
 
-	'database' => 'organic_staging',
+	'database' => 'cartinhoursstaging_db',
 
 
 

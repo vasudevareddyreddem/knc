@@ -59,7 +59,7 @@ public function homepagebanner()
 		$status = base64_decode($this->uri->segment(5));
 		$deactive=$this->showups_model->get_home_pagebanner_status($id);
 		if(isset($deactive) && $deactive['admin_status']==1){
-			$this->session->set_flashdata('deactive',"Banner already active in home page that's way you are unable to deactivate.");
+			$this->session->set_flashdata('deactive',"Banner is already active in home page that's why you are unable to deactivate.");
 			redirect('seller/showups/homepagebannerlist/');
 		}
 		if($status==1)
@@ -92,7 +92,7 @@ public function homepagebanner()
 				
 			$deactive=$this->showups_model->get_home_pagebanner_status($id);
 			if(isset($deactive) && $deactive['admin_status']==1){
-				$this->session->set_flashdata('deactive',"Banner already active in home page that's way you are unable to deactivate.");
+				$this->session->set_flashdata('deactive',"Banner is already active in home page that's why you are unable to deactivate.");
 				redirect('seller/showups/homepagebannerlist/');
 			}else{
 				$updatestatus=$this->showups_model->delete_homepagebanner($id);
@@ -314,7 +314,7 @@ public function homepagebanner()
 						//echo '<pre>';print_r($data);exit;
 						$banner=$this->showups_model->save_banner_image($data);
 						if(count($banner)>0){
-							$this->session->set_flashdata('active',"Banner successfully Added!");
+							$this->session->set_flashdata('active',"Banner successfully added!");
 							redirect('seller/showups/homepagebanner');
 						}else{
 							$this->session->set_flashdata('deactive',"Sorry, a technical error occurred! Please try again later.");
@@ -406,7 +406,7 @@ public function homepagebanner()
 		$status = base64_decode($this->uri->segment(5));
 		$deactive=$this->showups_model->get_category_pagebanner_status($id);
 		if(isset($deactive) && $deactive['admin_status']==1){
-			$this->session->set_flashdata('deactive',"Banner already active in home page that's way you are unable to deactivate.");
+			$this->session->set_flashdata('deactive',"Banner is already active in home page that's why you are unable to deactivate.");
 			redirect('seller/showups/catehorybannerlist/');
 		}
 		if($status == 1){
@@ -427,7 +427,7 @@ public function categorybanner_status()
 		//echo "<pre>";print_r($activestatus);exit;
 		$deactive=$this->showups_model->get_category_pagebanner_status($id);
 		if(isset($deactive) && $deactive['admin_status']==1){
-			$this->session->set_flashdata('deactive',"Banner already active in home page that's way you are unable to deactivate.");
+			$this->session->set_flashdata('deactive',"Banner is already active in home page that's why you are unable to deactivate.");
 			redirect('seller/showups/catehorybannerlist/');
 		}
 		if($status==1)
@@ -491,9 +491,9 @@ public function topofferactive(){
 				{
 					if($status==1)
 					{
-						$this->session->set_flashdata('active'," offer activation successful");
+						$this->session->set_flashdata('active'," Offer activation successfully");
 					}else{
-						$this->session->set_flashdata('deactive',"offer deactivation successful");
+						$this->session->set_flashdata('deactive',"Offer deactivation successfully");
 					}
 					redirect('seller/showups/topoffers');
 				}
@@ -563,9 +563,9 @@ public function topofferactive(){
 				{
 					if($status==1)
 					{
-						$this->session->set_flashdata('active'," offer activation successful");
+						$this->session->set_flashdata('active'," Offer activation successfully");
 					}else{
-						$this->session->set_flashdata('deactive',"offer deactivation successful");
+						$this->session->set_flashdata('deactive',"Offer deactivation successfully");
 					}
 					redirect('seller/showups/dealsofday');
 				}
@@ -630,9 +630,9 @@ public function seasonsaleactive(){
 				{
 					if($status==1)
 					{
-						$this->session->set_flashdata('active'," offer activation successful");
+						$this->session->set_flashdata('active'," Offer activation successfully");
 					}else{
-						$this->session->set_flashdata('deactive',"offer deactivation successful");
+						$this->session->set_flashdata('deactive',"Offer deactivation successfully");
 					}
 					redirect('seller/showups/seasonsale');
 				}

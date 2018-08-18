@@ -43,7 +43,7 @@
                         <ul class="w-150">
 						 <?php if(!$this->session->userdata('userdetails')){ ?>
                             <li><a data-toggle="modal" data-target="#loginmodal">Login</a></li>
-                            <li><a href="register.html">Create Account</a></li>
+                            <li><a href="<?php echo base_url('customer'); ?>">Create Account</a></li>
 						 <?php } ?>
 							<li class="divider"></li>
                             <li><a href="<?php echo base_url('customer/wishlist'); ?>">Wishlist <?php if(isset($whishlist) && count($whishlist)>0){ ?>( <?php echo count($whishlist);  ?>) <?php } ?></a></li>

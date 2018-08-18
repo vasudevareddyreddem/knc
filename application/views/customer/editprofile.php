@@ -29,7 +29,7 @@
 		
 		<?php //echo '<pre>';print_r($cart_items);exit; ?>
 		<div class="row">
-		<div class="col-md-9 ">
+		<div class="col-md-12 ">
 		<div class="panel panel-default">
 		  <div class="panel-heading" style="background:#fff"><h6>Update profile</h6></div>
 			
@@ -120,58 +120,7 @@
 	   </div>
 	   </div>
 	   </div>
-	   <div class="col-md-3">
-		<div class="panel panel-default">
-		  <div class="panel-heading" style="background:#fff"><h6 class="">Featured</h6></div>
-			<div class="panel-body">
-				<div  style="padding:10px 15px;">
-					<div class="widget">
-                            <ul class="items">
-                                <li> 
-                                    <a href="shop-single-product-v1.html" class="product-image">
-                                        <img src="http://localhost/knc_ecommerce/uploads/products/0.50067200 15094490721.jpeg" alt="Sample Product ">
-                                    </a>
-                                    <div class="product-details">
-                                        <p class="product-name"> 
-                                            <a href="shop-single-product-v1.html">Product name</a> 
-                                        </p>
-                                        <span class="price text-primary">$19.99</span>
-                                        <div class="rate text-warning">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </li><!-- end item -->
-                                <li> 
-                                    <a href="shop-single-product-v1.html" class="product-image">
-                                        <img src="http://localhost/knc_ecommerce/uploads/products/0.48736700 15131473981.jpg" alt="Sample Product ">
-                                    </a>
-                                    <div class="product-details">
-                                        <p class="product-name"> 
-                                            <a href="shop-single-product-v1.html">Product name</a> 
-                                        </p>
-                                        <span class="price text-primary">$19.99</span>
-                                        <div class="rate text-warning">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </li><!-- end item -->
-                            </ul>
-
-                            <hr class="spacer-10 no-border">
-                            <a href="shop-sidebar-left.html" class="btn btn-default btn-block semi-circle btn-md">All Products</a>
-                        </div>
-				</div>
-			</div>
-		</div>
-	   </div>
+	  
 	   </div>
 	   
 	   </div>
