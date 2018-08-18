@@ -85,7 +85,7 @@ public function changepasswordpost(){
 						//echo $this->db->last_query();exit;
 						if (count($passwordchange)>0)
 							{
-								$this->session->set_flashdata('updatpassword',"Password successfully changed!");
+								$this->session->set_flashdata('updatpassword',"Password successfullyly changed!");
 								redirect('inventory/changepassword');
 							}
 							else
@@ -280,7 +280,7 @@ public function dashboard(){
 			//echo '<pre>';print_r($replynotification);exit;
 			$notificationreply = $this->inventory_model->save_notifciations($replynotification);
 			if(count($notificationreply)>0){
-			$this->session->set_flashdata('success','Notification reply successfully sent!');
+			$this->session->set_flashdata('success','Notification reply successfullyly sent!');
 			redirect('inventory/sellernitificationlist');	
 			}
 				
@@ -375,7 +375,7 @@ public function servicerequestview(){
 				$this->email->from('vechical_detailss@gmail.com');
 				$this->email->to($seller_details['seller_email']);
 				$this->email->subject('Cartinhours - Notification reply');
-				//$html = "Your profile successfully Updated!";
+				//$html = "Your profile successfullyly Updated!";
 				$html = "Hello <b>".$seller_details['seller_name']." </b><br />".$post['serivcerequest']."";
 				$this->email->message($html);
 				$this->email->send();
@@ -418,9 +418,9 @@ public function servicerequestview(){
 							$updatestatus=$this->inventory_model->activate_product_status($list['item_id'],$id,$status);
 						}
 						if($status==1){
-							$this->session->set_flashdata('success'," Seller activation successful");
+							$this->session->set_flashdata('success'," Seller activation successfully");
 						}else{
-							$this->session->set_flashdata('success',"Seller deactivation successful");
+							$this->session->set_flashdata('success',"Seller deactivation successfully");
 						}
 						redirect('inventory/sellerlist');
 					}
@@ -458,12 +458,12 @@ public function servicerequestview(){
 							if($status==1){
 							$sub='Category activation successfully';
 						}else{
-							$sub='Category deactivation successfully';
+							$sub='Category deactivation successfullyly';
 						}	
 						if($status==1){
-							$submsg='Category activation successfully. Please UPdate Your categorieslist';
+							$submsg='Category activation successfullyly. Please UPdate Your categorieslist';
 						}else{
-							$submsg='Category deactivation successfully';
+							$submsg='Category deactivation successfullyly';
 						}
 							$data = array(
 						'seller_id' => $catdata['seller_id'],
@@ -487,9 +487,9 @@ public function servicerequestview(){
 						$this->inventory_model->update_category_status($id,$data);
 						}
 						if($status==1){
-							$this->session->set_flashdata('success'," Category activation successfully");
+							$this->session->set_flashdata('success'," Category activation successfullyly");
 						}else{
-							$this->session->set_flashdata('success',"Category deactivation successfully");
+							$this->session->set_flashdata('success',"Category deactivation successfullyly");
 						}
 						redirect('inventory/categorieslist');
 					}
@@ -521,9 +521,9 @@ public function servicerequestview(){
 					
 					if(count($updatestatus)>0){
 						if($status==1){
-							$this->session->set_flashdata('success'," Subcategory activation successful");
+							$this->session->set_flashdata('success'," Subcategory activation successfully");
 						}else{
-							$this->session->set_flashdata('success',"Subcategory deactivation successful");
+							$this->session->set_flashdata('success',"Subcategory deactivation successfully");
 						}
 						redirect('inventory/subcategorieslist');
 					}
@@ -671,7 +671,7 @@ public function servicerequestview(){
 					$post=$this->input->post();
 					$alreadyexits = $this->inventory_model->get_sub_name_existss($post['categoryname']);
 						if(count($alreadyexits)>0){
-							$this->session->set_flashdata('error',"Sub category Name already exits.please use another Sub category Name.");
+							$this->session->set_flashdata('error',"Sub Category Name already exists. Please use another Sub Category Name");
 							redirect('inventory/addsubcategory');
 						}
 					if($_FILES['sub_image']['name']!=''){
@@ -693,7 +693,7 @@ public function servicerequestview(){
 					$results=$this->inventory_model->save_sub_categories($addsubcat);
 					//echo "<pre>";print_r($post);exit;
 					if(count($results)>0){
-					$this->session->set_flashdata('success',"SubCategory Successfully Added");
+					$this->session->set_flashdata('success',"Sub Category Successfully Added");
 					redirect('inventory/subcategorieslist');
 					}
 			}else{
@@ -1063,9 +1063,9 @@ public function homepagepreview()
 				{
 					if($status==1)
 					{
-						$this->session->set_flashdata('success'," Item added from home page banner successfully");
+						$this->session->set_flashdata('success'," Item added from home page banner successfullyly");
 					}else{
-						$this->session->set_flashdata('success',"Item removed from home page banner  successfully");
+						$this->session->set_flashdata('success',"Item removed from home page banner  successfullyly");
 					}
 					redirect('inventory/sellertopoffresdetails'.'/'.base64_encode($seller_id));
 				}
@@ -1113,9 +1113,9 @@ public function overaall_topoffers_home_page_status()
 				{
 					if($status==1)
 					{
-						$this->session->set_flashdata('success'," Items added home page banner successful");
+						$this->session->set_flashdata('success',"Item added to top offers successfullyly");
 					}else{
-						$this->session->set_flashdata('success',"Items removed home page banner  successful");
+						$this->session->set_flashdata('success',"Item removed from top offers successfullyly");
 					}
 					redirect('inventory/topoffers');
 				}
@@ -1206,9 +1206,9 @@ public function overaall_topoffers_home_page_status()
 				{
 					if($status==1)
 					{
-						$this->session->set_flashdata('success'," Item added home page banner successful");
+						$this->session->set_flashdata('success'," Item added home page banner successfully");
 					}else{
-						$this->session->set_flashdata('success',"Item removed home page banner  successful");
+						$this->session->set_flashdata('success',"Item removed home page banner  successfully");
 					}
 					redirect('inventory/sellerseasonsalesdetails'.'/'.base64_encode($seller_id));
 				}
@@ -1255,9 +1255,9 @@ public function overaall_topoffers_home_page_status()
 				{
 					if($status==1)
 					{
-						$this->session->set_flashdata('success'," Items added home page banner successful");
+						$this->session->set_flashdata('success',"Item added to season sales  successfullyly");
 					}else{
-						$this->session->set_flashdata('success',"Items removed home page banner  successful");
+						$this->session->set_flashdata('success',"Item removed from season sales  successfullyly");
 					}
 					redirect('inventory/seasonsales');
 				}
@@ -1351,9 +1351,9 @@ public function overaall_topoffers_home_page_status()
 				{
 					if($status==1)
 					{
-						$this->session->set_flashdata('success'," Item added home page banner successful");
+						$this->session->set_flashdata('success',"Item added to top deals of the day successfullyly");
 					}else{
-						$this->session->set_flashdata('success',"Item removed home page banner  successful");
+						$this->session->set_flashdata('success',"Item removed from deals of the day successfullyly");
 					}
 					redirect('inventory/sellerdelasofthedaydetails'.'/'.base64_encode($seller_id));
 				}
@@ -1401,9 +1401,9 @@ public function overaall_topoffers_home_page_status()
 				{
 					if($status==1)
 					{
-						$this->session->set_flashdata('success'," Items added home page banner successful");
+						$this->session->set_flashdata('success',"Item added to deals of the day successfullyly");
 					}else{
-						$this->session->set_flashdata('success',"Items removed home page banner  successful");
+						$this->session->set_flashdata('success',"Item removed from deals of the day successfullyly");
 					}
 					redirect('inventory/dealsoftheday');
 				}
@@ -1499,9 +1499,9 @@ public function overaall_topoffers_home_page_status()
 				{
 					if($status==1)
 					{
-						$this->session->set_flashdata('success'," Image added home page banner successful");
+						$this->session->set_flashdata('success'," Image added home page banner successfully");
 					}else{
-						$this->session->set_flashdata('success',"Image removed home page banner  successful");
+						$this->session->set_flashdata('success',"Image removed home page banner  successfully");
 					}
 					redirect('inventory/sellerhomepagebannerdetails'.'/'.base64_encode($seller_id));
 				}
@@ -1552,9 +1552,9 @@ public function overaall_topoffers_home_page_status()
 				{
 					if($status==1)
 					{
-						$this->session->set_flashdata('success'," Images added home page banner successful");
+						$this->session->set_flashdata('success',"Images added to home page banner successfullyly");
 					}else{
-						$this->session->set_flashdata('success',"Images removed home page banner  successful");
+						$this->session->set_flashdata('success',"Images removed from home page banner successfullyly.");
 					}
 					redirect('inventory/homepagebanner');
 				}
@@ -1592,7 +1592,7 @@ public function overaall_topoffers_home_page_status()
 		if(count($bannerdelete)>0)
 			{
 				if($status==0){
-					$this->session->set_flashdata('active',"Banner successfully Delete");
+					$this->session->set_flashdata('active',"Banner successfullyly Delete");
 				}else{
 					$this->session->set_flashdata('deactive',"Banner Not deleted.");
 				}
@@ -2072,9 +2072,9 @@ if((!empty($_FILES["importcategoryfile"])) && ($_FILES['importcategoryfile']['er
 				{
 					if($status==0)
 					{
-						$this->session->set_flashdata('success'," Image successfully deactivated");
+						$this->session->set_flashdata('success'," Image successfullyly deactivated");
 					}else{
-						$this->session->set_flashdata('success',"image successfully activated");
+						$this->session->set_flashdata('success',"image successfullyly activated");
 					}
 					redirect('inventory/addbannerslist');
 				}
@@ -2248,9 +2248,9 @@ public function addhomepagemiddlebannerspost()
 				{
 					if($status==0)
 					{
-						$this->session->set_flashdata('success'," Image successfully deactivated");
+						$this->session->set_flashdata('success'," Image successfullyly deactivated");
 					}else{
-						$this->session->set_flashdata('success',"image successfully activated");
+						$this->session->set_flashdata('success',"Image successfullyly activated");
 					}
 					redirect('inventory/homepagebanerrslist');
 				}
@@ -2325,9 +2325,9 @@ public function addhomepagemiddlebannerspost()
 				{
 					if($status==0)
 					{
-						$this->session->set_flashdata('success'," Image successfully deactivated");
+						$this->session->set_flashdata('success'," Image successfullyly deactivated");
 					}else{
-						$this->session->set_flashdata('success',"image successfully activated");
+						$this->session->set_flashdata('success',"image successfullyly activated");
 					}
 					redirect('inventory/categorypagebanners');
 				}
@@ -2447,9 +2447,9 @@ public function addhomepagemiddlebannerspost()
 				{
 					if($status==0)
 					{
-						$this->session->set_flashdata('success'," Image successfully deactivated");
+						$this->session->set_flashdata('success'," Image successfullyly deactivated");
 					}else{
-						$this->session->set_flashdata('success',"image successfully activated");
+						$this->session->set_flashdata('success',"image successfullyly activated");
 					}
 					redirect('inventory/wishlistbanerslist');
 				}
@@ -2639,9 +2639,9 @@ public function addhomepagemiddlebannerspost()
 					}
 				if(count($brands)>0){
 					if(isset($post['brandid']) && $post['brandid']!=''){
-					$this->session->set_flashdata('success',"brand Logo successfully Updated!");
+					$this->session->set_flashdata('success',"brand Logo successfullyly Updated!");
 					}else{
-						$this->session->set_flashdata('success',"brand Logo successfully Added!");
+						$this->session->set_flashdata('success',"brand Logo successfullyly Added!");
 					}
 					redirect('inventory/brandlist/');
 				}else{
@@ -2741,7 +2741,7 @@ public function addhomepagemiddlebannerspost()
 			//echo '<pre>';print_r($data);exit;
 			$banners=$this->showups_model->save_homepagebanners_list_image($data);
 			if(count($banners)>0){
-				$this->session->set_flashdata('success',"Banner successfully Added!");
+				$this->session->set_flashdata('success',"Banner successfullyly Added!");
 				redirect('inventory/homepagebanerrslist/');
 			}else{
 				$this->session->set_flashdata('error',"Stechnical error occurred! Please try again later.");
@@ -2827,7 +2827,7 @@ public function addhomepagemiddlebannerspost()
 			//echo '<pre>';print_r($data);exit;
 			$banners=$this->showups_model->save_banners_list_image($data);
 			if(count($banners)>0){
-				$this->session->set_flashdata('success',"Banner successfully Added!");
+				$this->session->set_flashdata('success',"Banner successfullyly Added!");
 				redirect('inventory/categorypagebanners/');
 			}else{
 				$this->session->set_flashdata('error',"Stechnical error occurred! Please try again later.");
@@ -2863,7 +2863,7 @@ public function addhomepagemiddlebannerspost()
 					$post=$this->input->post();
 					$alreadyexits = $this->inventory_model->get_subitem_name_existss($post['subitemname'],$post['subcategory_list']);
 						if(count($alreadyexits)>0 && $post['subcategory_list']==$alreadyexits['subcategory_id']){
-							$this->session->set_flashdata('error',"In this Subcategory SubItem Name already exits.please use another subitem Name.");
+							$this->session->set_flashdata('error',"Sub Item Name already exits.please use another Sub Item Name.");
 							redirect('inventory/subitemadd');
 						}
 					$temp = explode(".", $_FILES["image"]["name"]);
@@ -2882,7 +2882,7 @@ public function addhomepagemiddlebannerspost()
 					);
 					$results=$this->inventory_model->save_subitems($addsubitem);
 					if(count($results)>0){
-					$this->session->set_flashdata('success',"SubCategory Successfully Added");
+					$this->session->set_flashdata('success',"Sub Item Successfully Added");
 					redirect('inventory/subitemslists');
 					}
 			}else{
@@ -2964,9 +2964,9 @@ public function addhomepagemiddlebannerspost()
 					
 					if(count($updatestatus)>0){
 						if($status==1){
-							$this->session->set_flashdata('success'," SubItem activation successful");
+							$this->session->set_flashdata('success'," Sub Item activation successfullyly");
 						}else{
-							$this->session->set_flashdata('success',"SubItem deactivation successful");
+							$this->session->set_flashdata('success',"Sub Item deactivation successfullyly");
 						}
 						redirect('inventory/subitemslists');
 					}
@@ -3010,9 +3010,9 @@ public function addhomepagemiddlebannerspost()
 					
 					if(count($updatestatus)>0){
 						if($status==1){
-							$this->session->set_flashdata('success'," Item activation successful");
+							$this->session->set_flashdata('success'," Item activation successfully");
 						}else{
-							$this->session->set_flashdata('success',"Item deactivation successful");
+							$this->session->set_flashdata('success',"Item deactivation successfully");
 						}
 						redirect('inventory/itemlist');
 					}
@@ -3044,9 +3044,9 @@ public function addhomepagemiddlebannerspost()
 					
 					if(count($updatestatus)>0){
 						if($status==1){
-							$this->session->set_flashdata('success'," Brand activation successful");
+							$this->session->set_flashdata('success'," Brand activation successfully");
 						}else{
-							$this->session->set_flashdata('success',"Brand deactivation successful");
+							$this->session->set_flashdata('success',"Brand deactivation successfully");
 						}
 						redirect('inventory/brandlist');
 					}
@@ -3173,7 +3173,7 @@ public function addhomepagemiddlebannerspost()
 					//echo $this->db->last_query();exit;
 					if(count($details)>0){
 
-					$this->session->set_flashdata('success',"SubItem Successfully Updated!");
+					$this->session->set_flashdata('success',"Sub Item Successfully Updated!");
 					redirect('inventory/subitemslists');
 					}	
 			}else{

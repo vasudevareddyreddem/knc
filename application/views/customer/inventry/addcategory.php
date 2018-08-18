@@ -31,7 +31,7 @@
 					<span aria-hidden="true">&times;</span>
 					</button><?php echo $this->session->flashdata('error');?></div>	
 					<?php endif; ?>
-				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Add category</div>
+				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Add Category</div>
 				
 				<div class="form-group">
 				<label for="category">Category Name</label>
@@ -51,8 +51,8 @@
 				</div>
 				</form>
 				<form enctype="multipart/form-data" method="post" name="importcategory" id="importcategory"  action="<?php echo base_url('inventory/importcategory'); ?>" class="well col-md-6 col-md-offset-2" style="background-color:#fff;">
-				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Import category</div>
-				<a id="fashionproducts" href="<?php echo base_url('assets/subcategoryimportfiles/'); ?>/importcategories.xlsx" >Download sample Import File</a>
+				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Import Category</div>
+				<a id="fashionproducts" href="<?php echo base_url('assets/subcategoryimportfiles/'); ?>/importcategories.xlsx" >Download Sample Import File</a>
 				
 				<div class="form-group">
 				<label for="category">Import File</label>

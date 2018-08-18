@@ -6,7 +6,7 @@
 	  <?php //echo '<pre>';print_r($seller_order_items);exit; ?>
       <div class="box data_box_wid">
             <div class="box-header" style="border-bottom:1px solid #ddd;">
-              <h3 class="box-title" >Seller Season sales Items List</h3>
+              <h3 class="box-title" >Seller Season Sales Items List</h3>
               <a class="pull-right btn btn-sm btn-primary" href="<?php echo base_url('inventory/seasonsales'); ?>" class="box-title">Back</a>
             </div>
             <!-- /.box-header -->
@@ -26,7 +26,7 @@
 					<th>Initial Date</th>
 					<th>Expiry Date</th>
 					<th>Item Status</th>
-					<th>Home page Status</th>
+					<th>Home Page Status</th>
 				 </tr>
                 </thead>
                 <tbody>

@@ -32,11 +32,11 @@
 					<span aria-hidden="true">&times;</span>
 					</button><?php echo $this->session->flashdata('error');?></div>	
 					<?php endif; ?>
-				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Add brand Logo				      	<a href="<?php echo base_url('inventory/brandlist');?> " class="pull-right btn btn-sm btn-primary">list</a></div>	
+				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Add Brand Logo				      	<a href="<?php echo base_url('inventory/brandlist');?> " class="pull-right btn btn-sm btn-primary">List</a></div>	
 
 				
 				<div class="form-group">
-					<label for="category">brand Name</label>
+					<label for="category">Brand Name</label>
 					<select class="form-control" name="brandname" id="brandname">
 						<option value="">Select</option>
 						<?php foreach($brand_list as $list){ ?>
@@ -45,7 +45,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-				<label for="category">brand Image</label>
+				<label for="category">Brand Image</label>
 				<input type="file"  class="form-control" id="image"  name="image"/>
 				</div>
 				
@@ -68,14 +68,14 @@ $(document).ready(function() {
             brandname: {
 					validators: {
 					notEmpty: {
-						message: 'Brand name is required'
+						message: 'Brand Name is required'
 					}
 				}
 			},
 			image: {
            validators: {
              notEmpty: {
-            message: 'Category Image is required'
+            message: 'Brand Image is required'
           },
           regexp: {
           regexp: /\.(jpe?g|png)$/i,

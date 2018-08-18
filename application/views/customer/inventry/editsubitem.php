@@ -19,11 +19,11 @@
 					</button><?php echo validation_errors(); ?></div>	
 					<?php  endif;?>
 				<form enctype="multipart/form-data" method="post" name="editsubitem" id="editsubitem"  action="<?php echo base_url('inventory/editsubitempost'); ?>" class="well col-md-6 col-md-offset-2" style="background-color:#fff;">
-				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Edit SubItem</div>
+				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Edit Sub Item</div>
 				
 				<input type="hidden" name="subitemid" id="subitemid" value="<?php echo isset($subitem_list['subitem_id'])?$subitem_list['subitem_id']:''; ?>">
 				<div class="form-group">
-				<label for="category">category Name</label>
+				<label for="category">Category Name</label>
 				<select class="form-control" onchange="getsubcategorynames(this.value)" name="category_list" id="category_list">
 				<option value="">Select</option>
 				<?php foreach($category_list as $list){ ?>
@@ -38,7 +38,7 @@
 				</select>
 				</div>
 				<div class="form-group" id="oldcatewise">
-				<label for="category">Subcategory Name</label>
+				<label for="category">Sub Category Name</label>
 				<select class="form-control" name="subcategory_list" id="subcategory_list">
 				<option value="">Select</option>
 				<?php foreach($subcategory_list as $list){ ?>
@@ -53,7 +53,7 @@
 				</select>
 				</div>
 				<div class="form-group" id="changecatwise" style="display:none;">
-				<label for="category">Subcategory Name</label>
+				<label for="category">Sub Category Name</label>
 				<select class="form-control" name="changesubcategory_list" id="changesubcategory_list">
 					<option value="">Select</option>
 				</select></div>

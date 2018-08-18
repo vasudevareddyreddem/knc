@@ -27,7 +27,7 @@
                   <th>Service Request Purpose</th>
                   <th>Seller Name</th>
                   <th>Seller Email</th>
-                  <th>Seller mobile</th>
+                  <th>Seller Mobile</th>
                   <th>Action</th>
 				  
                 </tr>

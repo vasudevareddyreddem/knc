@@ -18,7 +18,7 @@
 		
       <div class="box">
             <div class="box-header">
-              <h3 class="box-title"><?php echo isset($category_name['category_name'])?$category_name['category_name']:''; ?> &nbsp; category Wise Sellers lists</h3>
+              <h3 class="box-title"><?php echo isset($category_name['category_name'])?$category_name['category_name']:''; ?> &nbsp; Category Wise Sellers Lists</h3>
             </div>
 
             <!-- /.box-header -->

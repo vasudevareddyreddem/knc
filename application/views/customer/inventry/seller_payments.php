@@ -21,7 +21,7 @@
 				  <th>Orders Count</th>
                   <th>Transaction Amount</th>                  
                   <th>Commission Amount</th>                  
-                  <th>Amount to be deposited</th>                  
+                  <th>Amount to be Deposited</th>                  
                   <th>Action</th>
                 </tr>
                 </thead>

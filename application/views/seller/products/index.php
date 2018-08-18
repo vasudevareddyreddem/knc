@@ -1152,11 +1152,11 @@ return confirm('Are you sure want to delete "'+id +'" product?');
         return regex.test(specialcost);
 		}
 		if (!IsAmount(cost)) {
-		alert("Please Enter coreect formate amount");
+		alert("Please Enter correct format amount");
 		return false;
 		}
 		if (!IsAmountspec(specialcost)) {
-		alert("Please Enter coreect formate amount");
+		alert("Please Enter correct format amount");
 		return false;
 		}
 	  if(specialcost==''|| specialcost==0){
@@ -1186,7 +1186,11 @@ return confirm('Are you sure want to delete "'+id +'" product?');
         });
 		  
 	  }else{
-		   alert('special price must be less than price');return false;
+		  
+		  
+		  alert('special price must be less than item price Or item Price must be greater than special price');return false;
+					
+		   
 		}
   }
 </script>

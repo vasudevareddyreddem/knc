@@ -65,7 +65,8 @@
       <!-- /.carousel --> 
       
     </div>
-	<div class="cart_bdy"> 
+	<div class="cart_bdy">
+<?php if(isset($topoffers) && count($topoffers)>0){ ?> 	
     <!--Top Category slider Start-->
     <div class="top-cate">
       <div class="featured-pro container_main">
@@ -99,9 +100,10 @@
         </div>
       </div>
     </div>
+	<?php } ?>
     <!--Top Category silder End--> 
     <!-- best Pro Slider -->
-    
+   <?php if(isset($deals_of_the_day) && count($deals_of_the_day)>0){ ?> 
     <section>
       <div class="best-pro slider-items-products container_main">
         <div class="new_title">
@@ -169,7 +171,9 @@
         </div>
       </div>
     </section> 
+	<?php } ?>
 <!--   deals_of_the_day  --->
+<?php if(isset($season_sales) && count($season_sales)>0){ ?>
 	<section>
       <div class="best-pro slider-items-products container_main">
         <div class="new_title">
@@ -240,6 +244,8 @@
       </div>
     </section>
 	
+<?php } ?>
+	
 	
 	
   </div>
@@ -254,7 +260,7 @@
   
  </div>
  
- 
+   <div class="clearfix"></div>  <div class="clearfix"></div>
   
 
 

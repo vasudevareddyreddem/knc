@@ -32,7 +32,7 @@
 					</button><?php echo $this->session->flashdata('error');?></div>	
 					<?php endif; ?>
 			
-				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Add SubItem</div>
+				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Add Sub Item</div>
 				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;"><a href="<?php echo base_url('inventory/subitemslists'); ?>">Back</a></div>
 				
 				
@@ -46,7 +46,7 @@
 				</select>
 				</div>
 				<div class="form-group">
-				<label for="category">Subcategory Name</label>
+				<label for="category">Sub Category Name</label>
 				<select class="form-control" name="subcategory_list" id="subcategory_list">
 					<option value="">Select</option>
 				</select>
@@ -71,8 +71,8 @@
 				</form>
 				
 				<form enctype="multipart/form-data" method="post" name="importsubitem" id="importsubitem"  action="<?php echo base_url('inventory/subimportsubitem'); ?>" class="well col-md-6 col-md-offset-2" style="background-color:#fff;">
-				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Import Add SubItem</div>
-				<a id="fashionproducts" href="<?php echo base_url('assets/subcategoryimportfiles'); ?>/importsubitem.xlsx" >Download sample Import File</a>
+				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Import Sub Item</div>
+				<a id="fashionproducts" href="<?php echo base_url('assets/subcategoryimportfiles'); ?>/importsubitem.xlsx" >Download Sample Import File</a>
 
 				<div class="form-group">
 				<label for="category">Category Name</label>
@@ -84,13 +84,13 @@
 				</select>
 				</div>
 				<div class="form-group">
-				<label for="category">Subcategory Name</label>
+				<label for="category">Sub Category Name</label>
 				<select class="form-control" name="subcategory_lists" id="subcategory_lists">
 					<option value="">Select</option>
 				</select>
 				</div>
 				<div class="form-group">
-				<label for="category">Import File File</label>
+				<label for="category">Import File</label>
 				<input type="file" placeholder="" class="form-control" id="importsubitemfile" name="importsubitemfile" />
 				</div>
 				<div class="btn-group-vertical btn-block text-center" role="group">
@@ -131,14 +131,14 @@ $(document).ready(function() {
             category_list: {
 					validators: {
 					notEmpty: {
-						message: 'Pease select Category'
+						message: 'Please select Category'
 					}
 				}
 			}, 
 			subcategory_lists: {
 					validators: {
 					notEmpty: {
-						message: 'Pease select subCategory'
+						message: 'Please select Sub Category'
 					}
 				}
 			}, 
@@ -146,7 +146,7 @@ $(document).ready(function() {
 			importsubitemfile: {
 					validators: {
 						notEmpty: {
-						message: 'Pease select subCategory'
+						message: 'Please select Sub Item'
 					},
 					regexp: {
 					regexp: /\.(xlsx|xls)$/i,
@@ -165,21 +165,21 @@ $(document).ready(function() {
             category_list: {
 					validators: {
 					notEmpty: {
-						message: 'category is required'
+						message: 'Category is required'
 					}
 				}
 			}, 
 			subcategory_list: {
 					validators: {
 					notEmpty: {
-						message: 'Subcategory is required'
+						message: 'Sub Category is required'
 					}
 				}
 			}, 
 			image: {
 					validators: {
 					 notEmpty: {
-					message: 'Subitem Image is required'
+					message: 'Sub Item Image is required'
 					},
 					regexp: {
 					regexp: /\.(jpe?g|png)$/i,
@@ -190,11 +190,11 @@ $(document).ready(function() {
 			subitemname: {
 					validators: {
 						notEmpty: {
-							message: 'Sub ItemName is required'
+							message: 'Sub Item Name is required'
 						},
 					regexp: {
 					regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
-					message: ' Sub ItemName can only consist of alphanumaric, space and dot'
+					message: ' Sub Item Name can only consist of alphanumaric, space and dot'
 					}
 				}
 			}

@@ -17,7 +17,7 @@
 					
 				<form enctype="multipart/form-data" method="post" name="addbanners" id="addbanners"  action="<?php echo base_url('inventory/savehomepagebanners'); ?>" class="well col-md-6 col-md-offset-2" style="background-color:#fff;">
 			
-				<div class=""  style="font-size:20px;font-weight:1200;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Add home page middle Banner Images</div>
+				<div class=""  style="font-size:20px;font-weight:1200;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Add Home Page Middle Banner Images</div>
 				
 				<div class="row">
 						<div class="col-md-6 form-group">
@@ -26,9 +26,9 @@
 						
 						</div>
 						<div class="col-md-6 form-group">
-								 <label for="exampleInputEmail1"> Category page Position</label>
+								 <label for="exampleInputEmail1"> Category Page Position</label>
 								<select class="form-control" id="position" name="position" >
-								<option value="">Select item </option>
+								<option value="">Select </option>
 								<option value="2">Second position </option>
 								<option value="3">Third position </option>
 								<option value="4">Fourth position </option>
@@ -37,9 +37,9 @@
 				</div>
 				<div class="row">
 						<div class="col-md-6 form-group">
-								 <label for="exampleInputEmail1">link</label>
+								 <label for="exampleInputEmail1">Link</label>
 								<select class="form-control" id="link" onchange="getselectedproducts(this.value);" name="link" >
-								<option value="">Select item </option>
+								<option value="">Select </option>
 								<option value="1">Category </option>
 								<option value="2">Subcategory </option>
 								<option value="3">Subitem</option>
@@ -49,9 +49,9 @@
 						</div>
 						<div class="col-md-6 form-group" id="selectlist" style="">
 							<div class="form-group nopaddingRight san-lg">
-								 <label for="exampleInputEmail1">options</label>
+								 <label for="exampleInputEmail1">Options</label>
 								<select class="form-control" id="selecteddata" name="selecteddata" >
-								<option value="">Select item </option>
+								<option value="">Select</option>
 								</select>
 							</div>
 						</div>
@@ -93,7 +93,7 @@ $(document).ready(function() {
 			image: {
 				validators: {
 					 notEmpty: {
-						message: 'image is required'
+						message: 'Image is required'
 					},  
 					regexp: {
 					regexp: /\.(jpe?g|png|gif)$/i,
@@ -111,14 +111,14 @@ $(document).ready(function() {
 			selecteddata: {
 				validators: {
 					 notEmpty: {
-						message: 'options is required'
+						message: 'Options is required'
 					}
 				}
 			},
 			expirydate: {
 				validators: {
 					 notEmpty: {
-						message: 'expiry date is required'
+						message: 'Expiry Date is required'
 					}
 				}
 			},

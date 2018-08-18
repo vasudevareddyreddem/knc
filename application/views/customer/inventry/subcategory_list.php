@@ -4,7 +4,7 @@
         <div class="col-xs-12">
       <div class="box ">
             <div class="box-header" style="border-bottom:1px solid #ddd;">
-              <h3 class="box-title" >SubCategory List</h3>
+              <h3 class="box-title" >Sub Category List</h3>
               <a class="pull-right btn btn-sm btn-primary" href="<?php echo base_url('inventory/addsubcategory'); ?>" class="box-title">Add</a>
             </div>
             <!-- /.box-header -->
@@ -16,7 +16,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
 				  <tr>
-					<th>SubCategory Name</th>
+					<th>Sub Category Name</th>
 					<th>Commission</th>
 					<th>Category Name</th>
 					<th>Created Date</th>

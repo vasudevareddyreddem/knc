@@ -2,8 +2,7 @@
 <div class="panel-heading panel-primary">
  <section class="content-header">
       <h1>
-       Update profile
-        <small>Control panel</small>
+       Update profile 
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

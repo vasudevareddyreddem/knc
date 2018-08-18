@@ -4,8 +4,8 @@
         <div class="col-xs-12">
       <div class="box data_box_wid">
             <div class="box-header" style="border-bottom:1px solid #ddd;">
-              <h3 class="box-title">Delivery boy's status List</h3>
-              <a class="pull-right btn btn-sm btn-primary" href="<?php echo base_url('inventory/categoryadd'); ?>" class="box-title">Add</a>
+              <h3 class="box-title">Delivery Boy's Status List</h3>
+             
             </div>
 			
             <!-- /.box-header -->

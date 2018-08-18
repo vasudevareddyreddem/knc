@@ -23,7 +23,7 @@
                 <thead>
                 <tr>
 					<th>Category Name</th>
-					<th>Subcategory Count</th>
+					<th>Sub Category Count</th>
 					<th>Created Date</th>
 					<th>Status</th>
 					<th>Action</th>

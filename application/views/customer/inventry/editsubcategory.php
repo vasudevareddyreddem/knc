@@ -19,14 +19,14 @@
 					</button><?php echo validation_errors(); ?></div>	
 					<?php  endif;?>
 				<form enctype="multipart/form-data" method="post" name="addcategory" id="addcategory"  action="<?php echo base_url('inventory/editsubcategorypost'); ?>" class="well col-md-6 col-md-offset-2" style="background-color:#fff;">
-				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Edit Subcategory</div>
+				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Edit Sub Category</div>
 				<input type="hidden" name="subcategoryid" id="subcategoryid" value="<?php echo $subcategory_details['subcategory_id']; ?>">
 				<div class="form-group">
-				<label for="category">Subcategory Name</label>
+				<label for="category">Sub Category Name</label>
 				<input type="text"  class="form-control" id="subcategoryname"  name="subcategoryname" value="<?php echo isset($subcategory_details['subcategory_name'])?$subcategory_details['subcategory_name']:''; ?>"/>
 				</div>
 				<div class="form-group">
-				<label for="category">Subcategory Image</label>
+				<label for="category">Sub Category Image</label>
 				<input type="file"  class="form-control" id="sub_image"  name="sub_image"/>
 				<span><?php echo isset($subcategory_details['subcategory_image'])?$subcategory_details['subcategory_image']:''; ?></span>
 				</div>
@@ -35,7 +35,7 @@
 				<input type="text"  class="form-control" id="commission"  name="commission" value="<?php echo isset($subcategory_details['commission'])?$subcategory_details['commission']:''; ?>"/>
 				</div>
 				<div class="form-group">
-				<label for="category">category Name</label>
+				<label for="category">Category Name</label>
 				<select class="form-control" name="category_list" id="category_list">
 				<option value="">Select</option>
 				<?php foreach($category_list as $list){ ?>

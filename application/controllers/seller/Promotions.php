@@ -76,6 +76,7 @@ class Promotions extends Admin_Controller {
 			'offer_type'=>$post['offertype'],
 			'offer_expairdate'=>Date('Y-m-d h:i:s A',strtotime(htmlentities($post['expairdate']))),
 			);
+			
 			//echo '<pre>';print_r($data);exit;
 			$update=$this->Promotions_model->add_offer_to_productss($cat_ida,$data);
 			
@@ -135,7 +136,9 @@ class Promotions extends Admin_Controller {
 							'expairdate'=>date('Y-m-d h:i:s A', $date2),
 							'status'=>1,
 							'area'=>$productprice['seller_location_area'],
-							'create_at'=>date("Y-m-d H:i:s") 
+							'create_at'=>date("Y-m-d H:i:s"),
+							'home_page_status'=>0,
+							'preview_ok'=>0 							
 							);
 							$data1=array(
 								'offer_percentage'=>number_format($post['offeramount'], 2),
@@ -208,7 +211,9 @@ public function addtopoffers()
 							'expairdate'=>date('Y-m-d h:i:s A', $date2),
 							'status'=>1,
 							'area'=>$productprice['seller_location_area'],
-							'create_at'=>date("Y-m-d H:i:s") 
+							'create_at'=>date("Y-m-d H:i:s") ,
+							'home_page_status'=>0,
+							'preview_ok'=>0 
 							);
 							$data1=array(
 							'offer_percentage'=>number_format($post['offeramount'], 2),
@@ -280,7 +285,9 @@ public function dealsoftheday()
 							'expairdate'=>date('Y-m-d h:i:s A', $date2),
 							'status'=>1,
 							'area'=>$productprice['seller_location_area'],
-							'create_at'=>date("Y-m-d H:i:s") 
+							'create_at'=>date("Y-m-d H:i:s"), 
+							'home_page_status'=>0,
+							'preview_ok'=>0 
 							);
 							$data1=array(
 							'offer_percentage'=>number_format($post['offeramount'], 2),

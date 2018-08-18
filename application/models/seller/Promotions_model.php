@@ -118,6 +118,20 @@ class Promotions_model extends MY_Model
 		return $this->db->update('products', $data);
 	}
 	
+	/* promotions list*/
+	
+	public  function check_item_exits_ornot($id){
+		$this->db->select('item_id')->from('top_offers');
+		$this->db->where('item_id',$id);
+		return $this->db->get()->row_array();
+		
+	}
+	public function update_product_price_details($id,$data){
+		$this->db->where('item_id', $id);
+		return $this->db->update('top_offers', $data);
+	}
+	/* promotions list*/
+	
 	
 
 

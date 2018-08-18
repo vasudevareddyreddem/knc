@@ -4,8 +4,8 @@
         <div class="col-xs-12">
       <div class="box ">
             <div class="box-header" style="border-bottom:1px solid #ddd;">
-              <h3 class="box-title">Total orders List (<?php if(isset($orderslists) && count($orderslists)>0){echo count($orderslists); } ?>)</h3>
-              <a class="pull-right btn btn-sm btn-primary" href="<?php echo base_url('inventory/categoryadd'); ?>" class="box-title">Add</a>
+              <h3 class="box-title">Total Orders List (<?php if(isset($orderslists) && count($orderslists)>0){echo count($orderslists); } ?>)</h3>
+              
             </div>
 			
             <!-- /.box-header -->
@@ -29,11 +29,11 @@
 					<th>Amount</th>
 					<th>Customer Name</th>
 					<th>Customer Mobile Number</th>
-					<th>Billng name</th>
-					<th>Billng Mobile Number</th>
+					<th>Billing Name</th>
+					<th>Billing Mobile Number</th>
 					<th>Payment Type</th>
 					<th>Store Name</th>
-					<th>Order Date</th>
+					<th>Ordered Date & Time</th>
 				 </tr>
                 </thead>
                 <tbody>

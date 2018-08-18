@@ -31,14 +31,14 @@
 					<span aria-hidden="true">&times;</span>
 					</button><?php echo $this->session->flashdata('error');?></div>	
 					<?php endif; ?>
-				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Add Subcategory</div>
+				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Add Sub Category</div>
 				
 				<div class="form-group">
-				<label for="category">Subcategory Name</label>
+				<label for="category">Sub Category Name</label>
 				<input type="text"  class="form-control" id="categoryname"  name="categoryname"/>
 				</div>
 				<div class="form-group">
-				<label for="category">Subcategory Image</label>
+				<label for="category">Sub Category Image</label>
 				<input type="file"  class="form-control" id="sub_image"  name="sub_image"/>
 				</div>
 				<div class="form-group">
@@ -63,8 +63,8 @@
 				</form>
 				
 				<form enctype="multipart/form-data" method="post" name="importsubcategory" id="importsubcategory"  action="<?php echo base_url('inventory/subimportcategory'); ?>" class="well col-md-6 col-md-offset-2" style="background-color:#fff;">
-				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Import subcategory</div>
-				<a id="fashionproducts" href="<?php echo base_url('assets/subcategoryimportfiles'); ?>/importsubportcategories.xlsx" >Download sample Import File</a>
+				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Import Sub Category</div>
+				<a id="fashionproducts" href="<?php echo base_url('assets/subcategoryimportfiles'); ?>/importsubportcategories.xlsx" >Download Sample Import File</a>
 
 				<div class="form-group">
 				<label for="category">Category Name</label>
@@ -76,7 +76,7 @@
 				</select>
 				</div>
 				<div class="form-group">
-				<label for="category">Import File File</label>
+				<label for="category">Import File</label>
 				<input type="file" placeholder="" class="form-control" id="importcategoryfile" name="importcategoryfile" />
 				</div>
 				<div class="btn-group-vertical btn-block text-center" role="group">
@@ -98,7 +98,7 @@ $(document).ready(function() {
             category_list: {
 					validators: {
 					notEmpty: {
-						message: 'Pease select subCategory'
+						message: 'Please select Sub Category'
 					}
 				}
 			}, 
@@ -106,7 +106,7 @@ $(document).ready(function() {
 			importcategoryfile: {
 					validators: {
 						notEmpty: {
-						message: 'Pease select subCategory'
+						message: 'Please select Sub Category'
 					},
 					regexp: {
 					regexp: /\.(xlsx|xls)$/i,
@@ -125,18 +125,18 @@ $(document).ready(function() {
             categoryname: {
 					validators: {
 					notEmpty: {
-						message: 'SubCategory Name is required'
+						message: 'Sub Category Name is required'
 					},
 					regexp: {
 					regexp: /^[a-zA-Z0-9.,&-_@#$ ]+$/,
-					message: ' subCategory Name can only consist of alphanumaric, space and dot'
+					message: ' Sub Category Name can only consist of alphanumeric, space and dot'
 					}
 				}
 			},
 			sub_image: {
            validators: {
              notEmpty: {
-            message: 'SubCategory Image is required'
+            message: 'Sub Category Image is required'
           },
           regexp: {
           regexp: /\.(jpe?g|png)$/i,

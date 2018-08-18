@@ -19,10 +19,10 @@
 					</button><?php echo validation_errors(); ?></div>	
 					<?php  endif;?>
 				<form enctype="multipart/form-data" method="post" name="editcategory" id="editcategory"  action="<?php echo base_url('inventory/updatecategorypost'); ?>" class="well col-md-6 col-md-offset-2" style="background-color:#fff;">
-				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Edit category</div>
+				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Edit Category</div>
 				<input type="hidden" name="catid" id="catid" value="<?php echo isset($category_details['category_id'])?$category_details['category_id']:''; ?>">
 				<div class="form-group">
-				<label for="category">category Name</label>
+				<label for="category">Category Name</label>
 				<input type="text"  class="form-control" id="categoryname"  name="categoryname" value="<?php echo isset($category_details['category_name'])?$category_details['category_name']:''; ?>"/>
 				</div>
 				<div class="form-group">

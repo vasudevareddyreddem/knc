@@ -11,7 +11,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
 				  <tr>
-					<th>Seller id</th>
+					<th>Seller Id</th>
 					<th>Seller Name</th>
 					<th>Total Quantity</th>
 					

@@ -23,7 +23,7 @@
                 <tr>
           <th>Seller Id</th>
           <th>Seller Name</th>
-          <th>ItemsCount</th>
+          <th>Items Count</th>
           <th>Action</th>
          </tr>
                 </thead>

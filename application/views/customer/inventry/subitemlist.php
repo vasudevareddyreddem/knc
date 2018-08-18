@@ -28,7 +28,7 @@
                 <thead>
                 <tr>
 					<th>Category Name</th>
-					<th>Subcategory Name</th>
+					<th>Sub Category Name</th>
 					<th>Sub Item Name</th>
 					<th>Image</th>
 					<th>Created Date</th>

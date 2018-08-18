@@ -19,12 +19,12 @@
 					</button><?php echo validation_errors(); ?></div>	
 					<?php  endif;?>
 				<form enctype="multipart/form-data" method="post" name="edititem" id="edititem"  action="<?php echo base_url('inventory/edititempost'); ?>" class="well col-md-6 col-md-offset-2" style="background-color:#fff;">
-				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Edit SubItem</div>
+				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Edit Item</div>
 				
 				<input type="hidden" name="itemid" id="itemid" value="<?php echo isset($item_details['id'])?$item_details['id']:''; ?>">
 				
 				<div class="form-group" id="oldcatewise">
-				<label for="category">Subitem Name</label>
+				<label for="category">Sub Item Name</label>
 				<select class="form-control" name="subitemid" id="subitemid">
 				<option value="">Select</option>
 				<?php foreach($item_list as $list){ ?>
@@ -87,18 +87,18 @@ $(document).ready(function() {
 			subitemid: {
 					validators: {
 					notEmpty: {
-						message: 'SubItem Name is required'
+						message: 'Sub Item Name is required'
 					}
 				}
 			}, 
 			itemname: {
 					validators: {
 					notEmpty: {
-						message: 'Sub ItemName is required'
+						message: 'Sub Item Name is required'
 					},
 					regexp: {
 					regexp: /^[a-zA-Z0-9.,&-_@#$ ]+$/,
-					message: ' Sub ItemName can only consist of alphanumaric, space and dot'
+					message: ' Sub Item Name can only consist of alphanumeric, space and dot'
 					}
 				}
 			}

@@ -37,7 +37,7 @@
 				
 				
 				<div class="form-group">
-				<label for="category">subitem Name</label>
+				<label for="category">Sub Item Name</label>
 				<select class="form-control" name="subitemid" id="subitemid">
 				<option value="">Select</option>
 				<?php foreach($item_list as $list){ ?>
@@ -61,10 +61,10 @@
 				
 				<form enctype="multipart/form-data" method="post" name="importsubitem" id="importsubitem"  action="<?php echo base_url('inventory/subimportitem'); ?>" class="well col-md-6 col-md-offset-2" style="background-color:#fff;">
 				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Import Item</div>
-				<a id="fashionproducts" href="<?php echo base_url('assets/subcategoryimportfiles'); ?>/importsitem.xlsx" >Download sample Import File</a>
+				<a id="fashionproducts" href="<?php echo base_url('assets/subcategoryimportfiles'); ?>/importsitem.xlsx" >Download Sample Import File</a>
 
 				<div class="form-group">
-				<label for="category">Subitem Name</label>
+				<label for="category">Sub Item Name</label>
 				<select class="form-control" name="subitemid" id="subitemid">
 				<option value="">Select</option>
 				<?php foreach($item_list as $list){ ?>
@@ -74,7 +74,7 @@
 				</div>
 				
 				<div class="form-group">
-				<label for="category">Import File File</label>
+				<label for="category">Import File</label>
 				<input type="file" placeholder="" class="form-control" id="importitemfile" name="importitemfile" />
 				</div>
 				<div class="btn-group-vertical btn-block text-center" role="group">
@@ -116,7 +116,7 @@ $(document).ready(function() {
 			subitemid: {
 					validators: {
 					notEmpty: {
-						message: 'Pease select sub Item'
+						message: 'Please select sub Item'
 					}
 				}
 			}, 
@@ -124,7 +124,7 @@ $(document).ready(function() {
 			importitemfile: {
 					validators: {
 						notEmpty: {
-						message: 'Pease select subCategory'
+						message: 'Please select an Item'
 					},
 					regexp: {
 					regexp: /\.(xlsx|xls)$/i,
@@ -143,7 +143,7 @@ $(document).ready(function() {
             subitemid: {
 					validators: {
 					notEmpty: {
-						message: 'Subitem is required'
+						message: 'Sub Item is required'
 					}
 				}
 			}, 
@@ -151,11 +151,11 @@ $(document).ready(function() {
 			itemname: {
 					validators: {
 					notEmpty: {
-						message: 'ItemName is required'
+						message: 'Item Name is required'
 					},
 					regexp: {
 					regexp: /^[a-zA-Z0-9.,&-_@#$ ]+$/,
-					message: ' Sub ItemName can only consist of alphanumaric, space and dot'
+					message: ' Sub Item Name can only consist of alphanumeric, space and dot'
 					}
 				}
 			},

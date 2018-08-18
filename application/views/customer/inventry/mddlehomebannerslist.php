@@ -6,7 +6,7 @@
 	  <?php //echo '<pre>';print_r($category_list);exit; ?>
       <div class="box data_box_wid">
             <div class="box-header" style="border-bottom:1px solid #ddd;">
-              <h3 class="box-title">Middle home page Banners List</h3>
+              <h3 class="box-title">Home Page Middle Banners List</h3>
               <a class="pull-right btn btn-sm btn-primary" href="<?php echo base_url('inventory/addmiddlehomebanners'); ?>" class="box-title">Add</a>
             </div>
 			
@@ -23,18 +23,18 @@
 					<?php endif; ?>
 					
 		<?php if(count($bannerslist)>0){ ?>
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-striped table-responsive">
                 <thead>
                 <tr>
 					<th>Store Name</th>
 					<th>Name</th>
 					<th>Image</th>
-					<th>Category page Position</th>
+					<th>Category Page Position</th>
 					<th>Link Page</th>
-					<th>Created Date</th>
-					<th>Expiry Date</th>
+					<th>Created Date & Time</th>
+					<th>Expiry Date & Time</th>
 					<th>Seller Image Status</th>
-					<th>Home page Status</th>
+					<th>Home Page Status</th>
 				 </tr>
                 </thead>
                 <tbody>

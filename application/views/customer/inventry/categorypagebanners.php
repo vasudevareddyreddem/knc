@@ -4,7 +4,7 @@
         <div class="col-xs-12">
       <div class="box ">
             <div class="box-header" style="border-bottom:1px solid #ddd;">
-              <h3 class="box-title">SubCategory page Banners List</h3>
+              <h3 class="box-title">Sub Category Page Banners List</h3>
               <a class="pull-right btn btn-sm btn-primary" href="<?php echo base_url('inventory/addcategorybanners'); ?>" class="box-title">Add</a>
             </div>
 			
@@ -27,12 +27,12 @@
 					<th>Store Name</th>
 					<th>Name</th>
 					<th>Image</th>
-					<th>Category page Position</th>
+					<th>Category Page Position</th>
 					<th>Link Page</th>
 					<th>Created Date</th>
 					<th>Expiry Date</th>
 					<th>Seller Image Status</th>
-					<th>Home page Status</th>
+					<th>Home Page Status</th>
 				 </tr>
                 </thead>
                 <tbody>

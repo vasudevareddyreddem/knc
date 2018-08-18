@@ -27,7 +27,7 @@
 					 
 					
 					  <tr>
-						<th >Created date</th>
+						<th >Created Date & Time</th>
 						<td><?php echo isset($category_details['created_at'])?$category_details['created_at']:''; ?></td>
 						
 					  </tr> 

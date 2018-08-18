@@ -4,7 +4,7 @@
         <div class="col-xs-12">
       <div class="box data_box_wid">
             <div class="box-header" style="border-bottom:1px solid #ddd;">
-              <h3 class="box-title">Deals Of The day</h3>
+              <h3 class="box-title">Deals Of The Day</h3>
               <!-- <a class="pull-right btn btn-sm btn-primary" href="<?php echo base_url('inventory/categoryadd'); ?>" class="box-title">Add</a> -->
             </div>
 			
@@ -29,8 +29,8 @@
 					<th>Item Name</th>
 					<th>Item Code</th>
 					<th>Item Cost</th>
-					<th>Offer percentage </th>					
-					<th>Offer type</th>	
+					<th>Offer Percentage </th>					
+					<th>Offer Type</th>	
 					<th>Item Image</th>
 					<th>Action</th>
 				 </tr>

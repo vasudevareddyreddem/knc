@@ -23,10 +23,10 @@
 					<th>Category Name</th>
 					<th>Item Amount</th>
 					<th>Offer Amount</th>
-					<th>Intial Date</th>
+					<th>Initial Date</th>
 					<th>Expiry Date</th>
 					<th>Item Status</th>
-					<th>Home page Status</th>
+					<th>Home Page Status</th>
 				 </tr>
                 </thead>
                 <tbody>

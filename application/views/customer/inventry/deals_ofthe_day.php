@@ -4,7 +4,7 @@
         <div class="col-xs-12">
       <div class="box ">
             <div class="box-header" style="border-bottom:1px solid #ddd;">
-              <h3 class="box-title">Deals of the day Items List</h3>
+              <h3 class="box-title">Deals of the Day Items List</h3>
               <!-- <a class="pull-right btn btn-sm btn-primary" href="<?php echo base_url('inventory/categoryadd'); ?>" class="box-title">Add</a> -->
             </div>
 			
@@ -22,7 +22,7 @@
                 <tr>
 					<th>Seller Id</th>
 					<th>Seller Name</th>
-					<th>ItemsCount</th>
+					<th>Items Count</th>
 					<th>Action</th>
 				 </tr>
                 </thead>
@@ -40,7 +40,7 @@
                 </tbody>              
               </table>
 		  <?php } else{ ?>
-		  NO Deals of the day Items List
+		  No Deals of the Day Items List
 		  <?php } ?>
             </div>
             <!-- /.box-body -->

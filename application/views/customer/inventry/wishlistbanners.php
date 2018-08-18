@@ -20,7 +20,7 @@
 					<span aria-hidden="true">&times;</span>
 					</button><?php echo $this->session->flashdata('error');?></div>	
 					<?php endif; ?>
-				<div class=""  style="font-size:20px;font-weight:1200;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Add wishlist page Banner Images</div>
+				<div class=""  style="font-size:20px;font-weight:1200;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Add Wishlist Page Banner Images</div>
 				<div class="form-group">
 				<label for="category">Type</label>
 				<select class="form-control" name="type" id="type">
