@@ -996,18 +996,22 @@ class Customer extends Front_Controller
 		$data['emailid']=$customerdetails['cust_email'];
 		$data['productinfo']=implode('-', $productitemnames);
 		$amount=$data['carttotal_amount']['pricetotalvalue']+$data['carttotal_amount']['delivertamount'];
+			
+			//exit;
 			$api_id= $this->config->item('keyId');
 					$api_Secret= $this->config->item('API_keySecret');
 					$api = new RazorpayApi($api_id,$api_Secret);
 					//$api = new RazorpayApi($this->config->load('keyId'), $this->config->load('API_keySecret'));
 					$orderData = [
 							'receipt'         =>$data['billimgdetails']['cust_id'] ,
-							'amount'          => $amount, // 2000 rupees in paise
+							'amount'          => $amount*100, // 2000 rupees in paise
 							'currency'        => 'INR',
 							'payment_capture' => 1 // auto capture
 					];
 
 						$razorpayOrder = $api->order->create($orderData);
+						
+						//echo '<pre>';print_r($razorpayOrder);exit;
 						$razorpayOrderId = $razorpayOrder['id'];
 						$displayAmount = $amount = $orderData['amount'];
 						$displayCurrency=$orderData['currency'];
