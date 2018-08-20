@@ -4,11 +4,11 @@
  <div class="topBar inverse">
             <div class="container">
                 <ul class="list-inline pull-left hidden-sm hidden-xs">
-                  <li><a href="https://www.facebook.com/shofusdotcom/" target="_blank" class=""><span class=""><i class="" aria-hidden="true"><img src="<?php echo base_url(); ?>assets/home/images/fb.png" /></i></span></a></li>
+                  <li><a href="https://www.facebook.com/Order-Organic-1711447655640783/" target="_blank" class=""><span class=""><i class="" aria-hidden="true"><img alt="fb" src="<?php echo base_url(); ?>assets/home/images/fb.png" /></i></span></a></li>
                   &nbsp;
-                  <li><a href="https://twitter.com/shofus" target="_blank" class=""><span class=""><i class="" aria-hidden="true"><img src="<?php echo base_url(); ?>assets/home/images/tiw.png" /></i></span></a></li>
+                  <li><a href="https://twitter.com/Orderorganicon" target="_blank" class=""><span class=""><i class="" aria-hidden="true"><img src="<?php echo base_url(); ?>assets/home/images/tiw.png" /></i></span></a></li>
                   &nbsp;
-                  <li><a href="https://plus.google.com/u/0/106334687276812209130"  target="_blank" class=""><span class=""><i class="" aria-hidden="true"><img src="<?php echo base_url(); ?>assets/home/images/gmai.png" /></i></span></a></li>
+                  <li><a href="https://plus.google.com/115472759965484848637"  target="_blank" class=""><span class=""><i class="" aria-hidden="true"><img src="<?php echo base_url(); ?>assets/home/images/gmai.png" /></i></span></a></li>
                 </ul>
                 
                 <ul class="topBarNav pull-right">
@@ -118,7 +118,7 @@
 										<div class=" smallsearch">
 										   <div class="cart_search">
 											  <form id="searchform" action="<?php echo base_url('home/seraching'); ?>" method="post">
-												 <input type="text" name="serachvalues" id="tags"  onfocus="searchfunction(this.value);" onkeyup="searchfunction(this.value);" class="flipkart-navbar-input form-control input-lg"  placeholder="Search for Products, Brands and more" autocomplete="off" spellcheck="false">
+												 <input type="text" name="serachvalues" id="tags"  onfocus="searchfunction(this.value);" onkeyup="searchfunction(this.value);" class="flipkart-navbar-input form-control input-lg"  placeholder="Search for Products, Brands and More" autocomplete="off" spellcheck="false">
 												
 											  </form>
 										   </div>

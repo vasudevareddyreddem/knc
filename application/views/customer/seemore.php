@@ -1,4 +1,13 @@
 
+<style>
+.product-ratings{
+	color:#ddd;
+	}
+.product-rateing{
+	color:#45b84a !important;
+	}
+	
+	</style>
 	<div class="cart_bdy "> 
     <!--Top Category slider Start-->
     <div class="top-cate">

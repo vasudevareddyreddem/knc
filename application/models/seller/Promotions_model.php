@@ -120,15 +120,35 @@ class Promotions_model extends MY_Model
 	
 	/* promotions list*/
 	
-	public  function check_item_exits_ornot($id){
+	public  function check_item_exits_ornot_intopoffers($id){
 		$this->db->select('item_id')->from('top_offers');
 		$this->db->where('item_id',$id);
 		return $this->db->get()->row_array();
 		
 	}
-	public function update_product_price_details($id,$data){
+	public  function check_item_exits_ornot_indealsffers($id){
+		$this->db->select('item_id')->from('deals_ofthe_day');
+		$this->db->where('item_id',$id);
+		return $this->db->get()->row_array();
+		
+	}
+	public  function check_item_exits_ornot_inseasonoffers($id){
+		$this->db->select('item_id')->from('season_sales');
+		$this->db->where('item_id',$id);
+		return $this->db->get()->row_array();
+		
+	}
+	public function update_product_price_details_intopoffers($id,$data){
 		$this->db->where('item_id', $id);
 		return $this->db->update('top_offers', $data);
+	}
+	public function update_product_price_details_indeals_of_theday($id,$data){
+		$this->db->where('item_id', $id);
+		return $this->db->update('deals_ofthe_day', $data);
+	}
+	public function update_product_price_details_intseason_sales($id,$data){
+		$this->db->where('item_id', $id);
+		return $this->db->update('season_sales', $data);
 	}
 	/* promotions list*/
 	

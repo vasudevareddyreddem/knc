@@ -19,7 +19,7 @@
 				<?php } ?>
 				</div>
 				<div class="col-md-8 ">
-        			<p class="site_col">admin</p>
+        			<p class="site_col">Customer</p>
                   	<p><strong><?php echo $profile_details['cust_firstname'].'&nbsp;'.$profile_details['cust_lastname']; ?></strong></p>
         			
         		</div>
@@ -68,7 +68,7 @@
 			<table class="table ">
 			<tbody>
 			  <tr>
-				<td class="label_col">NAME</td>
+				<td class="label_col">Name</td>
 				<td><?php echo $profile_details['cust_firstname'].'&nbsp;'.$profile_details['cust_lastname']; ?></td>
 			  </tr><tr>
 				<td class="label_col">Email</td>

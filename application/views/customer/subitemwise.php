@@ -3,15 +3,20 @@
 
 </head>
 <style>
+
+.product-ratings{
+	color:#ddd;
+	}
+.product-rateing{
+	color:#45b84a !important;
+	}
    .top-navbar1{
    display:none;
    }
    .product-ratings{
    color:#ddd !important;
    }
-   .product-rateing{
-   color:#fc0 !important;
-   }
+   
    .fa {
    padding-right: 0px !important;
    }

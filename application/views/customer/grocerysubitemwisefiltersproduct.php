@@ -5,6 +5,12 @@
    background-color:#000;
    transition: all 0.5s  ease-in-out;
    }
+   .product-ratings{
+	color:#ddd;
+	}
+.product-rateing{
+	color:#45b84a !important;
+	}
    .bg-defoult{
    background-color:#fff;
    color:#222;
@@ -302,7 +308,7 @@ function productqtyincreae(id){
 	if(qty1==orginalqtycnt){
 		$("#qtymesage"+id).html("Available Quantity is " +orginalqtycnt);
 	}else if(qty1==10){
-	$("#qtymesage"+id).html("Maximum allowed Quantity is 10 ");
+	$("#qtymesage"+id).html("Maximum Allowed Quantity is 10 ");
 	}else{
 		$("#qtymesage"+id).html("");
 		$('#qty'+id).val(qty1 + 1);

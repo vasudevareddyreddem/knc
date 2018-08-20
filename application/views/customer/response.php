@@ -112,8 +112,11 @@
 						<p class="del_und">
 										
 							<?php  $timestamp = strtotime($productslist['create_at']) + 2*60*60;
-								$time = date('g:i a', $timestamp);?>
-							Delivered on <?php echo isset($productslist['create_at'])?Date('M-d-Y',strtotime(htmlentities($productslist['create_at']))):'';  ?> <?php echo $time; ?>
+								$time = date('g:i a', $timestamp);
+								//echo  date("F j, Y, g:i a", strtotime($productslist["create_at"]));
+								
+								?>
+							 Delivery expected by <?php echo isset($order_items[0]['expected_delivery_time'])?$order_items[0]['expected_delivery_time']:'';  ?>
 							
 							</p>						
 											

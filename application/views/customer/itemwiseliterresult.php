@@ -1,3 +1,12 @@
+ 
+ <style>
+ .product-ratings{
+	color:#ddd;
+	}
+.product-rateing{
+	color:#45b84a !important;
+	}
+ </style>
  <?php 
    foreach($previousdata as $predata){ 
 				

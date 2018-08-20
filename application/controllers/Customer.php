@@ -166,7 +166,7 @@ class Customer extends Front_Controller
 		//echo '<pre>';print_r($details);exit;
 		$updatedetails= $this->customer_model->update_deails($customerdetails['customer_id'],$details);
 		if(count($updatedetails)>0){
-			$this->session->set_flashdata('success','Profile Successfully updated');
+			$this->session->set_flashdata('success','Profile Successfully Updated');
 			redirect('customer/account');
 		}
 
@@ -641,6 +641,8 @@ class Customer extends Front_Controller
 							$delivery_charges=35;
 						}else if($price >1000){
 							$delivery_charges=0;
+						}else{
+							$delivery_charges=0;
 						}
 					}
 			
@@ -713,6 +715,8 @@ class Customer extends Front_Controller
 						}else if(($price > 500) && ($price < 1000)){
 							$delivery_charges=35;
 						}else if($price >1000){
+							$delivery_charges=0;
+						}else{
 							$delivery_charges=0;
 						}
 					}
@@ -1451,6 +1455,7 @@ class Customer extends Front_Controller
 		$ids[]=$order_ids['order_item_id'];
 		
 	}
+	//echo '<pre>';print_r($customerdetails);exit;
 	if(in_array($order_id, $ids)){
 		
 		$data['item_details']= $this->customer_model->get_order_items_list($customerdetails['customer_id'],$order_id);

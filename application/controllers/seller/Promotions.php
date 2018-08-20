@@ -77,8 +77,45 @@ class Promotions extends Admin_Controller {
 			'offer_expairdate'=>Date('Y-m-d h:i:s A',strtotime(htmlentities($post['expairdate']))),
 			);
 			
-			//echo '<pre>';print_r($data);exit;
-			$update=$this->Promotions_model->add_offer_to_productss($cat_ida,$data);
+			/*topofferspurpose*/
+							$offer_price=($productprice['item_cost'] * $post['offeramount']);
+							$offer_amount=($offer_price / 100);
+							$top_data=array(
+							'item_id'=>$cat_ida,
+							'seller_id'=>$this->session->userdata('seller_id'),
+							'category_id'=>$productprice['category_id'],
+							'subcategory_id'=>$productprice['subcategory_id'],
+							'offer_percentage'=>number_format($post['offeramount'], 2),
+							'item_price'=>$productprice['item_cost'],
+							'offer_amount'=>$offer_amount,
+							'intialdate'=>date("Y-m-d H:i:s"),  
+							'expairdate'=>Date('Y-m-d h:i:s A',strtotime(htmlentities($post['expairdate']))),
+							'status'=>1,
+							'area'=>$productprice['seller_location_area'],
+							'create_at'=>date("Y-m-d H:i:s"),
+							'home_page_status'=>0,
+							'preview_ok'=>0 							
+							);
+							
+							/* top offers*/
+							$top=$this->Promotions_model->check_item_exits_ornot_intopoffers($cat_ida);
+							$deals=$this->Promotions_model->check_item_exits_ornot_indealsffers($cat_ida);
+							$season=$this->Promotions_model->check_item_exits_ornot_inseasonoffers($cat_ida);
+							
+							/*checking where it found*/
+							if($top['item_id']!='' || $deals['item_id']!='' || $season['item_id']!=''){
+								if($top['item_id']!=''){
+									$this->Promotions_model->update_product_price_details_intopoffers($cat_ida,$top_data);
+								}else if($deals['item_id']!=''){
+									$this->Promotions_model->update_product_price_details_indeals_of_theday($cat_ida,$top_data);
+								}else if($season['item_id']!=''){
+									$this->Promotions_model->update_product_price_details_intseason_sales($cat_ida,$top_data);
+								}
+								
+							}
+			
+						//echo '<pre>';print_r($data);exit;
+						$update=$this->Promotions_model->add_offer_to_productss($cat_ida,$data);
 			
 			
 		}

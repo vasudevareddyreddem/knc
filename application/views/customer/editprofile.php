@@ -31,7 +31,7 @@
 		<div class="row">
 		<div class="col-md-12 ">
 		<div class="panel panel-default">
-		  <div class="panel-heading" style="background:#fff"><h6>Update profile</h6></div>
+		  <div class="panel-heading" style="background:#fff"><h6>Update Profile</h6></div>
 			
 			<div class="panel-body">
 			<div  style="padding:10px 15px;">

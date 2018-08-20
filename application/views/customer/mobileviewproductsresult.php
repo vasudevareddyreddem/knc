@@ -537,11 +537,11 @@ color:#eee !important;
 				jQuery('#sucessmsg').show();
 				//alert(data.msg);
 				if(data.msg==2){
-				alert('Product Successfully Removed to wishlist');
+				alert('Product Successfully Removed from Wishlist');
 				
 				}
 				if(data.msg==1){
-				alert('Product Successfully added to wishlist');
+				alert('Product Successfully Added to Wishlist');
 				}
 			}
 			

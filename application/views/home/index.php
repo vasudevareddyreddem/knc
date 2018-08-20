@@ -78,7 +78,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 	<section class="">
       <div class="best-pro slider-items-products container_main">
        <div class="new_title">
-          <h2>Categorys</h2>
+          <h2>CATEGORIES</h2>
         </div>
 		   <div id="best-seller" class="product-flexslider hidden-buttons " >
 				  <!--<div class="slider-items slider-width-col4 products-grid help_cls text-center" >-->

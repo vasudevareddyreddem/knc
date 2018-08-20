@@ -146,7 +146,7 @@ tr th:last-child {
 				<div class="panel-body">
 				<div class="col-md-4" style="border-right:1px solid #45b1b5">
 				<table class="table " >
-					<div><h5>ORDER DETAILS</h5></div>
+					<div><h5>Order Details</h5></div>
 					<tbody>
 					<tr>
 					<th>Order ID</th>
@@ -253,7 +253,7 @@ tr th:last-child {
 				</div>
 				<div class="col-md-4" style="border-right:1px solid #45b1b5">
 				<table class="table " >
-	<div><h5>Delivery location Address Details</h5></div>
+	<div><h5>Delivery Location Address Details</h5></div>
 		   <tbody>
 			<tr><th>Name </th><td><?php echo isset($item_details['name'])?$item_details['name']:'';  ?></td></tr>
 			<tr><th>Email Address </th><td><?php echo isset($item_details['emal_id'])?$item_details['emal_id']:'';  ?></td></tr>

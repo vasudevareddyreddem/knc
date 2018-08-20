@@ -26,7 +26,7 @@
                      </div>
                     <div href="#" class="list-group-item text-center col-md-3">
                         <h4 class="glyphicon glyphicon-credit-card "></h4>
-                        <br/>Payment mode
+                        <br/>Payment Mode
                      </div>
                     <div href="#" class="list-group-item text-center col-md-3">
                         <h4 class="glyphicon glyphicon-ok "></h4>
@@ -48,7 +48,7 @@
 		<?php 
 		if(count($billingaddresslis)>0){ ?>
 		<div class="row">
-		 <div class="title"><span>Saved address</span></div>
+		 <div class="title"><span>Saved Address</span></div>
 		 
 		 <?php $cnt=1;foreach($billingaddresslis as $addlist) { ?>
 		 
@@ -218,7 +218,7 @@
 		
 		<div class="col-md-4 sm_hide pull-right" style=" border:1px solid #ddd; ;background-color:#fff;padding:5px; width:32%" >
 				<span><img id="" src="<?php echo base_url(); ?>assets/home/images/track_lig.png" /></span> &nbsp;
-			<span style="font-weight:500;font-size:17px" id="">	Check your delivery Status</span><br>
+			<span style="font-weight:500;font-size:17px" id="">	Check your delivery status</span><br>
 			<div class="text-center">
 			<span style="font-weight:500;font-size:17px" id="deliverymsg" style="display:none;"></span>
 			<span id="deliverymsg" style="hight:50px;">&nbsp;</span>

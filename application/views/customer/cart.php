@@ -26,7 +26,7 @@
                     </div>
                     <div href="#" class="list-group-item text-center col-md-3">
                         <h4 class="glyphicon glyphicon-credit-card "></h4>
-                        <br/>Payment mode
+                        <br/>Payment Mode
                     </div>
                     <div href="#" class="list-group-item text-center col-md-3">
                         <h4 class="glyphicon glyphicon-ok "></h4>
@@ -176,7 +176,7 @@
 		
 		<div class="col-md-4 sm_hide pull-right" style=" border:1px solid #ddd; ;background-color:#fff;padding:10px 20px; float:right; width:32%" >
 				<span><img id="" src="<?php echo base_url(); ?>assets/home/images/track_lig.png" /></span> &nbsp;
-			<span style="font-weight:500;font-size:17px" id="">Check your delivery Status</span><br>
+			<span style="font-weight:500;font-size:17px" id="">Check your delivery status</span><br>
 			<div class="text-center">
 			<span style="font-weight:500;font-size:17px" id="oldmsg">
 			<?php if($this->session->userdata('time')=='2 hours'){ ?>
@@ -317,7 +317,7 @@ function productqtyincreae(id){
 	if(qty1==orginalqtycnt){
 		$("#qtymesage"+id).html("Available Quantity is " +orginalqtycnt);
 	}else if(qty1==10){
-	$("#qtymesage"+id).html("Maximum allowed Quantity is 10 ");
+	$("#qtymesage"+id).html("Maximum Allowed Quantity is 10 ");
 	}else{
 		$("#qtymesage"+id).html("");
 		$('#qty'+id).val(qty1 + 1);
@@ -360,7 +360,7 @@ function couponcodeapply(){
 	}else if(coupon.length ==6){
 		$('#couponerrormsg').html('Promo Code is invalid. Please use another one').css("color", "red");
 	}else{
-		$('#couponerrormsg').html('Promo code length must be 6 characters.').css("color", "red");
+		$('#couponerrormsg').html('Promo Code length must be 6 characters.').css("color", "red");
 		return false;
 	}
 	

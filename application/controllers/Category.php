@@ -242,34 +242,34 @@ class Category extends Front_Controller
 	
 	$data['previousdata']= $this->category_model->get_all_previous_search_subcategory_fields();
 	
-	$cartitemids= $this->category_model->get_all_cart_lists_ids();
-		if(count($cartitemids)>0){
-		foreach($cartitemids as $list){
-			$cust_ids[]=$list['cust_id'];
-			$cart_item_ids[]=$list['item_id'];
-			$cart_ids[]=$list['id'];
-			
-		}
-		$data['cust_ids']=$cust_ids;
-		$data['cart_item_ids']=$cart_item_ids;
-		$data['cart_ids']=$cart_ids;
-		
-	}else{
-		$data['cust_ids']=array();
-		$data['cart_item_ids']=array();
-		$data['cart_ids']=array();
-	}
-	$wishlist_ids= $this->category_model->get_all_wish_lists_ids();
-	if(count($wishlist_ids)>0){
-	foreach ($wishlist_ids as  $list){
-		$customer_ids_list[]=$list['cust_id'];
-		$whishlist_item_ids_list[]=$list['item_id'];
-		$whishlist_ids_list[]=$list['id'];
-	}
-	$data['customer_ids_list']=$customer_ids_list;
-	$data['whishlist_item_ids_list']=$whishlist_item_ids_list;
-	$data['whishlist_ids_list']=$whishlist_ids_list;
-	}
+	 $cartitemids= $this->category_model->get_all_cart_lists_ids();
+				if(count($cartitemids)>0){
+				foreach($cartitemids as $list){
+					$cust_ids[]=$list['cust_id'];
+					$cart_item_ids[]=$list['item_id'];
+					$cart_ids[]=$list['id'];
+					
+				}
+				$data['cust_ids']=$cust_ids;
+				$data['cart_item_ids']=$cart_item_ids;
+				$data['cart_ids']=$cart_ids;
+				
+			}else{
+				$data['cust_ids']=array();
+				$data['cart_item_ids']=array();
+				$data['cart_ids']=array();
+			}
+			$wishlist_ids= $this->category_model->get_all_wish_lists_ids();
+			if(count($wishlist_ids)>0){
+			foreach ($wishlist_ids as  $list){
+				$customer_ids_list[]=$list['cust_id'];
+				$whishlist_item_ids_list[]=$list['item_id'];
+				$whishlist_ids_list[]=$list['id'];
+			}
+			$data['customer_ids_list']=$customer_ids_list;
+			$data['whishlist_item_ids_list']=$whishlist_item_ids_list;
+			$data['whishlist_ids_list']=$whishlist_ids_list;
+			}
 	//echo '<pre>';print_r($data);exit;
 	$this->load->view('customer/subcategoryresult',$data);
 	//echo '<pre>';print_r($data);exit;
@@ -368,7 +368,7 @@ public function productreview(){
 		$saverating= $this->category_model->save_rating($addrataing);
 		//echo $this->db->last_query();exit;
 		}
-		$this->session->set_flashdata('success',"review Successfully Submitted");
+		$this->session->set_flashdata('success',"Review Successfully Submitted");
 		redirect('customer/orederdetails/'.base64_encode($post['order_item_id']));	
 	}else{
 		$this->session->set_flashdata('error',"Error will occured!");
@@ -2848,10 +2848,15 @@ public function subitemwise_search(){
 						}
 						
 					}
-					foreach (array_unique($ids) as $Li){
+					if(isset($ids) && count($ids)>0){
+						foreach (array_unique($ids) as $Li){
 						$uniids[]=array('offers'=>$Li);
 						
+						}
+					}else{
+						$uniids=array();
 					}
+					
 				$data['offer_list']=$uniids;
 				$cartitemids= $this->category_model->get_all_cart_lists_ids();
 				if(count($cartitemids)>0){
@@ -3497,9 +3502,12 @@ public function subitemwise_search(){
 						}
 						
 					}
-					foreach (array_unique($ids) as $Li){
-						$uniids[]=array('offers'=>$Li);
-						
+					if(isset($ids) && count($ids)>0){
+						foreach (array_unique($ids) as $Li){
+							$uniids[]=array('offers'=>$Li);
+						}
+					}else{
+						$uniids=array();
 					}
 				$data['offer_list']=$uniids;
 				$cartitemids= $this->category_model->get_all_cart_lists_ids();

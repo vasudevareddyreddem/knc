@@ -4,6 +4,14 @@ $("#selectedlocation").append('<?php echo $locationnames; ?>');
 $("#fademaskpurpose").addClass("mask_hide");
 
 </script>
+<style>
+.product-ratings{
+	color:#ddd;
+	}
+.product-rateing{
+	color:#45b84a !important;
+	}
+</style>
 <?php //echo '<pre>';print_r($locationnames);exit; ?>
 <body class="bac_img">
 <div class="banner_home con_start" style="margin-top:-20px;">
@@ -537,12 +545,12 @@ jQuery.ajax({
 						if(data.msg==2){
 							$("#addwishlistids"+id+val).removeClass("text-primary");
 							$('#addwhish'+id+val).prop('title', 'Add to Wishlist');
-						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Removed to wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Removed from Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
 						}
 						if(data.msg==1){
 						 $("#addwishlistids"+id+val).addClass("text-primary");
 						$('#addwhish'+id+val).prop('title', 'Added to Wishlist');
-						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully added to wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Added to Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
 						}
 				}
 

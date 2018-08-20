@@ -20,6 +20,12 @@
 </script>
 <?php } ?>
 <style>
+.product-ratings{
+	color:#ddd;
+	}
+.product-rateing{
+	color:#45b84a !important;
+	}
    .top-navbar1{
    display:none;
    }
@@ -1386,7 +1392,7 @@ function mobileviewsubcatoptions(id){
    				$('#sucessmsg').show('');
    				$("#addwishlistids"+id+val).removeClass("text-primary");
    				$('#addwhish'+id+val).prop('title', 'Add to Wishlist');
-   						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Removed to wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+   						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Removed from Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
    				document.getElementById("sucessmsg").focus();
    				
    				}
@@ -1394,7 +1400,7 @@ function mobileviewsubcatoptions(id){
    				$('#sucessmsg').show('');
    				 $("#addwishlistids"+id+val).addClass("text-primary");
    				 $('#addwhish'+id+val).prop('title', 'Added to Wishlist');
-   						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully added to wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+   						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Added to Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
    				document.getElementById("sucessmsg").focus();				
    				}
    				
@@ -1594,7 +1600,7 @@ function productqtyincreae(id){
 	if(qty1==orginalqtycnt){
 		$("#qtymesage"+id).html("Available Quantity is " +orginalqtycnt);
 	}else if(qty1==10){
-	$("#qtymesage"+id).html("Maximum allowed Quantity is 10 ");
+	$("#qtymesage"+id).html("Maximum Allowed Quantity is 10 ");
 	}else{
 		$("#qtymesage"+id).html("");
 		$('#qty'+id).val(qty1 + 1);

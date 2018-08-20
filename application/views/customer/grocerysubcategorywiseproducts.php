@@ -5,6 +5,12 @@
    background-color:#000;
    transition: all 0.5s  ease-in-out;
    }
+   .product-ratings{
+	color:#ddd;
+	}
+.product-rateing{
+	color:#45b84a !important;
+	}
    .bg-defoult{
    background-color:#fff;
    color:#222;
@@ -247,7 +253,7 @@
     $("#wish_supcount").append(data.count);
    	$("#addwishlistids"+id+val).addClass("wishadd");
    	$('#addwhish'+id+val).prop('title', 'Add to Wishlist');
-   			$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Removed to wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+   			$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Removed from Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
    	document.getElementById("sucessmsg").focus();
    	
    	}
@@ -255,7 +261,7 @@
    	$('#sucessmsg').show('');
    	 $("#addwishlistids"+id+val).removeClass("wishadd");
    	 $('#addwhish'+id+val).prop('title', 'Added to Wishlist');
-   		$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully added to wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+   		$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Added to wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
    	document.getElementById("sucessmsg").focus();				
    	}
    	}
@@ -369,7 +375,7 @@
    if(qty1==orginalqtycnt){
    $("#qtymesage"+id).html("Available Quantity is " +orginalqtycnt);
    }else if(qty1==10){
-   $("#qtymesage"+id).html("Maximum allowed Quantity is 10 ");
+   $("#qtymesage"+id).html("Maximum Allowed Quantity is 10 ");
    }else{
    $("#qtymesage"+id).html("");
    $('#qty'+id+anid).val(qty1 + 1);

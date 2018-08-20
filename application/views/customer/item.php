@@ -1,3 +1,12 @@
+
+<style>
+.product-ratings{
+	color:#ddd;
+	}
+.product-rateing{
+	color:#45b84a !important;
+	}
+</style>
 <div class="container-fluid fluid_mod">
    <span id="filtersubitemwisedata"></span>
    <span id="subitemwisedata">

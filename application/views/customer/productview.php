@@ -9,10 +9,10 @@
     border-radius: 0 0 0.5em 0.5em;
 }
 .product-ratings{
-	color:#ddd
+	color:#ddd;
 	}
 .product-rateing{
-	color:#fc0
+	color:#45b84a !important;
 	}
 .img_c-l_siz{
 		background:#f5f5f5;
@@ -1227,7 +1227,7 @@
                     <div class="media-body">
                       <h5 class="media-heading"><strong><?php echo $reviewslist['name']; ?></strong></h5>
 						<?php echo $reviewslist['review_content']; ?><br>
-						Cartinhour Customer  : <?php echo isset($reviewslist['create_at'])?Date('M-d-Y h:i:s A',strtotime(htmlentities($reviewslist['create_at']))):'';  ?>
+						Order Organic Customer : <?php echo isset($reviewslist['create_at'])?Date('M-d-Y h:i:s A',strtotime(htmlentities($reviewslist['create_at']))):'';  ?>
 
                     </div>
 					
@@ -1607,11 +1607,11 @@ jQuery.ajax({
 					//alert(data.msg);
 					if(data.msg==2){
 					$('#addwhish').css("color", "");
-					$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Removed to wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+					$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Removed from Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
 					}
 					if(data.msg==1){
 					$('#addwhish').css("color", "#45b1b9");
-					$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully added to wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+					$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Added to Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
 	
 					}
 				}
