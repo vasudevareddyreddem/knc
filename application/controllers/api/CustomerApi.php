@@ -758,7 +758,7 @@ class CustomerApi extends REST_Controller {
 			$message = array('status'=>0,'message'=>'Item id is required!');
 			$this->response($message, REST_Controller::HTTP_NOT_FOUND);
 			}
-		$product_details=$this->Customerapi_model->all_product_details($item_id);
+		$product_details=$this->Customerapi_model->all_basic_product_details($item_id);
 		if(count($product_details)>0){
 				$currentdate=date('Y-m-d h:i:s A');
 						if($product_details['offer_expairdate']>=$currentdate){
@@ -792,12 +792,14 @@ class CustomerApi extends REST_Controller {
 		$size_list=$this->Customerapi_model->get_product_size_details($item_id);
 		$specification_list=$this->Customerapi_model->get_product_specification_details($item_id);
 		$uk_size_list=$this->Customerapi_model->get_product_uksize_details($item_id);
-		
+		$basic_product_details=$this->Customerapi_model->product_all_details($item_id);
 		
 			$message = array(
 			'status'=>1,
 			'message'=>'product details are found',
-			'details'=>$product_details,
+			'details'=>array(
+				array('basic'=>$product_details,'specifications'=>$basic_product_details,),
+			),
 			'images'=>array(
 				array('img1'=>$images_list['item_image']),
 				array('img1'=>$images_list['item_image1']),
@@ -2846,6 +2848,7 @@ class CustomerApi extends REST_Controller {
 			}
 			public function billing_address_save_post(){
 					$customer_id=$this->input->get('customer_id');
+					$customer_id=$this->input->get('address_id');
 					$title=$this->input->get('title');
 					$name=$this->input->get('name');
 					$mobile=$this->input->get('mobile');
@@ -4505,6 +4508,102 @@ public function homeapi_get()
 		}
 	
 	}
+	/* customer addresss  save*/
+	public function update_billing_address_post(){
+					$customer_id=$this->post('customer_id');
+					$address_id=$this->post('address_id');
+					$title=$this->post('title');
+					$name=$this->post('name');
+					$emal_id=$this->post('emal_id');
+					$mobile=$this->post('mobile');
+					$address1=$this->post('address1');
+					$address2=$this->post('address2');
+					$landmark=$this->post('landmark');
+					$pincode=$this->post('pincode');
+					$city=$this->post('city');
+					$state=$this->post('state');
+					if($address_id==''){
+					$message = array('status'=>1,'message'=>'Address id is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+					if($customer_id==''){
+					$message = array('status'=>1,'message'=>'Customer id is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+					if($title==''){
+					$message = array('status'=>1,'message'=>'Title is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+					if($name==''){
+					$message = array('status'=>1,'message'=>'Name is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+					if($emal_id==''){
+					$message = array('status'=>1,'message'=>'Email Id is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+					if($mobile==''){
+					$message = array('status'=>1,'message'=>'mobile is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+					if($address1==''){
+					$message = array('status'=>1,'message'=>'Address1 is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+					if($address2==''){
+					$message = array('status'=>1,'message'=>'Address2 is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+					if($landmark==''){
+					$message = array('status'=>1,'message'=>'landmark is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+					if($pincode==''){
+					$message = array('status'=>1,'message'=>'pincode is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+					if($city==''){
+					$message = array('status'=>1,'message'=>'city is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+					if($state==''){
+					$message = array('status'=>1,'message'=>'state is required!');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+					$billingaddress = $this->Customerapi_model->check_customer_exits($customer_id);
+					if(count($billingaddress)>0){
+						
+						$savenewadd=array(
+							'title'=>$title,
+							'name'=>$name,
+							'emal_id'=>$emal_id,
+							'mobile'=>$mobile,
+							'address1'=>$address1,
+							'address2'=>$address2,
+							'landmark'=>$landmark,
+							'pincode'=>$pincode,
+							'city'=>$city,
+							'state'=>$state,
+							'create-at'=>date('Y-m-d H:i:s'),
+						);
+						$update= $this->Customerapi_model->update_customer_billing_address($address_id,$customer_id,$savenewadd);
+						if(count($update)>0){
+							$message = array('status'=>1,'address_id'=>$address_id,'message'=>'Your billing address successfully updated');
+						$this->response($message, REST_Controller::HTTP_OK);
+							
+						}else{
+							$message = array('status'=>1,'address_id'=>$address_id,'message'=>'Technical problem will occurred. please try again after some time');
+						$this->response($message, REST_Controller::HTTP_OK);
+						}
+						
+						
+						
+
+					}else{
+					$message = array('status'=>1,'message'=>'Customer not found. please  try again');
+					$this->response($message, REST_Controller::HTTP_NOT_FOUND);
+					}
+			}
 		
 
 }
