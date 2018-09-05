@@ -4497,7 +4497,7 @@ public function homeapi_get()
 					$recentlyviewed[]=$list;
 				}
 	
-			$message = array('status'=>1,'result'=>$recentlyviewed,'message'=>'Filters are found.');
+			$message = array('status'=>1,'result'=>$recentlyviewed,'path' =>base_url('uploads/products/'),'message'=>'Filters are found.');
 			$this->response($message, REST_Controller::HTTP_OK);
 		}else{
 			$message = array('status'=>0,'subcategorie_id'=>$sub_cat_id,'message'=>'Items are not found.');
