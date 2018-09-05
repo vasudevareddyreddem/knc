@@ -30,9 +30,15 @@
     .form .form-control {
         margin-bottom: 10px;
     }
+	.login-back{
+	background-image: url("<?php echo base_url();?>assets/admin/img/login-back.jpg") ;
+	 background-repeat: no-repeat;
+    background-size: cover;
+	
+}
 </style>
 
-<body style="background-color:#f59171;">
+<body class="login-back">
     <div class="container mar_t10per" style="position:relative" >
         <div class="row ">
 		<div class="col-md-6 col-md-offset-3" style="background-color:#fff; border-radius:10px;padding:10px 0px; ">
@@ -72,21 +78,24 @@
                         <div style="margin-top:10px" class="form-group">
                             <!-- Button -->
                             <div class="col-sm-12 controls">
-                                <button class="btn btn-lg btn-block signup-btn" id="clk" style="background-color:#c33c12;color:#fff;" type="submit">
-                                    login</button>
+                              
 
                             </div>
                         </div>
-				</form>
+			
                 </div>
             </div>
             </div>
             </div>
         </div>
-				<a class="col-md-4 " style="position: absolute;top:-100px;right:43%">
-					<img  class="img-responsive widt_img_lo" src="<?php echo base_url();?>assets/home/images/logo.png" />
+		  
+				<a class="col-md-4 " style="position: absolute;top:0;left: 50%;transform: translate(-50%,-100%);background:#fff;padding:10px;border-radius:20px 20px 0px 0px;">
+					<img  style="width:300px;margin:0 auto;padding-left:20%" src="<?php echo base_url();?>assets/home/images/logo.png" />
 				</a>
-
+				<div class="col-md-4 text-center" style="position: absolute;left: 50%;transform: translate(-50%,1%);background:#fff;padding:20px;border-radius:0px 0px 20px 20px;">
+					  <button style="border-radius:40px;" class="btn btn-small btn-primary btn-block " id="clk"  type="submit">login</button>
+				</div>
+	</form>
     </div>
 
 </body>

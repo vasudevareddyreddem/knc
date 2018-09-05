@@ -893,11 +893,11 @@ body .ui-tooltip {
 	font-size: 1em;
 }
 .ui-widget.ui-widget-content {
-	border: 1px solid #c5c5c5;
-	position:relative;
+	
+	position:fixed;
 	top:0;
-	width:100%;
-	z-index:1;
+	width: 35% !important;
+	z-index:2000;
 	
 	
 }
@@ -906,6 +906,7 @@ body .ui-tooltip {
 	background: #ffffff;
 	color: #333333;
 	z-index:1500;
+	
 }
 .ui-widget-content a {
 	color: #333333;

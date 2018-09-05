@@ -309,85 +309,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 	
 	<?php } ?>
 	
-	<?php if(isset($position_three) && count($position_three)>0){ ?>
-	<section>
-	<div class="best-pro slider-items-products container_main">
-		<div class="row mar_t15" >
-			<?php foreach($position_three as $list){ ?>
-				<?php if(isset($list[0]['name']) && $list[0]['name']!=''){ ?>
-						<?php if($list[0]['link']==1){ ?>
-							<a href="<?php echo base_url('category/subcategorys/'.base64_encode($list[0]['selected_id'])); ?>">
-						<?php }else if($list[0]['link']==2){ ?>
-							<a href="<?php echo base_url('category/subcategory/'.base64_encode($list[0]['category_id']).'/'.base64_encode($list[0]['subcategory_id'])); ?>">
-						<?php }else if($list[0]['link']==3){ ?>
-								<a href="<?php echo base_url('category/subitemwise/'.base64_encode($list[0]['subitem_id']).'/'.base64_encode($list[0]['subcategory_id']).'/'.base64_encode($list[0]['category_id'])); ?>">
-						<?php }else if($list[0]['link']==4){ ?>
-							<a href="<?php echo base_url('category/item/'.base64_encode($list[0]['item_id'])); ?>">
-						<?php }else if($list[0]['link']==5){ ?>
-							<a href="<?php echo base_url('category/productview/'.base64_encode($list[0]['selected_id'])); ?>">
-						<?php } ?>
-							<div class="col-md-3">
-								<img class="img-responsive" src="<?php echo base_url('assets/homebanners/'.$list[0]['name']); ?>" alt="<?php echo $list[0]['name']; ?>">
-							</div>
-							</a>
-					<?php } ?>
-				<?php if(isset($list[1]['name']) && $list[1]['name']!=''){ ?>
-					<?php if($list[0]['link']==1){ ?>
-							<a href="<?php echo base_url('category/subcategorys/'.base64_encode($list[1]['selected_id'])); ?>">
-						<?php }else if($list[1]['link']==2){ ?>
-							<a href="<?php echo base_url('category/subcategory/'.base64_encode($list[1]['category_id']).'/'.base64_encode($list[1]['subcategory_id'])); ?>">
-						<?php }else if($list[1]['link']==3){ ?>
-								<a href="<?php echo base_url('category/subitemwise/'.base64_encode($list[1]['subitem_id']).'/'.base64_encode($list[1]['subcategory_id']).'/'.base64_encode($list[1]['category_id'])); ?>">
-						<?php }else if($list[1]['link']==4){ ?>
-							<a href="<?php echo base_url('category/item/'.base64_encode($list[1]['item_id'])); ?>">
-						<?php }else if($list[1]['link']==5){ ?>
-							<a href="<?php echo base_url('category/productview/'.base64_encode($list[1]['selected_id'])); ?>">
-						<?php } ?>
-					<div class="col-md-3">
-						<img class="img-responsive" src="<?php echo base_url('assets/homebanners/'.$list[1]['name']); ?>" alt="<?php echo $list[1]['name']; ?>">
-					</div>
-					</a>
-				<?php } ?>
-				<?php if(isset($list[2]['name']) && $list[2]['name']!=''){ ?>
-					<?php if($list[2]['link']==1){ ?>
-							<a href="<?php echo base_url('category/subcategorys/'.base64_encode($list[2]['selected_id'])); ?>">
-						<?php }else if($list[2]['link']==2){ ?>
-							<a href="<?php echo base_url('category/subcategory/'.base64_encode($list[2]['category_id']).'/'.base64_encode($list[2]['subcategory_id'])); ?>">
-						<?php }else if($list[2]['link']==3){ ?>
-								<a href="<?php echo base_url('category/subitemwise/'.base64_encode($list[2]['subitem_id']).'/'.base64_encode($list[2]['subcategory_id']).'/'.base64_encode($list[2]['category_id'])); ?>">
-						<?php }else if($list[2]['link']==4){ ?>
-							<a href="<?php echo base_url('category/item/'.base64_encode($list[2]['item_id'])); ?>">
-						<?php }else if($list[2]['link']==5){ ?>
-							<a href="<?php echo base_url('category/productview/'.base64_encode($list[2]['selected_id'])); ?>">
-						<?php } ?>
-					<div class="col-md-3">
-						<img class="img-responsive" src="<?php echo base_url('assets/homebanners/'.$list[2]['name']); ?>" alt="<?php echo $list[2]['name']; ?>">
-					</div>
-					</a>
-				<?php } ?>
-				<?php if(isset($list[3]['name']) && $list[3]['name']!=''){ ?>
-					<?php if($list[3]['link']==1){ ?>
-							<a href="<?php echo base_url('category/subcategorys/'.base64_encode($list[3]['selected_id'])); ?>">
-						<?php }else if($list[3]['link']==2){ ?>
-							<a href="<?php echo base_url('category/subcategory/'.base64_encode($list[3]['category_id']).'/'.base64_encode($list[3]['subcategory_id'])); ?>">
-						<?php }else if($list[3]['link']==3){ ?>
-								<a href="<?php echo base_url('category/subitemwise/'.base64_encode($list[3]['subitem_id']).'/'.base64_encode($list[3]['subcategory_id']).'/'.base64_encode($list[3]['category_id'])); ?>">
-						<?php }else if($list[3]['link']==4){ ?>
-							<a href="<?php echo base_url('category/item/'.base64_encode($list[3]['item_id'])); ?>">
-						<?php }else if($list[3]['link']==5){ ?>
-							<a href="<?php echo base_url('category/productview/'.base64_encode($list[3]['selected_id'])); ?>">
-						<?php } ?>
-					<div class="col-md-3">
-						<img class="img-responsive" src="<?php echo base_url('assets/homebanners/'.$list[3]['name']); ?>" alt="<?php echo $list[3]['name']; ?>">
-					</div>
-					</a>
-				<?php } ?>
-			<?php } ?>
-		</div>
-	</div>
-		
-    </section>
-	<?php } ?>
+
 <?php if(isset($deals_of_the_day) && count($deals_of_the_day)>0){ ?>
      <section>
       <div class="best-pro slider-items-products container_main">
@@ -566,7 +488,9 @@ $("#fademaskpurpose").removeClass("mask_hide");
 <section>
 	<div class="">
 	<div class="clearfix">&nbsp;</div>
-				<div class="text-center"><span id="loadmor" class="lod_st">Load more &nbsp; . &nbsp; .</span></div>
+				<div class="text-center"><span id="loadmor" class="lod_st fa fa-chevron-circle-down"> Load More..</span> </div>
+				
+				
 				<div class="clearfix">&nbsp;</div>
 	</div>
 		
@@ -576,73 +500,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 
 <?php } ?>
 
-<?php if(isset($position_four) && count($position_four)>0){ ?>
-<?php //echo '<pre>';print_r($position_four);exit; ?>
-<section>
-	<div class="best-pro slider-items-products container_main">
-		<div class="row mar_t15" >
-			
-			<?php foreach($position_four as $list){ ?>
-				<?php if(isset($list[0]['name']) && $list[0]['name']!=''){ ?>
-					<?php if($list[0]['link']==1){ ?>
-							<a href="<?php echo base_url('category/subcategorys/'.base64_encode($list[0]['selected_id'])); ?>">
-						<?php }else if($list[0]['link']==2){ ?>
-							<a href="<?php echo base_url('category/subcategory/'.base64_encode($list[0]['category_id']).'/'.base64_encode($list[0]['subcategory_id'])); ?>">
-						<?php }else if($list[0]['link']==3){ ?>
-								<a href="<?php echo base_url('category/subitemwise/'.base64_encode($list[0]['subitem_id']).'/'.base64_encode($list[0]['subcategory_id']).'/'.base64_encode($list[0]['category_id'])); ?>">
-						<?php }else if($list[0]['link']==4){ ?>
-							<a href="<?php echo base_url('category/item/'.base64_encode($list[0]['item_id'])); ?>">
-						<?php }else if($list[0]['link']==5){ ?>
-							<a href="<?php echo base_url('category/productview/'.base64_encode($list[0]['selected_id'])); ?>">
-						<?php } ?>
-						<div class="col-md-4">
-							<img class="img-responsive" src="<?php echo base_url('assets/homebanners/'.$list[0]['name']); ?>" alt="<?php echo $list[0]['name']; ?>">
-						</div>
-						</a>
-				<?php } ?>
-			<?php if(isset($list[1]['name']) && $list[1]['name']!=''){ ?>
-						<?php if($list[1]['link']==1){ ?>
-							<a href="<?php echo base_url('category/subcategorys/'.base64_encode($list[1]['selected_id'])); ?>">
-						<?php }else if($list[1]['link']==2){ ?>
-							<a href="<?php echo base_url('category/subcategory/'.base64_encode($list[1]['category_id']).'/'.base64_encode($list[1]['subcategory_id'])); ?>">
-						<?php }else if($list[1]['link']==3){ ?>
-								<a href="<?php echo base_url('category/subitemwise/'.base64_encode($list[1]['subitem_id']).'/'.base64_encode($list[1]['subcategory_id']).'/'.base64_encode($list[1]['category_id'])); ?>">
-						<?php }else if($list[1]['link']==4){ ?>
-							<a href="<?php echo base_url('category/item/'.base64_encode($list[1]['item_id'])); ?>">
-						<?php }else if($list[1]['link']==5){ ?>
-							<a href="<?php echo base_url('category/productview/'.base64_encode($list[1]['selected_id'])); ?>">
-						<?php } ?>
-						<div class="col-md-4">
-							<img class="img-responsive" src="<?php echo base_url('assets/homebanners/'.$list[1]['name']); ?>" alt="<?php echo $list[1]['name']; ?>">
-						</div>
-						</a>
-			<?php } ?>
-			<?php if(isset($list[2]['name']) && $list[2]['name']!=''){ ?>
-					<?php if($list[2]['link']==1){ ?>
-							<a href="<?php echo base_url('category/subcategorys/'.base64_encode($list[2]['selected_id'])); ?>">
-						<?php }else if($list[2]['link']==2){ ?>
-							<a href="<?php echo base_url('category/subcategory/'.base64_encode($list[2]['category_id']).'/'.base64_encode($list[2]['subcategory_id'])); ?>">
-						<?php }else if($list[2]['link']==3){ ?>
-								<a href="<?php echo base_url('category/subitemwise/'.base64_encode($list[2]['subitem_id']).'/'.base64_encode($list[2]['subcategory_id']).'/'.base64_encode($list[2]['category_id'])); ?>">
-						<?php }else if($list[2]['link']==4){ ?>
-							<a href="<?php echo base_url('category/item/'.base64_encode($list[2]['item_id'])); ?>">
-						<?php }else if($list[2]['link']==5){ ?>
-							<a href="<?php echo base_url('category/productview/'.base64_encode($list[2]['selected_id'])); ?>">
-						<?php } ?>
-				<div class="col-md-4">
-					<img class="img-responsive" src="<?php echo base_url('assets/homebanners/'.$list[2]['name']); ?>" alt="<?php echo $list[2]['name']; ?>">
-				</div>
-				</a>
-			<?php } ?>
-			
-			<?php } ?>
-				
-		
-	</div>
-		
-    </section>
-	
-	<?php } ?>
+
 	
 	<div id="loadcon" style="display:none;">
 	<?php foreach ($category_wise_products   as $list){ ?>
@@ -741,7 +599,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 		</div>
 		<div class="clearfix"></div>
 		<a href="<?php echo base_url('customer/seemore/'.base64_encode($list['category_id']).'/'.base64_encode('no')); ?>">
-			<button class="btn btn-primary see_more " style="">See More</button>
+			<button class="btn btn-primary see_more blinking " style="">See More</button>
 		</a>
 	</div>
 </section>
@@ -901,8 +759,12 @@ $(document).ready(function(){
     $("#loadmor").click(function(){
         $("#loadcon").slideToggle("slow", "linear");
 		if((cnt % 2) === 0){
+		$(".lod_st").removeClass("fa fa-chevron-circle-down");
+		$(".lod_st").addClass("fa fa-chevron-circle-up");
 		$(".lod_st").text("Load Less..");
+	
 		}else{
+			$(".lod_st").addClass("fa fa-chevron-circle-down");
 			$(".lod_st").text("Load More..");
 		}
 		cnt++;

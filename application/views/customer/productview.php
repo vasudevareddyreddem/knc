@@ -93,8 +93,8 @@
 <div id="sucessmsg" style="display:none;"></div>
 		<div class="" >
 		
-		<div class="col-md-3 z_ind sing_pro" id="social-float">
-			<ul id="glasscase" class="gc-start">
+		<div class="col-md-3 z_ind sing_pro " id="social-float">
+			<ul id="glasscase" class="gc-start ">
                     <li>
 						<img class="img-responsive" src="<?php echo base_url('uploads/products/'.$products_list['item_image']); ?>"/>
 						</li>
@@ -180,7 +180,7 @@
 			 </tr> 
 			 <?php if($products_list['item_quantity']<=10 && $products_list['item_quantity']>0){ ?>
 			 <tr>
-			 <td>Available quantity:</td>
+			 <td>Available quantity</td>
 			 <td><span ><?php echo $products_list['item_quantity'];?></span></td>
 			
 			 </tr>
@@ -440,15 +440,16 @@
 
         <div class="">
 			
-			<span id="deliverymsg" style="hight:50px;">&nbsp;</span>
-			<div style="padding:10px;position:relative" class="col-md-4">
-		
+			
+			<div style="padding:10px;position:relative" class="col-md-5">
+				<div class="col-md-12"><span id="deliverymsg" >&nbsp;</span></div>
 				<div class=" pull-left">
-				<b>Pincode:</b> &nbsp; &nbsp;<input class="pin_in" style="border-top:none;border-right:none;border-left:none;border-bottom:1px solid #ddd;font-size:14px;color:#f1f1f1" maxlength="6" onkeyup="removecouponmsg();" id="checkpincode" name="checkpincode" type="text" value="" placeholder="Enter Delivery Pincode">
+				
+				<b>Pincode:</b> &nbsp; &nbsp;<input class="pin_in" style="border-top:none;border-right:none;border-left:none;border-bottom:1px solid #ddd;font-size:14px;color:#000" maxlength="6" onkeyup="removecouponmsg();" id="checkpincode" name="checkpincode" type="text" value="" placeholder="Enter Delivery Pincode">
 				</div>
-				<div class="pull-right " style="position:relative"><a class="site_col pin_code_text" style="cursor:pointer" onclick="getareapincode();">check</a></div>
+				<div class="pull-right " style="position:relative"><a class="text-white  btn btn-primary btn-xs" style="cursor:pointer" onclick="getareapincode();">check</a></div>
 				<div class="clearfix">&nbsp;</div>
-				<div style="position:absolute;right:-200px;padding:10px;background:#000;top:0;color:#fff;border-radius:5px"><span class="checkmsg"></span> Check Delivery Pincode
+				<div style="position:absolute;right:-200px;padding:10px;background:#000;top:18px;color:#fff;border-radius:5px"><span class="checkmsg"></span> Check Delivery Pincode
 				</div>
 			</div>
 			
@@ -468,9 +469,9 @@
 				$customerdetails=$this->session->userdata('userdetails');  ?>
 				
 				  <a href="" id="compare" class="btn btn-success btn-sm " type="button" ><i class="fa fa-align-left"></i> Add to Compare</a>
-                  <input type="hidden" name="compare_id" id="compare_id"  value="<?php echo $products_list['item_id']; ?>"> 
+                  <input type="hidden" name="compare_id" id="compare_id"  value="<?php echo $products_list['item_id']; ?>"/> 
 				<?php 	if (in_array($products_list['item_id'], $whishlist_item_ids_list) &&  in_array($customerdetails['customer_id'], $customer_ids_list)  ) { ?>
-					<a href="javascript:void(0);" style="color:#45b1b9;" onclick="addwhishlidt(<?php echo $products_list['item_id']; ?>);" id="addwhish" class="btn btn-warning m-b-1 btn-sm" type="button"><i class="fa fa-heart"></i>Add to Wishlist</a>  
+					<a href="javascript:void(0);"  onclick="addwhishlidt(<?php echo $products_list['item_id']; ?>);" id="addwhish" class="btn btn-warning  btn-sm" type="button"><i class="fa fa-heart"></i>Add to Wishlist</a>  
 					<?php }else{ ?>	
 					<a href="javascript:void(0);" onclick="addwhishlidt(<?php echo $products_list['item_id']; ?>);" id="addwhish" class="btn btn-warning  btn-sm" type="button"><i class="fa fa-heart"></i>Add to Wishlist</a>  
 					<?php } ?>	

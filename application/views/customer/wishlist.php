@@ -4,7 +4,8 @@
 	height:450px;
 	
 }</style>
-<div class="container mar_res_t150w" >
+<div class="clearfix">&nbsp;</div>
+<div class="container "  >
 <?php if($this->session->flashdata('adderror')): ?>
 		<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_war"> <?php echo $this->session->flashdata('adderror');?>&nbsp; <i class="fa fa-check  text-warning ico_bac" aria-hidden="true"></i></div></div>
 
@@ -82,8 +83,8 @@
 			  
 			  
 		<?php if(isset($whistlist_banners) && count($whistlist_banners)>0){ ?>	  
-		<div class="col-md-4 sm_hide" style=" position:fixed;top:20;right:5% ;background-color:#fff;padding:5px;width:30%" id="social-float">
-			<div id='carousel-custom' class='carousel slide' data-ride='carousel'>
+		<div class="col-md-4 sm_hide" >
+			<div id='carousel-custom' class="carousel slide" data-ride='carousel' style="border:1px solid #ddd;">
 			<div class='carousel-outer'>
 				<!-- me art lab slider -->
 				<div class='carousel-inner '>

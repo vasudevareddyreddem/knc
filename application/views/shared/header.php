@@ -16,10 +16,10 @@
                   
                      <a style="color:#fff" class="tel " target="_blank" href="<?php echo base_url('seller/login'); ?>"><span class=""></span> &nbsp; Sell on Order Organic </a>
                   </li>
-                  &nbsp;
+                 <!-- &nbsp;
                   <li>
                      <a style="color:#fff" class="tel" href="<?php echo base_url('customer/trackorders');?>"><span class=""><img src="<?php echo base_url(); ?>assets/home/images/track.png" /></span> &nbsp; Track your order </a>
-                  </li>
+                  </li>-->
                  
                    
                     <li class="linkdown">
@@ -188,7 +188,7 @@
                                                     <a href="<?php echo base_url('category/subcategory/'.base64_encode($lists['category_id']).'/'.base64_encode($li['subcategory_id'])); ?>"><h6><?php echo $li['subcategory_name']; ?></h6></a>
                                                 </li>
 													<?php foreach($li['subitem_list'] as $l){ ?>
-														<li><a href="<?php echo base_url('category/subitemwise/'.base64_encode($l['subitem_id']).'/'.base64_encode($li['subcategory_id']).'/'.base64_encode($lists['category_id'])); ?>"><?php echo $l['subitem_name']; ?></a></li>
+														<li style="padding-left:15px;"> <a href="<?php echo base_url('category/subitemwise/'.base64_encode($l['subitem_id']).'/'.base64_encode($li['subcategory_id']).'/'.base64_encode($lists['category_id'])); ?>"><i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp; <?php echo $l['subitem_name']; ?></a></li>
 													<?php } ?>
                                             </ul><!-- end ul col -->
 										<?php } ?>

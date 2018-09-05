@@ -74,7 +74,7 @@
         </li>
 		<li class="treeview">
           <a href="<?php echo base_url('inventory/addbannerslist');?>">
-            <i class="fa fa-table"></i> <span>App Banners</span>
+            <i class="fa fa-android"></i> <span>App Banners</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -83,7 +83,7 @@
         </li>
 		<li class="treeview">
           <a href="<?php echo base_url('inventory/categorypagebanners');?>">
-            <i class="fa fa-table"></i> <span>Sub Category Page Banners</span>
+            <i class="fa fa-picture-o"></i> <span>Sub Category Page Banners</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -91,7 +91,7 @@
          </li>
 		 <li class="treeview">
           <a href="<?php echo base_url('inventory/homepagebanerrslist');?>">
-            <i class="fa fa-table"></i> <span>Home Page Middle Banners</span>
+            <i class="fa fa-align-center"></i> <span>Home Page Middle Banners</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -99,7 +99,7 @@
          </li>
 		 <li class="treeview">
           <a href="<?php echo base_url('inventory/addbrandlogo');?>">
-            <i class="fa fa-table"></i> <span>Brand Logos</span>
+            <i class="fa fa-anchor"></i> <span>Brand Logos</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -108,7 +108,7 @@
 		
 		<li class="treeview">
           <a href="<?php echo base_url('inventory/wishlistbanerslist');?>">
-            <i class="fa fa-table"></i> <span>Wishlist Banners</span>
+            <i class="fa fa-heart"></i> <span>Wishlist Banners</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -117,7 +117,7 @@
         </li>
 		<li class="treeview">
           <a href="<?php echo base_url('inventory/totalorders');?>">
-            <i class="fa fa-table"></i> <span>Total Orders</span>
+            <i class="fa fa-list-ol"></i> <span>Total Orders</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -126,7 +126,7 @@
         </li>
 		<li class="treeview">
           <a href="<?php echo base_url('inventory/delivery_locations');?>">
-            <i class="fa fa-table"></i> <span>Delivery Boy Locations</span>
+            <i class="fa fa-map-marker"></i> <span>Delivery Boy Locations</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

@@ -660,7 +660,9 @@ a:hover, a:active {
     left: auto; }
   .yamm .dropdown.yamm-fw .dropdown-menu {
     left: 0;
-    right: 0; }
+    right: 0;
+	border-top:5px solid #45b84a;
+	}
   .yamm .yamm-fw .dropdown-menu {
     left: 0;
     right: 0; }
@@ -1088,7 +1090,7 @@ a {
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
   a:hover, a:active, a:focus {
-    color: #45b84a;
+    color: #45b84a !important;
     text-decoration: none; }
 
 .text-sm {

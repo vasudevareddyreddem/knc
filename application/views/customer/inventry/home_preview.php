@@ -1,3 +1,8 @@
+<style>
+.footer {
+	display:none;
+}
+</style>
 <div class="content-wrapper pad_t100" >
 <section class="content">
       <div class="row">

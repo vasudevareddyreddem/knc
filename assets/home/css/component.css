@@ -492,7 +492,7 @@ box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.75);
           transition: all 0.2s ease-in; }
         .middleBar .header-items .header-item a:hover {
           background-color: #45b84a;
-          color: #ffffff; }
+          color: #fff !important; }
           .middleBar .header-items .header-item a:hover sub {
             bottom: 5px;
             right: 5px;
@@ -503,7 +503,7 @@ box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.75);
 =====Navbar==========
 ===================*/
 .yamm {
-  z-index: 999;
+  z-index: 1;
   width: 100%;
   background-color: #fff;
   border: none;
