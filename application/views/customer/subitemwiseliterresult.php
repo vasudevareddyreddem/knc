@@ -57,21 +57,26 @@
 		 // echo '<pre>';print_r($maximum_prices);exit;
 
 		  ?>
+		    	<div class="clearfix">&nbsp;</div>
    <span id="subitemwisefilterdata">
- <div class="col-sm-3">
-            <div class="title"><span>Filters</span></div>
+ <div class="col-sm-3 bg-success">
+            <div class="title text-center"><h3 class="text-white">Filters</h3></div>
+			<hr style="border-top:1px solid #f9f9f9;opacity:0.4;">
 			<input type="hidden" id="subitemid" name="subitemid" value="<?php echo $subitemid; ?>">
 			<input type="hidden" id="subcatid" name="subcatid" value="<?php echo $subcatid; ?>">
 			<input type="hidden" id="min" name="min" value="<?php echo $min; ?>">
 			<input type="hidden" id="max" name="max" value="<?php echo $max; ?>">
+              <div style="background:#fff;padding:20px ; border-radius:5px">
               <div class="row">
 				  <div class="col-md-6">
-				  <h4>Min:<span class="site_col"><?php echo $minimum_prices; ?></span></h4>
+				  <h6>Min:<span class="site_col"><?php echo $minimum_prices; ?></span></h6>
 				  </div>
 				  <div class="col-md-6">
-				 <h4>Max:<span class="site_col"><?php echo $maximum_prices; ?></span></h4>
+				 <h6>Max:<span class="site_col"><?php echo $maximum_prices; ?></span></h6>
 				  </div>
 			</div>
+			
+			
 		  <div class="row">
 		  <div class="col-md-6">
 		   <select class="form-control" name="mimimum_price" id="mimimum_price" onchange="subitemwisefilters(this.value, '<?php echo 'mimimum_price'; ?>','<?php echo ''; ?>');">
@@ -109,6 +114,7 @@
 				<?php $cnt++;} ?>
 
 			  </select>
+		  </div>
 		  </div>
 		  </div><br>
                <input type="hidden" name="categoryid" id="categoryid" value="<?php echo $this->uri->segment(3);?>">

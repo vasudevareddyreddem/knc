@@ -62,7 +62,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 
   <!--header part end here --> 
   <!--body part start here -->
-  	<div class="clearfix"></div>
+  	<div class="clearfix">&nbsp;</div>
 	
 	
 	

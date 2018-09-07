@@ -25,17 +25,21 @@ foreach($previousdata as $predata){
 		  }
 
 ?>
+	<div class="clearfix">&nbsp;</div>
 	<span id="filtersubitemwisedata">
-	<div class="col-md-3">
-			<div class="title"><span>Filters</span></div>
+	
+	<div class="col-md-3 bg-success">
+		    <div class="title text-center"><h3 class="text-white">Filters</h3></div>
+			<hr style="border-top:1px solid #f9f9f9;opacity:0.4;">
+			  <div style="background:#fff;padding:20px ; border-radius:5px">
 					  <div class="row">
 						   <div class="col-md-6">
-				  <h4>Min:<span class="site_col"><?php echo $minimum_prices; ?></span></h4>
+				  <h6>Min:<span class="site_col"><?php echo $minimum_prices; ?></span></h6>
 				   <input type="hidden" id="min" name="min" value="<?php echo $min; ?>">
 
 				  </div>
 				  <div class="col-md-6">
-				 <h4>Max:<span class="site_col"><?php echo $maximum_prices; ?></span></h4>
+				 <h6>Max:<span class="site_col"><?php echo $maximum_prices; ?></span></h6>
 				 <input type="hidden" id="max" name="max" value="<?php echo $max; ?>">
 
 				  </div>
@@ -78,6 +82,7 @@ foreach($previousdata as $predata){
 
 			  </select>
 		  </div>
+		  </div><br>
 		  </div><br>
 		  <input type="hidden" name="categoryid" id="categoryid" value="<?php echo $caterory_id;?>">
 			<input type="hidden" name="subcategoryid" id="subcategoryid" value="<?php echo $subcaterory_id;?>">

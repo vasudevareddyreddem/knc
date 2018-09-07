@@ -237,6 +237,7 @@
     color: #333;
 }
    </style>
+   	<div class="clearfix">&nbsp;</div>
    <div class="container-fluid fluid_mod">
    <?php if(isset($subitemwise_item_list)&& count($subitemwise_item_list)>0){ ?>
 		<section>
@@ -254,17 +255,18 @@
    <span id="filtersubitemwisedata"></span>
    <span id="subitemwisedata">
  <div class="col-sm-3 bg-success">
-            <div class="title"><h2 class="text-white">Filters</h2></div>
+           <div class="title text-center"><h3 class="text-white">Filters</h3></div>
+			<hr style="border-top:1px solid #f9f9f9;opacity:0.4;">
 			<input type="hidden" id="subitemid" name="subitemid" value="<?php echo $subitemid; ?>">
 			<input type="hidden" id="subcatid" name="subcatid" value="<?php echo $subcatid; ?>">
 <div style="background:#fff;padding:20px ; border-radius:5px">
 <div class="row">
 				  <div class="col-md-6">
-				  <h4>Min:<span class="site_col"><?php echo $minimum_price['item_cost']; ?></span></h4>
+				  <h6>Min:<span class="site_col"><?php echo $minimum_price['item_cost']; ?></span></h6>
 				  <input type="hidden" id="min" name="min" value="<?php echo $minimum_price['item_cost']; ?>">
 				  </div>
 				  <div class="col-md-6">
-				 <h4>Max:<span class="site_col"><?php echo $maximum_price['item_cost']; ?></span></h4>
+				 <h6>Max:<span class="site_col"><?php echo $maximum_price['item_cost']; ?></span></h6>
 				  <input type="hidden" id="max" name="max" value="<?php echo $maximum_price['item_cost']; ?>">
 				  </div>
 			</div>

@@ -7,18 +7,22 @@
 	color:#45b84a !important;
 	}
 </style>
+<div class="clearfix">&nbsp;</div>
 <div class="container-fluid fluid_mod">
    <span id="filtersubitemwisedata"></span>
    <span id="subitemwisedata">
- <div class="col-sm-3">
-            <div class="title"><span>Filters</span></div>
+   <div class="clearfix">&nbsp;</div>
+ <div class="col-sm-3 bg-success">
+			<div class="title text-center"><h3 class="text-white">Filters</h3></div>
+			<hr style="border-top:1px solid #f9f9f9;opacity:0.4;">
+			 <div style="background:#fff;padding:20px ; border-radius:5px">
               <div class="row">
 				  <div class="col-md-6">
-				  <h4>Min:<span class="site_col"><?php echo $minimum_price['item_cost']; ?></span></h4>
+				  <h6>Min:<span class="site_col"><?php echo $minimum_price['item_cost']; ?></span></h6>
 				  <input type="hidden" id="min" name="min" value="<?php echo $minimum_price['item_cost']; ?>">
 				  </div>
 				  <div class="col-md-6">
-				 <h4>Max:<span class="site_col"><?php echo $maximum_price['item_cost']; ?></span></h4>
+				 <h6>Max:<span class="site_col"><?php echo $maximum_price['item_cost']; ?></span></h6>
 				  <input type="hidden" id="max" name="max" value="<?php echo $maximum_price['item_cost']; ?>">
 				  </div>
 			</div>
@@ -43,7 +47,9 @@
 
 			  </select>
 		  </div>
-		  </div><br>
+		  </div>
+		  </div>
+		  <br>
                <input type="hidden" name="itemid" id="itemid" value="<?php echo base64_decode($this->uri->segment(3));?>">
                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                   <?php if(isset($offer_list) && count($offer_list)>0){?>

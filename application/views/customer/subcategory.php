@@ -21,12 +21,14 @@
     color: #333;
 }
 </style>
+<div class="clearfix">&nbsp;</div>
 <div class="container-fluid fluid_mod mar-t135">
 <?php //echo '<pre>';print_r($itemlist);exit; ?>
 <!--fasion catagories start-->
 			<?php if(isset($itemlist) && count($itemlist)>0){?>
-				<div class="col-md-offset-3 pad_b_t15">
-						<ul>
+				<div class="pad_b_t15">
+				
+						<ul class="col-md-12">
 							<?php foreach ($itemlist as $list){ ?>
 										<li class="dropdown mar_t10 col-md-2 ">
 										
@@ -50,20 +52,22 @@
 					
 						</ul>
 				</div>
-				
+				<div class="clearfix">&nbsp;</div>
 			<?php } ?>
 			<div class="clearfix">&nbsp;</div>
 <span id="filtersubitemwisedata"></span>
    <span id="withoursearchsubcategory">
 	<div class="col-md-3 bg-success">
-			<div class="title"><h3 class="text-white">Filters</h3></div>
+			<div class="title text-center"><h3 class="text-white">Filters</h3></div>
+			<hr style="border-top:1px solid #f9f9f9;opacity:0.4;">
+			  <div style="background:#fff;padding:20px ; border-radius:5px">
 					 <div class="row">
 						  <div class="col-md-6">
-						  <h4>Min:<span class="text-white"><?php echo $minimum_price['item_cost']; ?></span></h4>
+						  <h6>Min:<span class="text-white"><?php echo $minimum_price['item_cost']; ?></span></h6>
 						  <input type="hidden" id="min" name="min" value="<?php echo $minimum_price['item_cost']; ?>">
 						  </div>
 						  <div class="col-md-6">
-						 <h4>Max:<span class="text-white"><?php echo $maximum_price['item_cost']; ?></span></h4>
+						 <h6>Max:<span class="text-white"><?php echo $maximum_price['item_cost']; ?></span></h6>
 						  <input type="hidden" id="max" name="max" value="<?php echo $maximum_price['item_cost']; ?>">
 						  </div>
 					</div>
@@ -95,7 +99,9 @@
 				<?php } ?>
 			  </select>
 		  </div>
-		  </div><br>
+		  </div>
+		  </div>
+		  <br>
 		 <input type="hidden" name="categoryid" id="categoryid" value="<?php echo $caterory_id;?>">
 			<input type="hidden" name="subcategoryid" id="subcategoryid" value="<?php echo $subcaterory_id;?>">
 			
