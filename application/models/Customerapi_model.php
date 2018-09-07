@@ -455,7 +455,7 @@ class Customerapi_model extends MY_Model
         return $this->db->get()->row_array();
 	}
 	public function all_basic_product_details($itemid){
-		$this->db->select('products.item_id,products.item_name,products.seller_id,products.category_id,products.subcategory_id,products.subitemid,products.itemwise_id,products.offer_expairdate,products.offer_amount,products.item_cost,products.offer_percentage,products.special_price')->from('products');
+		$this->db->select('products.item_id,products.item_name,products.item_quantity,products.seller_id,products.category_id,products.subcategory_id,products.subitemid,products.itemwise_id,products.offer_expairdate,products.offer_amount,products.item_cost,products.offer_percentage,products.special_price')->from('products');
 		$this->db->join('seller_store_details', 'seller_store_details.seller_id = products.seller_id', 'left');
 		$this->db->where('item_id', $itemid);
         return $this->db->get()->row_array();
@@ -506,7 +506,7 @@ class Customerapi_model extends MY_Model
 		return $insert_id = $this->db->insert_id();
 	}
 	public function get_order_items_track_list($custid){
-			$this->db->select('order_items.*,products.item_name,orders.card_number,orders.discount,orders.card_number,orders.payment_mode,orders.payment_type,order_status.status_confirmation,order_status.status_packing,order_status.status_road,order_status.status_deliverd,order_status.status_refund,(order_status.create_time)AS createedattime,(order_status.update_time)AS updatetime,billing_address.name,billing_address.mobile,billing_address.emal_id,billing_address.address1,billing_address.address2,locations.location_name,seller_store_details.store_name')->from('order_items');
+			$this->db->select('order_items.*,products.item_name,products.item_image,orders.card_number,orders.discount,orders.card_number,orders.payment_mode,orders.payment_type,order_status.status_confirmation,order_status.status_packing,order_status.status_road,order_status.status_deliverd,order_status.status_refund,(order_status.create_time)AS createedattime,(order_status.update_time)AS updatetime,billing_address.name,billing_address.mobile,billing_address.emal_id,billing_address.address1,billing_address.address2,locations.location_name,seller_store_details.store_name')->from('order_items');
 			$this->db->join('products', 'products.item_id = order_items.item_id', 'left');
 			$this->db->join('orders', 'orders.order_id = order_items.order_id', 'left');
 			$this->db->join('order_status', 'order_status.order_item_id = order_items.order_item_id', 'left');

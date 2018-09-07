@@ -642,7 +642,7 @@ $customerdetails=$this->session->userdata('userdetails');
 					<?php if(isset($list[1]['name']) && $list[1]['name']!=''){ ?>
 					<?php if($list[1]['link']==1){ ?>
 							<a href="<?php echo base_url('category/subcategorys/'.base64_encode($list[1]['selected_id'])); ?>">
-						<?php }else if($list[2]['link']==2){ ?>
+						<?php }else if($list[1]['link']==2){ ?>
 							<a href="<?php echo base_url('category/subcategory/'.base64_encode($list[1]['category_id']).'/'.base64_encode($list[1]['subcategory_id'])); ?>">
 						<?php }else if($list[1]['link']==3){ ?>
 								<a href="<?php echo base_url('category/subitemwise/'.base64_encode($list[1]['subitem_id']).'/'.base64_encode($list[1]['subcategory_id']).'/'.base64_encode($list[1]['category_id'])); ?>">
