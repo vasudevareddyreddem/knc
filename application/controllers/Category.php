@@ -113,30 +113,28 @@ class Category extends Front_Controller
 				}else{
 					$os='';
 				}
-				
-				
-				
-			
-	$ip=$this->input->ip_address();
-	$data1=array(
-	'Ip_address'=>$ip,
-	'category_id'=>$post['categoryid'],
-	'min'=>$post['min'],
-	'max'=>$post['max'],
-	'subcategory_id'=>$post['subcategoryid'],
-	'mini_amount'=>isset($post['mini_mum']) ? $post['mini_mum']:'',
-	'max_amount'=>isset($post['maxi_mum']) ? $post['maxi_mum']:'',
-	'offers'=>isset($offer) ? $offer:'',
-	'brand'=>isset($brand) ? $brand:'',
-	'color'=>isset($color) ? $color:'',
-	'ram'=>isset($ram) ? $ram:'',
-	'colour'=>isset($colour) ? $colour:'',
-	'os'=>isset($os) ? $os:'',
-	'create'=>date('Y-m-d H:i:s'),
-	);
+				$ip=$this->input->ip_address();
+				$data1=array(
+				'Ip_address'=>$ip,
+				'category_id'=>$post['categoryid'],
+				'min'=>$post['min'],
+				'max'=>$post['max'],
+				'subcategory_id'=>$post['subcategoryid'],
+				'mini_amount'=>isset($post['mini_mum']) ? $post['mini_mum']:'',
+				'max_amount'=>isset($post['maxi_mum']) ? $post['maxi_mum']:'',
+				'offers'=>isset($offer) ? $offer:'',
+				'brand'=>isset($brand) ? $brand:'',
+				'color'=>isset($color) ? $color:'',
+				'ram'=>isset($ram) ? $ram:'',
+				'colour'=>isset($colour) ? $colour:'',
+				'os'=>isset($os) ? $os:'',
+				'create'=>date('Y-m-d H:i:s'),
+				);
 	//echo '<pre>';print_r($data1);
 	//exit;
 	$brand1= $this->category_model->save_sub_searchdata($data1);
+	//echo $this->db->last_query();exit;
+	//echo '<pre>';print_r($brand1);exit;
 	if(count($brand1)>0){
 		$removesearch= $this->category_model->get_all_previous_subcategorywise_search_fields();
 		foreach ($removesearch as $list){
@@ -168,12 +166,17 @@ class Category extends Front_Controller
 	$data['max']=$filtersitemid['max'];
 	$data['subcatdetais']=$this->category_model->get_subcategory_details($subcaterory_id);
 	if(isset($data['productlist']) && count($data['productlist'])>0){
+		
+		//echo '<pre>';print_r($data['productlist']);
 					foreach($data['productlist'] as $lists){ 
-							$plistsdata=$lists;
+							$plistsdata[]=$lists;
 					}
+					//echo '<pre>';print_r($plistsdata);exit;
 					foreach($plistsdata as $lis){
-					$reviewrating[]=$this->category_model->product_reviews_avg($lists['item_id']);
-					$reviewcount[]=$this->category_model->product_reviews_count($lists['item_id']);
+						//echo '<pre>';print_r($lis);exit;
+						//echo "sd_";
+					$reviewrating[]=$this->category_model->product_reviews_avg($lis['item_id']);
+					$reviewcount[]=$this->category_model->product_reviews_count($lis['item_id']);
 					}
 				}
 				if(isset($reviewrating) && count($reviewrating)>0){

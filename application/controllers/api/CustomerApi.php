@@ -2992,9 +2992,9 @@ class CustomerApi extends REST_Controller {
 						}
 					}
 					if($payment_type==1){
-						$paid_status==1;
+						$paid_status=1;
 					}else{
-						$paid_statu0;
+						$paid_status=0;
 					}
 					
 					$ordersucess=array(
