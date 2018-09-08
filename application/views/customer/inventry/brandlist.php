@@ -31,7 +31,7 @@
                 <tr>
 					<th> Name</th>
 					<th> Logo </th>
-					<th>Created Date</th>
+					<th>Created Date & Time</th>
 					<th>Status</th>
 					<th>Action</th>
 				 </tr>

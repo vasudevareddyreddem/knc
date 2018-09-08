@@ -51,8 +51,9 @@ class CustomerApi extends REST_Controller {
 				
 		}else{
 			$email =filter_var($username, FILTER_VALIDATE_EMAIL);
+			//echo '<pre>';print_r($username);exit;
 				if($email==''){
-					 if (!is_numeric($email)) {
+					 if (!is_numeric($email) && $email!='') {
 						$message = array('status'=>0,'message'=>'Please enter a correct value.');
 						$this->response($message, REST_Controller::HTTP_OK); 
 					 }else{
@@ -64,7 +65,6 @@ class CustomerApi extends REST_Controller {
 					$mobile='';
 					$email=$username;
 				}
-				
 			$details=array(
 				'cust_email'=>$email,
 				'cust_mobile'=>$mobile,
@@ -1949,147 +1949,7 @@ class CustomerApi extends REST_Controller {
 			$this->response($message, REST_Controller::HTTP_OK);	
 		}
 	}
-	public function orderpayment_post(){
-			$customer_id=$this->post('customer_id');
-			$net_amount=$this->post('net_amount');
-			$discount=$this->post('discount');
-			$payment_mode=$this->post('payment_mode');
-			$email=$this->post('email');
-			$phone=$this->post('phone');
-			$billing_mobile=$this->post('billing_mobile');
-			$billing_email=$this->post('billing_email');
-			$billing_address=$this->post('billing_address1');
-			$billing_address2=$this->post('billing_address2');
-			$billing_name=$this->post('billing_name');
-			$pincode=$this->post('pincode');
-			$razorpay_payment_id=$this->post('razorpay_payment_id');
-			$razorpay_order_id=$this->post('razorpay_order_id');
-			$razorpay_signature=$this->post('razorpay_signature');
-			if($customer_id==''){
-			$message = array('status'=>1,'message'=>'customer id is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($net_amount==''){
-			$message = array('status'=>1,'message'=>'Net amount is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($discount==''){
-			$message = array('status'=>1,'message'=>'Discount is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($payment_mode==''){
-			$message = array('status'=>1,'message'=>'Payment Mode is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($email==''){
-			$message = array('status'=>1,'message'=>'Email is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($phone==''){
-			$message = array('status'=>1,'message'=>'Phone is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($billing_mobile==''){
-			$message = array('status'=>1,'message'=>'Billing mobile is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}
-			if($billing_email==''){
-			$message = array('status'=>1,'message'=>'Billing email is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($billing_address==''){
-			$message = array('status'=>1,'message'=>'Billing Address1 is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($billing_address2==''){
-			$message = array('status'=>1,'message'=>'Billing Address2 is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($billing_name==''){
-			$message = array('status'=>1,'message'=>'Billing Name is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($pincode==''){
-			$message = array('status'=>1,'message'=>'Pincode is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($razorpay_payment_id==''){
-			$message = array('status'=>1,'message'=>'Razorpay Payment id is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($razorpay_order_id==''){
-			$message = array('status'=>1,'message'=>'Razorpay Order id is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($razorpay_signature==''){
-			$message = array('status'=>1,'message'=>'Razorpay Signature id is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}
-			$ordersucess=array(
-						'customer_id'=>$customer_id,
-						'net_amount'=>$net_amount,
-						'total_price'=>$net_amount,
-						'discount'=>$discount,
-						'payment_mode'=>$payment_mode,
-						'email'=>$email,
-						'phone'=>$phone,
-						'razorpay_payment_id'=>$razorpay_payment_id,
-						'razorpay_order_id'=>$razorpay_order_id,
-						'razorpay_signature'=>$razorpay_signature,
-						'order_status'=>1,
-						'payment_type'=>1,
-						'amount_status'=>1,
-						'created_at'=>date('Y-m-d H:i:s'),
-					);
-					
-				$saveorder= $this->Customerapi_model->save_order_success($ordersucess);
-				
-				$cart_items= $this->Customerapi_model->get_cart_products($customer_id);
-				$customerdetails= $this->Customerapi_model->get_customer_details($customer_id);
-				//echo '<pre>';print_r($cart_items);exit;
-				foreach($cart_items as $items){
-					$orderitems=array(
-						'order_id'=>$saveorder,
-						'item_id'=>$items['item_id'],
-						'seller_id'=>$items['seller_id'],
-						'customer_id'=>$items['cust_id'],
-						'qty'=>$items['qty'],
-						'item_price'=>$items['item_price'],
-						'total_price'=>$items['total_price'],
-						'delivery_amount'=>$items['delivery_amount'],
-						'commission_price'=>$items['commission_price'],
-						'customer_email'=>$billing_email,
-						'customer_phone'=>$billing_mobile,
-						'customer_address'=>$billing_address,
-						'pincode'=>$pincode,
-						'order_status'=>1,
-						'color'=>$items['color'],
-						'size'=>$items['size'],
-						'create_at'=>date('Y-m-d H:i:s'),
-					);
-					//echo '<pre>';print_r($orderitems);exit;
-					$item_qty=$this->Customerapi_model->get_item_details($items['item_id']);
-					$less_qty=$item_qty['item_quantity']-$items['qty'];
-					//echo '<pre>';print_r($item_qty);
-					//echo '<pre>';print_r($less_aty);
-					//exit;
-					$this->Customerapi_model->update_tem_qty_after_purchasingorder($items['item_id'],$less_qty,$items['seller_id']);
-					$save= $this->Customerapi_model->save_order_items_list($orderitems);
-					$statu=array(
-						'order_item_id'=>$save,
-						'order_id'=>$saveorder,
-						'item_id'=>$items['item_id'],
-						'status_confirmation'=>1,
-						'create_time'=>date('Y-m-d h:i:s A'),
-						'update_time'=>date('Y-m-d h:i:s A'),
-					);
-					$save= $this->Customerapi_model->save_order_item_status_list($statu);
-					
-					
-				}
-				/*for billing address*/
-				$orderbilling=array(
-						'cust_id'=>$customer_id,
-						'order_id'=>$saveorder,
-						'name'=>$billing_name,
-						'emal_id'=>$billing_email,
-						'mobile'=>$billing_mobile,
-						'address1'=>$billing_address,
-						'address2'=>$billing_address2,
-						'pincode'=>$pincode,
-						'create-at'=>date('Y-m-d H:i:s'),
-					);
-				$saveorderbillingaddress= $this->Customerapi_model->save_order_billing_address($orderbilling);
-			$message = array('status'=>1,'orderid'=>$saveorder,'message'=>'Payment successfully completed!');
-			$this->response($message, REST_Controller::HTTP_OK);
-	}
+	
 	
 	public function ordersuccess_post(){
 		$customer_id=$this->input->get('customer_id');
@@ -2944,52 +2804,53 @@ class CustomerApi extends REST_Controller {
 					$razorpay_order_id=$this->post('razorpay_order_id');
 					$razorpay_signature=$this->post('razorpay_signature');
 					if($customer_id==''){
-					$message = array('status'=>1,'message'=>'Customer id is required!');
+					$message = array('status'=>0,'message'=>'Customer id is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($payment_type==''){
-					$message = array('status'=>1,'message'=>'Payment Type is required!');
+					$message = array('status'=>0,'message'=>'Payment Type is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($name==''){
-					$message = array('status'=>1,'message'=>'Name is required!');
+					$message = array('status'=>0,'message'=>'Name is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($mobile==''){
-					$message = array('status'=>1,'message'=>'mobile is required!');
+					$message = array('status'=>0,'message'=>'mobile is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($address1==''){
-					$message = array('status'=>1,'message'=>'Address1 is required!');
+					$message = array('status'=>0,'message'=>'Address1 is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($address2==''){
-					$message = array('status'=>1,'message'=>'Address2 is required!');
+					$message = array('status'=>0,'message'=>'Address2 is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($pincode==''){
-					$message = array('status'=>1,'message'=>'pincode is required!');
+					$message = array('status'=>0,'message'=>'pincode is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($city==''){
-					$message = array('status'=>1,'message'=>'city is required!');
+					$message = array('status'=>0,'message'=>'city is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($state==''){
-					$message = array('status'=>1,'message'=>'state is required!');
+					$message = array('status'=>0,'message'=>'state is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($payment_type==1){
 						if($razorpay_payment_id==''){
 						$message = array('status'=>1,'message'=>'Razorpay Payment id is required!');
 						$this->response($message, REST_Controller::HTTP_OK);
-						}if($razorpay_order_id==''){
+						}
+						/*if($razorpay_order_id==''){
 						$message = array('status'=>1,'message'=>'Razorpay Order id is required!');
 						$this->response($message, REST_Controller::HTTP_OK);
 						}if($razorpay_signature==''){
 						$message = array('status'=>1,'message'=>'Razorpay Signature id is required!');
 						$this->response($message, REST_Controller::HTTP_OK);
-						}
+						}*/
 					}
 					if($payment_type==1){
 						$paid_status=1;
@@ -3012,6 +2873,9 @@ class CustomerApi extends REST_Controller {
 					'hash'=>'',
 					'payment_type'=>$payment_type,
 					'amount_status'=>$paid_status,
+					'razorpay_payment_id'=>isset($razorpay_payment_id)?$razorpay_payment_id:'',
+					'razorpay_order_id'=>isset($razorpay_order_id)?$razorpay_order_id:'',
+					'razorpay_signature'=>isset($razorpay_signature)?$razorpay_signature:'',
 					'created_at'=>date('Y-m-d H:i:s'),
 				);
 				$saveorder=$this->Customerapi_model->save_order_success($ordersucess);
