@@ -20,6 +20,7 @@
 .panel .panel-heading a:hover, .panel .panel-heading a:focus, .panel .panel-heading a:active {
     color: #333;
 }
+
 </style>
 <div class="clearfix">&nbsp;</div>
 <div class="container-fluid fluid_mod mar-t135">
@@ -279,7 +280,7 @@
 				<?php } ?>
 				<?php } ?>
 				<?php 	if (in_array($productslist['item_id'], $whishlist_item_ids_list) &&  in_array($customerdetails['customer_id'], $customer_ids_list)) { ?>
-				<a href="javascript:void(0);" onclick="addwhishlidts('<?php echo $productslist['item_id']; ?>','<?php echo $cnt; ?>');" id="addwhish<?php echo $productslist['item_id']; ?><?php echo $cnt; ?>" data-toggle="tooltip" title="Added to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $productslist['item_id']; ?><?php echo $cnt; ?>" class="fa fa-heart text-primary"></i></a> 
+				<a href="javascript:void(0);" onclick="addwhishlidts('<?php echo $productslist['item_id']; ?>','<?php echo $cnt; ?>');" id="addwhish<?php echo $productslist['item_id']; ?><?php echo $cnt; ?>" data-toggle="tooltip" title="Added to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $productslist['item_id']; ?><?php echo $cnt; ?>" class="fa fa-heart text-whish"></i></a> 
 				<?php }else{ ?>	
 				<a href="javascript:void(0);" onclick="addwhishlidts('<?php echo $productslist['item_id']; ?>','<?php echo $cnt; ?>');" id="addwhish<?php echo $productslist['item_id']; ?><?php echo $cnt; ?>" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $productslist['item_id']; ?><?php echo $cnt; ?>" class="fa fa-heart "></i></a> 
 				<?php } ?>	
@@ -432,7 +433,7 @@ jQuery.ajax({
 				//alert(data.msg);
 				if(data.msg==2){
 				$('#sucessmsg').show('');
-				$("#addwishlistids"+id+val).removeClass("text-primary");
+				$("#addwishlistids"+id+val).removeClass("text-whish");
 				$('#addwhish'+id+val).prop('title', 'Add to Wishlist');
 						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Removed from Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
 				document.getElementById("sucessmsg").focus();
@@ -440,7 +441,7 @@ jQuery.ajax({
 				}
 				if(data.msg==1){
 				$('#sucessmsg').show('');
-				 $("#addwishlistids"+id+val).addClass("text-primary");
+				 $("#addwishlistids"+id+val).addClass("text-whish");
 				 $('#addwhish'+id+val).prop('title', 'Added to Wishlist');
 						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Added to Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
 				document.getElementById("sucessmsg").focus();				

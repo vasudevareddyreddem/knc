@@ -447,7 +447,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 				<?php } ?>	
 				<?php } ?>
 				<?php 	if (in_array($productslist['item_id'], $whishlist_item_ids_list) &&  in_array($customerdetails['customer_id'], $customer_ids_list)) { ?>
-				<a href="javascript:void(0);"  onclick="addwhishlidt('<?php echo $productslist['item_id']; ?>','<?php echo $t; ?>');" id="addwhish<?php echo $productslist['item_id']; ?><?php echo $t; ?>" data-toggle="tooltip" title="Added to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $productslist['item_id']; ?><?php echo $t; ?>" class="fa fa-heart text-primary"></i></a> 
+				<a href="javascript:void(0);"  onclick="addwhishlidt('<?php echo $productslist['item_id']; ?>','<?php echo $t; ?>');" id="addwhish<?php echo $productslist['item_id']; ?><?php echo $t; ?>" data-toggle="tooltip" title="Added to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $productslist['item_id']; ?><?php echo $t; ?>" class="fa fa-heart text-whish"></i></a> 
 				<?php }else{ ?>	
 				<a href="javascript:void(0);" onclick="addwhishlidt('<?php echo $productslist['item_id']; ?>','<?php echo $t; ?>');" id="addwhish<?php echo $productslist['item_id']; ?><?php echo $t; ?>" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i  id="addwishlistids<?php echo $productslist['item_id']; ?><?php echo $t; ?>" class="fa fa-heart"></i></a> 
 				<?php } ?>	
@@ -486,6 +486,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 	</div>
 </section>
 <section>
+<?php if(isset($category_wise_products) && count($category_wise_products)>0){ ?>
 	<div class="">
 	<div class="clearfix">&nbsp;</div>
 				<div class="text-center"><span id="loadmor" class="lod_st fa fa-chevron-circle-down"> Load More..</span> </div>
@@ -493,6 +494,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 				
 				<div class="clearfix">&nbsp;</div>
 	</div>
+<?php } ?>
 		
     </section>
 
@@ -500,7 +502,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 
 <?php } ?>
 
-
+<?php if(isset($category_wise_products) && count($category_wise_products)>0){ ?>
 	
 	<div id="loadcon" style="display:none;">
 	<?php foreach ($category_wise_products   as $list){ ?>
@@ -563,7 +565,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 				<?php } ?>	
 				<?php } ?>
 				<?php 	if (in_array($productslist['item_id'], $whishlist_item_ids_list) &&  in_array($customerdetails['customer_id'], $customer_ids_list)) { ?>
-				<a href="javascript:void(0);"  onclick="addwhishlidt('<?php echo $productslist['item_id']; ?>','<?php echo $t; ?>');" id="addwhish<?php echo $productslist['item_id']; ?><?php echo $t; ?>" data-toggle="tooltip" title="Added to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $productslist['item_id']; ?><?php echo $t; ?>" class="fa fa-heart text-primary"></i></a> 
+				<a href="javascript:void(0);"  onclick="addwhishlidt('<?php echo $productslist['item_id']; ?>','<?php echo $t; ?>');" id="addwhish<?php echo $productslist['item_id']; ?><?php echo $t; ?>" data-toggle="tooltip" title="Added to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $productslist['item_id']; ?><?php echo $t; ?>" class="fa fa-heart text-whish"></i></a> 
 				<?php }else{ ?>	
 				<a href="javascript:void(0);" onclick="addwhishlidt('<?php echo $productslist['item_id']; ?>','<?php echo $t; ?>');" id="addwhish<?php echo $productslist['item_id']; ?><?php echo $t; ?>" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i  id="addwishlistids<?php echo $productslist['item_id']; ?><?php echo $t; ?>" class="fa fa-heart"></i></a> 
 				<?php } ?>	
@@ -608,6 +610,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 
 
 	</div>
+<?php } ?>
 	
   </div>
 </body>
@@ -672,13 +675,13 @@ jQuery.ajax({
 						jQuery('#sucessmsg').show();
 						//alert(data.msg);
 						if(data.msg==2){
-						$("#addwishlistids"+id+val).removeClass("text-primary");
+						$("#addwishlistids"+id+val).removeClass("text-whish");
 						$('#addwhish'+id+val).prop('title', 'Add to Wishlist');
 						
 						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1  btn_suc"> Product Successfully Removed to Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
 						}
 						if(data.msg==1){
-						 $("#addwishlistids"+id+val).addClass("text-primary");
+						 $("#addwishlistids"+id+val).addClass("text-whish");
 						$('#addwhish'+id+val).prop('title', 'Added to Wishlist');
 						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1  btn_suc"> Product Successfully added to Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
 						}

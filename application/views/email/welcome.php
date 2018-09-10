@@ -10,7 +10,7 @@
          <td style="width:50%;text-align:left;padding-left:16px;position:relative"> 
 			 <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href=""> 
 				<span >
-				<img style="position:absolute;top:-19px;left:0;width:72%;" border="0"  src="<?php echo base_url(); ?>assets/home/images/logo_arr.png" alt="order-organic.com"  class="CToWUd"> 
+				<img style="position:absolute;top:-19px;left:0;width:72%;" border="0"  src="<?php echo base_url(); ?>assets/home/images/logo.png" alt="order-organic.com"  class="CToWUd"> 
 			 </a> 
 			 </span>
 			 
@@ -40,8 +40,8 @@
 						<p style="padding:0;margin:0;font-size:16px;font-size:13px"> Hi&nbsp;<?php echo isset($cust_firstname)?$cust_firstname:''; ?>&nbsp;<?php echo isset($cust_lastname)?$cust_lastname:''; ?>, </p>
 						<br> 
 						<p style="padding:0;margin:0;color:#565656;font-size:13px">Greetings!</p>
-						<br> <p style="padding:0;margin:0;color:#565656;line-height:10px;font-size:13px"> You are just a step away from accessing your Cartinhours account</p><br>
-						<p style="padding:0;margin:0;color:#565656;line-height:20px;font-size:13px"> Best Regards, <br> Team Cartinhours </p><br>
+						<br> <p style="padding:0;margin:0;color:#565656;line-height:10px;font-size:13px"> You are just a step away from accessing your Order-organic account</p><br>
+						<p style="padding:0;margin:0;color:#565656;line-height:20px;font-size:13px"> Best Regards, <br> Team Order-organic </p><br>
 						<p style="text-align:center;padding:0;margin:0" align="center"> </p><br> </td> 
 				</tr>
            </tbody>

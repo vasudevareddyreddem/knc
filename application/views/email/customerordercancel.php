@@ -9,7 +9,7 @@
 			<td style="width:50%;text-align:left;padding-left:16px;position:relative"> 
 			 <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href=""> 
 				<span >
-				<img style="position:absolute;top:-19px;left:0;width:72%;" border="0"  src="<?php echo base_url(); ?>assets/home/images/logo_arr.png" alt="order-organic.com"  class="CToWUd"> 
+				<img style="position:absolute;top:-19px;left:0;width:72%;" border="0"  src="<?php echo base_url(); ?>assets/home/images/logo.png" alt="order-organic.com"  class="CToWUd"> 
 			 </a> 
 			 </span>
 			 
@@ -57,7 +57,7 @@
                <tbody>
                 <tr> 
                  <td  align="left" style="padding-right:10px"> 
-				 <p style="padding:0;margin:0;font-size:16px;font-family:'Roboto-Medium',sans-serif;color:#212121">Greetings from Cartinhours.com!</p> 
+				 <p style="padding:0;margin:0;font-size:16px;font-family:'Roboto-Medium',sans-serif;color:#212121">Greetings from Order-organic.com!</p> 
 				 <p style="padding:0;margin:0;font-size:16px;font-family:'Roboto-Medium',sans-serif;color:#212121;margin-bottom:12px"> </p>
 				 <p style="padding:0;margin:0;font-size:12px;line-height:20px;font-family:'Roboto',sans-serif"> We would like to inform you that we are processing your cancellation request for the following items in the Order <span><b><?php echo isset($list['order_item_id'])?$list['order_item_id']:''; ?>.</b></span></p> 
 				 <br> <p></p> <p style="padding:0;margin:0;font-size:12px;line-height:20px;font-family:'Roboto',sans-serif;font-weight:400;padding-bottom:12px">Any amount already paid by you for the below product(s) will be refunded by the seller as soon as the courier partner confirms the cancellation. We will notify you via E-mail and SMS when the refund is processed. </p> 

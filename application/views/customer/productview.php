@@ -93,7 +93,7 @@
 <div id="sucessmsg" style="display:none;"></div>
 		<div class="" >
 		
-		<div class="col-md-3 sing_pro " id="social-float">
+		<div class="col-md-3 sing_pro zoom-right" id="social-float">
 			<ul id="glasscase" class="gc-start ">
                     <li>
 						<img class="img-responsive" src="<?php echo base_url('uploads/products/'.$products_list['item_image']); ?>"/>
@@ -123,7 +123,7 @@
 		</div>
         <!-- End Image List -->
 
-        <div class="col-md-8 col-md-offset-3 sm_mar_t20 card" id="con_scrol" style="z-index:-1;">
+        <div class="col-md-8 col-md-offset-3 sm_mar_t20 card" id="con_scrol" >
           <?php if($this->session->flashdata('success')): ?>
 			<div class="alt_cus"> <div class="alert_msg1 animated slideInUp btn_suc "> <?php echo $this->session->flashdata('success');?>&nbsp; <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div></div>
 			<?php endif; ?>
@@ -1320,7 +1320,7 @@
 				<?php } ?>
 				<?php } ?>
 				<?php 	if (in_array($productslist['item_id'], $whishlist_item_ids_list) &&  in_array($customerdetails['customer_id'], $customer_ids_list)) { ?>
-				<a href="javascript:void(0);" onclick="addwhishlidts('<?php echo $productslist['item_id']; ?>','<?php echo $cnt; ?>');" id="addwhish<?php echo $productslist['item_id']; ?><?php echo $cnt; ?>" data-toggle="tooltip" title="Added to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $productslist['item_id']; ?><?php echo $cnt; ?>" class="fa fa-heart text-primary"></i></a> 
+				<a href="javascript:void(0);" onclick="addwhishlidts('<?php echo $productslist['item_id']; ?>','<?php echo $cnt; ?>');" id="addwhish<?php echo $productslist['item_id']; ?><?php echo $cnt; ?>" data-toggle="tooltip" title="Added to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $productslist['item_id']; ?><?php echo $cnt; ?>" class="fa fa-heart text-whish"></i></a> 
 				<?php }else{ ?>	
 				<a href="javascript:void(0);" onclick="addwhishlidts('<?php echo $productslist['item_id']; ?>','<?php echo $cnt; ?>');" id="addwhish<?php echo $productslist['item_id']; ?><?php echo $cnt; ?>" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $productslist['item_id']; ?><?php echo $cnt; ?>" class="fa fa-heart "></i></a> 
 				<?php } ?>	
@@ -1352,7 +1352,16 @@
 	</section>
 	 <?php } ?>
    	</div>
-
+<script>
+$(".zoom-right").hover(
+  function () {
+    $(this).addClass("z_ind");
+  },
+  function () {
+    $(this).removeClass("z_ind");
+  }
+);
+</script>
 
 <script type="text/javascript">
 var pincodeformat =/^[0-9]+$/;
@@ -1454,12 +1463,12 @@ jQuery.ajax({
 						$("#supcount").empty();
 						$("#supcount").append(data.count);
 						if(data.msg==2){
-						$("#addticartitem"+itemid+val).removeClass("text-primary");
+						$("#addticartitem"+itemid+val).removeClass("text-whish");
 						$('#cartitemtitle'+itemid+val).prop('title', 'Add to cart');
 						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Removed to cart <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
 						}
 						if(data.msg==1){
-						 $("#addticartitem"+itemid+val).addClass("text-primary");
+						 $("#addticartitem"+itemid+val).addClass("text-whish");
 						$('#cartitemtitle'+itemid+val).prop('title', 'Added to cart');
 						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully added to cart <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
 						}

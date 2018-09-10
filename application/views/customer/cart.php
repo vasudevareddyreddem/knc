@@ -28,7 +28,7 @@
                         <h4 class="glyphicon glyphicon-credit-card "></h4>
                         <br/>Payment Mode
                     </div>
-                    <div href="#" class="list-group-item text-center col-md-3">
+                    <div href="#" class="list-group-item text-center col-md-3" style="border-radius:0px;">
                         <h4 class="glyphicon glyphicon-ok "></h4>
                         <br/>Thanks for Shopping
                     </div>

@@ -32,9 +32,9 @@
                   <td><a href="<?php echo base_url('inventory/sellerpaymentdetails/'.base64_encode($payment['seller_id'])); ?>"><?php echo $payment['seller_rand_id']; ?></a></td>
                   <td><?php echo $payment['seller_name']; ?></td>
                   <td><a href="<?php echo base_url('inventory/sellerpaymentdetails/'.base64_encode($payment['seller_id'])); ?>"><?php echo $payment['orderscount']; ?></a></td>
-                  <td><?php echo $payment['totalamount']; ?></td>
-                  <td><?php echo $payment['commissionamount']; ?></td>
-                  <td><?php echo ($payment['totalamount']) - ($payment['commissionamount']); ?></td>
+                  <td><?php echo number_format($payment['totalamount'], 2); ?></td>
+                  <td><?php echo number_format($payment['commissionamount'], 2); ?></td>
+                  <td><?php $amt=($payment['totalamount']) - ($payment['commissionamount']); ?><?php echo number_format($amt, 2); ?></td>
                   <td><a href="" class="btn btn-primary">Pay</td>
                 </tr>
                  <?php }?>

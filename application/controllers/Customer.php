@@ -1057,6 +1057,7 @@ class Customer extends Front_Controller
 	$customerdetails=$this->session->userdata('userdetails');
 	//echo '<pre>';print_r($_POST);exit;
 	if($_POST['status']=='success'){
+		$post=$this->input->post();
 		$carttotal_amount= $this->customer_model->get_cart_total_amount($customerdetails['customer_id']);
 		$toatal=$carttotal_amount['pricetotalvalue'] + $carttotal_amount['delivertamount'];
 		$decimal_two_numbers = number_format($toatal, 2, '.', '');
@@ -1088,7 +1089,7 @@ class Customer extends Front_Controller
 				$getsaveorderstatus= $this->customer_model->get_status_save_order_success($saveorder);
 				
 				$cart_items= $this->customer_model->get_cart_products($customerdetails['customer_id']);
-				//echo '<pre>';print_r($cart_items);exit;
+				//echo '<pre>';print_r($ordersucess);exit;
 				foreach($cart_items as $items){
 						$time = date("H:i:s a",strtotime('Y-m-d H:i:s'));
 						$begin1 = new DateTime('12:00 am');
@@ -1145,7 +1146,15 @@ class Customer extends Front_Controller
 						'update_time'=>date('Y-m-d h:i:s A'),
 					);
 					$save= $this->customer_model->save_order_item_status_list($statu);
-					
+					/* invoice purpose*/
+					$invoicedetails=array(
+						'order_item_id'=>$save,
+						'cust_id'=>$items['cust_id'],
+						'order_id'=>$saveorder,
+						'item_id'=>$items['item_id'],
+						'create_at'=>date('Y-m-d h:i:s A'),
+					);
+					$invoice= $this->customer_model->save_invoices_list($invoicedetails);
 					
 				}
 				
@@ -2752,6 +2761,7 @@ public function aboutus(){
 	  if($this->session->userdata('userdetails'))
 		 {
 			 $post=$this->input->post();
+			// echo '<pre>';print_r($post);
 			 $canceldata=array(
 			 'status_refund'=>'cancel',
 			 'status_confirmation'=>5,
@@ -2763,7 +2773,14 @@ public function aboutus(){
 			 $custdetails=$this->customer_model->get_customerBilling_details($post['order_items_id']);
 			
 			 if(count($canclesaveorder)>0){
-				 
+					 /* qty update purpose*/
+					 $qty=$this->customer_model->get_order_qty_detail($post['order_items_id']);
+					 $real_qty=$this->customer_model->get_item_qty_detail($post['pid']);
+					 $total_qty=$real_qty['item_quantity']+$qty['qty'];
+					 $qty_dat=array('item_quantity'=>$total_qty);
+					 $update=$this->customer_model->update_product_aty_detail($post['pid'],$qty_dat);
+					 /* qrt update purpose*/
+				
 					/*cancel sms */
 					$msg='Cancelled:'.$custdetails['item_name'].' in your order with order ID  : '.$post['order_items_id'].'. has been cancelled.  Please check your email for more details';
 					$messagelis['list']=$custdetails;
