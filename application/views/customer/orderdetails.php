@@ -134,7 +134,7 @@ tr th:last-child {
 							<span class="font_span">₹<?php echo number_format(isset($item_details['total_price'])?$item_details['total_price']:'', 2);  ?></span>
 					</div>
 					<div class="col-md-9">
-							<span class="btn btn-sm btn-success pull-right ">
+							<span class="btn btn-sm btn-success pull-right " disabled>
 							<?php if($item_details['status_confirmation']==5){ 
 								echo "cancelled";
 									
