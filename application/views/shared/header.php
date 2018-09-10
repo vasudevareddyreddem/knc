@@ -177,10 +177,10 @@
 						<?php $cnt=1;foreach($cat_list as $lists){ ?>
 						 <?php if($cnt<=5){ ?>
                         <li class="dropdown yamm-fw"><a href="<?php echo base_url('category/subcategorys/'.base64_encode($lists['category_id'])); ?>"  class="dropdown-toggle"><?php echo $lists['category_name']; ?><i class="fa fa-angle-down ml-5"></i></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu" >
                                 <li>
                                     <!-- Content container to add padding -->
-                                    <div class="yamm-content">
+                                    <div class="yamm-content" style="z-index:2000">
                                         <div class="row">
 										<?php foreach($lists['subcat'] as $li){ ?>
                                             <ul class="col-sm-3">

@@ -57,15 +57,17 @@
 
 		  ?>
    <span id="subitemwisefilterdata">
- <div class="col-sm-3">
-            <div class="title"><span>Filters</span></div>
+ <div class="col-sm-3 bg-success">
+          	<div class="title text-center"><h3 class="text-white">Filters</h3></div>
+			<hr style="border-top:1px solid #f9f9f9;opacity:0.4;">
               <input type="hidden" name="itemid" id="itemid" value="<?php echo $itemid;?>">
+			   <div style="background:#fff;padding:20px ; border-radius:5px">
               <div class="row">
 				  <div class="col-md-6">
-				  <h4>Min:<span class="site_col"><?php echo $minimum_prices; ?></span></h4>
+				  <h6>Min:<span class="site_col"><?php echo $minimum_prices; ?></span></h6>
 				  </div>
 				  <div class="col-md-6">
-				 <h4>Max:<span class="site_col"><?php echo $maximum_prices; ?></span></h4>
+				 <h6>Max:<span class="site_col"><?php echo $maximum_prices; ?></span></h6>
 				  </div>
 			</div>
 		  <div class="row">
@@ -94,7 +96,9 @@
 
 			  </select>
 		  </div>
-		  </div><br>
+		  </div>
+		  </div>
+		  <br>
                <input type="hidden" name="categoryid" id="categoryid" value="<?php echo $this->uri->segment(3);?>">
                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                   <?php if(isset($offer_list) && count($offer_list)>0){?>
