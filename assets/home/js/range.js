@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
 	
 	$('#price-range-submit').hide();
 
@@ -77,3 +77,4 @@ $(document).ready(function(){
 	});
 
 });
+*/

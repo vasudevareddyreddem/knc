@@ -29,17 +29,28 @@
                 <tbody>
                 <?php  
                   foreach($seller_order_items as $items) {?>
-                <tr>                  
-                  <td><?php echo $items['order_id']; ?></td>
-                  <td><?php echo $items['transaction_id']; ?></td>
-                  <td><?php echo $items['payment_mode']; ?></td>
-				  <td><?php echo $items['cust_firstname'].' '.$items['cust_lastname']; ?></td>    
-				  <td><?php echo $items['item_name']; ?></td>    
-				  <td><?php echo $items['total_price']; ?></td>    
-				  <td><?php echo Date('d-M-Y',strtotime(htmlentities($items['create_at'])));?></td> 				  
-                  <td><?php if($items['order_status']==1){ echo "Active";}else{ echo "Deactive";} ?></td>                  
-				
-                 </tr>
+					<tr>                  
+					  <td><?php echo $items['order_id']; ?></td>
+					  <td><?php echo $items['razorpay_order_id']; ?></td>
+					  <td>
+					  <?php if($items['payment_type']==1){
+							echo "Online";
+					  }else  if($items['payment_type']==2){
+						  echo "Cash On Delivery";
+					  }else if($items['payment_type']==3){
+						  echo "Swipe on Delivery";
+					  }
+
+					  ?>
+					  
+					  </td>
+					  <td><?php echo $items['cust_firstname'].' '.$items['cust_lastname']; ?></td>    
+					  <td><?php echo $items['item_name']; ?></td>    
+					  <td><?php echo  number_format($items['total_price'], 2); ?></td>    
+					  <td><?php echo Date('d-M-Y',strtotime(htmlentities($items['create_at'])));?></td> 				  
+					  <td><?php if($items['order_status']==1){ echo "Active";}else{ echo "Deactive";} ?></td>                  
+					
+					 </tr>
                  <?php }?>
                 </tbody>              
               </table>

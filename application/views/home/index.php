@@ -486,6 +486,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 	</div>
 </section>
 <section>
+<?php if(isset($category_wise_products) && count($category_wise_products)>0){ ?>
 	<div class="">
 	<div class="clearfix">&nbsp;</div>
 				<div class="text-center"><span id="loadmor" class="lod_st fa fa-chevron-circle-down"> Load More..</span> </div>
@@ -493,6 +494,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 				
 				<div class="clearfix">&nbsp;</div>
 	</div>
+<?php } ?>
 		
     </section>
 
@@ -500,7 +502,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 
 <?php } ?>
 
-
+<?php if(isset($category_wise_products) && count($category_wise_products)>0){ ?>
 	
 	<div id="loadcon" style="display:none;">
 	<?php foreach ($category_wise_products   as $list){ ?>
@@ -608,6 +610,7 @@ $("#fademaskpurpose").removeClass("mask_hide");
 
 
 	</div>
+<?php } ?>
 	
   </div>
 </body>

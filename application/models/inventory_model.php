@@ -190,7 +190,7 @@ function __construct()
 	}
 	public function get_seller_all_payment_details($sid)
 	{
-		$this->db->select('products.item_name,orders.transaction_id,orders.payment_mode,orders.order_status,order_items.*,sellers.seller_name,sellers.seller_id,sellers.seller_rand_id,customers.cust_firstname,customers.cust_lastname')->from('order_items');
+		$this->db->select('products.item_name,orders.razorpay_payment_id,orders.razorpay_order_id,orders.transaction_id,orders.payment_type,orders.order_status,order_items.*,sellers.seller_name,sellers.seller_id,sellers.seller_rand_id,customers.cust_firstname,customers.cust_lastname')->from('order_items');
 		$this->db->join('sellers', 'sellers.seller_id = order_items.seller_id', 'left');
 		$this->db->join('customers', 'customers.customer_id = order_items.customer_id', 'left');
 		$this->db->join('orders', 'orders.order_id = order_items.order_id', 'left');
