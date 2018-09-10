@@ -827,7 +827,7 @@ $customerdetails=$this->session->userdata('userdetails');
 								<?php } ?>	
 								<?php } ?>
 								<?php 	if (in_array($list['item_id'], $whishlist_item_ids_list) &&  in_array($customerdetails['customer_id'], $customer_ids_list)) { ?>
-								<a href="javascript:void(0)"  onclick="addwhishlidt('<?php echo $list['item_id']; ?>','<?php echo $f; ?>');" id="addwhish<?php echo $list['item_id']; ?><?php echo $f; ?>" data-toggle="tooltip" title="Added to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $list['item_id']; ?><?php echo $f; ?>" class="fa fa-heart text-primary"></i></a> 
+								<a href="javascript:void(0)"  onclick="addwhishlidt('<?php echo $list['item_id']; ?>','<?php echo $f; ?>');" id="addwhish<?php echo $list['item_id']; ?><?php echo $f; ?>" data-toggle="tooltip" title="Added to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $list['item_id']; ?><?php echo $f; ?>" class="fa fa-heart text-whish"></i></a> 
 								<?php }else{ ?>	
 								<a href="javascript:void(0);" onclick="addwhishlidt('<?php echo $list['item_id']; ?>','<?php echo $f; ?>');" id="addwhish<?php echo $list['item_id']; ?><?php echo $f; ?>" data-toggle="tooltip" title="Add to Wishlist" class="wishlist"><i id="addwishlistids<?php echo $list['item_id']; ?><?php echo $f; ?>" class="fa fa-heart"></i></a> 
 								<?php } ?>	
@@ -965,7 +965,7 @@ jQuery.ajax({
 				$('#sucessmsg').show('');
 				$("#wish_supcount").empty();
 				$("#wish_supcount").append(data.count);
-				$("#addwishlistids"+id+val).removeClass("text-primary");
+				$("#addwishlistids"+id+val).removeClass("text-whish");
 				$('#addwhish'+id+val).prop('title', 'Add to Wishlist');
 						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Removed from Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
 				document.getElementById("sucessmsg").focus();
@@ -973,7 +973,7 @@ jQuery.ajax({
 				}
 				if(data.msg==1){
 				$('#sucessmsg').show('');
-				 $("#addwishlistids"+id+val).addClass("text-primary");
+				 $("#addwishlistids"+id+val).addClass("text-whish");
 				 $('#addwhish'+id+val).prop('title', 'Added to Wishlist');
 						$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp btn_suc"> Product Successfully Added to Wishlist <i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
 				document.getElementById("sucessmsg").focus();				
