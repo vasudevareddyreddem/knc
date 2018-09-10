@@ -93,7 +93,7 @@
 <div id="sucessmsg" style="display:none;"></div>
 		<div class="" >
 		
-		<div class="col-md-3 sing_pro " id="social-float">
+		<div class="col-md-3 sing_pro zoom-right" id="social-float">
 			<ul id="glasscase" class="gc-start ">
                     <li>
 						<img class="img-responsive" src="<?php echo base_url('uploads/products/'.$products_list['item_image']); ?>"/>
@@ -123,7 +123,7 @@
 		</div>
         <!-- End Image List -->
 
-        <div class="col-md-8 col-md-offset-3 sm_mar_t20 card" id="con_scrol" style="z-index:-1;">
+        <div class="col-md-8 col-md-offset-3 sm_mar_t20 card" id="con_scrol" >
           <?php if($this->session->flashdata('success')): ?>
 			<div class="alt_cus"> <div class="alert_msg1 animated slideInUp btn_suc "> <?php echo $this->session->flashdata('success');?>&nbsp; <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div></div>
 			<?php endif; ?>
@@ -1352,7 +1352,16 @@
 	</section>
 	 <?php } ?>
    	</div>
-
+<script>
+$(".zoom-right").hover(
+  function () {
+    $(this).addClass("z_ind");
+  },
+  function () {
+    $(this).removeClass("z_ind");
+  }
+);
+</script>
 
 <script type="text/javascript">
 var pincodeformat =/^[0-9]+$/;

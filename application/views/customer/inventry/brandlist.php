@@ -1,10 +1,8 @@
 <div class="content-wrapper pad_t100">
-    <!-- Content Header (Page header) -->
-      <div class="container">
-         <!-- Main content -->
+	 <section class="content">
       <div class="row">
-	  <?php //echo '<pre>';print_r($category_list);exit; ?>
-      <div class="box data_box_wid">
+        <div class="col-xs-12">
+      <div class="box ">
             <div class="box-header" style="border-bottom:1px solid #ddd;">
               <h3 class="box-title">Brand List</h3>
               <a class="pull-right btn btn-sm btn-primary" href="<?php echo base_url('inventory/addbrandlogo'); ?>" class="box-title">Add</a>
@@ -14,7 +12,7 @@
 			<?php //echo '<pre>';print_r($sublitem_list);exit;
 
 			?>
-            <div class="box-body">
+            <div class="box-body ">
 			<?php if($this->session->flashdata('success')): ?>
 					<div class="alert dark alert-success alert-dismissible" id="infoMessage"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -56,10 +54,11 @@
             </div>
             <!-- /.box-body -->
           </div>
+          </div>
 
 </div>
 </div>
-</div>
+
 <script>
 $(document).ready(function() {
     $('#example1').DataTable( {
