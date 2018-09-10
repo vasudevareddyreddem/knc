@@ -180,7 +180,7 @@
                             <ul class="dropdown-menu" >
                                 <li>
                                     <!-- Content container to add padding -->
-                                    <div class="yamm-content" style="z-index:2000">
+                                    <div class="yamm-content" >
                                         <div class="row">
 										<?php foreach($lists['subcat'] as $li){ ?>
                                             <ul class="col-sm-3">
