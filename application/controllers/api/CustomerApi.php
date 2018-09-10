@@ -51,8 +51,9 @@ class CustomerApi extends REST_Controller {
 				
 		}else{
 			$email =filter_var($username, FILTER_VALIDATE_EMAIL);
+			//echo '<pre>';print_r($username);exit;
 				if($email==''){
-					 if (!is_numeric($email)) {
+					 if (!is_numeric($email) && $email!='') {
 						$message = array('status'=>0,'message'=>'Please enter a correct value.');
 						$this->response($message, REST_Controller::HTTP_OK); 
 					 }else{
@@ -64,7 +65,6 @@ class CustomerApi extends REST_Controller {
 					$mobile='';
 					$email=$username;
 				}
-				
 			$details=array(
 				'cust_email'=>$email,
 				'cust_mobile'=>$mobile,
@@ -204,15 +204,15 @@ class CustomerApi extends REST_Controller {
 	$size=$this->input->get('size');
 	$uksize=$this->input->get('uksize');
 	if($customer_id==''){
-		$message = array('status'=>1,'message'=>'Customer id is required!');
+		$message = array('status'=>0,'message'=>'Customer id is required!');
 		$this->response($message, REST_Controller::HTTP_OK);
 		
 	}elseif($item_id==''){
-		$message = array('status'=>1,'message'=>'Item id is required!');
+		$message = array('status'=>0,'message'=>'Item id is required!');
 		$this->response($message, REST_Controller::HTTP_OK);
 		
 	}else if($qty==''){
-		$message = array('status'=>1,'message'=>'Qty is required!');
+		$message = array('status'=>0,'message'=>'Qty is required!');
 		$this->response($message, REST_Controller::HTTP_OK);
 	}
 	$cart_item_ids= $this->Customerapi_model->get_cart_products($customer_id);
@@ -223,7 +223,7 @@ class CustomerApi extends REST_Controller {
 				}
 				if(in_array($item_id,$cart_id))
 				{
-					$message = array('status'=>1,'message'=>'Product already exits');
+					$message = array('status'=>0,'message'=>'Product already exits');
 					$this->response($message, REST_Controller::HTTP_OK);
 				}else{
 						$products= $this->Customerapi_model->get_product_details($item_id);
@@ -279,7 +279,7 @@ class CustomerApi extends REST_Controller {
 								$message = array('status'=>1,'id'=>$cart_save,'message'=>'Product Successfully added to the cart');
 								$this->response($message, REST_Controller::HTTP_OK);
 							}else{
-								$message = array('status'=>1,'message'=>'Technical problem occured try again later!');
+								$message = array('status'=>0,'message'=>'Technical problem occured try again later!');
 								$this->response($message, REST_Controller::HTTP_OK);
 							}
 					}
@@ -334,7 +334,7 @@ class CustomerApi extends REST_Controller {
 							$message = array('status'=>1,'id'=>$cart_save,'message'=>'Product Successfully added to the cart');
 							$this->response($message, REST_Controller::HTTP_OK);
 						}else{
-							$message = array('status'=>1,'message'=>'Technical problem occured try again later!');
+							$message = array('status'=>0,'message'=>'Technical problem occured try again later!');
 							$this->response($message, REST_Controller::HTTP_OK);
 						}
 		
@@ -353,15 +353,15 @@ class CustomerApi extends REST_Controller {
 		$item_id=$this->input->get('item_id');	
 		$cart_id=$this->input->get('id');	
 			if($customer_id==''){
-				$message = array('status'=>1,'message'=>'Customer id is required!');
+				$message = array('status'=>0,'message'=>'Customer id is required!');
 				$this->response($message, REST_Controller::HTTP_OK);
 				
 			}elseif($item_id==''){
-				$message = array('status'=>1,'message'=>'Item id is required!');
+				$message = array('status'=>0,'message'=>'Item id is required!');
 				$this->response($message, REST_Controller::HTTP_OK);
 				
 			}else if($cart_id==''){
-				$message = array('status'=>1,'message'=>'Id is required!');
+				$message = array('status'=>0,'message'=>'Id is required!');
 				$this->response($message, REST_Controller::HTTP_OK);
 			}
 			$cart_item_ids= $this->Customerapi_model->get_cart_products($customer_id);
@@ -373,10 +373,10 @@ class CustomerApi extends REST_Controller {
 			}
 			if(!in_array($item_id,$initem_id))
 			{
-				$message = array('status'=>1,'message'=>'Product not exits.Please try again');
+				$message = array('status'=>0,'message'=>'Product not exits.Please try again');
 				$this->response($message, REST_Controller::HTTP_OK);
 			}else if(!in_array($cart_id,$incart_id)){
-				$message = array('status'=>1,'message'=>'Product not exits.Please try again');
+				$message = array('status'=>0,'message'=>'Product not exits.Please try again');
 				$this->response($message, REST_Controller::HTTP_OK);
 			}else{
 				$delete= $this->Customerapi_model->delete_cart_item($customer_id,$item_id,$cart_id);
@@ -384,7 +384,7 @@ class CustomerApi extends REST_Controller {
 						$message = array('status'=>1,'message'=>'cart Item Successfully Removed!');
 						$this->response($message, REST_Controller::HTTP_OK);
 				}else{
-					$message = array('status'=>1,'message'=>'Technical problem occured try again later!');
+					$message = array('status'=>0,'message'=>'Technical problem occured try again later!');
 					$this->response($message, REST_Controller::HTTP_OK);
 				}
 			}
@@ -397,18 +397,18 @@ class CustomerApi extends REST_Controller {
 	$qty=$this->input->get('qty');
 	$cart_id=$this->input->get('id');	
 	if($customer_id==''){
-		$message = array('status'=>1,'message'=>'Customer id is required!');
+		$message = array('status'=>0,'message'=>'Customer id is required!');
 		$this->response($message, REST_Controller::HTTP_OK);
 		
 	}elseif($item_id==''){
-		$message = array('status'=>1,'message'=>'Item id is required!');
+		$message = array('status'=>0,'message'=>'Item id is required!');
 		$this->response($message, REST_Controller::HTTP_OK);
 		
 	}else if($qty==''){
-		$message = array('status'=>1,'message'=>'Qty is required!');
+		$message = array('status'=>0,'message'=>'Qty is required!');
 		$this->response($message, REST_Controller::HTTP_OK);
 	}else if($cart_id==''){
-		$message = array('status'=>1,'message'=>'Id is required!');
+		$message = array('status'=>0,'message'=>'Id is required!');
 		$this->response($message, REST_Controller::HTTP_OK);
 	}
 	$cart_item_ids= $this->Customerapi_model->get_cart_products($customer_id);
@@ -418,7 +418,7 @@ class CustomerApi extends REST_Controller {
 		}
 		if(!in_array($item_id,$cart_ids))
 		{
-			$message = array('status'=>1,'message'=>'Product nots exits');
+			$message = array('status'=>0,'message'=>'Product nots exits');
 			$this->response($message, REST_Controller::HTTP_OK);
 		}else{
 				$products= $this->Customerapi_model->get_product_details($item_id);
@@ -467,7 +467,7 @@ class CustomerApi extends REST_Controller {
 						$message = array('status'=>1,'message'=>'Product Successfully Updated to the cart');
 						$this->response($message, REST_Controller::HTTP_OK);
 					}else{
-						$message = array('status'=>1,'message'=>'Technical problem occured try again later!');
+						$message = array('status'=>0,'message'=>'Technical problem occured try again later!');
 						$this->response($message, REST_Controller::HTTP_OK);
 					}
 			}
@@ -481,7 +481,7 @@ class CustomerApi extends REST_Controller {
 	{
 		$customer_id=$this->input->get('customer_id');
 		if($customer_id==''){
-				$message = array('status'=>1,'message'=>'Customer id is required!');
+				$message = array('status'=>0,'message'=>'Customer id is required!');
 				$this->response($message, REST_Controller::HTTP_OK);
 				
 		}
@@ -528,7 +528,7 @@ class CustomerApi extends REST_Controller {
 		if(count($pitemlist)>0){
 			if(!in_array($customer_id,$cart_ids))
 			{
-				$message = array('status'=>1,'message'=>'Customer having  no products in the cart');
+				$message = array('status'=>0,'message'=>'Customer having  no products in the cart');
 				$this->response($message, REST_Controller::HTTP_OK);
 			}else{
 				$message = array(
@@ -558,7 +558,7 @@ class CustomerApi extends REST_Controller {
 			$message = array('status'=>1,'message'=>'wishlist ids list','list'=>$item_lists);
 			$this->response($message,REST_Controller::HTTP_OK);
 		}else{
-			$message = array('status'=>1,'message'=>'wishlist ids are not fount');
+			$message = array('status'=>0,'message'=>'wishlist ids are not fount');
 			$this->response($message, REST_Controller::HTTP_OK);
 		}
 	}
@@ -628,7 +628,7 @@ class CustomerApi extends REST_Controller {
 	{
 		$customer_id=$this->input->get('customer_id');
 			if($customer_id==''){
-			$message = array('status'=>1,'message'=>'Customer id is required!');
+			$message = array('status'=>0,'message'=>'Customer id is required!');
 			$this->response($message, REST_Controller::HTTP_OK);
 			}
 		$wishlist = $this->Customerapi_model->get_customer_whishlists($customer_id);
@@ -663,14 +663,14 @@ class CustomerApi extends REST_Controller {
 		//echo '<pre>';print_r($plist);exit;
 		if(!in_array($customer_id,$cart_ids))
 		{
-			$message = array('status'=>1,'message'=>'Customer having  no products in the wishlist');
+			$message = array('status'=>0,'message'=>'Customer having  no products in the wishlist');
 			$this->response($message, REST_Controller::HTTP_OK);
 		}else{
 			$message = array('status'=>1,'message'=>'wishlist items list','list'=>$wishpdetails,'count'=>$wishlistcount['count'],'path'=>base_url('uploads/products/'));
 			$this->response($message,REST_Controller::HTTP_OK);
 		}
 		}else{
-			$message = array('status'=>1,'message'=>'Customer having  no products in the wishlist');
+			$message = array('status'=>0,'message'=>'Customer having  no products in the wishlist');
 			$this->response($message, REST_Controller::HTTP_OK);
 		}
 	}
@@ -686,7 +686,7 @@ class CustomerApi extends REST_Controller {
 		//echo '<pre>';print_r($order_list);exit;
 		if(count($order_list)>0){
 		
-			$message = array('status'=>1,'message'=>'order list','list'=>$order_list,'path'=>base_url('uploads/products/'));
+			$message = array('status'=>1,'message'=>'order list','list'=>$order_list,'path'=>base_url('uploads/products/'),'invoice_path'=>base_url('assets/downloads/'));
 			$this->response($message,REST_Controller::HTTP_OK);
 		}else{
 			$message = array('status'=>0,'message'=>'Customer having  no orders');
@@ -737,6 +737,7 @@ class CustomerApi extends REST_Controller {
 					'sizelist'=>isset($size_list)?$size_list:'',
 					'uksizelist'=>isset($uksize_list)?$uksize_list:'',
 					 'path'=>base_url('uploads/products/'),
+					 'invoice_path'=>base_url('assets/downloads/'),
 					
 					);
 					$this->response($message,REST_Controller::HTTP_OK);
@@ -831,17 +832,17 @@ class CustomerApi extends REST_Controller {
 	{
 		$customer_id=$this->input->get('customer_id');
 			if($customer_id==''){
-			$message = array('status'=>1,'message'=>'Customer id is required!');
+			$message = array('status'=>0,'message'=>'Customer id is required!');
 			$this->response($message, REST_Controller::HTTP_OK);
 			}
 			$customer_orders_track_detals= $this->Customerapi_model->get_order_items_track_list($customer_id);
 		//echo '<pre>';print_r($wishlist);exit;
 		if(count($customer_orders_track_detals)>0){
 		
-			$message = array('status'=>1,'message'=>'order track details','track details'=>$customer_orders_track_detals,'path'=>base_url('uploads/products/'));
+			$message = array('status'=>1,'message'=>'order track details','track details'=>$customer_orders_track_detals,'path'=>base_url('uploads/products/'),'invoice_path'=>base_url('assets/downloads/'));
 			$this->response($message,REST_Controller::HTTP_OK);
 		}else{
-			$message = array('status'=>1,'message'=>'customer having no orders');
+			$message = array('status'=>0,'message'=>'customer having no orders');
 			$this->response($message, REST_Controller::HTTP_OK);
 		}
 	}
@@ -850,7 +851,7 @@ class CustomerApi extends REST_Controller {
 	{
 		$item_id=$this->input->get('item_id');
 			if($item_id==''){
-			$message = array('status'=>1,'message'=>'item id is required!');
+			$message = array('status'=>0,'message'=>'item id is required!');
 			$this->response($message, REST_Controller::HTTP_OK);
 			}
 			$review_details= $this->Customerapi_model->get_products_reviews($item_id);
@@ -860,7 +861,7 @@ class CustomerApi extends REST_Controller {
 			$message = array('status'=>1,'count'=>count($review_details),'message'=>'product review details','list'=>$review_details);
 			$this->response($message,REST_Controller::HTTP_OK);
 		}else{
-			$message = array('status'=>1,'message'=>'product having no review');
+			$message = array('status'=>0,'message'=>'product having no review');
 			$this->response($message, REST_Controller::HTTP_OK);
 		}
 	}
@@ -871,13 +872,13 @@ class CustomerApi extends REST_Controller {
 		$category_id=$this->input->get('category_id');
 		$subcategory_id=$this->input->get('subcategory_id');
 			if($category_id==''){
-			$message = array('status'=>1,'message'=>'category id name is required!');
+			$message = array('status'=>0,'message'=>'category id name is required!');
 			$this->response($message, REST_Controller::HTTP_OK);
 			}else if($subcategory_id==''){
-			$message = array('status'=>1,'message'=>'subcategory id is required!');
+			$message = array('status'=>0,'message'=>'subcategory id is required!');
 			$this->response($message, REST_Controller::HTTP_OK);
 			}else if($name==''){
-			$message = array('status'=>1,'message'=>'product name is required!');
+			$message = array('status'=>0,'message'=>'product name is required!');
 			$this->response($message, REST_Controller::HTTP_OK);
 			}
 			$searchname=substr($name, 0, 4);
@@ -915,7 +916,7 @@ class CustomerApi extends REST_Controller {
 			$message = array('status'=>1,'message'=>'related product list details','list'=>$pitemlist,'path'=>base_url('uploads/products/'));
 			$this->response($message,REST_Controller::HTTP_OK);
 		}else{
-			$message = array('status'=>1,'message'=>'No related product list ');
+			$message = array('status'=>0,'message'=>'No related product list ');
 			$this->response($message, REST_Controller::HTTP_OK);
 		}
 	}
@@ -937,7 +938,7 @@ class CustomerApi extends REST_Controller {
 			$message = array('status'=>1,'message'=>'result list are found.','list'=>$search);
 			$this->response($message,REST_Controller::HTTP_OK);
 		}else{
-			$message = array('status'=>1,'message'=>'No result found');
+			$message = array('status'=>0,'message'=>'No result found');
 			$this->response($message, REST_Controller::HTTP_OK);
 		}
 	}
@@ -948,15 +949,15 @@ class CustomerApi extends REST_Controller {
 	$item_id=$this->input->get('item_id');	
 	$wish_id=$this->input->get('id');	
 	if($customer_id==''){
-		$message = array('status'=>1,'message'=>'Customer id is required!');
+		$message = array('status'=>0,'message'=>'Customer id is required!');
 		$this->response($message, REST_Controller::HTTP_OK);
 		
 	}elseif($item_id==''){
-		$message = array('status'=>1,'message'=>'Item id is required!');
+		$message = array('status'=>0,'message'=>'Item id is required!');
 		$this->response($message, REST_Controller::HTTP_OK);
 		
 	}else if($wish_id==''){
-		$message = array('status'=>1,'message'=>'Id is required!');
+		$message = array('status'=>0,'message'=>'Id is required!');
 		$this->response($message, REST_Controller::HTTP_OK);
 	}
 	
@@ -969,11 +970,11 @@ class CustomerApi extends REST_Controller {
 		//echo '<pre>';print_r($cart_ids);exit;
 		if(!in_array($wish_id,$wish_ids))
 		{
-			$message = array('status'=>1,'message'=>'product not exits');
+			$message = array('status'=>0,'message'=>'product not exits');
 			$this->response($message, REST_Controller::HTTP_OK);
 		}else if(!in_array($item_id,$wishitem_ids))
 		{
-			$message = array('status'=>1,'message'=>'product not exits');
+			$message = array('status'=>0,'message'=>'product not exits');
 			$this->response($message, REST_Controller::HTTP_OK);	
 		}else{
 				$wishlist_delete= $this->Customerapi_model->customer_wishlist_delete($customer_id,$item_id,$wish_id);
@@ -981,7 +982,7 @@ class CustomerApi extends REST_Controller {
 				$message = array('status'=>1,'message'=>'Wishlist Item Successfully deleted');
 				$this->response($message, REST_Controller::HTTP_OK);
 				}else{
-				$message = array('status'=>1,'message'=>'Technical problem occured try again later!');
+				$message = array('status'=>0,'message'=>'Technical problem occured try again later!');
 				$this->response($message, REST_Controller::HTTP_OK);
 				}
 
@@ -1078,7 +1079,7 @@ class CustomerApi extends REST_Controller {
 					$username=$this->config->item('smsusername');
 					$pass=$this->config->item('smspassword');
 					if($mobile!=''){		
-						$msg=$six_digit_random_number.' is your Cartinhours verification code one-time use. Please DO NOT share this OTP with anyone to ensure account security';
+						$msg=$six_digit_random_number.' is your Order-organic verification code one-time use. Please DO NOT share this OTP with anyone to ensure account security';
 						$ch = curl_init();
 						curl_setopt($ch, CURLOPT_URL,"http://bhashsms.com/api/sendmsg.php");
 						curl_setopt($ch, CURLOPT_POST, 1);
@@ -1093,9 +1094,9 @@ class CustomerApi extends REST_Controller {
 
 					}else if(isset($email) && $email!=''){
 						
-							$msg=$six_digit_random_number.'is your Cartinhours verification code one-time use. Please DO NOT share this OTP with anyone to ensure account security ';
+							$msg=$six_digit_random_number.'is your Order-organic verification code one-time use. Please DO NOT share this OTP with anyone to ensure account security ';
 							$this->load->library('email');
-							$this->email->from('admin@cartinhours.com', 'CartInHours');
+							$this->email->from('admin@orderorganic.com', 'Order-organic');
 							$this->email->to($email);
 							$this->email->subject('CartInHours - Forgot Password');
 							$html =$msg;
@@ -1446,11 +1447,18 @@ class CustomerApi extends REST_Controller {
 	{
 		$get = $this->input->get();
 		$item_review_get = $this->Customerapi_model->itemwise_reviews($get['item_id']);
-		//echo '<pre>';print_r($item_review_get);exit;
 		if(count($item_review_get)>0){
+			foreach($item_review_get as $list){
+				$review_list[]=$list;
+			}
+		}else{
+			$review_list=array();
+		}
+		//echo '<pre>';print_r($item_review_get);exit;
+		if(count($review_list)>0){
 			$message = array(
 				'status'=>1,
-				'Item Review'=>$item_review_get,
+				'Item Review'=>$review_list,
 			);
 			$this->response($message, REST_Controller::HTTP_OK);	
 			
@@ -1459,9 +1467,6 @@ class CustomerApi extends REST_Controller {
 			$this->response($message, REST_Controller::HTTP_OK);	
 		}
 	}
-
-
-	
 	/* category api*/
 	public function categories_get()
 	{
@@ -1949,147 +1954,7 @@ class CustomerApi extends REST_Controller {
 			$this->response($message, REST_Controller::HTTP_OK);	
 		}
 	}
-	public function orderpayment_post(){
-			$customer_id=$this->post('customer_id');
-			$net_amount=$this->post('net_amount');
-			$discount=$this->post('discount');
-			$payment_mode=$this->post('payment_mode');
-			$email=$this->post('email');
-			$phone=$this->post('phone');
-			$billing_mobile=$this->post('billing_mobile');
-			$billing_email=$this->post('billing_email');
-			$billing_address=$this->post('billing_address1');
-			$billing_address2=$this->post('billing_address2');
-			$billing_name=$this->post('billing_name');
-			$pincode=$this->post('pincode');
-			$razorpay_payment_id=$this->post('razorpay_payment_id');
-			$razorpay_order_id=$this->post('razorpay_order_id');
-			$razorpay_signature=$this->post('razorpay_signature');
-			if($customer_id==''){
-			$message = array('status'=>1,'message'=>'customer id is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($net_amount==''){
-			$message = array('status'=>1,'message'=>'Net amount is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($discount==''){
-			$message = array('status'=>1,'message'=>'Discount is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($payment_mode==''){
-			$message = array('status'=>1,'message'=>'Payment Mode is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($email==''){
-			$message = array('status'=>1,'message'=>'Email is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($phone==''){
-			$message = array('status'=>1,'message'=>'Phone is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($billing_mobile==''){
-			$message = array('status'=>1,'message'=>'Billing mobile is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}
-			if($billing_email==''){
-			$message = array('status'=>1,'message'=>'Billing email is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($billing_address==''){
-			$message = array('status'=>1,'message'=>'Billing Address1 is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($billing_address2==''){
-			$message = array('status'=>1,'message'=>'Billing Address2 is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($billing_name==''){
-			$message = array('status'=>1,'message'=>'Billing Name is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($pincode==''){
-			$message = array('status'=>1,'message'=>'Pincode is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($razorpay_payment_id==''){
-			$message = array('status'=>1,'message'=>'Razorpay Payment id is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($razorpay_order_id==''){
-			$message = array('status'=>1,'message'=>'Razorpay Order id is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}if($razorpay_signature==''){
-			$message = array('status'=>1,'message'=>'Razorpay Signature id is required!');
-			$this->response($message, REST_Controller::HTTP_OK);
-			}
-			$ordersucess=array(
-						'customer_id'=>$customer_id,
-						'net_amount'=>$net_amount,
-						'total_price'=>$net_amount,
-						'discount'=>$discount,
-						'payment_mode'=>$payment_mode,
-						'email'=>$email,
-						'phone'=>$phone,
-						'razorpay_payment_id'=>$razorpay_payment_id,
-						'razorpay_order_id'=>$razorpay_order_id,
-						'razorpay_signature'=>$razorpay_signature,
-						'order_status'=>1,
-						'payment_type'=>1,
-						'amount_status'=>1,
-						'created_at'=>date('Y-m-d H:i:s'),
-					);
-					
-				$saveorder= $this->Customerapi_model->save_order_success($ordersucess);
-				
-				$cart_items= $this->Customerapi_model->get_cart_products($customer_id);
-				$customerdetails= $this->Customerapi_model->get_customer_details($customer_id);
-				//echo '<pre>';print_r($cart_items);exit;
-				foreach($cart_items as $items){
-					$orderitems=array(
-						'order_id'=>$saveorder,
-						'item_id'=>$items['item_id'],
-						'seller_id'=>$items['seller_id'],
-						'customer_id'=>$items['cust_id'],
-						'qty'=>$items['qty'],
-						'item_price'=>$items['item_price'],
-						'total_price'=>$items['total_price'],
-						'delivery_amount'=>$items['delivery_amount'],
-						'commission_price'=>$items['commission_price'],
-						'customer_email'=>$billing_email,
-						'customer_phone'=>$billing_mobile,
-						'customer_address'=>$billing_address,
-						'pincode'=>$pincode,
-						'order_status'=>1,
-						'color'=>$items['color'],
-						'size'=>$items['size'],
-						'create_at'=>date('Y-m-d H:i:s'),
-					);
-					//echo '<pre>';print_r($orderitems);exit;
-					$item_qty=$this->Customerapi_model->get_item_details($items['item_id']);
-					$less_qty=$item_qty['item_quantity']-$items['qty'];
-					//echo '<pre>';print_r($item_qty);
-					//echo '<pre>';print_r($less_aty);
-					//exit;
-					$this->Customerapi_model->update_tem_qty_after_purchasingorder($items['item_id'],$less_qty,$items['seller_id']);
-					$save= $this->Customerapi_model->save_order_items_list($orderitems);
-					$statu=array(
-						'order_item_id'=>$save,
-						'order_id'=>$saveorder,
-						'item_id'=>$items['item_id'],
-						'status_confirmation'=>1,
-						'create_time'=>date('Y-m-d h:i:s A'),
-						'update_time'=>date('Y-m-d h:i:s A'),
-					);
-					$save= $this->Customerapi_model->save_order_item_status_list($statu);
-					
-					
-				}
-				/*for billing address*/
-				$orderbilling=array(
-						'cust_id'=>$customer_id,
-						'order_id'=>$saveorder,
-						'name'=>$billing_name,
-						'emal_id'=>$billing_email,
-						'mobile'=>$billing_mobile,
-						'address1'=>$billing_address,
-						'address2'=>$billing_address2,
-						'pincode'=>$pincode,
-						'create-at'=>date('Y-m-d H:i:s'),
-					);
-				$saveorderbillingaddress= $this->Customerapi_model->save_order_billing_address($orderbilling);
-			$message = array('status'=>1,'orderid'=>$saveorder,'message'=>'Payment successfully completed!');
-			$this->response($message, REST_Controller::HTTP_OK);
-	}
+	
 	
 	public function ordersuccess_post(){
 		$customer_id=$this->input->get('customer_id');
@@ -2502,9 +2367,9 @@ class CustomerApi extends REST_Controller {
 							$this->load->library('email');
 							$this->email->set_newline("\r\n");
 							$this->email->set_mailtype("html");
-							$this->email->from('cartinhours.com');
+							$this->email->from('Order-organic.com');
 							$this->email->to($custdetails['seller_email']);
-							$this->email->subject('Cartinhours - Order Return');
+							$this->email->subject('Order-organic - Order Return');
 							$html = $this->load->view('email/orderreturn.php', $messagelis, true); 
 							//echo $html;exit;
 							$this->email->message($html);
@@ -2782,7 +2647,7 @@ class CustomerApi extends REST_Controller {
 			public function resendopt_post(){
 					$customer_id=$this->input->get('customer_id');
 					if($customer_id==''){
-					$message = array('status'=>1,'message'=>'customer id is required!');
+					$message = array('status'=>0,'message'=>'customer id is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					$forgotpasscheck = $this->Customerapi_model->forgot_customer_id($customer_id);
@@ -2806,14 +2671,14 @@ class CustomerApi extends REST_Controller {
 										$this->response($message, REST_Controller::HTTP_OK);
 							
 							}else{
-								$message = array('status'=>1,'message'=>'customer id not exist. please try again');
+								$message = array('status'=>0,'message'=>'customer id not exist. please try again');
 								$this->response($message, REST_Controller::HTTP_OK);
 							}
 			}
 			public function checkdelivery_status_post(){
 					$pincode=$this->input->get('pincode');
 					if($pincode==''){
-					$message = array('status'=>1,'message'=>'pincode is required!');
+					$message = array('status'=>0,'message'=>'pincode is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					$checkpincode = $this->Customerapi_model->get_pincode_details($pincode);
@@ -2823,14 +2688,14 @@ class CustomerApi extends REST_Controller {
 					$this->response($message, REST_Controller::HTTP_OK);
 
 					}else{
-					$message = array('status'=>1,'time'=>"We don't have service in your pincode");
+					$message = array('status'=>0,'time'=>"We don't have service in your pincode");
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 			}
 			public function billing_address_list_post(){
 					$customer_id=$this->input->get('customer_id');
 					if($customer_id==''){
-					$message = array('status'=>1,'message'=>'customer id is required!');
+					$message = array('status'=>0,'message'=>'customer id is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					$billingaddress = $this->Customerapi_model->get_customer_billing_list($customer_id);
@@ -2839,13 +2704,12 @@ class CustomerApi extends REST_Controller {
 						$this->response($message, REST_Controller::HTTP_OK);
 
 					}else{
-					$message = array('status'=>1,'message'=>'billing address not found');
+					$message = array('status'=>0,'message'=>'billing address not found');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 			}
 			public function billing_address_save_post(){
 					$customer_id=$this->input->get('customer_id');
-					$customer_id=$this->input->get('address_id');
 					$title=$this->input->get('title');
 					$name=$this->input->get('name');
 					$mobile=$this->input->get('mobile');
@@ -2856,43 +2720,43 @@ class CustomerApi extends REST_Controller {
 					$city=$this->input->get('city');
 					$state=$this->input->get('state');
 					if($customer_id==''){
-					$message = array('status'=>1,'message'=>'Customer id is required!');
+					$message = array('status'=>0,'message'=>'Customer id is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($title==''){
-					$message = array('status'=>1,'message'=>'Title is required!');
+					$message = array('status'=>0,'message'=>'Title is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($name==''){
-					$message = array('status'=>1,'message'=>'Name is required!');
+					$message = array('status'=>0,'message'=>'Name is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($mobile==''){
-					$message = array('status'=>1,'message'=>'mobile is required!');
+					$message = array('status'=>0,'message'=>'mobile is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($address1==''){
-					$message = array('status'=>1,'message'=>'Address1 is required!');
+					$message = array('status'=>0,'message'=>'Address1 is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($address2==''){
-					$message = array('status'=>1,'message'=>'Address2 is required!');
+					$message = array('status'=>0,'message'=>'Address2 is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($landmark==''){
-					$message = array('status'=>1,'message'=>'landmark is required!');
+					$message = array('status'=>0,'message'=>'landmark is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($pincode==''){
-					$message = array('status'=>1,'message'=>'pincode is required!');
+					$message = array('status'=>0,'message'=>'pincode is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($city==''){
-					$message = array('status'=>1,'message'=>'city is required!');
+					$message = array('status'=>0,'message'=>'city is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($state==''){
-					$message = array('status'=>1,'message'=>'state is required!');
+					$message = array('status'=>0,'message'=>'state is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					$billingaddress = $this->Customerapi_model->check_customer_exits($customer_id);
@@ -2918,7 +2782,7 @@ class CustomerApi extends REST_Controller {
 						$this->response($message, REST_Controller::HTTP_OK);
 							
 						}else{
-							$message = array('status'=>1,'message'=>'Technical problem will occurred. please try again after some time');
+							$message = array('status'=>0,'message'=>'Technical problem will occurred. please try again after some time');
 						$this->response($message, REST_Controller::HTTP_OK);
 						}
 						
@@ -2926,7 +2790,7 @@ class CustomerApi extends REST_Controller {
 						
 
 					}else{
-					$message = array('status'=>1,'message'=>'Customer not found. please  try again');
+					$message = array('status'=>0,'message'=>'Customer not found. please  try again');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 			}
@@ -2944,52 +2808,53 @@ class CustomerApi extends REST_Controller {
 					$razorpay_order_id=$this->post('razorpay_order_id');
 					$razorpay_signature=$this->post('razorpay_signature');
 					if($customer_id==''){
-					$message = array('status'=>1,'message'=>'Customer id is required!');
+					$message = array('status'=>0,'message'=>'Customer id is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($payment_type==''){
-					$message = array('status'=>1,'message'=>'Payment Type is required!');
+					$message = array('status'=>0,'message'=>'Payment Type is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($name==''){
-					$message = array('status'=>1,'message'=>'Name is required!');
+					$message = array('status'=>0,'message'=>'Name is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($mobile==''){
-					$message = array('status'=>1,'message'=>'mobile is required!');
+					$message = array('status'=>0,'message'=>'mobile is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($address1==''){
-					$message = array('status'=>1,'message'=>'Address1 is required!');
+					$message = array('status'=>0,'message'=>'Address1 is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($address2==''){
-					$message = array('status'=>1,'message'=>'Address2 is required!');
+					$message = array('status'=>0,'message'=>'Address2 is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($pincode==''){
-					$message = array('status'=>1,'message'=>'pincode is required!');
+					$message = array('status'=>0,'message'=>'pincode is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($city==''){
-					$message = array('status'=>1,'message'=>'city is required!');
+					$message = array('status'=>0,'message'=>'city is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($state==''){
-					$message = array('status'=>1,'message'=>'state is required!');
+					$message = array('status'=>0,'message'=>'state is required!');
 					$this->response($message, REST_Controller::HTTP_OK);
 					}
 					if($payment_type==1){
 						if($razorpay_payment_id==''){
 						$message = array('status'=>1,'message'=>'Razorpay Payment id is required!');
 						$this->response($message, REST_Controller::HTTP_OK);
-						}if($razorpay_order_id==''){
+						}
+						/*if($razorpay_order_id==''){
 						$message = array('status'=>1,'message'=>'Razorpay Order id is required!');
 						$this->response($message, REST_Controller::HTTP_OK);
 						}if($razorpay_signature==''){
 						$message = array('status'=>1,'message'=>'Razorpay Signature id is required!');
 						$this->response($message, REST_Controller::HTTP_OK);
-						}
+						}*/
 					}
 					if($payment_type==1){
 						$paid_status=1;
@@ -3012,6 +2877,9 @@ class CustomerApi extends REST_Controller {
 					'hash'=>'',
 					'payment_type'=>$payment_type,
 					'amount_status'=>$paid_status,
+					'razorpay_payment_id'=>isset($razorpay_payment_id)?$razorpay_payment_id:'',
+					'razorpay_order_id'=>isset($razorpay_order_id)?$razorpay_order_id:'',
+					'razorpay_signature'=>isset($razorpay_signature)?$razorpay_signature:'',
 					'created_at'=>date('Y-m-d H:i:s'),
 				);
 				$saveorder=$this->Customerapi_model->save_order_success($ordersucess);
@@ -3112,9 +2980,9 @@ class CustomerApi extends REST_Controller {
 						$this->load->library('email');
 						$this->email->set_newline("\r\n");
 						$this->email->set_mailtype("html");
-						$this->email->from('cartinhours.com');
+						$this->email->from('Order-organic.com');
 						$this->email->to($customerdetails['cust_email']);
-						$this->email->subject('Cartinhours - Order Confirmation');
+						$this->email->subject('Order-organic - Order Confirmation');
 						$html = $this->load->view('email/orderconfirmation.php', $data, true); 
 						//echo $html;exit;
 						$this->email->message($html);
@@ -3195,9 +3063,9 @@ class CustomerApi extends REST_Controller {
 					$this->load->library('email');
 					$this->email->set_newline("\r\n");
 					$this->email->set_mailtype("html");
-					$this->email->from('cartinhours.com');
+					$this->email->from('Order-organic.com');
 					$this->email->to($custdetails['cust_email']);
-					$this->email->subject('Cartinhours - Order Cancellation');
+					$this->email->subject('Order-organic - Order Cancellation');
 					$html = $this->load->view('email/customerordercancel.php', $messagelis, true); 
 					//echo $html;exit;
 					$this->email->message($html);
@@ -3601,6 +3469,7 @@ public function homeapi_get()
 		$offerforyou=$this->Customerapi_model->get_offerforyou_categorywise();
 		$recentlyviewedlist=$this->Customerapi_model->recently_viewed_producrs();
 		$categorywise_plist=$this->Customerapi_model->get_category_wise_products_list();
+		//echo '<pre>';print_r($categorywise_plist);exit;
 		
 		if(isset($recentlyviewedlist) && count($recentlyviewedlist)>0){
 		foreach ($recentlyviewedlist as $productslist){
@@ -3629,12 +3498,12 @@ public function homeapi_get()
 		}else{
 			$recentlyviewed[]=array();
 		}
-		if(count($categorywise_plist)>0){
+		if(isset($categorywise_plist) && count($categorywise_plist)>0){
 			foreach ($categorywise_plist as $list){
 				$cat_wise_plist[]=$list;
 			}
 		}else{
-			$cat_wise_plist[]=array();
+			$cat_wise_plist=array();
 		}
 		if(count($topoffer)>0){
 			$top=$topoffer;

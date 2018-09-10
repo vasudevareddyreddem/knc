@@ -15,19 +15,19 @@
 					<span aria-hidden="true">&times;</span>
 					</button><?php echo $this->session->flashdata('error');?></div>	
 					<?php endif; ?>
-				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Edit brand Logo</div>
+				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Edit Brand Logo</div>
 				<input type="hidden" name="brandid" name="brandid" value="<?php echo $brand_details['bid']; ?>">
 				<div class="form-group">
-					<label for="category">brand Name</label>
+					<label for="category">Brand Name</label>
 					<input type="text"  class="form-control" id="brandname"  name="brandname" value="<?php echo $brand_details['brand']; ?>"/>
 				</div>
 				<div class="form-group">
-				<label for="category">brand Image</label>
+				<label for="category">Brand Image</label>
 				<input type="file"  class="form-control" id="image"  name="image"/>
 				</div>
 				
 				<div class="btn-group-vertical btn-block text-center" role="group">
-				<button type="submit" class="btn btn-danger btn-lg">Add</button>
+				<button type="submit" class="btn btn-danger btn-lg">Update</button>
 				
 				</div>
 				</form>

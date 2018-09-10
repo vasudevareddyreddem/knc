@@ -206,7 +206,22 @@ class Customerapi_model extends MY_Model
 		
 		$this->db->select('*')->from('reviews');
 		$this->db->where('item_id',$item_id);
-		return $this->db->get()->result_array();
+		$return=$this->db->get()->result_array();
+		foreach($return as $lis){
+			
+			$rating=$this->get_review_rating($lis['review_id']);
+			$data[$lis['review_id']]=$lis;
+			$data[$lis['review_id']]['rating']=isset($rating['avg'])?$rating['avg']:'';
+			
+		}
+		if(!empty($data)){
+			return $data;
+		}
+	}
+	
+	public  function get_review_rating($rev_id){
+		$sql = "SELECT AVG(rating) as avg FROM ratings WHERE review_id ='".$rev_id."'";
+		return $this->db->query($sql)->row_array();	
 	}
 
 	public function wishlist_save($data)
@@ -429,7 +444,8 @@ class Customerapi_model extends MY_Model
        	return $this->db->query($sql1);
 	}
 	public function order_list($cust_id){
-		$this->db->select('order_items.*,orders.transaction_id,products.item_name,products.description,products.colour,products.ram,products.internal_memeory,products.item_image,seller_store_details.store_name')->from('order_items');
+		$this->db->select('order_items.*,orders.transaction_id,products.item_name,products.description,products.colour,products.ram,products.internal_memeory,products.item_image,seller_store_details.store_name,invoice_list.invoicename')->from('order_items');
+		$this->db->join('invoice_list', 'invoice_list.order_item_id = order_items.order_item_id', 'left');
 		$this->db->join('products', 'products.item_id = order_items.item_id', 'left');
 		$this->db->join('orders', 'orders.order_id = order_items.order_id', 'left');
 		$this->db->join('seller_store_details', 'seller_store_details.seller_id = products.seller_id', 'left');
@@ -484,7 +500,8 @@ class Customerapi_model extends MY_Model
 		return $this->db->get()->row_array();
 	}
 	public function get_order_items_list($custid,$order_id){
-			$this->db->select('order_items.*,products.category_id,products.subcategory_id,products.item_name,orders.card_number,orders.discount,orders.payment_type,orders.card_number,orders.payment_mode,order_status.status_id,order_status.status_confirmation,order_status.status_packing,order_status.status_road,order_status.status_deliverd,order_status.status_refund,(order_status.create_time)AS createedattime,(order_status.update_time)AS updatetime,billing_address.name,billing_address.mobile,billing_address.emal_id,billing_address.address1,billing_address.address2,locations.location_name,seller_store_details.store_name,products.item_image')->from('order_items');
+			$this->db->select('order_items.*,products.category_id,products.subcategory_id,products.item_name,orders.card_number,orders.discount,orders.payment_type,orders.card_number,orders.payment_mode,order_status.status_id,order_status.status_confirmation,order_status.status_packing,order_status.status_road,order_status.status_deliverd,order_status.status_refund,(order_status.create_time)AS createedattime,(order_status.update_time)AS updatetime,billing_address.name,billing_address.mobile,billing_address.emal_id,billing_address.address1,billing_address.address2,locations.location_name,seller_store_details.store_name,products.item_image,invoice_list.invoicename')->from('order_items');
+			$this->db->join('invoice_list', 'invoice_list.order_item_id = order_items.order_item_id', 'left');
 			$this->db->join('products', 'products.item_id = order_items.item_id', 'left');
 			$this->db->join('orders', 'orders.order_id = order_items.order_id', 'left');
 			$this->db->join('order_status', 'order_status.order_item_id = order_items.order_item_id', 'left');
@@ -506,7 +523,8 @@ class Customerapi_model extends MY_Model
 		return $insert_id = $this->db->insert_id();
 	}
 	public function get_order_items_track_list($custid){
-			$this->db->select('order_items.*,products.item_name,products.item_image,products.return_policy,orders.card_number,orders.discount,orders.card_number,orders.payment_mode,orders.payment_type,order_status.status_confirmation,order_status.status_packing,order_status.status_road,order_status.status_deliverd,order_status.status_refund,(order_status.create_time)AS createedattime,(order_status.update_time)AS updatetime,billing_address.name,billing_address.mobile,billing_address.emal_id,billing_address.address1,billing_address.address2,locations.location_name,seller_store_details.store_name')->from('order_items');
+			$this->db->select('order_items.*,products.item_name,products.item_image,products.return_policy,orders.card_number,orders.discount,orders.card_number,orders.payment_mode,orders.payment_type,order_status.status_confirmation,order_status.status_packing,order_status.status_road,order_status.status_deliverd,order_status.status_refund,(order_status.create_time)AS createedattime,(order_status.update_time)AS updatetime,billing_address.name,billing_address.mobile,billing_address.emal_id,billing_address.address1,billing_address.address2,locations.location_name,seller_store_details.store_name,invoice_list.invoicename')->from('order_items');
+			$this->db->join('invoice_list', 'invoice_list.order_item_id = order_items.order_item_id', 'left');
 			$this->db->join('products', 'products.item_id = order_items.item_id', 'left');
 			$this->db->join('orders', 'orders.order_id = order_items.order_id', 'left');
 			$this->db->join('order_status', 'order_status.order_item_id = order_items.order_item_id', 'left');

@@ -30,7 +30,7 @@
                 <?php  foreach($bannerslist as $catlist) { ?>
                 <tr>                  
                   <td><?php echo $catlist['image']; ?></td>
-		          <td><img src="<?php echo base_url();?>assets/middlehomepagebanners/<?php  echo $catlist['image']; ?>" width="80" height="50" /></td>
+		          <td><img src="<?php echo base_url();?>assets/wishlistpagebanners/<?php  echo $catlist['image']; ?>" width="80" height="50" /></td>
 
                   <td><?php if($catlist['type']==1){ echo "We site";}else{ echo "APP";} ?></td>                  
                   <td><?php if($catlist['status']==1){ echo "Active";}else{ echo "Deactive";} ?></td>                  

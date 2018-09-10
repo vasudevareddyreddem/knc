@@ -116,7 +116,7 @@ $(document).ready(function() {
 			subitemid: {
 					validators: {
 					notEmpty: {
-						message: 'Please select sub Item'
+						message: 'Please select Sub Item'
 					}
 				}
 			}, 

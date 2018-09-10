@@ -587,5 +587,21 @@ class Customer_model extends MY_Model
 		return $this->db->get()->row_array();
 	}
 	
+	public  function get_order_qty_detail($order_item_id){
+		$this->db->select('order_item_id,qty')->from('order_items');
+		$this->db->where('order_item_id',$order_item_id);
+		return $this->db->get()->row_array();
+	}
+	public  function get_item_qty_detail($item_id){
+		$this->db->select('item_quantity')->from('products');
+		$this->db->where('item_id',$item_id);
+		return $this->db->get()->row_array();
+	}
+	public  function update_product_aty_detail($item_id,$data){
+		$this->db->where('item_id',$item_id);
+		return $this->db->update('products',$data);
+		
+	}
+	
 }
 ?>

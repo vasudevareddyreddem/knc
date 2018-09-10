@@ -268,6 +268,8 @@ class Cron extends Front_Controller
 					$pdf->WriteHTML($html); // write the HTML into the PDF
 					$pdf->Output($pdfFilePath, 'F'); // save to file because we can
 					$this->Cron_model->update_invocie_name_save($list['invoice_id'],$list['order_item_id'],$file_name);
+					
+					//echo $this->db->last_query();exit;
 					$htmlmessage = "Invoice has been generated from the https:order-organic.com";
 					$this->load->library('email');
 					$this->email->set_newline("\r\n");

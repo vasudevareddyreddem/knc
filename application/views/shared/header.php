@@ -111,7 +111,7 @@
                         </a>
                     </div><!-- end col -->
                     <div class="col-sm-7 vertical-align text-center">
-                        <form>
+                        
                             <div class="row grid-space-1">
                                 <div class="col-sm-8">
                                      <div class="form-horizontal ">
@@ -142,7 +142,7 @@
                                 </div><!-- end col -->
 								</form>
                             </div><!-- end row -->
-                        </form>
+                    
                     </div><!-- end col -->
                     <div class="col-sm-2 vertical-align header-items hidden-xs">
                         <div class="header-item mr-5">
