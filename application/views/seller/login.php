@@ -85,7 +85,7 @@
                 <label>Enter your Mobile Number</label>
                 <input   class="form-control" type="text" maxlength="10" id="seller_mobile" name="seller_mobile" autofocus>
                 <input type="checkbox" name="check_tac" id="check_tac" >
-              <a href="<?php echo base_url('seller/login/termsandconditions'); ?>">Terms and Conditions</a>
+              <a target="_blank" href="<?php echo base_url('seller/login/termsandconditions'); ?>">Terms and Conditions</a>
               <label>Enter Refer Code</label>
               <input   class="form-control" type="text" maxlength="6" id="any_ref" name="any_ref" value="">
               </div>

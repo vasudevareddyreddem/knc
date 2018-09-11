@@ -64,9 +64,7 @@ class Login extends CI_Controller {
 
 
 public function termsandconditions() {
-	$this->load->view('seller/header');
 	$this->load->view('seller/termsandconditions');
-	$this->load->view('seller/footer');
     }
 
 public function insert() {

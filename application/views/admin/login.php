@@ -57,15 +57,15 @@
                       <span aria-hidden="true">&times;</span>
                     </button><?php echo $this->session->flashdata('success');?></div>
             <?php endif; ?>	
-                    <form id="loginform" name="loginform" method="post" action="<?php echo base_url('admin/login/loginpost');?>" class="form-horizontal" role="form">
+                    <form id="loginform" name="loginform" method="post" action="<?php echo base_url('admin/login/loginpost');?>" class="form-horizontal">
                         <div class=" form-group">
                             <label class="control-label">Email</label>
-                            <input type="text" class="form-control" id="email" name="email"  placeholder="Email">
+                            <input type="email" class="form-control" id="email" name="email"  placeholder="Email" required>
                         </div>
 
                         <div  class=" form-group">
                            <label class="control-label">Password</label>
-                            <input id="password" type="password" class="form-control" name="password" placeholder="password">
+                            <input id="password" type="password" class="form-control" name="password" placeholder="password" required>
                         </div>
                         
                         <div class="">                          
@@ -75,13 +75,10 @@
                                 </label>
                             </div>
                         </div>
-                        <div style="margin-top:10px" class="form-group">
-                            <!-- Button -->
-                            <div class="col-sm-12 controls">
-                              
-
-                            </div>
-                        </div>
+						<div class="col-md-6 text-center" style="position: absolute;left: 50%;transform: translate(-60%,10%);background:#fff;padding:20px;border-radius:0px 0px 20px 20px;">
+							<button style="border-radius:40px;" class="btn btn-small btn-primary btn-block " id="clk"  type="submit">login</button>
+						</div>
+						</form>
 			
                 </div>
             </div>
@@ -92,16 +89,14 @@
 				<a class="col-md-4 " style="position: absolute;top:0;left: 50%;transform: translate(-50%,-100%);background:#fff;padding:10px;border-radius:20px 20px 0px 0px;">
 					<img  style="width:300px;margin:0 auto;padding-left:20%" src="<?php echo base_url();?>assets/home/images/logo.png" />
 				</a>
-				<div class="col-md-4 text-center" style="position: absolute;left: 50%;transform: translate(-50%,1%);background:#fff;padding:20px;border-radius:0px 0px 20px 20px;">
-					  <button style="border-radius:40px;" class="btn btn-small btn-primary btn-block " id="clk"  type="submit">login</button>
-				</div>
-	</form>
+				
+	
     </div>
 
 </body>
 
 </html>
-	<script type="text/javascript">
+<script type="text/javascript">
 
 $(document).ready(function() {
     $('#loginform').bootstrapValidator({
@@ -141,3 +136,5 @@ $(document).ready(function() {
     });
 });
 </script>
+
+	

@@ -92,7 +92,13 @@ class Cron_model extends MY_Model
 	public function update_invocie_name_save($invoice_id,$order_item_id,$val){
 		
 		//print_r($areaid);exit;
-		$sql1="UPDATE invoice_list SET invoicename ='".$val."' WHERE invoice_id = '".$invoice_id."' and order_item_id = '".$order_item_id."'";
+		$sql1="UPDATE invoice_list SET invoicename ='".$val."' WHERE order_item_id = '".$order_item_id."'";
+       	return $this->db->query($sql1);
+	}
+	public function update_invocie_name_in_order_item_list_save($invoice_id,$order_item_id){
+		
+		//print_r($areaid);exit;
+		$sql1="UPDATE order_items SET invoice_id ='".$order_item_id."' WHERE order_item_id = '".$order_item_id."'";
        	return $this->db->query($sql1);
 	}
 	public function get_pending_inovices_list(){
