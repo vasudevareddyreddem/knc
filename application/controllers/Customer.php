@@ -1389,8 +1389,8 @@ class Customer extends Front_Controller
 		foreach ($data['order_items'] as $orderlist){
 			
 			$messagelis['msg']='Oder_Item_id: '.$orderlist['order_item_id'].'. Customer Details are  Name:'.$orderlist['name'].', Mobile number : '.$orderlist['customer_phone'].'.  Product details: product name: '.$orderlist['item_name'].', product code: '.$orderlist['product_code'].', color: '.$orderlist['colour'].', Internal Storage: '.$orderlist['internal_memeory'].', Ram : '.$orderlist['ram'];
-			$msg2='Customer orederdetails: Oder-Item-Id: '.$orderlist['order_item_id'].' product name: '.$orderlist['item_name'].' product code: '.$orderlist['product_code'].' color: '.$orderlist['colour'];
-			$cusr_msg='orederdetails: Oder-Item-Id: '.$orderlist['order_item_id'].' product name: '.$orderlist['item_name'].' product code: '.$orderlist['product_code'].' color: '.$orderlist['colour'];
+			$msg2='Customer orderdetails: Oder-Item-Id: '.$orderlist['order_item_id'].' product name: '.$orderlist['item_name'].' product code: '.$orderlist['product_code'].' color: '.$orderlist['colour'];
+			$cusr_msg='orderdetails: Oder-Item-Id: '.$orderlist['order_item_id'].' product name: '.$orderlist['item_name'].' product code: '.$orderlist['product_code'].' color: '.$orderlist['colour'];
 			$username=$this->config->item('smsusername');
 			$pass=$this->config->item('smspassword');
 			

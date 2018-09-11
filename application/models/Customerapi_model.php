@@ -3192,5 +3192,10 @@ class Customerapi_model extends MY_Model
 		
 	}
 	
+	public function save_invoices_list($data){
+		$this->db->insert('invoice_list', $data);
+		return $insert_id = $this->db->insert_id();
+	}
+	
 
 }

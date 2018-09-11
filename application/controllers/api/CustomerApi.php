@@ -2924,7 +2924,7 @@ class CustomerApi extends REST_Controller {
 					$ch = curl_init();
 					curl_setopt($ch, CURLOPT_URL,"http://bhashsms.com/api/sendmsg.php");
 					curl_setopt($ch, CURLOPT_POST, 1);
-					curl_setopt($ch, CURLOPT_POSTFIELDS,'user='.$username.'&pass='.$pass.'&sender=cartin&phone='.$mobilesno.'&text=Customer orederdetails'.$msg.'&priority=ndnd&stype=normal');
+					curl_setopt($ch, CURLOPT_POSTFIELDS,'user='.$username.'&pass='.$pass.'&sender=cartin&phone='.$mobilesno.'&text=Customer orderdetails'.$msg.'&priority=ndnd&stype=normal');
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 					//echo '<pre>';print_r($ch);exit;
 					$server_output = curl_exec ($ch);
@@ -2951,8 +2951,16 @@ class CustomerApi extends REST_Controller {
 						'create_time'=>date('Y-m-d h:i:s A'),
 						'update_time'=>date('Y-m-d h:i:s A'),
 					);
-					$save= $this->Customerapi_model->save_order_item_status_list($statu);
-					
+					$save1= $this->Customerapi_model->save_order_item_status_list($statu);
+					/* invoice purpose*/
+					$invoicedetails=array(
+						'order_item_id'=>$save,
+						'cust_id'=>$items['cust_id'],
+						'order_id'=>$saveorder,
+						'item_id'=>$items['item_id'],
+						'create_at'=>date('Y-m-d h:i:s A'),
+					);
+					$invoice= $this->Customerapi_model->save_invoices_list($invoicedetails);
 					
 				}
 				/*for billing address*/
