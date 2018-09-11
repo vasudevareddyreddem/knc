@@ -4,7 +4,7 @@
  <div class="topBar inverse">
             <div class="container">
                 <ul class="list-inline pull-left hidden-sm hidden-xs">
-                  <li><a href="https://www.facebook.com/Order-Organic-1711447655640783/" target="_blank" class=""><span class=""><i class="" aria-hidden="true"><img alt="fb" src="<?php echo base_url(); ?>assets/home/images/fb.png" /></i></span></a></li>
+                  <li><a href="https://www.facebook.com/Order-Organic-1711447655640783/" target="_blank" class=""><span class=""><i class="" aria-hidden="true"><img  src="<?php echo base_url(); ?>assets/home/images/facebook.png" alt="fb"/></i></span></a></li>
                   &nbsp;
                   <li><a href="https://twitter.com/Orderorganicon" target="_blank" class=""><span class=""><i class="" aria-hidden="true"><img src="<?php echo base_url(); ?>assets/home/images/tiw.png" /></i></span></a></li>
                   &nbsp;
