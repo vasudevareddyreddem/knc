@@ -109,7 +109,21 @@
                 </nav>
             </header>
    
-
+ <div class="modal fade" id="bankpopup" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Please Link your Account</h4>
+        </div>
+        <div class="modal-body">
+          <h3 class="text-center">Click Here <a href="<?php echo base_url('seller/dashboard/linkaccout');?>"> Link your Account</a></h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!--end Just fill form to Select plan Modal -->
   <?php if($notification[0]['unreadcouont']>0){ ?>
   <script>

@@ -28,9 +28,9 @@ class Admin_Controller extends MY_Controller {
 			$this->template->write_view('header', 'seller/shared/header',$result);
 			$this->template->write_view('sidebar', 'seller/shared/sidebar',$data);
 			$this->template->write_view('footer', 'seller/shared/footer');
-			if (!$seller_id) {
+			if(!$seller_id) {
              return redirect(base_url('seller/login'));
-		}
+			}
 
         
 	}
