@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-</head>
+
 <style>
 .process-step .btn:focus{outline:none}
 .process{display:table;width:100%;position:relative}
@@ -53,6 +52,11 @@
 .navbar {
 	min-height: 75px;
 }
+.wrapper {
+    min-height: 0px !important;
+    position: relative;
+    overflow: hidden;
+}
 </style>
     
 
@@ -64,7 +68,8 @@
         $("#error_stepone").removeClass("btn-info");       
     });
 });
-</script><script type="text/javascript">
+</script>
+<script type="text/javascript">
   $(document).ready(function() {  
 
 var id = '#dialog';
@@ -108,6 +113,7 @@ $('.window').hide();
   
 });
 </script>
+
 <div class="navigation_main">
     <nav class="navbar navbar-inverse hm_nav">
       <div class="">

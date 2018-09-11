@@ -294,6 +294,11 @@ $(document).ready(function(){
  .navbar {
 	min-height: 75px;
 }
+.wrapper {
+    min-height: 0px !important;
+    position: relative;
+    overflow: hidden;
+}
 </style>
 <div class="navigation_main">
     <nav class="navbar navbar-inverse hm_nav">

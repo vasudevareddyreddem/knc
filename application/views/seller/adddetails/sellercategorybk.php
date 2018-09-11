@@ -285,6 +285,11 @@ $(document).ready(function(){
       top: 7px;
       width: 12px;
       cursor: pointer; }
+	  .wrapper {
+    min-height: 0px !important;
+    position: relative;
+    overflow: hidden;
+}
 
  /* multiselect css end */
 }
