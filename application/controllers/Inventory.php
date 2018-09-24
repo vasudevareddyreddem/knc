@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class inventory extends CI_Controller 
+class Inventory extends CI_Controller 
 {	
 	public function __construct() 
 	{		parent::__construct();
@@ -15,15 +15,16 @@ class inventory extends CI_Controller
 		{
 		$logindetail=$this->session->userdata('userdetails');
 		$data['customerdetails'] = $this->customer_model->get_profile_details($logindetail['customer_id']);
+		$sidebar['customerdetails']=$data['customerdetails'];
 		$data['unreadcount'] = $this->inventory_model->get_Unread_notification_count();
 		$this->load->view('customer/inventry/header',$data);
+		$this->load->view('customer/inventry/sidebar',$sidebar);
 		} 
 }
 	public function account(){
 	 if($this->session->userdata('userdetails'))
 	 {$customerdetails=$this->session->userdata('userdetails');
 		$data['profile_details']= $this->customer_model->get_profile_details($customerdetails['customer_id']);
-				$this->load->view('customer/inventry/sidebar');
 			$this->load->view('customer/inventry/profile',$data);
 			$this->load->view('customer/inventry/footer');
 	}else{
@@ -35,7 +36,6 @@ class inventory extends CI_Controller
 	 if($this->session->userdata('userdetails'))
 	 {$customerdetails=$this->session->userdata('userdetails');
 		$data['profile_details']= $this->customer_model->get_profile_details($customerdetails['customer_id']);
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/editprofile',$data);
 		$this->load->view('customer/inventry/footer');
 	}else{
@@ -46,7 +46,6 @@ class inventory extends CI_Controller
  public function changepassword(){
 	if($this->session->userdata('userdetails'))
 		{
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/changepassword');
 		$this->load->view('customer/inventry/footer');
 		}else{
@@ -63,7 +62,6 @@ public function changepasswordpost(){
 		$this->form_validation->set_rules('confirmpassword', 'confirm password', 'required|min_length[6]');
 		if ($this->form_validation->run() == FALSE) {
 		$data['change_errors'] = validation_errors();
-			$this->load->view('customer/inventry/sidebar');
 			$this->load->view('customer/inventry/changepassword');
 			$this->load->view('customer/inventry/footer');
 		}else{
@@ -154,7 +152,6 @@ public function dashboard(){
 	 	if($check['role_id']==5){
 	 	$data['category'] = $this->inventory_model->get_seller_categories();
 					//echo "<pre>";print_r($data);exit;
-					$this->load->view('customer/inventry/sidebar');
 					$this->load->view('customer/inventry/categories',$data);
 					$this->load->view('customer/inventry/footer');
 	 	}else{
@@ -173,9 +170,7 @@ public function dashboard(){
 				if($check['role_id']==5)
 				{
 					$data['seller_details'] = $this->inventory_model->get_all_seller_details();
-					//echo '<pre>';print_r($data);exit;
-					$this->load->view('customer/inventry/header');
-					$this->load->view('customer/inventry/sidebar');
+					
 					$this->load->view('customer/inventry/index',$data);
 					$this->load->view('customer/inventry/footer');
 				}else
@@ -186,14 +181,54 @@ public function dashboard(){
 		 $this->session->set_flashdata('loginerror','Please login to continue');
 		 redirect('admin/login');
 			} 
-}
+	}
+	public function sellerpendingorders()
+	{if($this->session->userdata('userdetails'))
+		{	$check = $this->session->userdata('userdetails');
+				if($check['role_id']==5)
+				{
+					$seller_id=base64_decode($this->uri->segment(3));
+					$data['orderslists']=$this->inventory_model->get_seller_pending_orders($seller_id);
+					
+					$this->load->view('customer/inventry/orders/seller_pending_orders',$data);
+					$this->load->view('customer/inventry/footer');
+				}else
+				{
+					redirect('admin/login');
+				}
+		} else{
+		 $this->session->set_flashdata('loginerror','Please login to continue');
+		 redirect('admin/login');
+			} 
+	}
+	public function sellerdeliveryorders()
+	{
+		if($this->session->userdata('userdetails'))
+		{	$check = $this->session->userdata('userdetails');
+				if($check['role_id']==5)
+				{
+					$seller_id=base64_decode($this->uri->segment(3));
+					$data['orderslists']=$this->inventory_model->get_seller_delivered_orders($seller_id);
+					
+					$this->load->view('customer/inventry/orders/seller_delivery_orders',$data);
+					$this->load->view('customer/inventry/footer');
+				}else
+				{
+					redirect('admin/login');
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+				}
+		}else{
+		 $this->session->set_flashdata('loginerror','Please login to continue');
+		 redirect('admin/login');
+		} 
+	}
+	
   public function categorywisesellers()
 	{
 		$cid = base64_decode($this->uri->segment(3));
 		$data['seller_category'] = $this->inventory_model->get_categorywiseseller_list($cid);
 		$data['category_name'] = $this->inventory_model->get_categort_details($cid);
 		//echo "<pre>";print_r($data);exit;
-	  	$this->load->view('customer/inventry/sidebar');
 	  	$this->load->view('customer/inventry/category_wise_sellers',$data);
 	  	$this->load->view('customer/inventry/footer');
 	}
@@ -205,7 +240,6 @@ public function dashboard(){
 				$data['seller_details'] = $this->inventory_model->get_seller_details(base64_decode($this->uri->segment(3)));
 				$this->inventory_model->seller_new_comming_list(base64_decode($this->uri->segment(3)),1);
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/sellerdetails',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -225,7 +259,6 @@ public function dashboard(){
 			if($logindetail['role_id']==5){
 				$data['seller_details'] = $this->inventory_model->get_all_seller_notifications();
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/servicerequestlist',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -246,7 +279,6 @@ public function dashboard(){
 			if($logindetail['role_id']==5){
 				$data['notification_details'] = $this->inventory_model->get_sellernotification_list();
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/notificationslist',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -305,7 +337,6 @@ public function dashboard(){
 					foreach($allnitiyes as $notify){
 						$this->inventory_model->notifciations_read_count($notify['notification_id'],0);
 					}
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/adminnotificationview',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -324,7 +355,6 @@ public function servicerequestview(){
 			if($logindetail['role_id']==5){
 				$data['request_details'] = $this->inventory_model->get_notification_details(base64_decode($this->uri->segment(3)));
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/servicerequestview',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -346,7 +376,6 @@ public function servicerequestview(){
 				$data['seller_id']=$this->uri->segment(4);
 				$data['seller_details'] = $this->inventory_model->get_all_seller_notifications();
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/servicerequest',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -544,7 +573,6 @@ public function servicerequestview(){
 			{
 				$data['category_details'] = $this->inventory_model->get_categort_details(base64_decode($this->uri->segment(3)));
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/editcategory',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -565,7 +593,6 @@ public function servicerequestview(){
 				$data['subcategory_details'] = $this->inventory_model->get_subcategore_details(base64_decode($this->uri->segment(3)));
 				$data['category_list'] = $this->inventory_model->get_all_categort();
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/editsubcategory',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -584,7 +611,6 @@ public function servicerequestview(){
 		$logindetail=$this->session->userdata('userdetails');
 			if($logindetail['role_id']==5)
 			{
-					$this->load->view('customer/inventry/sidebar');
 					$this->load->view('customer/inventry/addcategory');
 					$this->load->view('customer/inventry/footer');
 			}else{
@@ -604,7 +630,6 @@ public function servicerequestview(){
 			{
 					$data['category_list'] = $this->inventory_model->get_all_categort();
 					//echo '<pre>';print_r($data);exit;
-					$this->load->view('customer/inventry/sidebar');
 					$this->load->view('customer/inventry/addsubcategory',$data);
 					$this->load->view('customer/inventry/footer');
 			}else{
@@ -713,7 +738,6 @@ public function servicerequestview(){
 			if($logindetail['role_id']==5){
 				$data['subcategory_details'] = $this->inventory_model->get_subcategore_details(base64_decode($this->uri->segment(3)));
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/subcategoryview',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -733,7 +757,6 @@ public function servicerequestview(){
 			if($logindetail['role_id']==5){
 				$data['category_details'] = $this->inventory_model->get_categort_details(base64_decode($this->uri->segment(3)));
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/categoryview',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -753,7 +776,6 @@ public function servicerequestview(){
 			if($logindetail['role_id']==5){
 				$data['subcatelist'] = $this->inventory_model->get_subcategort_details_list(base64_decode($this->uri->segment(3)));
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/category_wise_subcategoryview',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -773,7 +795,6 @@ public function servicerequestview(){
 			if($logindetail['role_id']==5){
 				$data['subcategory_details'] = $this->inventory_model->get_subcategort_details();
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/subcategory_list',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -878,7 +899,6 @@ public function seller_id_database()
 	{
 		$data['database_id'] = $this->inventory_model->get_seller_databaseid();
 		//echo "<pre>";print_r($data);exit;
-	   	$this->load->view('customer/inventry/sidebar');
 	   	$this->load->view('customer/inventry/seller_databaseid',$data);
 	   	$this->load->view('customer/inventry/footer');
 	}
@@ -886,7 +906,6 @@ public function sellerpayments()
 	{
 		$data['seller_payment'] = $this->inventory_model->get_seller_payments();
 		//echo "<pre>";print_r($data);exit;
-	   	$this->load->view('customer/inventry/sidebar');
 	   	$this->load->view('customer/inventry/seller_payments',$data);
 	   	$this->load->view('customer/inventry/footer');
 	}
@@ -897,7 +916,6 @@ public function sellerpayments()
 			if($logindetail['role_id']==5){
 				$data['seller_order_items'] = $this->inventory_model->get_seller_all_payment_details(base64_decode($this->uri->segment(3)));
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/seller_order_item_details',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -914,7 +932,6 @@ public function sellerpayments()
 	{
 		$data['inventory_management'] = $this->inventory_model->get_inventory_management();
 		//echo "<pre>";print_r($data);exit;
-	   	$this->load->view('customer/inventry/sidebar');
 	   	$this->load->view('customer/inventry/inventory_management',$data);
 	   	$this->load->view('customer/inventry/footer');
 	}
@@ -922,7 +939,6 @@ public function sellerpayments()
 	{
 		$data['catalog_management'] = $this->inventory_model->get_catalog_management();
 		//echo "<pre>";print_r($data);exit;
-	   	$this->load->view('customer/inventry/sidebar');
 	   	$this->load->view('customer/inventry/catalog_management',$data);
 	   	$this->load->view('customer/inventry/footer');
 	}
@@ -930,7 +946,6 @@ public function sellerpayments()
 	{
 		$data['both'] = $this->inventory_model->get_both();
 		//echo "<pre>";print_r($data);exit;
-	   	$this->load->view('customer/inventry/sidebar');
 	   	$this->load->view('customer/inventry/both',$data);
 	   	$this->load->view('customer/inventry/footer');
 	}
@@ -942,7 +957,6 @@ public function bannerpreview(){
 			{
 				$data['preview'] = $this->inventory_model->get_banner_preview();
 				//echo "<pre>";print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 	   			$this->load->view('customer/inventry/bannerpreview',$data);
 	   			$this->load->view('customer/inventry/footer');
 			}else
@@ -970,7 +984,6 @@ public function homepagepreview()
 				$data['season_sales'] = $this->inventory_model->get_season_sales_preview();
 				
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 	   			$this->load->view('customer/inventry/home_preview',$data);
 	   			$this->load->view('customer/inventry/footer');
 	   			$this->load->view('customer/inventry/footerpriview');
@@ -996,7 +1009,6 @@ public function homepagepreview()
 			{
 				$data['top_offers'] = $this->inventory_model->get_top_offers_list();
 				//echo "<pre>";print_r($data);exit;
-			   	$this->load->view('customer/inventry/sidebar');
 			   	$this->load->view('customer/inventry/top_offers',$data);
 			   	$this->load->view('customer/inventry/footer');
 			}else
@@ -1019,7 +1031,6 @@ public function homepagepreview()
 			{
 				$data['top_offers_details'] = $this->inventory_model->get_top_offers_details_list(base64_decode($this->uri->segment(3)));
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 	   			$this->load->view('customer/inventry/top_offers_details',$data);
 	   			$this->load->view('customer/inventry/footer');
 			}else
@@ -1140,7 +1151,6 @@ public function overaall_topoffers_home_page_status()
 			{
 				$data['season_sales'] = $this->inventory_model->get_season_offers_list();
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 	   			$this->load->view('customer/inventry/season_sales',$data);
 	   			$this->load->view('customer/inventry/footer');
 			}else
@@ -1164,7 +1174,6 @@ public function overaall_topoffers_home_page_status()
 			{
 				$data['season_sales_details'] = $this->inventory_model->get_season_sales_details_list(base64_decode($this->uri->segment(3)));
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 	   			$this->load->view('customer/inventry/season_sales_details',$data);
 	   			$this->load->view('customer/inventry/footer');
 			}else
@@ -1284,7 +1293,6 @@ public function overaall_topoffers_home_page_status()
 			{
 				$data['season_sales'] = $this->inventory_model->get_delasoftheday_offers_list();
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 	   			$this->load->view('customer/inventry/deals_ofthe_day',$data);
 	   			$this->load->view('customer/inventry/footer');
 			}else
@@ -1308,7 +1316,6 @@ public function overaall_topoffers_home_page_status()
 			{
 				$data['dealsofthe_day_details'] = $this->inventory_model->get_dealsoftheday_details_list(base64_decode($this->uri->segment(3)));
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 	   			$this->load->view('customer/inventry/dealsofthe_day_details',$data);
 	   			$this->load->view('customer/inventry/footer');
 			}else
@@ -1432,7 +1439,6 @@ public function overaall_topoffers_home_page_status()
 				//
 				
 				//echo "<pre>";print_r($data);exit;
-			   	$this->load->view('customer/inventry/sidebar');
 			   	$this->load->view('customer/inventry/home_page_banner',$data);
 			   	$this->load->view('customer/inventry/footer');
 			}else
@@ -1456,7 +1462,6 @@ public function overaall_topoffers_home_page_status()
 			{
 				$data['homepage_banner_details'] = $this->inventory_model->get_homepage_banner_details_list(base64_decode($this->uri->segment(3)));
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 	   			$this->load->view('customer/inventry/homepage_banner_details',$data);
 	   			$this->load->view('customer/inventry/footer');
 			}else
@@ -1670,7 +1675,6 @@ public function categorieslist(){
 				
 				$data['category_list'] = $this->inventory_model->get_all_categories_list();
 				//echo '<pre>';print_r($data);exit;
-				$this->load->view('customer/inventry/sidebar');
 				$this->load->view('customer/inventry/category_list',$data);
 				$this->load->view('customer/inventry/footer');	
 			}else{
@@ -1867,7 +1871,6 @@ if((!empty($_FILES["importcategoryfile"])) && ($_FILES['importcategoryfile']['er
 	{		
 		$data['quantity'] = $this->inventory_model->total_quantity();
 		//echo "<pre>";print_r($data);exit;
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/product_quantity',$data);
 		$this->load->view('customer/inventry/footer');
 	}else{
@@ -1882,7 +1885,6 @@ if((!empty($_FILES["importcategoryfile"])) && ($_FILES['importcategoryfile']['er
 		//echo "<pre>";print_r($id);exit;
 		$data['category_wise'] = $this->inventory_model->categorywise_quantity($sellerid);
 		//echo "<pre>";print_r($data);exit;
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/categorywise_quantity',$data);
 		$this->load->view('customer/inventry/footer');
 	}else{
@@ -1901,7 +1903,6 @@ if((!empty($_FILES["importcategoryfile"])) && ($_FILES['importcategoryfile']['er
 		$data['product_details'] = $this->inventory_model->categorywise_product_quantity($category_id,$sellerid);
 		//echo "<pre>";print_r($data);exit;
 		$data['seller_id']= $this->uri->segment(4);
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/categorywise_productlist',$data);
 		$this->load->view('customer/inventry/footer');
 		
@@ -1915,7 +1916,6 @@ if((!empty($_FILES["importcategoryfile"])) && ($_FILES['importcategoryfile']['er
   	if($this->session->userdata('userdetails'))
 	{	
 		$data['bannerslist']=$this->inventory_model->get_save_mobileapp_banners_list();
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/mobileappbannerlist',$data);
 		$this->load->view('customer/inventry/footer');
 		
@@ -1930,7 +1930,6 @@ if((!empty($_FILES["importcategoryfile"])) && ($_FILES['importcategoryfile']['er
 	{	
 		
 		$data['bannerslist']=$this->inventory_model->get_save_mobileapp_banners_list();
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/addmobilebanners');
 		$this->load->view('customer/inventry/footer');
 		
@@ -2095,7 +2094,6 @@ if((!empty($_FILES["importcategoryfile"])) && ($_FILES['importcategoryfile']['er
 	{	
 		$data['bannerslist']=$this->inventory_model->get_save_subhomepage_banners_list();
 		//echo '<pre>';print_r($data);exit;
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/mddlehomebannerslist',$data);
 		$this->load->view('customer/inventry/footer');
 		
@@ -2110,7 +2108,6 @@ if((!empty($_FILES["importcategoryfile"])) && ($_FILES['importcategoryfile']['er
 	{	
 		
 		$data['bannerslist']=$this->inventory_model->get_save_mobileapp_banners_list();
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/addmobilemiddlebanners');
 		$this->load->view('customer/inventry/footer');
 		
@@ -2125,7 +2122,6 @@ if((!empty($_FILES["importcategoryfile"])) && ($_FILES['importcategoryfile']['er
 	{	
 		
 		$data['bannerslist']=$this->inventory_model->get_save_mobileapp_banners_list();
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/addcategorypagebanners');
 		$this->load->view('customer/inventry/footer');
 		
@@ -2140,7 +2136,6 @@ if((!empty($_FILES["importcategoryfile"])) && ($_FILES['importcategoryfile']['er
 	{	
 		$data['bannerslist']=$this->inventory_model->get_category_banners_list();
 		//echo '<pre>';print_r($data);exit;
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/categorypagebanners',$data);
 		$this->load->view('customer/inventry/footer');
 		
@@ -2347,7 +2342,6 @@ public function addhomepagemiddlebannerspost()
   	if($this->session->userdata('userdetails'))
 	{	
 		$data['bannerslist']=$this->inventory_model->get_save_wishlistpage_banners_list();
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/wishlistbannerslist',$data);
 		$this->load->view('customer/inventry/footer');
 		
@@ -2361,7 +2355,6 @@ public function addhomepagemiddlebannerspost()
   	if($this->session->userdata('userdetails'))
 	{	
 		
-		$this->load->view('customer/inventry/sidebar');
 		$this->load->view('customer/inventry/wishlistbanners');
 		$this->load->view('customer/inventry/footer');
 		
@@ -2464,13 +2457,55 @@ public function addhomepagemiddlebannerspost()
 		 	redirect('admin/login	');
 		} 	
 	}
+	public function delivery_orders_list(){
+		if($this->session->userdata('userdetails'))
+	 	{
+			$delivery_boy_id=base64_decode($this->uri->segment(3));
+			$data['orderslists']=$this->inventory_model->get_delivery_total_orders($delivery_boy_id);
+			//echo '<pre>';print_r($data['orderslists']);exit;
+			$this->load->view('customer/inventry/orders/delivery_wise_orderlists',$data);
+			$this->load->view('customer/inventry/footer');
+		}else
+	 	{
+		 	$this->session->set_flashdata('loginerror','Please login to continue');
+		 	redirect('admin/login	');
+		}
+		
+	}
 	public function totalorders(){
 		if($this->session->userdata('userdetails'))
 	 	{
 			$data['orderslists']=$this->inventory_model->get_total_orders();
 			//echo '<pre>';print_r($data['orderslists']);exit;
-			$this->load->view('customer/inventry/sidebar');
-			$this->load->view('customer/inventry/orderlists',$data);
+			$this->load->view('customer/inventry/orders/orderlists',$data);
+			$this->load->view('customer/inventry/footer');
+		}else
+	 	{
+		 	$this->session->set_flashdata('loginerror','Please login to continue');
+		 	redirect('admin/login	');
+		}
+		
+	}
+	public function pendingorders(){
+		if($this->session->userdata('userdetails'))
+	 	{
+			$data['orderslists']=$this->inventory_model->get_pending_total_orders();
+			//echo '<pre>';print_r($data['orderslists']);exit;
+			$this->load->view('customer/inventry/orders/pendingorderlists',$data);
+			$this->load->view('customer/inventry/footer');
+		}else
+	 	{
+		 	$this->session->set_flashdata('loginerror','Please login to continue');
+		 	redirect('admin/login	');
+		}
+		
+	}
+	public function deliveryorders(){
+		if($this->session->userdata('userdetails'))
+	 	{
+			$data['orderslists']=$this->inventory_model->get_delivered_total_orders();
+			//echo '<pre>';print_r($data['orderslists']);exit;
+			$this->load->view('customer/inventry/orders/deliveryorderlists',$data);
 			$this->load->view('customer/inventry/footer');
 		}else
 	 	{
@@ -2484,7 +2519,6 @@ public function addhomepagemiddlebannerspost()
 	 	{
 			$data['deliveryboy_list']=$this->inventory_model->delivery_boy_current_locations();
 			//echo '<pre>';print_r($data['deliveryboy_list']);exit;
-			$this->load->view('customer/inventry/sidebar');
 			$this->load->view('customer/inventry/deliverboy_locations',$data);
 			$this->load->view('customer/inventry/footer');
 		}else
@@ -2499,7 +2533,6 @@ public function addhomepagemiddlebannerspost()
 	 	{
 			$data['sublitem_list']=$this->inventory_model->get_all_subitem_list();
 			//echo '<pre>';print_r($data['deliveryboy_list']);exit;
-			$this->load->view('customer/inventry/sidebar');
 			$this->load->view('customer/inventry/subitemlist',$data);
 			$this->load->view('customer/inventry/footer');
 		}else
@@ -2517,7 +2550,6 @@ public function addhomepagemiddlebannerspost()
 			{
 					$data['category_list'] = $this->inventory_model->get_all_categort();
 					//echo '<pre>';print_r($data);exit;
-					$this->load->view('customer/inventry/sidebar');
 					$this->load->view('customer/inventry/addsubitem',$data);
 					$this->load->view('customer/inventry/footer');
 			}else{
@@ -2535,7 +2567,6 @@ public function addhomepagemiddlebannerspost()
 			$data['litem_list']=$this->inventory_model->get_all_subitemwise_itemlist();
 			//echo $this->db->last_query();exit;
 			//echo '<pre>';print_r($data['litem_list']);exit;
-			$this->load->view('customer/inventry/sidebar');
 			$this->load->view('customer/inventry/itemlist',$data);
 			$this->load->view('customer/inventry/footer');
 		}else
@@ -2553,7 +2584,6 @@ public function addhomepagemiddlebannerspost()
 			{
 					$data['item_list'] = $this->inventory_model->get_all_subitems();
 					//echo '<pre>';print_r($data);exit;
-					$this->load->view('customer/inventry/sidebar');
 					$this->load->view('customer/inventry/additem',$data);
 					$this->load->view('customer/inventry/footer');
 			}else{
@@ -2571,7 +2601,6 @@ public function addhomepagemiddlebannerspost()
 			$data['brand_list']=$this->inventory_model->get_all_brand_lists();
 			//echo $this->db->last_query();exit;
 			//echo '<pre>';print_r($data['litem_list']);exit;
-			$this->load->view('customer/inventry/sidebar');
 			$this->load->view('customer/inventry/brandlist',$data);
 			$this->load->view('customer/inventry/footer');
 		}else
@@ -2589,7 +2618,6 @@ public function addhomepagemiddlebannerspost()
 			{
 					$data['brand_list'] = $this->inventory_model->get_all_brnads_list();
 					//echo '<pre>';print_r($data);exit;
-					$this->load->view('customer/inventry/sidebar');
 					$this->load->view('customer/inventry/addbrand',$data);
 					$this->load->view('customer/inventry/footer');
 			}else{
@@ -3070,7 +3098,6 @@ public function addhomepagemiddlebannerspost()
 				$data['subcategory_list'] = $this->inventory_model->get_subcategore_details_category_wise($data['subitem_list']['category_id']);
 				$data['category_list'] = $this->inventory_model->get_all_categort();
 					//echo '<pre>';print_r($data);exit;
-					$this->load->view('customer/inventry/sidebar');
 					$this->load->view('customer/inventry/editsubitem',$data);
 					$this->load->view('customer/inventry/footer');
 			}else{
@@ -3092,7 +3119,6 @@ public function addhomepagemiddlebannerspost()
 				$data['item_details'] = $this->inventory_model->get_item_details($item_id);
 				$data['item_list'] = $this->inventory_model->get_all_subitems();
 					//echo '<pre>';print_r($data);exit;
-					$this->load->view('customer/inventry/sidebar');
 					$this->load->view('customer/inventry/edititem',$data);
 					$this->load->view('customer/inventry/footer');
 			}else{
@@ -3112,7 +3138,6 @@ public function addhomepagemiddlebannerspost()
 			{
 				$brandid=base64_decode($this->uri->segment(3));
 				$data['brand_details'] = $this->inventory_model->get_brand_details($brandid);
-					$this->load->view('customer/inventry/sidebar');
 					$this->load->view('customer/inventry/editbrand',$data);
 					$this->load->view('customer/inventry/footer');
 			}else{
@@ -3391,6 +3416,417 @@ if((!empty($_FILES["importsubitemfile"])) && ($_FILES['importsubitemfile']['erro
 				}
 				
 	       }
+		/* add delivery boy  functionality*/   
+		   
+		   public  function adddeliveryboy(){
+			   if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{
+							$brandid=base64_decode($this->uri->segment(3));
+								$this->load->view('customer/inventry/add_delivery_boy');
+								$this->load->view('customer/inventry/footer');
+						}else{
+							$this->session->set_flashdata('loginerror','you have  no permissions');
+							redirect('admin/login');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					} 
+		   } 
+		   public  function deliveryboylist(){
+			   if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{
+							$data['delivery_boy_list'] = $this->inventory_model->get_delivery_boy_list();
+							
+							//echo '<pre>';print_r($data);exit;
+								$this->load->view('customer/inventry/delivery_boy_list',$data);
+								$this->load->view('customer/inventry/footer');
+						}else{
+							$this->session->set_flashdata('loginerror','you have  no permissions');
+							redirect('admin/login');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					} 
+		   }  
+		   public  function deliveryboyedit(){
+			   if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{
+								$id=base64_decode($this->uri->segment(3));
+								$data['details'] = $this->inventory_model->get_delivery_boy_details($id);
+								//echo '<pre>';print_r($data);exit;
+								$this->load->view('customer/inventry/edit_delivery_boy',$data);
+								$this->load->view('customer/inventry/footer');
+						}else{
+							$this->session->set_flashdata('loginerror','you have  no permissions');
+							redirect('admin/login');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					} 
+		   }
+		   public  function adddeliveryboypost(){
+			    if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{ 
+							$post=$this->input->post();
+							$check=$this->inventory_model->check_delivery_boy_exists($post['email_id']);
+							if(count($check)>0){
+								$this->session->set_flashdata('error','The Email Id already exists. Please use a different Email Id');
+								redirect('inventory/adddeliveryboy');
+							}
+							$add=array(
+							'role_id'=>6,
+							'cust_firstname'=>isset($post['fname'])?$post['fname']:'',
+							'cust_lastname'=>isset($post['lname'])?$post['lname']:'',
+							'cust_email'=>isset($post['email_id'])?$post['email_id']:'',
+							'cust_password'=>isset($post['confirmpassword'])?md5($post['confirmpassword']):'',
+							'cust_mobile'=>isset($post['mobile'])?$post['mobile']:'',
+							'created_at'=>date('Y-m-d H:i:s'),
+							'status'=>1,
+							);
+							$save=$this->inventory_model->save_delivery_boy($add);
+							if(count($save)>0){
+								$this->session->set_flashdata('success','Delivery boy successfully added');
+								redirect('inventory/deliveryboylist');
+							}else{
+								$this->session->set_flashdata('error',"technical problem will occured. Please try again after some time.");
+								redirect('inventory/adddeliveryboy');
+							}
+							//echo '<pre>';print_r($post);exit;
+					
+						}else{
+							$this->session->set_flashdata('loginerror','you have  no permissions');
+							redirect('admin/login');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					}
+		   }
+		   public  function editdeliveryboypost(){
+			    if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{ 
+							$post=$this->input->post();
+							$details= $this->inventory_model->get_delivery_boy_details($post['cust_id']);
+							if($details['cust_email']!=$post['email_id']){
+								$check=$this->inventory_model->check_delivery_boy_exists($post['email_id']);
+								if(count($check)>0){
+									$this->session->set_flashdata('error','The Email Id already exists. Please use a different Email Id');
+									redirect('inventory/adddeliveryboy');
+								}	
+							}
+							
+							$update_data=array(
+							'cust_firstname'=>isset($post['fname'])?$post['fname']:'',
+							'cust_lastname'=>isset($post['lname'])?$post['lname']:'',
+							'cust_email'=>isset($post['email_id'])?$post['email_id']:'',
+							'cust_mobile'=>isset($post['mobile'])?$post['mobile']:'',
+							);
+							$save=$this->inventory_model->delivery_update_status($post['cust_id'],$update_data);
+							if(count($save)>0){
+								$this->session->set_flashdata('success','Delivery boy details successfully updated');
+								redirect('inventory/deliveryboylist');
+							}else{
+								$this->session->set_flashdata('error',"technical problem will occured. Please try again after some time.");
+								redirect('inventory/deliveryboyedit/'.base64_encode($post['cust_id']));
+							}
+							//echo '<pre>';print_r($post);exit;
+					
+						}else{
+							$this->session->set_flashdata('loginerror','you have  no permissions');
+							redirect('admin/login');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					}
+		   }
+		     public  function boystatus(){
+			   if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{
+							$id = base64_decode($this->uri->segment(3)); 
+							$status = base64_decode($this->uri->segment(4));
+							if($status==1){
+							$status=0;
+							}else{
+							$status=1;
+							}
+							$data=array('status'=>$status);
+							//echo '<pre>';print_r(base64_decode($this->uri->segment(5)));exit;
+							$updatestatus=$this->inventory_model->delivery_update_status($id,$data);
+							if(count($updatestatus)>0){
+								if($status==1){
+									$this->session->set_flashdata('success'," Delivery boy activation successfully");
+								}else{
+									$this->session->set_flashdata('success',"Delivery boy deactivation successfully");
+								}
+								redirect('inventory/deliveryboylist');
+							}else{
+								$this->session->set_flashdata('error',"technical problem will occured. Please try again after some time.");
+								redirect('inventory/deliveryboylist');
+							}
+					
+						}else{
+							$this->session->set_flashdata('error','you have  no permissions');
+							redirect('inventory/dashboard');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					} 
+		   } 
+		   public  function boydelete(){
+			   if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{
+							$id = base64_decode($this->uri->segment(3)); 
+							
+							$delete=$this->inventory_model->delivery_boy_delete($id);
+							if(count($delete)>0){
+								
+								$this->session->set_flashdata('success',"Delivery boy successfully deleted");
+								redirect('inventory/deliveryboylist');
+							}else{
+								$this->session->set_flashdata('error',"technical problem will occured. Please try again after some time.");
+								redirect('inventory/deliveryboylist');
+							}
+					
+						}else{
+							$this->session->set_flashdata('error','you have  no permissions');
+							redirect('inventory/dashboard');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					} 
+		   }
+		   /* Add co coworker */
+		   public  function addcoworker(){
+			   if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{
+							$brandid=base64_decode($this->uri->segment(3));
+								$this->load->view('customer/inventry/co-worker/add_co_worker');
+								$this->load->view('customer/inventry/footer');
+						}else{
+							$this->session->set_flashdata('loginerror','you have  no permissions');
+							redirect('admin/login');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					} 
+		   } 
+		   public  function coworkerlist(){
+			   if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{
+							$data['coworker_list'] = $this->inventory_model->get_coworker_list();
+							
+							//echo '<pre>';print_r($data);exit;
+								$this->load->view('customer/inventry/co-worker/co_worker_list',$data);
+								$this->load->view('customer/inventry/footer');
+						}else{
+							$this->session->set_flashdata('loginerror','you have  no permissions');
+							redirect('admin/login');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					} 
+		   }  
+		   public  function coworkeredit(){
+			   if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{
+								$id=base64_decode($this->uri->segment(3));
+								$data['details'] = $this->inventory_model->get_co_worker_details($id);
+								//echo '<pre>';print_r($data);exit;
+								$this->load->view('customer/inventry/co-worker/edit_co_worker',$data);
+								$this->load->view('customer/inventry/footer');
+						}else{
+							$this->session->set_flashdata('loginerror','you have  no permissions');
+							redirect('admin/login');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					} 
+		   }
+		   public  function addcoworkerpost(){
+			    if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{ 
+							$post=$this->input->post();
+							$check=$this->inventory_model->check_co_worker_exists($post['email_id']);
+							if(count($check)>0){
+								$this->session->set_flashdata('error','The Email Id already exists. Please use a different Email Id');
+								redirect('inventory/addcoworker');
+							}
+							$add=array(
+							'role_id'=>7,
+							'cust_firstname'=>isset($post['fname'])?$post['fname']:'',
+							'cust_lastname'=>isset($post['lname'])?$post['lname']:'',
+							'cust_email'=>isset($post['email_id'])?$post['email_id']:'',
+							'cust_password'=>isset($post['confirmpassword'])?md5($post['confirmpassword']):'',
+							'cust_mobile'=>isset($post['mobile'])?$post['mobile']:'',
+							'created_at'=>date('Y-m-d H:i:s'),
+							'status'=>1,
+							);
+							$save=$this->inventory_model->save_co_worker_boy($add);
+							if(count($save)>0){
+								$this->session->set_flashdata('success','Co-Worker successfully added');
+								redirect('inventory/coworkerlist');
+							}else{
+								$this->session->set_flashdata('error',"technical problem will occured. Please try again after some time.");
+								redirect('inventory/addcoworker');
+							}
+							//echo '<pre>';print_r($post);exit;
+					
+						}else{
+							$this->session->set_flashdata('loginerror','you have  no permissions');
+							redirect('admin/login');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					}
+		   }
+		   public  function editcoworkerpost(){
+			    if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{ 
+							$post=$this->input->post();
+							$details= $this->inventory_model->get_co_worker_details($post['cust_id']);
+							if($details['cust_email']!=$post['email_id']){
+								$check=$this->inventory_model->check_co_worker_exists($post['email_id']);
+								if(count($check)>0){
+									$this->session->set_flashdata('error','The Email Id already exists. Please use a different Email Id');
+									redirect('inventory/coworkeredit/'.base64_encode($post['cust_id']));
+								}	
+							}
+							
+							$update_data=array(
+							'cust_firstname'=>isset($post['fname'])?$post['fname']:'',
+							'cust_lastname'=>isset($post['lname'])?$post['lname']:'',
+							'cust_email'=>isset($post['email_id'])?$post['email_id']:'',
+							'cust_mobile'=>isset($post['mobile'])?$post['mobile']:'',
+							);
+							$save=$this->inventory_model->update_co_worker_details($post['cust_id'],$update_data);
+							if(count($save)>0){
+								$this->session->set_flashdata('success','Co-Worker details successfully updated');
+								redirect('inventory/coworkerlist');
+							}else{
+								$this->session->set_flashdata('error',"technical problem will occured. Please try again after some time.");
+								redirect('inventory/coworkeredit/'.base64_encode($post['cust_id']));
+							}
+							//echo '<pre>';print_r($post);exit;
+					
+						}else{
+							$this->session->set_flashdata('loginerror','you have  no permissions');
+							redirect('admin/login');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					}
+		   }
+		     public  function coworkerstatus(){
+			   if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{
+							$id = base64_decode($this->uri->segment(3)); 
+							$status = base64_decode($this->uri->segment(4));
+							if($status==1){
+							$status=0;
+							}else{
+							$status=1;
+							}
+							$data=array('status'=>$status);
+							//echo '<pre>';print_r(base64_decode($this->uri->segment(5)));exit;
+							$updatestatus=$this->inventory_model->update_co_worker_details($id,$data);
+							if(count($updatestatus)>0){
+								if($status==1){
+									$this->session->set_flashdata('success'," Co-Worker activation successfully");
+								}else{
+									$this->session->set_flashdata('success',"Co-Worker deactivation successfully");
+								}
+								redirect('inventory/coworkerlist');
+							}else{
+								$this->session->set_flashdata('error',"technical problem will occured. Please try again after some time.");
+								redirect('inventory/coworkerlist');
+							}
+					
+						}else{
+							$this->session->set_flashdata('error','you have  no permissions');
+							redirect('inventory/dashboard');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					} 
+		   } 
+		   public  function coworkerdelete(){
+			   if($this->session->userdata('userdetails'))
+				 {		
+					$logindetail=$this->session->userdata('userdetails');
+						if($logindetail['role_id']==5)
+						{
+							$id = base64_decode($this->uri->segment(3)); 
+							
+							$delete=$this->inventory_model->co_worker_delete($id);
+							if(count($delete)>0){
+								
+								$this->session->set_flashdata('success',"coworkerlist successfully deleted");
+								redirect('inventory/coworkerlist');
+							}else{
+								$this->session->set_flashdata('error',"technical problem will occured. Please try again after some time.");
+								redirect('inventory/coworkerlist');
+							}
+					
+						}else{
+							$this->session->set_flashdata('error','you have  no permissions');
+							redirect('inventory/dashboard');
+						}
+				 }else{
+					 $this->session->set_flashdata('loginerror','Please login to continue');
+					 redirect('admin/login	');
+					} 
+		   }
 	
 }		
 ?>

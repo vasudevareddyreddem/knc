@@ -19,7 +19,7 @@
 				<input type="hidden" name="brandid" name="brandid" value="<?php echo $brand_details['bid']; ?>">
 				<div class="form-group">
 					<label for="category">Brand Name</label>
-					<input type="text"  class="form-control" id="brandname"  name="brandname" value="<?php echo $brand_details['brand']; ?>"/>
+					<input type="text" placeholder="Brand Name"  class="form-control" id="brandname"  name="brandname" value="<?php echo $brand_details['brand']; ?>"/>
 				</div>
 				<div class="form-group">
 				<label for="category">Brand Image</label>

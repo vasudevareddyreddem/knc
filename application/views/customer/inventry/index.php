@@ -20,6 +20,8 @@
                   <th>Seller Name</th>
                   <th>Seller Email</th>
                   <th>Seller Mobile</th>
+                  <th>Seller Pending Order List</th>
+                  <th>Seller Delivered Order List</th>
                   <th>Status</th>
                   <th>Action</th>
 				</tr>
@@ -32,7 +34,9 @@
 								  <td><a href="<?php echo base_url('inventory/sellerdetails/'.base64_encode($details['seller_id'])); ?>"><?php echo $details['seller_rand_id']; ?></a></td>
 								  <td><?php echo $details['seller_name']; ?></td>
 								  <td><?php echo $details['seller_email']; ?></td>                  
-								  <td><?php echo $details['seller_mobile']; ?></td>                  
+								  <td><?php echo $details['seller_mobile']; ?></td> 
+								  <td><a href="<?php echo base_url('inventory/sellerpendingorders/'.base64_encode($details['seller_id'])); ?>">Order List</a></td>
+								  <td><a href="<?php echo base_url('inventory/sellerdeliveryorders/'.base64_encode($details['seller_id'])); ?>"> Order List</a></td>									  
 								  <td><?php if($details['status']==1){ echo "Active";}else{ echo "Deactive";} ?></td>                
 								  <td><a href="<?php echo base_url('inventory/sellerdetails/'.base64_encode($details['seller_id'])); ?>">View</a> |&nbsp;
 									<a href="<?php echo base_url('inventory/status/'.base64_encode($details['seller_id']).'/'.base64_encode($details['status'])); ?>"><?php if($details['status']==1){ echo "Active";}else{ echo "Deactive";} ?></a></td>
@@ -43,7 +47,10 @@
 								  <td><a href="<?php echo base_url('inventory/sellerdetails/'.base64_encode($details['seller_id'])); ?>"><?php echo $details['seller_rand_id']; ?></a></td>
 								  <td><?php echo $details['seller_name']; ?></td>
 								  <td><?php echo $details['seller_email']; ?></td>                  
-								  <td><?php echo $details['seller_mobile']; ?></td>                  
+								  <td><?php echo $details['seller_mobile']; ?></td> 
+								  <td><a href="<?php echo base_url('inventory/sellerpendingorders/'.base64_encode($details['seller_id'])); ?>">Order List</a></td>
+								  <td><a href="<?php echo base_url('inventory/sellerdeliveryorders/'.base64_encode($details['seller_id'])); ?>"> Order List</a></td>									  
+								 								  
 								  <td><?php if($details['status']==1){ echo "Active";}else{ echo "Deactive";} ?></td>                
 								  <td><a href="<?php echo base_url('inventory/sellerdetails/'.base64_encode($details['seller_id'])); ?>">View</a> |&nbsp;
 									<a href="<?php echo base_url('inventory/status/'.base64_encode($details['seller_id']).'/'.base64_encode($details['status'])); ?>"><?php if($details['status']==1){ echo "Active";}else{ echo "Deactive";} ?></a></td>

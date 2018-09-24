@@ -54,7 +54,7 @@
 				
 				<div class="form-group">
 				<label for="category">Sub Item Name</label>
-				<input type="text"  class="form-control" id="subitemname"  name="subitemname"/>
+				<input type="text" placeholder="Sub Item Name"  class="form-control" id="subitemname"  name="subitemname"/>
 				</div>
 				<div class="form-group">
 				<label for="category">Sub Item Image</label>

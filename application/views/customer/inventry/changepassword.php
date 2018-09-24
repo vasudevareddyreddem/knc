@@ -23,15 +23,15 @@
 				
 				<div class="form-group">
 				<label for="password">Old Password</label>
-				<input type="password"  class="form-control" id="oldpassword"  name="oldpassword"/>
+				<input type="password" placeholder="Old Password"  class="form-control" id="oldpassword"  name="oldpassword"/>
 				</div>
 				<div class="form-group">
 				<label for="password">New Password</label>
-				<input type="password" placeholder="" class="form-control" id="newpassword" name="newpassword" />
+				<input type="password" placeholder="New Password" class="form-control" id="newpassword" name="newpassword" />
 				</div>
 				<div class="form-group">
 				<label for="password">confirm Password</label>
-				<input type="password" placeholder="" class="form-control" id="confirmpassword" name="confirmpassword"  />
+				<input type="password" placeholder="confirm Password" class="form-control" id="confirmpassword" name="confirmpassword"  />
 				</div>
 				<div class="btn-group-vertical btn-block text-center" role="group">
 				<button type="submit" class="btn btn-danger btn-lg">Change Password</button>

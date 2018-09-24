@@ -35,11 +35,11 @@
 				
 				<div class="form-group">
 				<label for="category">Category Name</label>
-				<input type="text"  class="form-control" id="categoryname"  name="categoryname"/>
+				<input type="text"  class="form-control" placeholder="Category Name" id="categoryname"  name="categoryname"/>
 				</div>
 				<div class="form-group">
 				<label for="category">Category Image</label>
-				<input type="file"  class="form-control" id="cat_image"  name="cat_image"/>
+				<input type="file"  class="form-control"  id="cat_image"  name="cat_image"/>
 				</div>
 				<div class="form-group">
 				<label for="category">Category File</label>

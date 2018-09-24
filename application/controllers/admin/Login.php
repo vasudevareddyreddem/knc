@@ -52,6 +52,7 @@ public function loginpost()
 		$this->load->view('admin/login');
 		}else{
 			 $result   = $this->login_model->authenticate($post['email'],$post['password']);
+			 //echo '<pre>';print_r($result);exit;
 			 if(count($result)>0){				 
 				 $data = array(
 				'admin_id'    => $result['customer_id'],
@@ -66,6 +67,8 @@ public function loginpost()
 					redirect('inventory/dashboard');
 				}else if($result['role_id']==6){
 					redirect('deliveryboy/dashboard');
+				}else if($result['role_id']==7){
+					redirect('inventory/totalorders');
 				}
 				 
 			}else{

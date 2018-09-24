@@ -1,11 +1,12 @@
 
   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar" style="position:fixed;">
+  <aside class="main-sidebar" style="position:fixed;width:230px">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
       
       <ul class="sidebar-menu" style="height:600px;overflow-y: scroll;padding-bottom:200px;">
+	  <?php if($customerdetails['role_id']==5){ ?>
         <li class="active ">
           <a href="<?php echo base_url('inventory/dashboard'); ?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -50,6 +51,54 @@
           <a href="<?php echo base_url('inventory/homepagepreview'); ?>">
              <i class="fa fa-home"></i> <span>Customer Home Page Preview</span>
           </a>
+        </li>
+		
+		<li class="treeview">
+           <a href="">
+           <i class="fa fa-modx"></i> <span>Orders</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('inventory/totalorders'); ?>"><i class="fa fa-circle-o"></i> Total Orders List</a></li>
+            <li><a href="<?php echo base_url('inventory/pendingorders'); ?>"><i class="fa fa-circle-o"></i> Pending order list</a></li>
+            <li><a href="<?php echo base_url('inventory/deliveryorders'); ?>"><i class="fa fa-circle-o"></i> Delivery order list</a></li>
+           
+          </ul>
+		 </li>
+		 <li class="treeview">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Co-worker</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('inventory/addcoworker'); ?>"><i class="fa fa-circle-o"></i> Add  </a></li>
+            <li><a href="<?php echo base_url('inventory/coworkerlist'); ?>"><i class="fa fa-circle-o"></i>List</a></li>
+           </ul>
+        </li>
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Delivery Boy</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('inventory/adddeliveryboy'); ?>"><i class="fa fa-circle-o"></i> Add  </a></li>
+            <li><a href="<?php echo base_url('inventory/deliveryboylist'); ?>"><i class="fa fa-circle-o"></i>List</a></li>
+           </ul>
+        </li>
+		<li class="treeview">
+          <a href="<?php echo base_url('inventory/delivery_locations');?>">
+            <i class="fa fa-map-marker"></i> <span>Delivery Boy Locations</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          
         </li>
 		<li class="">
           <a href="<?php echo base_url('inventory/sellernitificationlist'); ?>">
@@ -115,27 +164,40 @@
           </a>
           
         </li>
+	  <?php }else if($customerdetails['role_id']==7){  ?>
+			
 		<li class="treeview">
-          <a href="<?php echo base_url('inventory/totalorders');?>">
-            <i class="fa fa-list-ol"></i> <span>Total Orders</span>
+           <a href="">
+           <i class="fa fa-modx"></i> <span>Orders</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          
-        </li>
-		<li class="treeview">
-          <a href="<?php echo base_url('inventory/delivery_locations');?>">
-            <i class="fa fa-map-marker"></i> <span>Delivery Boy Locations</span>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('inventory/totalorders'); ?>"><i class="fa fa-circle-o"></i> Total Orders List</a></li>
+            <li><a href="<?php echo base_url('inventory/pendingorders'); ?>"><i class="fa fa-circle-o"></i> Pending order list</a></li>
+            <li><a href="<?php echo base_url('inventory/deliveryorders'); ?>"><i class="fa fa-circle-o"></i> Delivery order list</a></li>
+           
+          </ul>
+		 </li>
+		 <li class="treeview">
+          <a href="<?php echo base_url('inventory/product_list');?>">
+            <i class="fa fa-anchor"></i> <span>Products</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          
-        </li>
+         </li>
+	   <?php } ?>
+	  
+	  
+		
       </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
+  
+  
+  
 
   

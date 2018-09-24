@@ -35,7 +35,7 @@
 				
 				<div class="form-group">
 				<label for="category">Sub Category Name</label>
-				<input type="text"  class="form-control" id="categoryname"  name="categoryname"/>
+				<input type="text" placeholder="Sub Category Name"  class="form-control" id="categoryname"  name="categoryname"/>
 				</div>
 				<div class="form-group">
 				<label for="category">Sub Category Image</label>
@@ -43,7 +43,7 @@
 				</div>
 				<div class="form-group">
 				<label for="category">Category Commission</label>
-				<input type="text"  class="form-control" id="commission"  name="commission"/>
+				<input type="text" placeholder="Category Commission"  class="form-control" id="commission"  name="commission"/>
 				</div>
 
 				<div class="form-group">

@@ -47,7 +47,7 @@
 				</div>
 				<div class="form-group">
 				<label for="category">Item Name</label>
-				<input type="text"  class="form-control" id="itemname"  name="itemname"/>
+				<input type="text" placeholder="Item Name"  class="form-control" id="itemname"  name="itemname"/>
 				</div>
 				
 

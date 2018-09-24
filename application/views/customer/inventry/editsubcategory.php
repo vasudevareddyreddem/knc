@@ -23,7 +23,7 @@
 				<input type="hidden" name="subcategoryid" id="subcategoryid" value="<?php echo $subcategory_details['subcategory_id']; ?>">
 				<div class="form-group">
 				<label for="category">Sub Category Name</label>
-				<input type="text"  class="form-control" id="subcategoryname"  name="subcategoryname" value="<?php echo isset($subcategory_details['subcategory_name'])?$subcategory_details['subcategory_name']:''; ?>"/>
+				<input type="text" placeholder="Sub Category Name"  class="form-control" id="subcategoryname"  name="subcategoryname" value="<?php echo isset($subcategory_details['subcategory_name'])?$subcategory_details['subcategory_name']:''; ?>"/>
 				</div>
 				<div class="form-group">
 				<label for="category">Sub Category Image</label>

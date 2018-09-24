@@ -23,7 +23,7 @@
 				<input type="hidden" name="catid" id="catid" value="<?php echo isset($category_details['category_id'])?$category_details['category_id']:''; ?>">
 				<div class="form-group">
 				<label for="category">Category Name</label>
-				<input type="text"  class="form-control" id="categoryname"  name="categoryname" value="<?php echo isset($category_details['category_name'])?$category_details['category_name']:''; ?>"/>
+				<input type="text" placeholder="Category Name"  class="form-control" id="categoryname"  name="categoryname" value="<?php echo isset($category_details['category_name'])?$category_details['category_name']:''; ?>"/>
 				</div>
 				<div class="form-group">
 				<label for="category">Category Image</label>

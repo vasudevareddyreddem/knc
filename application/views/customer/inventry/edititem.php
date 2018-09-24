@@ -41,7 +41,7 @@
 				
 				<div class="form-group">
 				<label for="category">Item Name</label>
-				<input type="text"  class="form-control" id="itemname"  name="itemname" value="<?php echo isset($item_details['item_name'])?$item_details['item_name']:''; ?>"/>
+				<input type="text"  placeholder="Item Name" class="form-control" id="itemname"  name="itemname" value="<?php echo isset($item_details['item_name'])?$item_details['item_name']:''; ?>"/>
 				</div>
 				
 				

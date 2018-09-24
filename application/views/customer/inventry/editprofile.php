@@ -35,24 +35,24 @@
                    <form id="editprofile" name="editprofile" method="post" action="<?php echo base_url('inventory/updateprofilepost');?>" class="form-horizontal" enctype="multipart/form-data" role="form">
                         <div class=" form-group">
                             <label class="control-label">First Name</label>
-                            <input type="text" class="form-control" id="fname" name="fname" value="<?php echo $profile_details['cust_firstname']; ?>">
+                            <input type="text" placeholder="First Name" class="form-control" id="fname" name="fname" value="<?php echo $profile_details['cust_firstname']; ?>">
                         </div>
 						<div class=" form-group">
                             <label class="control-label">Last Name</label>
-                            <input type="text" class="form-control" id="lname" name="lname" value="<?php echo $profile_details['cust_lastname']; ?>">
+                            <input type="text" placeholder="Last Name" class="form-control" id="lname" name="lname" value="<?php echo $profile_details['cust_lastname']; ?>">
                         </div>
 
                         <div  class=" form-group">
                            <label class="control-label">Email Address</label>
-                            <input id="email" type="text"  class="form-control"  name="email" value="<?php echo $profile_details['cust_email']; ?>" >
+                            <input id="email" type="text"  placeholder="Email Address" class="form-control"  name="email" value="<?php echo $profile_details['cust_email']; ?>" >
                         </div> 
 						<div  class=" form-group">
                            <label class="control-label">Mobile</label>
-                            <input id="mobile" type="text" class="form-control"  name="mobile" value="<?php echo $profile_details['cust_mobile']; ?>" >
+                            <input id="mobile" type="text" placeholder="Mobile" class="form-control"  name="mobile" value="<?php echo $profile_details['cust_mobile']; ?>" >
                         </div> 
 						<div  class=" form-group">
                            <label class="control-label">Address 1</label>
-                            <input id="address1" type="text" class="form-control"  name="address1" value="<?php echo $profile_details['address1']; ?>" >
+                            <input id="address1" type="text" placeholder="Address 1" class="form-control"  name="address1" value="<?php echo $profile_details['address1']; ?>" >
                         </div>
 					
 					

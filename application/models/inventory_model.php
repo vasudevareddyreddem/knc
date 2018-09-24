@@ -141,7 +141,7 @@ function __construct()
 		return $insert_id = $this->db->insert_id();
 	}
 	public function get_all_seller_details(){
-		$this->db->select('*')->from('sellers');		
+		$this->db->select('seller_id,seller_rand_id,seller_name,seller_email,seller_mobile,status,readcount')->from('sellers');		
 		return $this->db->get()->result_array();
 	}
 	public function get_all_seller_notifications(){
@@ -731,14 +731,60 @@ public function delete_banner($id,$sid)
 	}
 	function get_total_orders()
 	{
-		$this->db->select('order_items.*,seller_store_details.store_name,(billing_address.name) as billingname,(billing_address.mobile) as billingmobile,customers.cust_firstname,customers.cust_lastname,customers.cust_mobile,orders.payment_type')->from('order_items');
+		$this->db->select('order_items.order_id,order_items.order_item_id,order_items.item_id,order_items.qty,order_items.total_price,order_items.payment_type,order_items.create_at,concat(delivery.cust_firstname,delivery.cust_lastname) as d_name,delivery.cust_mobile as d_mob,order_items.delivery_boy_id,order_items.delivery_boy_assign,order_status.status_confirmation,order_status.status_packing,order_status.status_road,order_status.status_deliverd,order_status.status_refund,order_status.reason,seller_store_details.store_name,concat(seller_store_details.addrees1," , ",seller_store_details.addrees2," , ",seller_store_details.pin_code) as seller_location,(billing_address.name) as billingname,(billing_address.mobile) as billingmobile,customers.cust_firstname,customers.cust_lastname,customers.cust_mobile,orders.payment_type')->from('order_items');
 		$this->db->join('seller_store_details', 'seller_store_details.seller_id = order_items.seller_id', 'left');
 		$this->db->join('billing_address', 'billing_address.order_id = order_items.order_id', 'left');
 		$this->db->join('customers', 'customers.customer_id = order_items.customer_id', 'left');
 		$this->db->join('orders', 'orders.order_id = order_items.order_id', 'left');
+		$this->db->join('order_status', 'order_status.order_item_id = order_items.order_item_id', 'left');
+		$this->db->join('customers as delivery', 'delivery.customer_id = order_items.delivery_boy_id', 'left');
 		$this->db->order_by('order_items.order_item_id','desc');
 
 		//$this->db->where('status',1);
+		return $this->db->get()->result_array();
+	}
+	function get_delivery_total_orders($d_id)
+	{
+		$this->db->select('order_items.order_id,order_items.order_item_id,order_items.item_id,order_items.qty,order_items.total_price,order_items.payment_type,order_items.create_at,concat(delivery.cust_firstname,delivery.cust_lastname) as d_name,delivery.cust_mobile as d_mob,order_items.delivery_boy_id,order_items.delivery_boy_assign,order_status.status_confirmation,order_status.status_packing,order_status.status_road,order_status.status_deliverd,order_status.status_refund,order_status.reason,seller_store_details.store_name,(billing_address.name) as billingname,(billing_address.mobile) as billingmobile,customers.cust_firstname,customers.cust_lastname,customers.cust_mobile,orders.payment_type')->from('order_items');
+		$this->db->join('seller_store_details', 'seller_store_details.seller_id = order_items.seller_id', 'left');
+		$this->db->join('billing_address', 'billing_address.order_id = order_items.order_id', 'left');
+		$this->db->join('customers', 'customers.customer_id = order_items.customer_id', 'left');
+		$this->db->join('orders', 'orders.order_id = order_items.order_id', 'left');
+		$this->db->join('order_status', 'order_status.order_item_id = order_items.order_item_id', 'left');
+		$this->db->join('customers as delivery', 'delivery.customer_id = order_items.delivery_boy_id', 'left');
+		$this->db->order_by('order_items.order_item_id','desc');
+		$this->db->where('order_items.delivery_boy_id',$d_id);
+		return $this->db->get()->result_array();
+	}
+	function get_delivered_total_orders()
+	{
+		$this->db->select('order_items.order_id,order_items.order_item_id,order_items.item_id,order_items.qty,order_items.total_price,order_items.payment_type,order_items.create_at,concat(delivery.cust_firstname,delivery.cust_lastname) as d_name,delivery.cust_mobile as d_mob,order_items.delivery_boy_id,order_items.delivery_boy_assign,order_status.status_confirmation,order_status.status_packing,order_status.status_road,order_status.status_deliverd,order_status.status_refund,order_status.reason,seller_store_details.store_name,concat(seller_store_details.addrees1," , ",seller_store_details.addrees2," , ",seller_store_details.pin_code) as seller_location,(billing_address.name) as billingname,(billing_address.mobile) as billingmobile,customers.cust_firstname,customers.cust_lastname,customers.cust_mobile,orders.payment_type')->from('order_items');
+		$this->db->join('seller_store_details', 'seller_store_details.seller_id = order_items.seller_id', 'left');
+		$this->db->join('billing_address', 'billing_address.order_id = order_items.order_id', 'left');
+		$this->db->join('customers', 'customers.customer_id = order_items.customer_id', 'left');
+		$this->db->join('orders', 'orders.order_id = order_items.order_id', 'left');
+		$this->db->join('order_status', 'order_status.order_item_id = order_items.order_item_id', 'left');
+		$this->db->join('customers as delivery', 'delivery.customer_id = order_items.delivery_boy_id', 'left');
+		$this->db->order_by('order_items.order_item_id','desc');
+		$where = '(order_status.status_deliverd = "4" OR  order_status.status_refund  is NOT NULL)';
+		$this->db->where($where);
+		
+
+		//$this->db->where('status',1);
+		return $this->db->get()->result_array();
+	}
+	function get_pending_total_orders()
+	{
+		$this->db->select('order_items.order_id,order_items.order_item_id,order_items.item_id,order_items.qty,order_items.total_price,order_items.payment_type,order_items.create_at,concat(delivery.cust_firstname,delivery.cust_lastname) as d_name,delivery.cust_mobile as d_mob,order_items.delivery_boy_id,order_items.delivery_boy_assign,order_status.status_confirmation,order_status.status_packing,order_status.status_road,order_status.status_deliverd,order_status.status_refund,order_status.reason,seller_store_details.store_name,concat(seller_store_details.addrees1," , ",seller_store_details.addrees2," , ",seller_store_details.pin_code) as seller_location,(billing_address.name) as billingname,(billing_address.mobile) as billingmobile,customers.cust_firstname,customers.cust_lastname,customers.cust_mobile,orders.payment_type')->from('order_items');
+		$this->db->join('seller_store_details', 'seller_store_details.seller_id = order_items.seller_id', 'left');
+		$this->db->join('billing_address', 'billing_address.order_id = order_items.order_id', 'left');
+		$this->db->join('customers', 'customers.customer_id = order_items.customer_id', 'left');
+		$this->db->join('orders', 'orders.order_id = order_items.order_id', 'left');
+		$this->db->join('order_status', 'order_status.order_item_id = order_items.order_item_id', 'left');
+		$this->db->join('customers as delivery', 'delivery.customer_id = order_items.delivery_boy_id', 'left');
+		$this->db->order_by('order_items.order_item_id','desc');
+		$this->db->where('order_status.status_deliverd',0);
+		$this->db->where('order_status.status_refund  is NULL', NULL, FALSE);
 		return $this->db->get()->result_array();
 	}
 	function get_all_subcategoires($id)
@@ -885,5 +931,108 @@ public function delete_banner($id,$sid)
 	}
 	/* brands*/
 	
+	
+	/* add  delivery  boy functionality  purpose*/
+	public  function check_delivery_boy_exists($email){
+		$this->db->select('*')->from('customers');
+		$this->db->where('cust_email',$email);
+		$this->db->where('role_id',6);
+		return $this->db->get()->row_array();
+	}
+	public  function save_delivery_boy($data){
+		$this->db->insert('customers',$data);
+		return $this->db->insert_id();
+		
+	}
+	
+	public  function get_delivery_boy_list(){
+		$this->db->select('customer_id,role_id,cust_firstname,cust_lastname,cust_email,cust_mobile,address1,address2,pincode,status,created_at')->from('customers');
+		$this->db->where('role_id',6);
+		return $this->db->get()->result_array();
+	}
+	public  function delivery_update_status($id,$data){
+		$this->db->where('customer_id',$id);
+		return $this->db->update('customers',$data);
+	}
+	public  function delivery_boy_delete($c_id){
+		$this->db->where('customer_id',$c_id);
+		return $this->db->delete('customers');
+	}
+	public function get_delivery_boy_details($c_id){
+		$this->db->select('customer_id,role_id,cust_firstname,cust_lastname,cust_email,cust_mobile,address1,address2,pincode,status,created_at')->from('customers');
+		$this->db->where('customer_id',$c_id);
+		$this->db->where('role_id',6);
+		return $this->db->get()->row_array();
+	}
+	
+	
+	/* co-worker functionality*/
+	/* add  delivery  boy functionality  purpose*/
+	public  function check_co_worker_exists($email){
+		$this->db->select('*')->from('customers');
+		$this->db->where('cust_email',$email);
+		$this->db->where('role_id',7);
+		return $this->db->get()->row_array();
+	}
+	public  function save_co_worker_boy($data){
+		$this->db->insert('customers',$data);
+		return $this->db->insert_id();
+		
+	}
+	
+	public  function get_coworker_list(){
+			$this->db->select('customer_id,role_id,cust_firstname,cust_lastname,cust_email,cust_mobile,address1,address2,pincode,status,created_at')->from('customers');
+		$this->db->where('role_id',7);
+		return $this->db->get()->result_array();
+	}
+	public function get_co_worker_details($c_id){
+		$this->db->select('customer_id,role_id,cust_firstname,cust_lastname,cust_email,cust_mobile,address1,address2,pincode,status,created_at')->from('customers');
+		$this->db->where('customer_id',$c_id);
+		$this->db->where('role_id',7);
+		return $this->db->get()->row_array();
+	}
+	public  function update_co_worker_details($id,$data){
+		$this->db->where('customer_id',$id);
+		return $this->db->update('customers',$data);
+	}
+	public  function co_worker_delete($c_id){
+		$this->db->where('customer_id',$c_id);
+		return $this->db->delete('customers');
+	}
+	
+	/* onventory  changes  purpose*/
+	function get_seller_pending_orders($seller_id)
+	{
+		$this->db->select('order_items.order_id,order_items.order_item_id,order_items.item_id,order_items.qty,order_items.total_price,order_items.payment_type,order_items.create_at,concat(delivery.cust_firstname,delivery.cust_lastname) as d_name,delivery.cust_mobile as d_mob,order_items.delivery_boy_id,order_items.delivery_boy_assign,order_status.status_confirmation,order_status.status_packing,order_status.status_road,order_status.status_deliverd,order_status.status_refund,order_status.reason,seller_store_details.store_name,(billing_address.name) as billingname,(billing_address.mobile) as billingmobile,customers.cust_firstname,customers.cust_lastname,customers.cust_mobile,orders.payment_type')->from('order_items');
+		$this->db->join('seller_store_details', 'seller_store_details.seller_id = order_items.seller_id', 'left');
+		$this->db->join('billing_address', 'billing_address.order_id = order_items.order_id', 'left');
+		$this->db->join('customers', 'customers.customer_id = order_items.customer_id', 'left');
+		$this->db->join('orders', 'orders.order_id = order_items.order_id', 'left');
+		$this->db->join('order_status', 'order_status.order_item_id = order_items.order_item_id', 'left');
+		$this->db->join('customers as delivery', 'delivery.customer_id = order_items.delivery_boy_id', 'left');
+		$this->db->order_by('order_items.order_item_id','desc');
+		$this->db->where('seller_store_details.seller_id',$seller_id);
+		$this->db->where('order_status.status_deliverd',0);
+		$this->db->where('order_status.status_refund  is NULL', NULL, FALSE);
+		//$this->db->where('status',1);
+		return $this->db->get()->result_array();
+	}
+	function get_seller_delivered_orders($seller_id)
+	{
+		$this->db->select('order_items.order_id,order_items.order_item_id,order_items.item_id,order_items.qty,order_items.total_price,order_items.payment_type,order_items.create_at,concat(delivery.cust_firstname,delivery.cust_lastname) as d_name,delivery.cust_mobile as d_mob,order_items.delivery_boy_id,order_items.delivery_boy_assign,order_status.status_confirmation,order_status.status_packing,order_status.status_road,order_status.status_deliverd,order_status.status_refund,order_status.reason,seller_store_details.store_name,(billing_address.name) as billingname,(billing_address.mobile) as billingmobile,customers.cust_firstname,customers.cust_lastname,customers.cust_mobile,orders.payment_type')->from('order_items');
+		$this->db->join('seller_store_details', 'seller_store_details.seller_id = order_items.seller_id', 'left');
+		$this->db->join('billing_address', 'billing_address.order_id = order_items.order_id', 'left');
+		$this->db->join('customers', 'customers.customer_id = order_items.customer_id', 'left');
+		$this->db->join('orders', 'orders.order_id = order_items.order_id', 'left');
+		$this->db->join('order_status', 'order_status.order_item_id = order_items.order_item_id', 'left');
+		$this->db->join('customers as delivery', 'delivery.customer_id = order_items.delivery_boy_id', 'left');
+		$this->db->order_by('order_items.order_item_id','desc');
+		$where = '(order_status.status_deliverd = "4" OR  order_status.status_refund  is NOT NULL)';
+		$this->db->where('seller_store_details.seller_id',$seller_id);
+		$this->db->where($where);
+		//$this->db->where('status',1);
+		return $this->db->get()->result_array();
+	}
+	/* onventory  changes  purpose*/
 }
 ?>	

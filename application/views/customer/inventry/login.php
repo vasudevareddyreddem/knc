@@ -54,7 +54,7 @@
                     <form id="loginform" name="loginform" method="post" action="<?php echo base_url('customer/inventery_loginpost');?>" class="form-horizontal" role="form">
                         <div class=" form-group">
                             <label class="control-label">Email</label>
-                            <input type="text" class="form-control" id="email" name="email"  placeholder="Email">
+                            <input type="text" class="form-control" id="email" name="email"  placeholder="Email Address">
                         </div>
 
                         <div  class=" form-group">

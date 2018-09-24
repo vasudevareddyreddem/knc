@@ -20,7 +20,12 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <header class="main-header" style="position:fixed;top:0px;width:100%">
+<?php if($customerdetails['role_id']==7){ ?>
+<a href="<?php echo base_url('inventory/totalorders'); ?>" class="logo">
+<?php }else{ ?>
 <a href="<?php echo base_url('inventory/dashboard'); ?>" class="logo">
+<?php } ?>
+
 	 <span class="logo-mini"><img style="width:75%" src="<?php echo base_url(); ?>assets/home/images/logo.png" class="img-responsive" ></span>
       <span class="logo-lg"><img style="width:75%" src="<?php echo base_url(); ?>assets/home/images/logo.png" class="img-responsive" ></span>
     </a>
