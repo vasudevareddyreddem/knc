@@ -15,6 +15,14 @@
           </a>
          
         </li>
+		<li class="active ">
+          <a href="<?php echo base_url('inventory/overall_category_list'); ?>">
+            <i class="fa fa-dashboard"></i> <span>All Category List</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+         
+        </li>
      
 		<li class="">
           <a href="<?php echo base_url('inventory/sellerlist'); ?>">
@@ -121,6 +129,14 @@
             <li><a href="<?php echo base_url('inventory/productquantity'); ?>"><i class="fa fa-circle-o"></i>Product Quantity</a></li>
           </ul>
         </li>
+		<li class="treeview">
+          <a href="<?php echo base_url('inventory/product_list');?>">
+            <i class="fa fa-anchor"></i> <span>Products</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         </li>
 		<li class="treeview">
           <a href="<?php echo base_url('inventory/addbannerslist');?>">
             <i class="fa fa-android"></i> <span>App Banners</span>

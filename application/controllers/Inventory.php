@@ -31,7 +31,7 @@ class Inventory extends CI_Controller
 		 $this->session->set_flashdata('loginerror','Please login to continue');
 		 redirect('customer');
 	} 
-}
+	}
   public function editprofile(){
 	 if($this->session->userdata('userdetails'))
 	 {$customerdetails=$this->session->userdata('userdetails');
@@ -42,7 +42,7 @@ class Inventory extends CI_Controller
 		 $this->session->set_flashdata('loginerror','Please login to continue');
 		 redirect('admin/login');
 	} 
-}
+	}
  public function changepassword(){
 	if($this->session->userdata('userdetails'))
 		{
@@ -146,6 +146,24 @@ public function changepasswordpost(){
 	} 
 }
 public function dashboard(){
+  	if($this->session->userdata('userdetails'))
+	 {	$check = $this->session->userdata('userdetails');
+	 	//print_r($that);exit;
+	 	if($check['role_id']==5){
+	 	$data['category'] = $this->inventory_model->get_seller_categories();
+					//echo "<pre>";print_r($data);exit;
+					$this->load->view('customer/inventry/dashboard',$data);
+					//$this->load->view('customer/inventry/footer');
+	 	}else{
+	 		redirect('admin/login');
+	 	}
+		
+	 }else{
+				$this->session->set_flashdata('loginerror','you have  no permissions');
+				redirect('admin/login');
+		}
+}
+public function overall_category_list(){
   	if($this->session->userdata('userdetails'))
 	 {	$check = $this->session->userdata('userdetails');
 	 	//print_r($that);exit;
@@ -3827,6 +3845,24 @@ if((!empty($_FILES["importsubitemfile"])) && ($_FILES['importsubitemfile']['erro
 					 redirect('admin/login	');
 					} 
 		   }
+		   public function product_list(){
+				if($this->session->userdata('userdetails'))
+				 {	$check = $this->session->userdata('userdetails');
+					//print_r($that);exit;
+					if($check['role_id']==5 || $check['role_id']==7){
+						$data['product_list'] = $this->inventory_model->get_seller_products();
+						//echo '<pre>';print_r($data);exit;
+						$this->load->view('customer/inventry/orders/product_list',$data);
+						$this->load->view('customer/inventry/footer');
+					}else{
+						redirect('admin/login');
+					}
+					
+				 }else{
+							$this->session->set_flashdata('loginerror','you have  no permissions');
+							redirect('admin/login');
+					}
+			}
 	
 }		
 ?>

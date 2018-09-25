@@ -14,7 +14,12 @@ class Login_model extends CI_Model
 
  public function authenticate($username, $password) {
 
-       $sql="SELECT * FROM customers WHERE cust_email ='".$username."' AND cust_password ='".md5($password)."'";
+      
+	//$this->db->select('*')->from('customers');
+	//$this->db->where('cust_email',$username);
+	//$this->db->where('cust_password',md5($password));
+	//return $this->db->get()->row_array();
+	  $sql="SELECT * FROM customers WHERE cust_email ='".$username."' AND cust_password ='".md5($password)."' and role_id=5 or role_id=7";
         return $this->db->query($sql)->row_array(); 
     }
 	public function forgot_password($email) {

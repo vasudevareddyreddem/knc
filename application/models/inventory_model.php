@@ -1033,6 +1033,17 @@ public function delete_banner($id,$sid)
 		//$this->db->where('status',1);
 		return $this->db->get()->result_array();
 	}
+	public function get_seller_products()
+	{
+		$this->db->select('products.item_id,category.category_name,subcategories.subcategory_name,products.seller_id,products.category_id,products.subcategory_id,products.item_name,products.item_status,products.item_cost,products.special_price,products.item_quantity,products.product_code,products.created_at,seller_store_details.store_name as s_name,concat(seller_store_details.addrees1," , ",seller_store_details.addrees2," , ",seller_store_details.pin_code) as s_address,')->from('products');
+		$this->db->join('seller_store_details', 'seller_store_details.seller_id = products.seller_id', 'left');
+		$this->db->join('category', 'category.category_id = products.category_id', 'left');
+		$this->db->join('subcategories', 'subcategories.subcategory_id = products.subcategory_id', 'left');
+		//$this->db->where('seller_id',$sid);
+		$this->db->where('products.item_status',1);
+		$this->db->order_by('products.item_id','desc');
+        return $this->db->get()->result_array();
+	}
 	/* onventory  changes  purpose*/
 }
 ?>	
