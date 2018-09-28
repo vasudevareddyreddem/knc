@@ -4,14 +4,16 @@
               <div class="box box-primary direct-chat direct-chat-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Message Chat</h3>
-
+					<a class="btn btn-primary btn-flat" style="float:right" href="<?php echo base_url('inventory/sellernitificationlist'); ?>">Back</a>
                 </div>
+				
                 <!-- /.box-header -->
                 <div class="box-body">
 				
 				
                   <!-- Conversations are loaded here -->
-                  <div class="direct-chat-messages">
+				  <span id="recent_chat_list">
+                  <div class="direct-chat-messages" id="chat_div1">
 				  <?php //echo '<pre>';print_r($seller_notification_details);exit; ?>
 				  <?php foreach ($seller_notification_details as $notification){ ?>
 					<?php if($notification['message_type']=='REPLY'){ ?>
@@ -55,6 +57,7 @@
 				  
 				  
                   </div>
+				  </span>
             
 
                  
@@ -62,7 +65,6 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                  <form name="sendmsg" id="sendmsg" action="<?php echo base_url('inventory/adminnotificationreply'); ?>" method="post">
                     <div class="form-group" style="padding:0">
 					<div class="col-md-10" style="padding:0">
                       <input type="text" name="message" id="message" placeholder="Type Message ..." class="form-control">
@@ -70,11 +72,11 @@
 					</div>
 					<div class="col-md-2" style="padding:0">
 						  <span class="input-group-btn">
-                            <button type="submit" class="btn btn-primary btn-flat">Send</button>
+                            <button type="button" onclick="send_sms();" class="btn btn-primary btn-flat">Send</button>
                           </span>
                     </div>
                     </div>
-                  </form>
+                  
                 </div>
                 <!-- /.box-footer-->
               </div>
@@ -88,6 +90,55 @@
 
 </div>
 <script type="text/javascript">
+var div = document.getElementById('chat_div1');
+   div.scrollTop = div.scrollHeight - div.clientHeight;
+   setInterval(send_sms_refresh, 10000);
+   function send_sms_refresh(){
+	   var s_id=$('#seller_id').val();
+	   jQuery.ajax({
+                    url: "<?php echo base_url('inventory/adminnotificationreply_refresh');?>",
+                    data: {
+                        seller_id:s_id,
+                    },
+                    type: "POST",
+                    format: "html",
+                    success: function(data) {
+						$('#subject').val('');
+						$('#message').val('');
+						//alert(data);
+                        $("#recent_chat_list").empty();
+                        $("#recent_chat_list").append(data);
+                        scrollToBottom('chat_div1');
+                    }
+                });
+   }
+   function send_sms(){
+	
+	var msg=$('#message').val();
+	var s_id=$('#seller_id').val();
+	if(s_id!='' && msg!=''){
+	jQuery.ajax({
+                    url: "<?php echo base_url('inventory/adminnotificationreply');?>",
+                    data: {
+                        message:msg,
+                        seller_id:s_id,
+                    },
+                    type: "POST",
+                    format: "html",
+                    success: function(data) {
+						$('#subject').val('');
+						$('#message').val('');
+						//alert(data);
+                        $("#recent_chat_list").empty();
+                        $("#recent_chat_list").append(data);
+                        scrollToBottom('chat_div1');
+                    }
+                });
+	}else{
+		
+		
+	}
+}
 
 $(document).ready(function() {
     $('#sendmsg').bootstrapValidator({

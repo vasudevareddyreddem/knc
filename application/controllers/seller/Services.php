@@ -32,6 +32,12 @@ class Services extends Admin_Controller {
 		$this->template->render();
 	}
 	
+	public function chatlist()
+	{
+		
+		$this->load->view('seller/services/chat');
+		
+	}
 	public function notificationpost()
 	{
 		$post=$this->input->post();
@@ -44,9 +50,19 @@ class Services extends Admin_Controller {
 		);
 		$contact = $this->adddetails_model->save_notifciations($addnotifications);
 		if(count($contact)>0){
-			$this->session->set_flashdata('sucess','Notification successfully sent!');
-			redirect('seller/services/notications');	
+			$sid = $this->session->userdata('seller_id');
+			$data['notificationlist'] = $this->adddetails_model->get_notofication_list($sid);
+			
+			//echo '<pre>';print_r($data['notificationlist']);exit;
+			$this->load->view('seller/services/chat',$data);
 		}
+	}
+	public  function chat_refresh(){
+		$sid = $this->session->userdata('seller_id');
+		$data['notificationlist'] = $this->adddetails_model->get_notofication_list($sid);
+
+		//echo '<pre>';print_r($data['notificationlist']);exit;
+		$this->load->view('seller/services/chat',$data);
 	}
 	
 

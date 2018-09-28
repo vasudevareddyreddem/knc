@@ -150,10 +150,14 @@ public function dashboard(){
 	 {	$check = $this->session->userdata('userdetails');
 	 	//print_r($that);exit;
 	 	if($check['role_id']==5){
-	 	$data['category'] = $this->inventory_model->get_seller_categories();
-					//echo "<pre>";print_r($data);exit;
-					$this->load->view('customer/inventry/dashboard',$data);
-					//$this->load->view('customer/inventry/footer');
+			$data['yearwise'] = $this->inventory_model->get_yearly_orders_list();
+			$data['monthwise'] = $this->inventory_model->get_month_orders_list(date('Y'));
+			$data['dailywise'] = $this->inventory_model->get_daily_orders_list(date('d'),date('Y-m'));
+			//echo $this->db->last_query();
+			//echo "<pre>";print_r($data);
+			//exit;
+			$this->load->view('customer/inventry/dashboard',$data);
+			//$this->load->view('customer/inventry/footer');
 	 	}else{
 	 		redirect('admin/login');
 	 	}
@@ -310,6 +314,12 @@ public function overall_category_list(){
 		 redirect('admin/login	');
 	} 
   }
+  public function adminnotificationreply_refresh(){
+		$post=$this->input->post();
+		$data['seller_notification_details'] = $this->inventory_model->get_seller_all_notifications_details($post['seller_id']);
+		$this->load->view('customer/inventry/adminchat',$data);	
+
+  }
   public function adminnotificationreply(){
   	if($this->session->userdata('userdetails'))
 	 {		
@@ -330,8 +340,8 @@ public function overall_category_list(){
 			//echo '<pre>';print_r($replynotification);exit;
 			$notificationreply = $this->inventory_model->save_notifciations($replynotification);
 			if(count($notificationreply)>0){
-			$this->session->set_flashdata('success','Notification reply successfully sent!');
-			redirect('inventory/sellernitificationlist');	
+				$data['seller_notification_details'] = $this->inventory_model->get_seller_all_notifications_details($post['seller_id']);
+				$this->load->view('customer/inventry/adminchat',$data);	
 			}
 				
 			}else{
@@ -348,6 +358,7 @@ public function overall_category_list(){
 	 {		
 			$logindetail=$this->session->userdata('userdetails');
 			if($logindetail['role_id']==5){
+				$data['u_id']=base64_decode($this->uri->segment(3));
 				$data['seller_notification_details'] = $this->inventory_model->get_seller_all_notifications_details(base64_decode($this->uri->segment(3)));
 				//echo '<pre>';print_r($data);exit;
 				$allnitiyes = $this->inventory_model->get_all_notifciations_subject(base64_decode($this->uri->segment(3)));
@@ -3863,6 +3874,6 @@ if((!empty($_FILES["importsubitemfile"])) && ($_FILES['importsubitemfile']['erro
 							redirect('admin/login');
 					}
 			}
-	
+			
 }		
 ?>

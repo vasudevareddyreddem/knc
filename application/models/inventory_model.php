@@ -1045,5 +1045,33 @@ public function delete_banner($id,$sid)
         return $this->db->get()->result_array();
 	}
 	/* onventory  changes  purpose*/
+	
+	/* dashboard  graph purpose*/
+	public  function get_yearly_orders_list(){
+		$this->db->select('order_item_id,create_at')->from('order_items');
+        $this->db->where('order_status',1);
+		//$this->db->group_by("DATE_FORMAT(create_at,'%Y')");
+		$this->db->order_by('create_at', 'asc'); 
+        return  $this->db->get()->result_array();
+	}
+	public  function get_month_orders_list($date){
+		$this->db->select('order_item_id,create_at')->from('order_items');
+        $this->db->where('order_status',1);
+		$this->db->where("DATE_FORMAT(create_at,'%Y')",$date);
+		//$this->db->group_by("DATE_FORMAT(create_at,'%m')");
+		//$this->db->order_by('create_at', 'asc'); 
+        return  $this->db->get()->result_array();
+	}
+	public  function get_daily_orders_list($date,$year){
+		$this->db->select("order_item_id,create_at")->from('order_items');
+        $this->db->where('order_status',1);
+		$this->db->where("DATE_FORMAT(create_at,'%Y-%m')",$year);
+		$this->db->where("DATE_FORMAT(create_at,'%d')",$date);
+		//$this->db->group_by("DATE_FORMAT(create_at,'%Y-%m-%d %h')");
+		$this->db->order_by('create_at', 'asc'); 
+        return  $this->db->get()->result_array();
+		
+	}
+	/* dashboard  graph purpose*/
 }
 ?>	

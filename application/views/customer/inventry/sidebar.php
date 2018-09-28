@@ -15,7 +15,7 @@
           </a>
          
         </li>
-		<li class="active ">
+		<li class=" ">
           <a href="<?php echo base_url('inventory/overall_category_list'); ?>">
             <i class="fa fa-dashboard"></i> <span>All Category List</span>
             <span class="pull-right-container">

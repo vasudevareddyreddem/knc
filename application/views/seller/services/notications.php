@@ -642,9 +642,10 @@
                 </div>
 				<?php //echo '<pre>';print_r($notificationlist);exit; ?>
                 <!-- /.box-header -->
-                <div class="box-body">
+                <div class="box-body" >
+				<span id="recent_chat_list" >
                   <!-- Conversations are loaded here -->
-                  <div class="direct-chat-messages">
+                  <div class="direct-chat-messages" id="chat_div1">
                     <!-- Message. Default to the left -->
 				  <?php foreach ($notificationlist as $notification){ ?>
 				<?php if($notification['message_type']=='REPLIED'){ ?>
@@ -693,19 +694,18 @@
                   </div>
                   <!--/.direct-chat-messages-->
 
-                 
+                 </span>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-				 <form name="notifications" id="notifications" action="<?php echo base_url('seller/services/notificationpost'); ?>" method="post" enctype="multipart/form-data">
                     <div class="input-group form-group">
                       <span class="col-md-6"><input type="text"  id="subject" name="subject" placeholder="Subject ..." class="form-control"></span>
                       <span class="col-md-6"><input type="text"  id="message" name="message" placeholder="Message ..." class="form-control"></span>
                           <span class="input-group-btn">
-                            <button type="submit" class="btn btn-g btn-flat btn-primary">Send</button>
+                            <button type="buuton" onclick="send_sms();" class="btn btn-g btn-flat btn-primary">Send</button>
                           </span>
                     </div>
-                  </form>
+                
                 </div>
                 <!-- /.box-footer-->
               </div>
@@ -722,14 +722,60 @@
       
             <!-- /.col -->
   
+<script type="text/javascript">
 
-     
-		
-  
- 
-      
+ var div = document.getElementById('chat_div1');
+   div.scrollTop = div.scrollHeight - div.clientHeight;
+function send_sms(){
 	
-	<script type="text/javascript">
+	var sub=$('#subject').val();
+	var msg=$('#message').val();
+	if(sub!='' && msg!=''){
+	jQuery.ajax({
+                    url: "<?php echo base_url('seller/services/notificationpost');?>",
+                    data: {
+                        subject:sub,
+                        message:msg,
+                    },
+                    type: "POST",
+                    format: "html",
+                    success: function(data) {
+						$('#subject').val('');
+						$('#message').val('');
+						//alert(data);
+                        $("#recent_chat_list").empty();
+                        $("#recent_chat_list").append(data);
+                        scrollToBottom('chat_div1');
+                    }
+                });
+	}else{
+		if(msg==''){
+			alert('Please enter Message');
+		}
+		if(sub==''){
+			alert('Please enter subject');
+		}
+	}
+}
+setInterval(send_sms_refresh, 10000);
+   function send_sms_refresh(){
+	   jQuery.ajax({
+                    url: "<?php echo base_url('seller/services/chat_refresh');?>",
+                    data: {
+                        seller_id:'',
+                    },
+                    type: "POST",
+                    format: "html",
+                    success: function(data) {
+						$('#subject').val('');
+						$('#message').val('');
+						//alert(data);
+                        $("#recent_chat_list").empty();
+                        $("#recent_chat_list").append(data);
+                        scrollToBottom('chat_div1');
+                    }
+                });
+   }
 $(document).ready(function() {
     $('#notifications').bootstrapValidator({
        
@@ -756,6 +802,10 @@ $(document).ready(function() {
         }
     });
 });
+function scrollToBottom(id) {
+        var div = document.getElementById(id);
+        div.scrollTop = div.scrollHeight - div.clientHeight;
+    }
 </script>
 
 

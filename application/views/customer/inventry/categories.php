@@ -2,10 +2,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header bg-breadcrumb">
       <h1>
-        Dashboard</h1>
+        All Categories List</h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="<?php echo base_url(''); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active"> All Categories List</li>
       </ol>
     </section>
     <!-- Main content -->
