@@ -4,6 +4,9 @@
 		<div class="container">
 			<div class="row">
 					
+					
+				<form enctype="multipart/form-data" method="post" name="adddeliveryboy" id="adddeliveryboy"  action="<?php echo base_url('inventory/editcoworkerpost'); ?>" class="well col-md-6 col-md-offset-2" style="background-color:#fff;">
+					
 					<?php if($this->session->flashdata('success')): ?>
 					<div class="alert dark alert-success alert-dismissible" id="infoMessage"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -14,7 +17,6 @@
 					<span aria-hidden="true">&times;</span>
 					</button><?php echo $this->session->flashdata('error');?></div>	
 					<?php endif; ?>
-				<form enctype="multipart/form-data" method="post" name="adddeliveryboy" id="adddeliveryboy"  action="<?php echo base_url('inventory/editcoworkerpost'); ?>" class="well col-md-6 col-md-offset-2" style="background-color:#fff;">
 					<input type="hidden" name="cust_id" id="cust_id" value="<?php echo isset($details['customer_id'])?$details['customer_id']:''; ?>">
 			
 				<div class=""  style="font-size:20px;font-weight:600;border-bottom:1px solid #ddd;margin-bottom:10px;padding-bottom:10px;">Edit Co-Worker Details</div>

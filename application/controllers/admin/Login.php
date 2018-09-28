@@ -45,6 +45,7 @@ public function loginpost()
 {
 
        $post = $this->input->post();
+	    //echo '<pre>';print_r($post);
 	    $this->form_validation->set_rules('email', 'Email', 'required');
 		$this->form_validation->set_rules('password', 'password', 'required|min_length[6]');
 		if ($this->form_validation->run() == FALSE) {
@@ -52,6 +53,7 @@ public function loginpost()
 		$this->load->view('admin/login');
 		}else{
 			 $result   = $this->login_model->authenticate($post['email'],$post['password']);
+			 //echo $this->db->last_query();
 			 //echo '<pre>';print_r($result);exit;
 			 if(count($result)>0){				 
 				 $data = array(
@@ -69,6 +71,11 @@ public function loginpost()
 					redirect('deliveryboy/dashboard');
 				}else if($result['role_id']==7){
 					redirect('inventory/totalorders');
+				}else if($result['role_id']==1){
+					$userinfo = $this->session->userdata('userdetails');
+					$this->session->set_userdata($data);
+					$this->session->unset_userdata($userinfo);
+					redirect('');
 				}
 				 
 			}else{

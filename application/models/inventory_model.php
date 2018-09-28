@@ -971,7 +971,7 @@ public function delete_banner($id,$sid)
 	public  function check_co_worker_exists($email){
 		$this->db->select('*')->from('customers');
 		$this->db->where('cust_email',$email);
-		$this->db->where('role_id',7);
+		//$this->db->where('role_id',7);
 		return $this->db->get()->row_array();
 	}
 	public  function save_co_worker_boy($data){
@@ -988,7 +988,7 @@ public function delete_banner($id,$sid)
 	public function get_co_worker_details($c_id){
 		$this->db->select('customer_id,role_id,cust_firstname,cust_lastname,cust_email,cust_mobile,address1,address2,pincode,status,created_at')->from('customers');
 		$this->db->where('customer_id',$c_id);
-		$this->db->where('role_id',7);
+		//$this->db->where('role_id',7);
 		return $this->db->get()->row_array();
 	}
 	public  function update_co_worker_details($id,$data){
